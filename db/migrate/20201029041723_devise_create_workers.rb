@@ -4,9 +4,19 @@ class DeviseCreateWorkers < ActiveRecord::Migration[6.0]
   def change
     create_table :workers do |t|
       ## Database authenticatable
+      t.string :worker_login_id, null: false
+      t.string :last_name, null: false
+      t.string :first_name, null: false
+      t.string :last_name_kana, null: false
+      t.string :first_name_kana, null: false
+      t.integer :gender_id, null: false
+      t.date :born, null: false
+      t.integer :character, null: false
+      t.integer :position, null: false
+      t.integer :qualification
+      t.references :company, null: false, foreign_key: true
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
-
       ## Recoverable
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at

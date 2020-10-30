@@ -13,6 +13,19 @@
  *= require_tree .
  *= require_self
  */
+ $back-color: rgb(255,255,255);
+
+ * {
+  box-sizing: border-box;
+}
+
+body{
+  background-color: $back-color;
+  font-size: 13px; 
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
 @import 'font-awesome-sprockets';
 @import 'font-awesome'; 

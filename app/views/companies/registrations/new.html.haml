@@ -1,0 +1,24 @@
+.flex-style
+  .auth_form
+    .logo= image_tag "accel_logo.svg"
+    %h2 会社アカウント作成
+    = form_with model: @company, url: company_registration_path, local: true do |f|
+      = render "companies/shared/error_messages", resource: resource
+      .field
+        = f.label :email
+        %br/
+        = f.email_field :email, autofocus: true, autocomplete: "email"
+      .field
+        = f.label :password
+        - if @minimum_password_length
+          %em
+            (#{@minimum_password_length} characters minimum)
+        %br/
+        = f.password_field :password, autocomplete: "new-password"
+      .field
+        = f.label :password_confirmation
+        %br/
+        = f.password_field :password_confirmation, autocomplete: "new-password"
+      .actions
+        = f.submit "Sign up"
+    = render "companies/shared/links"

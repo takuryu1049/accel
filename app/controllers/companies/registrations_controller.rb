@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Companies::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
   prepend_before_action :check_captcha, only: [:create]
 
@@ -11,9 +11,9 @@ class Companies::RegistrationsController < Devise::RegistrationsController
   end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+  end
 
   # GET /resource/edit
   # def edit
@@ -50,9 +50,9 @@ class Companies::RegistrationsController < Devise::RegistrationsController
     end
   end
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-  # end
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name,:company_login_id,:post_code,:prefecture_id,:city,:street,:building_name,:image])
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params

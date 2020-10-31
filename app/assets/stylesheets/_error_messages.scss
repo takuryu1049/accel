@@ -1,0 +1,18 @@
+$accel_pink: #E43AD2;
+$accel_black: #13202F;
+
+#error_explanation{
+  background-color: whitesmoke;
+  border: 1px dotted $accel_black;
+  font-family: "メイリオ";
+  margin: 20px 20px 30px 20px;
+  h2.error_title_registration{
+    font-size: 20px;
+  }
+  ul{
+    li.error_messages_registration{
+      list-style: none;
+      font-size: 16px;
+    }
+  }
+}

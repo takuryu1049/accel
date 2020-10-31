@@ -1,6 +1,8 @@
 class Company < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
   has_many :workers
   has_one_attached :image
+  belongs_to_active_hash :prefecture
 
   with_options presence: true do
     validates :name

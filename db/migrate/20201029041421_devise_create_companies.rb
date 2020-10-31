@@ -5,13 +5,13 @@ class DeviseCreateCompanies < ActiveRecord::Migration[6.0]
     create_table :companies do |t|
       ## Database authenticatable
       t.string :name, null: false
-      t.string :company_login_id, null: false
+      t.string :company_login_id, null: false, uniqueness: true
       t.string :post_code , null: false
       t.integer :prefecture_id, null: false
       t.string :city, null: false
       t.string :street, null: false
       t.string :building_name
-      t.string :email,              null: false, default: ""
+      t.string :email,              null: false, default: "", uniqueness: true
       t.string :encrypted_password, null: false, default: ""
 
       ## Recoverable
@@ -45,6 +45,7 @@ class DeviseCreateCompanies < ActiveRecord::Migration[6.0]
 
     add_index :companies, :email,                unique: true
     add_index :companies, :reset_password_token, unique: true
+    add_index :companies, :company_login_id, unique: true
     # add_index :companies, :confirmation_token,   unique: true
     # add_index :companies, :unlock_token,         unique: true
   end

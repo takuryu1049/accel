@@ -4,7 +4,7 @@ class DeviseCreateWorkers < ActiveRecord::Migration[6.0]
   def change
     create_table :workers do |t|
       ## Database authenticatable
-      t.string :worker_login_id, null: false
+      t.string :worker_login_id, null: false, uniqueness: true
       t.string :last_name, null: false
       t.string :first_name, null: false
       t.string :last_name_kana, null: false
@@ -15,7 +15,7 @@ class DeviseCreateWorkers < ActiveRecord::Migration[6.0]
       t.integer :position, null: false
       t.integer :qualification
       t.references :company, null: false, foreign_key: true
-      t.string :email,              null: false, default: ""
+      t.string :email,              null: false, default: "", uniqueness: true
       t.string :encrypted_password, null: false, default: ""
       ## Recoverable
       t.string   :reset_password_token
@@ -48,6 +48,7 @@ class DeviseCreateWorkers < ActiveRecord::Migration[6.0]
 
     add_index :workers, :email,                unique: true
     add_index :workers, :reset_password_token, unique: true
+    add_index :workers, :worker_login_id, unique: true
     # add_index :workers, :confirmation_token,   unique: true
     # add_index :workers, :unlock_token,         unique: true
   end

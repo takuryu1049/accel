@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2020_10_30_171541) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_login_id"], name: "index_companies_on_company_login_id", unique: true
     t.index ["email"], name: "index_companies_on_email", unique: true
     t.index ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
   end
@@ -74,6 +75,7 @@ ActiveRecord::Schema.define(version: 2020_10_30_171541) do
     t.index ["company_id"], name: "index_workers_on_company_id"
     t.index ["email"], name: "index_workers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_workers_on_reset_password_token", unique: true
+    t.index ["worker_login_id"], name: "index_workers_on_worker_login_id", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

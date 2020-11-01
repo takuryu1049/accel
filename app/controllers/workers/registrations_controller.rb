@@ -1,18 +1,19 @@
 # frozen_string_literal: true
 
 class Workers::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-
+  # 🔃  recapcha
+  prepend_before_action :check_captcha, only: [:create]
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    @worker = Worker.new
+  end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+  end
 
   # GET /resource/edit
   # def edit
@@ -39,11 +40,20 @@ class Workers::RegistrationsController < Devise::RegistrationsController
   # end
 
   # protected
+  private
 
+  def check_captcha
+    self.resource = resource_class.new sign_up_params
+    resource.validate
+    unless verify_recaptcha(model: resource)
+      respond_with_navigational(resource) { render :new }
+    end
+  end
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-  # end
+    # 😁  :passwordとpassword_confirmationは念のため渡しています
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:worker_login_id, :password,:password_confirmation, :email, :last_name,:first_name,:last_name_kana,:first_name_kana,:gender,:born,:character_id,:position_id,:qualification_id,:company_id,:image])
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params

@@ -61,9 +61,9 @@ ActiveRecord::Schema.define(version: 2020_10_30_171541) do
     t.string "first_name_kana", null: false
     t.boolean "gender", default: false, null: false
     t.date "born", null: false
-    t.integer "character", null: false
-    t.integer "position", null: false
-    t.integer "qualification"
+    t.integer "character_id", null: false
+    t.integer "position_id", null: false
+    t.integer "qualification_id"
     t.bigint "company_id", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false

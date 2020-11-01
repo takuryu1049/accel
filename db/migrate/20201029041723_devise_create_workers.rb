@@ -11,9 +11,9 @@ class DeviseCreateWorkers < ActiveRecord::Migration[6.0]
       t.string :first_name_kana, null: false
       t.boolean :gender, null: false, default: false
       t.date :born, null: false
-      t.integer :character, null: false
-      t.integer :position, null: false
-      t.integer :qualification
+      t.integer :character_id, null: false
+      t.integer :position_id, null: false
+      t.integer :qualification_id
       t.references :company, null: false, foreign_key: true
       t.string :email,              null: false, default: "", uniqueness: true
       t.string :encrypted_password, null: false, default: ""

@@ -3,6 +3,7 @@
 class Companies::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  # 🔃  recapcha
   prepend_before_action :check_captcha, only: [:create]
 
   # GET /resource/sign_up
@@ -50,8 +51,9 @@ class Companies::RegistrationsController < Devise::RegistrationsController
     end
   end
   # If you have extra params to permit, append them to the sanitizer.
+  # 😁  :passwordとpassword_confirmationは念のため渡しています
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name,:company_login_id,:post_code,:prefecture_id,:city,:street,:building_name,:image])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name,:company_login_id,:email,:password,:password_confirmation,:post_code,:prefecture_id,:city,:street,:building_name,:image])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
@@ -61,7 +63,7 @@ class Companies::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)
-  #   super(resource)
+  #   new_worker_registration_path(resource)
   # end
 
   # The path used after sign up for inactive accounts.

@@ -1,0 +1,323 @@
+$accel_pink: #E43AD2;
+$accel_black: #13202F;
+.flex-style{
+  display: flex;
+  align-items: center !important;
+  justify-content: center;
+  padding: 30px 60px 10px 60px;
+  text-align: center;
+  .auth_form {
+    width: 720px;
+    border-radius: 8px;
+    background-color:white;
+    padding: 15px;
+    font-size:30px;
+    .logo{
+      margin: 0 auto;
+      width: 400px;
+      font-size: 60px;
+      padding-bottom: 10px;
+      margin-top: 20px;
+    }
+    .make-account-title{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #656873;
+      padding: 30px 10px 10px 10px;
+      font-size: 30px;
+      border-bottom: solid 10px;
+      border-top: solid 3px;
+      border-top-color: rgba(0,0,0,0.1) ;
+      border-bottom: dotted 3px;
+      border-bottom-color:rgba(0,0,0,0.1) ;
+      .make-account-border{
+        height: 80px;
+        border: 3px dotted #656873;;
+        margin-right: 30px;
+      } 
+      i.account_icon{
+        font-size: 40px;
+      }
+      h2{
+        font-size: 40px;
+      }
+    }
+    h3{
+      color: #656873;
+      padding-top: 10px;
+      font-size: 13px;
+      padding-bottom: 10px;
+      .make_account_information_mark{
+        color:#4dabff;
+      }
+    }
+    .chain-border{
+      height: 40px;
+      border-left: 2px dotted #656873;
+      margin-left: 78px;
+    } 
+    .support-message{
+      color: #656873;
+      padding-top: 10px;
+      padding-bottom: 20px;
+      font-size: 22px;
+      font-family: "メイリオ";
+      border-left: dashed 3px #656873; 
+      width: 80%;
+      height: 80px;
+      margin: 20px auto;
+      border-radius: 10px 0 10px 0;
+
+    }
+    .field{
+      display: flex;
+      justify-content: center;
+      padding: 3px 0px;
+      #item-image{
+        font-size:13px;
+        line-height: 1;
+        color: $accel_black;
+        font-family: "メイリオ";
+      }
+      .input-title{
+        width:300px;
+        text-align:  left;
+        color: #656873;
+        font-size: 16px;
+        display: flex;
+        justify-content: start;
+        .optional{
+          background-color: #656873 !important;
+        }
+        span.must{
+          font-size:16px;
+          display:inline-block;
+          text-align: center;
+          background-color: $accel_pink;
+          border-radius: 2px;
+          color:white;
+          font-weight: bold;
+          padding: 1px 2px;
+          box-shadow: 0 2px 4px 2px rgba(0,0,0,0.3);
+          margin-top: 3px;
+          margin-right: 10px;
+          height:26px;
+        }
+        label{
+          color: #656873;
+          font-size: 20px;
+          font-weight: bold;
+        }
+      }
+      .birth-wrapper{
+        width: 330px;
+        display: flex;
+        justify-content: start;
+        .field_with_errors{
+          display: flex;
+          justify-content: center;
+        }
+        p{
+          font-size: 20px;
+          margin-top: 10px;
+        }
+        #worker_born_1i{
+          border-color: #d8d8d8;
+          border: 2px solid #ced4da;
+          border-radius: 3px;
+          padding: 6px;
+          width:100px;
+          height:40px;
+          font-size:16px;
+          background-image: radial-gradient(at top, #b5e6cf, #9dddad);
+          background-color: white;
+          box-shadow: 0 2px 0 white;
+          background-image:
+          linear-gradient(45deg, transparent 50%, rgb(91, 91, 91) 50%),
+          linear-gradient(135deg, rgb(102, 102, 110) 50%, transparent 50%),
+          linear-gradient(to right, rgb(234, 234, 234), rgb(255, 247, 247));
+        background-position:
+          calc(100% - 20px) calc(1em + 2px),
+          calc(100% - 15px) calc(1em + 2px),
+          100% 0;
+        background-size:
+          5px 5px,
+          5px 5px,
+          2.5em 2.5em;
+        background-repeat: no-repeat;
+        }
+        #worker_born_2i{
+          border-color: #d8d8d8;
+          border: 2px solid #ced4da;
+          border-radius: 3px;
+          padding: 6px;
+          width: 80px;
+          height:40px;
+          font-size:16px;
+          background-image: radial-gradient(at top, #b5e6cf, #9dddad);
+          background-color: white;
+          box-shadow: 0 2px 0 white;
+          background-image:
+          linear-gradient(45deg, transparent 50%, rgb(91, 91, 91) 50%),
+          linear-gradient(135deg, rgb(102, 102, 110) 50%, transparent 50%),
+          linear-gradient(to right, rgb(234, 234, 234), rgb(255, 247, 247));
+        background-position:
+          calc(100% - 20px) calc(1em + 2px),
+          calc(100% - 15px) calc(1em + 2px),
+          100% 0;
+        background-size:
+          5px 5px,
+          5px 5px,
+          2.5em 2.5em;
+        background-repeat: no-repeat;
+        }
+        #worker_born_3i{
+          border-color: #d8d8d8;
+          border: 2px solid #ced4da;
+          border-radius: 3px;
+          padding: 6px;
+          width: 80px;
+          height:40px;
+          font-size:16px;
+          background-image: radial-gradient(at top, #b5e6cf, #9dddad);
+          background-color: white;
+          box-shadow: 0 2px 0 white;
+          background-image:
+          linear-gradient(45deg, transparent 50%, rgb(91, 91, 91) 50%),
+          linear-gradient(135deg, rgb(102, 102, 110) 50%, transparent 50%),
+          linear-gradient(to right, rgb(234, 234, 234), rgb(255, 247, 247));
+        background-position:
+          calc(100% - 20px) calc(1em + 2px),
+          calc(100% - 15px) calc(1em + 2px),
+          100% 0;
+        background-size:
+          5px 5px,
+          5px 5px,
+          2.5em 2.5em;
+        background-repeat: no-repeat;
+        }
+      }
+      .input-title.conpact{
+        width: 300px;
+        display: flex;
+        justify-content: space-between;
+        margin: 0 5px;
+        .in-conpact{
+          display: flex;
+          justify-content: start;
+        }
+      }
+      input{
+        border-color: #d8d8d8;
+        border: 2px solid #ced4da;
+        border-radius: 3px;
+        padding: 10px;
+        width:330px;
+        height:40px;
+        font-size:16px;
+      }
+      input.conpact_input{
+        width:130px;
+      }
+      .gender-flex  {
+        width:330px;
+        display: flex;
+        font-size: 23px;
+        justify-content: center;
+        border-top: dotted 1px #ced4da;
+        border-bottom: dotted 1px #ced4da;
+        .input_radio{
+          width:30px;
+          margin: 0 10px 0 60px;
+        }
+        .fa-mars{
+          color: blue;
+          font-size: 30px;
+          margin-right: 3px;
+        }
+        .fa-venus{
+          color: red;
+          font-size: 30px;
+          margin-right: 3px;
+        }
+      }
+      .select-box{
+        border-color: #d8d8d8;
+        border: 2px solid #ced4da;
+        border-radius: 3px;
+        padding: 10px;
+        width:330px;
+        height:45px;
+        font-size:16px;
+        background-image: radial-gradient(at top, #b5e6cf, #9dddad);
+        background-color: white;
+        box-shadow: 0 2px 0 white;
+        background-image:
+        linear-gradient(45deg, transparent 50%, rgb(91, 91, 91) 50%),
+        linear-gradient(135deg, rgb(102, 102, 110) 50%, transparent 50%),
+        linear-gradient(to right, rgb(234, 234, 234), rgb(255, 247, 247));
+      background-position:
+        calc(100% - 20px) calc(1em + 2px),
+        calc(100% - 15px) calc(1em + 2px),
+        100% 0;
+      background-size:
+        5px 5px,
+        5px 5px,
+        2.5em 2.5em;
+      background-repeat: no-repeat;
+      }
+    }
+    .compact-wrapper{
+      display: flex;
+      justify-content: center;
+      width: 720px;
+    }
+    .submit-recaptcha-wrap{
+      display: flex;
+      flex-direction: center;
+      border-top: 3px dotted rgba(0, 0, 0, 0.1);
+      margin-top: 30px;
+      .g-recaptcha{
+        margin-top: 30px;
+        margin-bottom:30px;
+        margin: 20px auto;
+      }
+      .create-company-account{
+        margin: 25px auto;
+        border: 3px double rgba(255, 255, 255, 0.9);
+        width: 200px;
+        height:60px;
+        padding: 3px;
+        font-size: 18px;
+        background-color:rgba(0,0,0,0.1);;
+        text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
+        color: $accel_black;
+        font-family: "メイリオ";
+        &:hover{
+          background-color: $accel_pink;
+          color: white;
+          font-size: 19px;
+          font-weight: bold;
+        }
+      }
+    }
+    .form-countion{
+      margin-top: 8px;
+      font-size: 13px;
+      margin-bottom: 8px;
+      border: 1px dashed rgba(0,0,0,0.2);
+      .company_login_id_countion{
+        color: #F2E700;
+        text-shadow: 0 0 3px #000; 
+      }
+    }
+    ::placeholder {
+      color: rgba(0,0,0,0.2);
+    }
+  }
+}
+
+.flex-style.company-login{
+  height: calc(100vh - 48px);
+}

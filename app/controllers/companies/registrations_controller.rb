@@ -56,6 +56,11 @@ class Companies::RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name,:company_login_id,:email,:password,:password_confirmation,:post_code,:prefecture_id,:city,:street,:building_name,:image])
   end
 
+  
+  def after_sign_up_path_for(resource)
+    new_worker_registration_path(resource)
+  end
+
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
   #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])

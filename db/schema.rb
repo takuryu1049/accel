@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 2020_10_30_171541) do
     t.string "first_name", null: false
     t.string "last_name_kana", null: false
     t.string "first_name_kana", null: false
-    t.integer "gender_id", null: false
+    t.boolean "gender", default: false, null: false
     t.date "born", null: false
     t.integer "character", null: false
     t.integer "position", null: false

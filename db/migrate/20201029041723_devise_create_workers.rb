@@ -9,7 +9,7 @@ class DeviseCreateWorkers < ActiveRecord::Migration[6.0]
       t.string :first_name, null: false
       t.string :last_name_kana, null: false
       t.string :first_name_kana, null: false
-      t.integer :gender_id, null: false
+      t.boolean :gender, null: false, default: false
       t.date :born, null: false
       t.integer :character, null: false
       t.integer :position, null: false

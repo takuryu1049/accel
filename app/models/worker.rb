@@ -1,4 +1,5 @@
 class Worker < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :company
   has_one_attached :image
   belongs_to_active_hash :character
@@ -16,12 +17,13 @@ class Worker < ApplicationRecord
           validates :first_name
           validates :last_name_kana
           validates :first_name_kana
-          validates :gender
           validates :character
           validates :position
           validates :born
-          validates :qualification
+          validates :email,uniqueness: true
         end
+
+        validates :gender, inclusion: { in: [true, false] }
 
          def email_required?
           false

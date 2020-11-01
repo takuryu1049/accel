@@ -12,6 +12,7 @@ class Company < ApplicationRecord
     validates :prefecture_id, numericality: { other_than: 0, message: "can't be blank" }
     validates :city
     validates :street
+    validates :email,uniqueness: true
   end
 
 

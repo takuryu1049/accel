@@ -3,9 +3,117 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title Accel
+    = favicon_link_tag('favicon.svg')
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    = yield
+  .site-wrapper
+    - if current_page?(root_path)
+      .header
+        .container
+          = link_to "#" do
+            = embedded_svg "Acell.logo.svg", class: "good-svg single-logo animate__animated animate__wobble"
+          .navi-flex
+            %ul.animate__animated.animate__slideInRight
+              %li
+                = link_to "ACCELについて", "#"
+              %li
+                = link_to "ACCELの使い方", "#"
+              %li 
+                = link_to "機能一覧", "#"
+              %li 
+                = link_to "料金プラン", "#"
+              %li
+                = link_to "session除去", destroy_company_session_path, method: :delete
+              %li.login_button
+                = link_to "無料で始める", new_company_registration_path, class: "login_button_a"
+    - elsif current_page?("/books/home")
+      .header-app
+        .container-1
+          = link_to "#" do
+            = embedded_svg "favicon.svg", class: "app-good-svg animate__animated animate__bounceInUp"
+          .navi-flex
+            %ul.app.animate__animated.animate__bounceIn
+              %li
+                = link_to "#" do
+                  %i.fas.fa-building
+                  物件一覧
+              %li
+                = link_to "#" do
+                  %i.fas.fa-plus-circle.animate__animated.animate__jackInTheBox
+                  物件登録
+              %li
+                = link_to "#" do
+                  %i.fas.fa-book-open.animate__animated.animate__jackInTheBox
+                  レポート一覧
+              %li
+                = link_to "#" do
+                  %i.far.fa-plus-square.animate__animated.animate__jackInTheBox
+                  レポート作成
+              %li
+                = link_to "#" do
+                  %i.far.fa-newspaper.animate__animated.animate__jackInTheBox
+                  NEWS
+          .user-navi.animate__animated.animate__lightSpeedInRight
+            = link_to "#", class: "profile-img"  do
+              = image_tag "saito.jpeg"
+            .profile-navi
+              .profile-name
+                %i.fas.fa-venus.gender
+                = link_to "#" do  
+                  斎藤飛鳥
+              .profile-company
+                = link_to "#" do
+                  株式会社リアルエステート不動産
+        .container-2
+          = link_to "#" do
+            %i.fas.fa-question-circle.animate__animated.animate__lightSpeedInLeft.help
+          .navi-flex
+            %ul.app.animate__animated.animate__bounceIn
+              %li
+                = link_to "#" do
+                  %i.fas.fa-search
+                  物件検索
+              %li
+                = link_to "#" do
+                  %i.fab.fa-searchengin
+                  オーナー検索
+              %li
+                = link_to "#" do
+                  %i.fas.fa-seedling.animate__animated.animate__jackInTheBox
+                  提案のタネ
+              %li
+                = link_to "#" do
+                  %i.fas.fa-shoe-prints.animate__animated.animate__jackInTheBox
+                  データベース
+              %li
+                = link_to "#" do
+                  %i.fas.fa-th-large.animate__animated.animate__jackInTheBox.other
+          .user-navi-second.animate__animated.animate__heartBeat
+            .score-box-1
+              .my-store
+                = link_to "#" do  
+                  %i.fas.fa-store
+                  店舗：西新宿本店
+              .my-work-year
+                = link_to "#" do
+                  %i.fas.fa-house-user
+                  在籍年数：5年
+            .score-box-2
+              .my-position
+                = link_to "#" do  
+                  %i.fas.fa-male
+                  役職：店長
+              .year-result-percentage
+                = link_to "#" do
+                  %i.fas.fa-running
+                  貢献率:13%
+  = yield
+  %footer
+    .copyright
+      = embedded_svg "Acell.logo.svg", class: "footer_logo"
+      %h1 ©2020 不動産賃貸仲介業特化型戦略マネジメントツールACCEL(アクセル)
+      %h2 利用規約
+      %h3 プライバシーポリシー

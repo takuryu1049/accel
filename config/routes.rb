@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: "tops#index"
   get  "/"  => "tops#index"
-
+  resources :app_tops, only: [:index]
   devise_for :companies, controllers: {
     sessions:      'companies/sessions',
     passwords:     'companies/passwords',

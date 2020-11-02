@@ -1,17 +1,40 @@
 $accel_pink: #E43AD2;
 $accel_black: #13202F;
+
+
+.worker-border{
+  background-color: $accel_pink;
+  position: fixed;
+  top: 50vh;
+  height:10px;
+  width:100%;
+  z-index: -100;
+  box-shadow: 0 3px 8px $accel_pink;
+}
+
+.company-border{
+  background-color: $accel_black;
+  position: fixed;
+  top: 50vh;
+  height:10px;
+  width:100%;
+  z-index: -100;
+}
+
 .flex-style{
   display: flex;
   align-items: center !important;
   justify-content: center;
   padding: 30px 60px 10px 60px;
   text-align: center;
+  z-index:0;
   .auth_form {
     width: 720px;
     border-radius: 8px;
-    background-color:white;
+    background-color:rgba(255,255,255, 0.9);
     padding: 15px;
     font-size:30px;
+    box-shadow: 0 5px 600px white;
     .logo{
       margin: 0 auto;
       width: 400px;
@@ -33,8 +56,9 @@ $accel_black: #13202F;
       border-bottom-color:rgba(0,0,0,0.1) ;
       .make-account-border{
         height: 80px;
-        border: 3px dotted #656873;;
+        border: 2px dashed #656873;;
         margin-right: 30px;
+        transform: skewY(-60deg);
       } 
       i.account_icon{
         font-size: 40px;
@@ -297,8 +321,10 @@ $accel_black: #13202F;
         &:hover{
           background-color: $accel_pink;
           color: white;
-          font-size: 19px;
+          font-size: 23px;
           font-weight: bold;
+          transform: skewY(-6deg);
+          border: 6px double rgba(255, 255, 255, 0.9);
         }
       }
     }

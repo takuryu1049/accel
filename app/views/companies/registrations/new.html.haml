@@ -1,7 +1,7 @@
 .flex-style
-  .auth_form
+  .auth_form.animate__animated.animate__fadeIn
     .logo.animate__animated.animate__zoomIn= image_tag "Acell.logo.svg"
-    .make-account-title.animate__animated.animate__headShake
+    .make-account-title
       .make-account-border
       %i.fas.fa-user-circle.account_icon
       %h2 アカウントの作成
@@ -21,7 +21,7 @@
         .input-title
           %span.must.animate__animated.animate__fadeInUp
             必須
-          = f.label :image, "②会社画像"
+          = f.label :image, "②会社プロフィール画像"
         = f.file_field :image, id:"item-image", autofocus: true
       .chain-border
       .field
@@ -98,3 +98,5 @@
         = recaptcha_tags 
         = f.submit "アカウントを作成", class: "create-company-account"
     -# = render "companies/shared/links"
+
+.company-border.animate__animated.animate__fadeInLeftBig

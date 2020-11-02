@@ -1,13 +1,13 @@
 .flex-style.company-login
-  .auth_form
+  .auth_form.animate__animated.animate__fadeIn
     .logo.animate__animated.animate__zoomIn= image_tag "Acell.logo.svg"
-    .make-account-title.animate__animated.animate__headShake
+    .make-account-title
       .make-account-border
-      %i.fas.fa-user-circle.account_icon
+      %i.fas.fa-door-open.account_icon
       %h2 会社アカウントでログイン
     %h3 
       %i.fas.fa-info-circle.make_account_information_mark
-      ログインする際に必要な情報は、会社ごとに徹底した管理をお願い致します。
+      社員ログインをするには、会社でのログインが必要です。
     = form_with model: @company, url: company_session_path, local: true do |f|
       = flash[:notice]
       = flash[:alert]
@@ -30,3 +30,5 @@
       .submit-recaptcha-wrap
         = f.submit "ログイン", class: "create-company-account"
       -# = render "companies/shared/links"
+
+.company-border.animate__animated.animate__rotateOut

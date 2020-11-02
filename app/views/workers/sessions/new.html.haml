@@ -1,17 +1,51 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "workers/shared/links"
+.flex-style.company-login
+  .auth_form.animate__animated.animate__fadeIn
+    .logo.animate__animated.animate__zoomIn= image_tag "Acell.logo.svg"
+    .make-account-title
+      .make-account-border
+      %i.fas.fa-door-open.account_icon
+      %h2 社員ログイン
+    %h3 
+      %i.fas.fa-info-circle.make_account_information_mark
+      ログインする際に必要な情報は、会社ごとに徹底した管理をお願い致します。
+    = form_with model: @company, url: worker_session_path, local: true do |f|
+      = flash[:notice]
+      = flash[:alert]
+      .field
+        .input-title
+          = f.label :worker_login_id, "①社員アカウントID"
+        = f.text_field :worker_login_id, autofocus: true, placeholder: "\uf084  6文字以上12文字以内", class: 'fa in_logo_key', maxlength: "12"
+      .form-countion
+        %i.fas.fa-exclamation-triangle.company_login_id_countion
+        半角6~12文字かつ英大文字・小文字・数字それぞれ１文字以上を含む必要があります
+      .chain-border     
+      .field
+        .input-title
+          = f.label :password, "②パスワード"
+        = f.password_field :password, placeholder: "\uf023  6文字以上で入力ください", class: 'fa in_logo_mail', autocomplete: "current-password"
+      -# - if devise_mapping.rememberable?
+      -#   .field
+      -#     = f.check_box :remember_me
+      -#     = f.label :remember_me
+      .submit-recaptcha-wrap
+        = f.submit "ログイン", class: "create-company-account"
+      -# = render "companies/shared/links"
+.worker-border.animate__animated.animate__rotateOut
+
+-# %h2 Log in
+-# = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+-#   .field
+-#     = f.label :email
+-#     %br/
+-#     = f.email_field :email, autofocus: true, autocomplete: "email"
+-#   .field
+-#     = f.label :password
+-#     %br/
+-#     = f.password_field :password, autocomplete: "current-password"
+-#   - if devise_mapping.rememberable?
+-#     .field
+-#       = f.check_box :remember_me
+-#       = f.label :remember_me
+-#   .actions
+-#     = f.submit "Log in"
+-# = render "workers/shared/links"

@@ -57,6 +57,7 @@ $accel_black: #13202F;
               font-weight: bold;
               &:hover{
                 color: #E43AD2;
+                transform: skewY(-3deg);
               }
             }
           }

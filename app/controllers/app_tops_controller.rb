@@ -1,0 +1,2 @@
+class AppTopsController < ApplicationController
+end

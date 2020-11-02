@@ -43,6 +43,7 @@ class Companies::RegistrationsController < Devise::RegistrationsController
   # protected
   private
 
+  # 🔃 recaptcha
   def check_captcha
     self.resource = resource_class.new sign_up_params
     resource.validate
@@ -51,12 +52,13 @@ class Companies::RegistrationsController < Devise::RegistrationsController
     end
   end
   # If you have extra params to permit, append them to the sanitizer.
-  # 😁  :passwordとpassword_confirmationは念のため渡しています
+  # 💌 ↓params:passwordとpassword_confirmationは念のため渡しています
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name,:company_login_id,:email,:password,:password_confirmation,:post_code,:prefecture_id,:city,:street,:building_name,:image])
   end
 
   
+  # ↓🛩 会社登録後直後の遷移先を指定
   def after_sign_up_path_for(resource)
     new_worker_registration_path(resource)
   end

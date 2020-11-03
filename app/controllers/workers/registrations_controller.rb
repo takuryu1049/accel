@@ -61,7 +61,7 @@ class Workers::RegistrationsController < Devise::RegistrationsController
   end
 
   def after_sign_up_path_for(resource)
-    root_path(resource)
+    app_tops_path(resource)
   end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params

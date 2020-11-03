@@ -35,7 +35,7 @@ class Companies::SessionsController < Devise::SessionsController
       # ログインしている社員が、ログインしている会社に所属しているなら、
       # アプリTOPページへ飛ばす。
       if current_company.id == current_worker.company_id
-        redirect_to top_path and return
+        redirect_to app_tops_path and return
       else
         # 社員のログイン画面で、会社の社員でないと、
         # その会社のアプリにログインできない制限をかけているので、
@@ -58,7 +58,7 @@ class Companies::SessionsController < Devise::SessionsController
   def authentication_company_login
     if company_signed_in? && worker_signed_in?
       if current_company.id == current_worker.company_id
-        redirect_to top_path and return
+        redirect_to app_tops_path and return
       else
         redirect_to root_path and return
       end

@@ -31,7 +31,7 @@ class Workers::SessionsController < Devise::SessionsController
     if company_signed_in? && worker_signed_in?
       # ログインしている社員が、ログインしている会社に所属しているなら、アプリTOPページへ飛ばす。
       if current_company.id == current_worker.company_id
-        redirect_to top_path and return
+        redirect_to app_tops_path and return
       else
         # 社員のログイン画面で、会社の社員でないと、
         # その会社のアプリにログインできない制限をかけているので、
@@ -42,7 +42,6 @@ class Workers::SessionsController < Devise::SessionsController
       # すでに会社のみログイン済であれば、社員登録画面へ行く。
     elsif company_signed_in?
       @worker = Worker.new
-      
       flash[:notice] = "会社ログイン済。社員ログインが必要"
       render :new  and return
     else
@@ -87,12 +86,12 @@ class Workers::SessionsController < Devise::SessionsController
 
   # ログイン後の遷移先
   def after_sign_in_path_for(resource)
-    top_path(resource)
+    app_tops_path(resource)
   end
 
   # ログアウト後の遷移先
   def after_sign_out_path_for(resource)
     new_worker_session_path(resource)
   end
-  
+
 end

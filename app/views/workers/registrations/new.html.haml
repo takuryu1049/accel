@@ -11,10 +11,12 @@
     = form_with model: @worker, url: worker_registration_path, local: true do |f|
       = render "shared/error_messages", model: f.object 
       .filed.support-message
-        = "登録ID #{current_company.company_login_id}"
-        %br/
-        = "#{current_company.name}の社員登録をします"
-        = f.hidden_field :company_id, :value => current_company.id
+        = image_tag current_company.image, class: "company-image-header"
+        .description-company-make
+          = "登録ID #{current_company.company_login_id}"
+          %br/
+          = "#{current_company.name}の社員登録をします"
+          = f.hidden_field :company_id, :value => current_company.id
       .field
         .input-title
           %span.must.animate__animated.animate__fadeInUp
@@ -143,5 +145,16 @@
         = recaptcha_tags 
         = f.submit "アカウントを作成", class: "create-company-account"
     -# = render "companies/shared/links"
+
+  .button-back-ground.animate__animated.animate__fadeInRight
+    = link_to new_worker_session_path, class: "move-button" do
+      %i.fas.fa-sign-in-alt.exit-or-in
+      .exit-or-in-comment
+        社員ログイン
+  .button-back-ground-2.animate__animated.animate__fadeInRight
+    = link_to destroy_company_session_path, class: "move-button", method: :delete do
+      %i.fas.fa-sign-out-alt.exit-or-in
+      .exit-or-in-comment
+        ログアウト
 
 .worker-border.animate__animated.animate__fadeInLeftBig

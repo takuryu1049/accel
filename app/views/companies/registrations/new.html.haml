@@ -99,4 +99,16 @@
         = f.submit "アカウントを作成", class: "create-company-account"
     -# = render "companies/shared/links"
 
+  .button-back-ground.animate__animated.animate__fadeInRight
+    = link_to new_company_session_path, class: "move-button" do
+      %i.fas.fa-sign-in-alt.exit-or-in
+      .exit-or-in-comment
+        ログイン
+  .button-back-ground-2.animate__animated.animate__fadeInRight
+    = link_to root_path, class: "move-button" do
+      %span.material-icons.exit-or-in
+        home
+      .exit-or-in-comment
+        TOPに戻る
+
 .company-border.animate__animated.animate__fadeInLeftBig

@@ -1,6 +1,6 @@
 $accel_pink: #E43AD2;
 $accel_black: #13202F;
-
+$list-position: 20%;
 
 .worker-border{
   background-color: $accel_pink;
@@ -21,6 +21,135 @@ $accel_black: #13202F;
   z-index: -100;
 }
 
+.button-back-ground{
+  width: 300px;
+  z-index: -100;
+  height: 40px;
+  position: fixed;
+  bottom: $list-position;
+  right: -4%;
+  background-color:rgba(0,0,0,0.1);
+  font-size: 16px;
+  border-radius: 30px;
+  &:hover{
+    position: fixed;
+    bottom: $list-position;
+    right: -3%;
+  }
+  .move-button{
+    border-radius: 30px;
+    opacity: 0.8;
+    display: block;
+    text-decoration: none;
+    font-size: 20px;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
+    color: $accel_black;
+    font-family: "メイリオ";
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    width: 300px;
+    height:40px;
+    text-align: left;
+    display: flex;
+    justify-content: start;
+    align-items: center;    
+    &:hover{
+      color: $accel_pink;
+    }
+    .exit-or-in{
+      margin: 0 6px 0 13px;
+    }
+    .exit-or-in-comment{
+      font-weight: bold;
+    }
+  }
+}
+
+.button-back-ground-2{
+  width: 300px;
+  z-index: -100;
+  height: 40px;
+  position: fixed;
+  bottom: $list-position - 5%;;
+  right: -4%;
+  background-color:rgba(0,0,0,0.1);
+  font-size: 16px;
+  border-radius: 30px;
+  &:hover{
+    position: fixed;
+    bottom: $list-position -5%;
+    right: -3%;
+  }
+  .move-button{
+    border-radius: 30px;
+    opacity: 0.8;
+    display: block;
+    text-decoration: none;
+    font-size: 20px;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
+    color: $accel_black;
+    font-family: "メイリオ";
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    width: 300px;
+    height:40px;
+    text-align: left;
+    display: flex;
+    justify-content: start;
+    align-items: center;    
+    &:hover{
+      color: $accel_pink;
+    }
+    .exit-or-in{
+      margin: 0 6px 0 13px;
+    }
+    .exit-or-in-comment{
+      font-weight: bold;
+    }
+  }
+}
+
+.button-back-ground-3{
+  width: 300px;
+  z-index: -100;
+  height: 40px;
+  position: fixed;
+  bottom: $list-position - 10%;
+  right: -4%;
+  background-color:rgba(0,0,0,0.1);
+  font-size: 16px;
+  border-radius: 30px;
+  &:hover{
+    position: fixed;
+    bottom: $list-position - 10%;
+    right: -3%;
+  }
+  .move-button{
+    border-radius: 30px;
+    opacity: 0.8;
+    display: block;
+    text-decoration: none;
+    font-size: 20px;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
+    color: $accel_black;
+    font-family: "メイリオ";
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    width: 300px;
+    height:40px;
+    text-align: left;
+    display: flex;
+    justify-content: start;
+    align-items: center;    
+    &:hover{
+      color: $accel_pink;
+    }
+    .exit-or-in{
+      margin: 0 6px 0 13px;
+    }
+    .exit-or-in-comment{
+      font-weight: bold;
+    }
+  }
+}
+
 .flex-style{
   display: flex;
   align-items: center !important;
@@ -28,6 +157,7 @@ $accel_black: #13202F;
   padding: 30px 60px 10px 60px;
   text-align: center;
   z-index:0;
+  position: relative; 
   .auth_form {
     width: 720px;
     border-radius: 8px;
@@ -92,7 +222,19 @@ $accel_black: #13202F;
       height: 80px;
       margin: 20px auto;
       border-radius: 10px 0 10px 0;
-
+      display: flex;
+      justify-content: center;
+      font-weight: bold;
+      .company-image-header{
+        margin-left: 10px;
+        height: 60px;
+        width: 60px;
+        border: solid 1px #656873; 
+        border-radius: 10px;
+      }
+      .description-company-make{
+        margin-left: 20px;
+      }
     }
     .field{
       display: flex;

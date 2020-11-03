@@ -5,7 +5,7 @@ class Workers::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
   # 🔃  recapcha
   prepend_before_action :check_captcha, only: [:create]
-  before_action :authenticate
+  prepend_before_action :require_no_authentication, only: [:new]
   # GET /resource/sign_up
   def new
     @worker = Worker.new
@@ -56,8 +56,19 @@ class Workers::RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.permit(:sign_up, keys: [:worker_login_id, :password,:password_confirmation, :email, :last_name,:first_name,:last_name_kana,:first_name_kana,:gender,:born,:character_id,:position_id,:qualification_id,:company_id,:image])
   end
 
-  def authenticate
-    redirect_to root_path unless company_signed_in?
+
+  def require_no_authentication
+    if company_signed_in? && worker_signed_in?
+      if current_company.id == current_worker.company_id
+        redirect_to app_tops_path and return
+      else
+        redirect_to root_path and return
+      end
+    elsif company_signed_in?
+      return
+    else
+      redirect_to root_path and return
+    end
   end
 
   def after_sign_up_path_for(resource)

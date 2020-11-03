@@ -22,11 +22,9 @@
               %li
                 = link_to "ACCELの使い方", "#"
               %li 
-                = link_to "機能一覧", "#"
-              %li 
                 = link_to "料金プラン", "#"
               %li
-                = link_to "ses", destroy_company_session_path, method: :delete
+                = link_to "お問い合わせ", "#"
               - if company_signed_in? && worker_signed_in?
                 - if current_company.id == current_worker.company_id
                   %li.login_button
@@ -42,8 +40,6 @@
     - elsif company_signed_in? && worker_signed_in?
       .header-app
         .container-1
-          = link_to "#" do
-            = embedded_svg "favicon.svg", class: "app-good-svg animate__animated animate__bounceInUp"
           .navi-flex
             %ul.app.animate__animated.animate__bounceIn
               %li
@@ -74,12 +70,11 @@
                 %i.fas.fa-venus.gender
                 = link_to "#" do  
                   = "#{current_worker.last_name}#{current_worker.first_name}"
+            .profile-navi
               .profile-company
                 = link_to "#" do
                   = current_company.name
         .container-2
-          = link_to "#" do
-            %i.fas.fa-question-circle.animate__animated.animate__lightSpeedInLeft.help
           .navi-flex
             %ul.app.animate__animated.animate__bounceIn
               %li
@@ -90,10 +85,6 @@
                 = link_to "#" do
                   %i.fab.fa-searchengin
                   オーナー検索
-              %li
-                = link_to "#" do
-                  %i.fas.fa-seedling.animate__animated.animate__jackInTheBox
-                  提案のタネ
               %li
                 = link_to "#" do
                   %i.fas.fa-shoe-prints.animate__animated.animate__jackInTheBox

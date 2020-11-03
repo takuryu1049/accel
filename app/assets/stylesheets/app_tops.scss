@@ -1,3 +1,329 @@
-// Place all the styles related to the app_tops controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+$accel_pink: #E43AD2;
+$accel_black: #13202F;  
+
+.header-app{
+  background-color: black;
+  height: 140px;
+  .container-1{
+    height: 70px;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    .navi-flex{
+      width: 830px;
+      display: flex;
+      justify-content: start;
+      ul{
+        display: flex;
+        justify-content: center;
+        margin-left: 20px;
+        border-bottom:3px dotted;
+        border-color: rgba(255, 255, 255 , 0.8);
+        li{
+          height:70px;
+          list-style: none;
+          padding-top: 20px;
+          padding-left: 20px;
+          padding-right: 20px;
+          border-left:3px dotted;
+          border-color: rgba(255, 255, 255 , 0.8);
+          &:hover{
+            height:70px;
+            background-color: $accel_pink;
+          }
+          a{
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 20px;
+            color:white;
+            .other{
+              font-size: 30px;
+              padding-left: 20px;
+              padding-right: 20px;
+            }
+            &:hover{
+              opacity: 0.6;
+              color: a;
+            }
+          }
+        }
+      }
+    }
+    .user-navi{
+      width: 500px;
+      display: flex;
+      font-size:18px;
+      .profile-img{
+        margin: 5px 0px;
+        margin-left: 20px;
+        display: block;
+        display: flex;
+        align-items: center;
+        &:hover{
+          opacity:0.8;
+        }
+        img{
+          width: 60px;
+          height: 60px;
+          border-radius:30px;
+          border: solid 1px rgba(255, 255, 255 , 0.8);
+        }
+        .company_header_image{
+          width: 60px;
+          height: 60px;
+          border-radius:3px;
+          border: solid 1px rgba(255, 255, 255 , 0.8);
+        }
+      }
+      .profile-navi{
+        padding-left: 10px;
+        display: flex;
+        justify-content: center;
+        .profile-name{
+          margin-top: 21.5px;
+          margin-left: 10px;
+          .gender{
+            color: white;
+          }
+          a{
+            text-decoration: none;
+            color: rgba(255,255,255,0.8);
+            font-weight:bold;
+            &:hover{
+              color: rgba(255,255,255,1);
+            }
+          }
+        }
+        .profile-company{
+          margin-top: 21.5px;
+          margin-left: 10px;
+          a{
+            text-decoration: none;
+            color: rgba(255,255,255,0.8);
+            &:hover{
+              color: rgba(255,255,255,1);
+            }
+          }
+        }
+      }
+    }
+  }
+  .container-2{
+    height: 70px;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    box-shadow: 0 2px 4px 2px rgba(0,0,0,0.3);
+    .navi-flex{
+      width: 830px;
+      display: flex;
+      justify-content: start;
+      ul{
+        display: flex;
+        justify-content: center;
+        margin-left: 20px;
+        li{
+          height:70px;
+          list-style: none;
+          padding-top: 20px;
+          padding-left: 20px;
+          padding-right: 20px;
+          border-left:3px dotted;
+          border-color: rgba(255, 255, 255 , 0.8);
+          &:hover{
+            height:70px;
+            background-color: $accel_pink;
+          }
+          a{
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 20px;
+            color:white;
+            &:hover{
+              opacity: 0.6;
+              color: $accel_black;
+            }
+            .other{
+              padding-left: 25px;
+              padding-right: 25px;
+            }
+          }
+        }
+      }
+    }
+    .user-navi-second{
+      color: white;
+      font-size: 20px;
+      display:flex;
+      .score-box-1{
+        display:flex;
+        flex-direction: column;
+        width: 290px;
+        .my-store{
+          margin-left: 30px;
+          a{
+            text-decoration: none;
+            color: rgba(255,255,255,0.8);
+            &:hover{
+              color: rgba(255,255,255,1);
+            }
+          }
+        }
+        .my-work-year{
+          margin-left: 30px;
+          a{
+            text-decoration: none;
+            color: rgba(255,255,255,0.8);
+            &:hover{
+              color: rgba(255,255,255,1);
+            }
+          }
+        }
+      }
+      .score-box-2{
+        display:flex;
+        flex-direction: column;
+        width: 290px;
+        .my-position{
+          margin-left: 20px;
+          a{
+            text-decoration: none;
+            color: rgba(255,255,255,0.8);
+            &:hover{
+              color: rgba(255,255,255,1);
+            }
+          }
+        }
+        .year-result-percentage{
+          margin-left: 20px;
+          a{
+            text-decoration: none;
+            color: rgba(255,255,255,0.8);
+            &:hover{
+              color: rgba(255,255,255,1);
+            }
+          }
+        }
+      }
+    } 
+  }
+}
+
+.app-main-content-wrap{
+  background-color: white;
+  overflow: hidden;
+  .app-content{
+    width:100%;
+    .app-analytics-bar{
+      height: 60px;
+      background-color: #e8f0fe;
+      padding-left: 10%;
+      padding-right: 10%;
+      font-size: 10px;
+      display: flex;
+      box-shadow: 0 2px 4px 2px rgba(0,0,0,0.3);
+      font-family: "メイリオ";
+      h1.analytics-store-select{
+        margin-top: 15px;
+        a{
+          text-decoration: none;
+          color: $accel_black;
+        }
+      }
+      h1.analytics-month-select{
+        margin-top:15px;
+        margin-left: 50px;
+        a{
+          text-decoration: none;
+          color: $accel_black;
+        }
+      }
+    }
+    .app-analytics{
+      margin-top: 10px;
+      margin-left: 10%;
+      margin-right: 10%;
+      .countion{
+        margin-bottom: 10px;
+        padding: 10px 12.5px 10px 12.5px;
+        text-align: center;
+        h1{
+          font-size: 1.0625rem;
+          font-family: "メイリオ";
+          color: rgba(0,0,0,0.87);
+          a{
+            text-decoration: none;
+            color: blue;
+          }
+          .fa-exclamation-circle{
+            color: red;
+          }
+        }
+      }
+      .box{
+        padding: 24px;
+        margin-bottom: 24px;
+        background-color: white;
+        border: 1px solid #dce4e9;
+        box-shadow: 0 2px 4px 2px rgba(0,0,0,0.3);
+        .box-title{
+          display: flex;
+          align-items: baseline;
+          .text{
+            font-size: 2.4rem;
+          }
+        }
+        .box-content{
+          padding-top: 24px;
+          ul{
+            display: flex;
+            flex-wrap: wrap;
+            li{
+              padding: 0 24px 0 0;
+              border-right: 1px solid #dce4e9;
+              width: 33.3%;
+              list-style-type: none;
+              font-size: 1.4rem;
+            }
+            .goal{
+              color: red;
+            }
+          }
+        }
+      }
+      .box-2{
+        padding: 24px;
+        margin-bottom: 24px;
+        background-color: white;
+        border: 1px solid #dce4e9;
+        box-shadow: 0 2px 4px 2px rgba(0,0,0,0.3);
+        .box-title{
+          display: flex;
+          align-items: baseline;
+          .text{
+            font-size: 2.4rem;
+          }
+        }
+        .box-content{
+          padding-top: 24px;
+          ul{
+            display: flex;
+            flex-wrap: wrap;
+            li{
+              padding: 0 24px 0 0;
+              border-right: 1px solid #dce4e9;
+              width: 33.3%;
+              list-style-type: none;
+              font-size: 1.4rem;
+            }
+            .goal{
+              color: red;
+            }
+          }
+        }
+      }
+    }
+  }
+}

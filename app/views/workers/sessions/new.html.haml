@@ -8,7 +8,7 @@
     %h3 
       %i.fas.fa-info-circle.make_account_information_mark
       ログインする際に必要な情報は、会社ごとに徹底した管理をお願い致します。
-    = form_with model: @company, url: worker_session_path, local: true do |f|
+    = form_with model: @worker, url: worker_session_path, local: true do |f|
       = flash[:notice]
       = flash[:alert]
       .field
@@ -30,6 +30,18 @@
       .submit-recaptcha-wrap
         = f.submit "ログイン", class: "create-company-account"
       -# = render "companies/shared/links"
+
+  .button-back-ground.animate__animated.animate__fadeInRight
+    = link_to new_worker_registration_path, class: "move-button" do
+      %i.fas.fa-user-plus.exit-or-in
+      .exit-or-in-comment
+        社員登録
+  .button-back-ground-2.animate__animated.animate__fadeInRight
+    = link_to destroy_company_session_path, class: "move-button", method: :delete do
+      %i.fas.fa-sign-out-alt.exit-or-in
+      .exit-or-in-comment
+        ログアウト
+
 .worker-border.animate__animated.animate__rotateOut
 
 -# %h2 Log in

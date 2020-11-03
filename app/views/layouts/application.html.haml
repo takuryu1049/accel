@@ -26,10 +26,20 @@
               %li 
                 = link_to "料金プラン", "#"
               %li
-                = link_to "session除去", destroy_company_session_path, method: :delete
-              %li.login_button
-                = link_to "無料で始める", new_company_registration_path, class: "login_button_a"
-    - elsif current_page?("/books/home")
+                = link_to "ses", destroy_company_session_path, method: :delete
+              - if company_signed_in? && worker_signed_in?
+                - if current_company.id == current_worker.company_id
+                  %li.login_button
+                    = link_to "アプリに戻る", app_tops_path, class: "login_button_a"
+              - elsif company_signed_in?
+                %li.login_button
+                  = link_to "ログイン", worker_session_path, class: "login_button_a"
+              - else
+                %li.login_button
+                  = link_to "無料で始める", new_company_registration_path, class: "login_button_a"
+                %li.login_button
+                  = link_to "ログイン", new_company_session_path, class: "login_button_a"
+    - elsif company_signed_in? && worker_signed_in?
       .header-app
         .container-1
           = link_to "#" do
@@ -58,15 +68,15 @@
                   NEWS
           .user-navi.animate__animated.animate__lightSpeedInRight
             = link_to "#", class: "profile-img"  do
-              = image_tag "saito.jpeg"
+              = image_tag current_worker.image
             .profile-navi
               .profile-name
                 %i.fas.fa-venus.gender
                 = link_to "#" do  
-                  斎藤飛鳥
+                  = "#{current_worker.last_name}#{current_worker.first_name}"
               .profile-company
                 = link_to "#" do
-                  株式会社リアルエステート不動産
+                  = current_company.name
         .container-2
           = link_to "#" do
             %i.fas.fa-question-circle.animate__animated.animate__lightSpeedInLeft.help
@@ -107,9 +117,7 @@
                   %i.fas.fa-male
                   役職：店長
               .year-result-percentage
-                = link_to "#" do
-                  %i.fas.fa-running
-                  貢献率:13%
+                = link_to "ログアウト", destroy_worker_session_path, method: :delete
   = yield
   %footer
     .copyright

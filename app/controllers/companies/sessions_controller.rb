@@ -26,7 +26,7 @@ class Companies::SessionsController < Devise::SessionsController
   # If you have extra params to permit, append them to the sanitizer.
   # ↓💌 params
   def configure_sign_in_params
-    devise_parameter_sanitizer.permit(:sign_in, keys: [:company_login_id,:password,:password_confirmation])
+    devise_parameter_sanitizer.permit(:sign_in, keys: %i[company_login_id password password_confirmation])
   end
 
   def require_no_authentication
@@ -46,15 +46,12 @@ class Companies::SessionsController < Devise::SessionsController
       # すでに会社のみログイン済であれば、社員登録画面へ行く。
     elsif company_signed_in?
       @worker = Worker.new
-      
-      flash[:notice] = "会社ログイン済。社員ログインが必要"
+
+      flash[:notice] = '会社ログイン済。社員ログインが必要'
       redirect_to new_worker_session_path and return
-    else
-      return
     end
   end
-  
-  
+
   def authentication_company_login
     if company_signed_in? && worker_signed_in?
       if current_company.id == current_worker.company_id
@@ -64,19 +61,16 @@ class Companies::SessionsController < Devise::SessionsController
       end
     elsif company_signed_in?
       @worker = Worker.new
-      flash[:notice] = "すでに会社ログイン済。"
+      flash[:notice] = 'すでに会社ログイン済。'
       redirect_to new_worker_session_path and return
-    else
-      return
     end
   end
-  
-    def after_sign_in_path_for(resource)
-      new_worker_session_path(resource)
-    end
-  
-    def after_sign_out_path_for(resource)
-      root_path(resource)
-    end 
-  
+
+  def after_sign_in_path_for(resource)
+    new_worker_session_path(resource)
+  end
+
+  def after_sign_out_path_for(resource)
+    root_path(resource)
+  end
 end

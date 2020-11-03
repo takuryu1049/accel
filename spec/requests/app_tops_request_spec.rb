@@ -1,5 +1,4 @@
 require 'rails_helper'
 
-RSpec.describe "AppTops", type: :request do
-
+RSpec.describe 'AppTops', type: :request do
 end

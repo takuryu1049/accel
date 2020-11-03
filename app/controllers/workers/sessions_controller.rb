@@ -3,7 +3,7 @@
 class Workers::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
   prepend_before_action :require_no_authentication, only: [:new]
-  before_action :authenticate_worker_login, only:[:create]
+  before_action :authenticate_worker_login, only: [:create]
   # GET /resource/sign_in
   def new
     super
@@ -12,7 +12,7 @@ class Workers::SessionsController < Devise::SessionsController
   # POST /resource/sign_in
   def create
     super
-    flash[:notice] = "ログインしました！"
+    flash[:notice] = 'ログインしました！'
   end
 
   # DELETE /resource/sign_out
@@ -22,6 +22,7 @@ class Workers::SessionsController < Devise::SessionsController
 
   # protected
   private
+
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
@@ -42,8 +43,8 @@ class Workers::SessionsController < Devise::SessionsController
       # すでに会社のみログイン済であれば、社員登録画面へ行く。
     elsif company_signed_in?
       @worker = Worker.new
-      flash[:notice] = "会社ログイン済。社員ログインが必要"
-      render :new  and return
+      flash[:notice] = '会社ログイン済。社員ログインが必要'
+      render :new and return
     else
       redirect_to root_path and return
     end
@@ -55,22 +56,22 @@ class Workers::SessionsController < Devise::SessionsController
     # 社員の登録情報を取得する。ちなみにcurrent_worker.idではログインしていないので取得できない。emailではない場合は違うカラムを用意する。
     # また、paramsの動きが変わっていたので、型に合わせて、
     # 取得方法を入れ替えている。
-    if params.class ==  ActionController::Parameters
-      worker_login_id_params = params[:worker][:worker_login_id]
-    else
-      worker_login_id_params = params[:worker_login_id]
-    end
-    @worker = Worker.find_by(worker_login_id: worker_login_id_params) 
+    worker_login_id_params = if params.class == ActionController::Parameters
+                               params[:worker][:worker_login_id]
+                             else
+                               params[:worker_login_id]
+                             end
+    @worker = Worker.find_by(worker_login_id: worker_login_id_params)
     # 社員情報が登録されているか判定する
     if @worker
       # 「会社でログイン」かつ「ログインしている会社のID」と「ログインしている社員の会社のID」が一致する場合には、処理を抜け、ログイン処理を行う。
       if company_signed_in? && current_company.id == @worker.company_id
-        return
+        nil
         # 違う会社の社員であれば、エラーハンドリングを行えるようにして、
         # ログイン画面にレンダリングを行う。 and returnでエラー防止。
         # @で入力値を保管していない為注意が必要。
       elsif company_signed_in? && current_company.id != @worker.company_id
-        flash[:alert] = "他社社員です。(該当する社員情報はありません！)"
+        flash[:alert] = '他社社員です。(該当する社員情報はありません！)'
         flash.keep(:alert)
         @worker = Worker.new(worker_login_id: worker_login_id_params)
         redirect_to new_worker_session_path and return
@@ -80,7 +81,7 @@ class Workers::SessionsController < Devise::SessionsController
       # 入力情報を保持させるためにemailのみを持ったインスタンスを作成して、
       # エラーハンドリング表示を行えるようにする
       @worker = Worker.new(worker_login_id: worker_login_id_params)
-      flash.now[:notice] = "社員情報が間違えています"
+      flash.now[:notice] = '社員情報が間違えています'
       render :new and return
     end
   end
@@ -94,5 +95,4 @@ class Workers::SessionsController < Devise::SessionsController
   def after_sign_out_path_for(resource)
     new_worker_session_path(resource)
   end
-
 end

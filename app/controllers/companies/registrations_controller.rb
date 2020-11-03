@@ -48,14 +48,13 @@ class Companies::RegistrationsController < Devise::RegistrationsController
   def check_captcha
     self.resource = resource_class.new sign_up_params
     resource.validate
-    unless verify_recaptcha(model: resource)
-      respond_with_navigational(resource) { render :new }
-    end
+    respond_with_navigational(resource) { render :new } unless verify_recaptcha(model: resource)
   end
+
   # If you have extra params to permit, append them to the sanitizer.
   # 💌 ↓params:passwordとpassword_confirmationは念のため渡しています
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name,:company_login_id,:email,:password,:password_confirmation,:post_code,:prefecture_id,:city,:street,:building_name,:image])
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[name company_login_id email password password_confirmation post_code prefecture_id city street building_name image])
   end
 
   def require_no_authentication
@@ -67,8 +66,6 @@ class Companies::RegistrationsController < Devise::RegistrationsController
       end
     elsif company_signed_in?
       redirect_to new_worker_session_path and return
-    else
-      return
     end
   end
 

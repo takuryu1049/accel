@@ -6,13 +6,13 @@ class DeviseCreateCompanies < ActiveRecord::Migration[6.0]
       ## Database authenticatable
       t.string :name, null: false
       t.string :company_login_id, null: false, uniqueness: true
-      t.string :post_code , null: false
+      t.string :post_code, null: false
       t.integer :prefecture_id, null: false
       t.string :city, null: false
       t.string :street, null: false
       t.string :building_name
-      t.string :email,              null: false, default: "", uniqueness: true
-      t.string :encrypted_password, null: false, default: ""
+      t.string :email,              null: false, default: '', uniqueness: true
+      t.string :encrypted_password, null: false, default: ''
 
       ## Recoverable
       t.string   :reset_password_token
@@ -38,7 +38,6 @@ class DeviseCreateCompanies < ActiveRecord::Migration[6.0]
       # t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
-
 
       t.timestamps null: false
     end

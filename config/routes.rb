@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
-  root to: "tops#index"
-  get  "/"  => "tops#index"
+  root to: 'tops#index'
+  get  '/' => 'tops#index'
   resources :app_tops, only: [:index]
   devise_for :companies, controllers: {
-    sessions:      'companies/sessions',
-    passwords:     'companies/passwords',
+    sessions: 'companies/sessions',
+    passwords: 'companies/passwords',
     registrations: 'companies/registrations'
   }
   devise_for :workers, controllers: {
-    sessions:      'workers/sessions',
-    passwords:     'workers/passwords',
+    sessions: 'workers/sessions',
+    passwords: 'workers/passwords',
     registrations: 'workers/registrations'
   }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -1,0 +1,118 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Accel
+    = favicon_link_tag('favicon.svg')
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+  .site-wrapper
+    - if current_page?(root_path)
+      .header
+        .container
+          = link_to "#" do
+            = embedded_svg "Acell.logo.svg", class: "good-svg single-logo animate__animated animate__wobble"
+          .navi-flex
+            %ul.animate__animated.animate__slideInRight
+              %li
+                = link_to "ACCELについて", "#"
+              %li
+                = link_to "ACCELの使い方", "#"
+              %li 
+                = link_to "料金プラン", "#"
+              %li
+                = link_to "お問い合わせ", "#"
+              - if company_signed_in? && worker_signed_in?
+                - if current_company.id == current_worker.company_id
+                  %li.login_button
+                    = link_to "アプリに戻る", app_tops_path, class: "login_button_a"
+              - elsif company_signed_in?
+                %li.login_button
+                  = link_to "ログイン", worker_session_path, class: "login_button_a"
+              - else
+                %li.login_button
+                  = link_to "無料で始める", new_company_registration_path, class: "login_button_a"
+                %li.login_button
+                  = link_to "ログイン", new_company_session_path, class: "login_button_a"
+    - elsif company_signed_in? && worker_signed_in?
+      .header-app
+        .container-1
+          .navi-flex
+            %ul.app.animate__animated.animate__bounceIn
+              %li
+                = link_to "#" do
+                  %i.fas.fa-building
+                  物件一覧
+              %li
+                = link_to "#" do
+                  %i.fas.fa-plus-circle.animate__animated.animate__jackInTheBox
+                  物件登録
+              %li
+                = link_to "#" do
+                  %i.fas.fa-book-open.animate__animated.animate__jackInTheBox
+                  レポート一覧
+              %li
+                = link_to "#" do
+                  %i.far.fa-plus-square.animate__animated.animate__jackInTheBox
+                  レポート作成
+              %li
+                = link_to "#" do
+                  %i.far.fa-newspaper.animate__animated.animate__jackInTheBox
+                  NEWS
+          .user-navi.animate__animated.animate__lightSpeedInRight
+            = link_to "#", class: "profile-img"  do
+              = image_tag current_worker.image
+            .profile-navi
+              .profile-name
+                %i.fas.fa-venus.gender
+                = link_to "#" do  
+                  = "#{current_worker.last_name}#{current_worker.first_name}"
+            .profile-navi
+              .profile-company
+                = link_to "#" do
+                  = current_company.name
+        .container-2
+          .navi-flex
+            %ul.app.animate__animated.animate__bounceIn
+              %li
+                = link_to "#" do
+                  %i.fas.fa-search
+                  物件検索
+              %li
+                = link_to "#" do
+                  %i.fab.fa-searchengin
+                  オーナー検索
+              %li
+                = link_to "#" do
+                  %i.fas.fa-shoe-prints.animate__animated.animate__jackInTheBox
+                  データベース
+              %li
+                = link_to "#" do
+                  %i.fas.fa-th-large.animate__animated.animate__jackInTheBox.other
+          .user-navi-second.animate__animated.animate__heartBeat
+            .score-box-1
+              .my-store
+                = link_to "#" do  
+                  %i.fas.fa-store
+                  店舗：西新宿本店
+              .my-work-year
+                = link_to "#" do
+                  %i.fas.fa-house-user
+                  在籍年数：5年
+            .score-box-2
+              .my-position
+                = link_to "#" do  
+                  %i.fas.fa-male
+                  役職：店長
+              .year-result-percentage
+                = link_to "ログアウト", destroy_worker_session_path, method: :delete
+  = yield
+  %footer
+    .copyright
+      = embedded_svg "Acell.logo.svg", class: "footer_logo"
+      %h1 ©2020 不動産賃貸仲介業特化型戦略マネジメントツールACCEL(アクセル)
+      %h2 利用規約
+      %h3 プライバシーポリシー

@@ -1,0 +1,47 @@
+.flex-style.company-login
+  .auth_form.animate__animated.animate__fadeIn
+    .logo.animate__animated.animate__zoomIn= image_tag "Acell.logo.svg"
+    .make-account-title
+      .make-account-border
+      %i.fas.fa-door-open.account_icon
+      %h2 アカウントでログイン
+    %h3 
+      %i.fas.fa-info-circle.make_account_information_mark
+      社員ログインをするには、会社でのログインが必要です。
+    = form_with model: @company, url: company_session_path, local: true do |f|
+      = flash[:notice]
+      = flash[:alert]
+      .field
+        .input-title
+          = f.label :company_login_id, "①アカウントID"
+        = f.text_field :company_login_id, autofocus: true, placeholder: "\uf084  6文字以上12文字以内", class: 'fa in_logo_key', maxlength: "12"
+      .form-countion
+        %i.fas.fa-exclamation-triangle.company_login_id_countion
+        半角6~12文字かつ英大文字・小文字・数字それぞれ１文字以上を含む必要があります
+      .chain-border     
+      .field
+        .input-title
+          = f.label :password, "②パスワード"
+        = f.password_field :password, placeholder: "\uf023  6文字以上で入力ください", class: 'fa in_logo_mail', autocomplete: "current-password"
+      -# - if devise_mapping.rememberable?
+      -#   .field
+      -#     = f.check_box :remember_me
+      -#     = f.label :remember_me
+      .submit-recaptcha-wrap
+        = f.submit "ログイン", class: "create-company-account"
+      -# = render "companies/shared/links"
+
+  .button-back-ground.animate__animated.animate__fadeInRight
+    = link_to new_company_registration_path, class: "move-button"do
+      %span.material-icons.exit-or-in
+        library_add
+      .exit-or-in-comment
+        アカウント登録
+  .button-back-ground-2.animate__animated.animate__fadeInRight
+    = link_to root_path, class: "move-button" do
+      %span.material-icons.exit-or-in
+        home
+      .exit-or-in-comment
+        TOPに戻る
+        
+.company-border.animate__animated.animate__rotateOut

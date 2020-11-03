@@ -1,0 +1,160 @@
+.flex-style
+  .auth_form.animate__animated.animate__fadeIn
+    .logo.animate__animated.animate__zoomIn= image_tag "Acell.logo.svg"
+    .make-account-title
+      .make-account-border
+      %i.fas.fa-user-circle.account_icon
+      %h2 社員アカウントの作成
+    %h3 
+      %i.fas.fa-info-circle.make_account_information_mark
+      サービスを利用する為に必要な情報です。間違いのないようご入力お願いします。
+    = form_with model: @worker, url: worker_registration_path, local: true do |f|
+      = render "shared/error_messages", model: f.object 
+      .filed.support-message
+        = image_tag current_company.image, class: "company-image-header"
+        .description-company-make
+          = "登録ID #{current_company.company_login_id}"
+          %br/
+          = "#{current_company.name}の社員登録をします"
+          = f.hidden_field :company_id, :value => current_company.id
+      .field
+        .input-title
+          %span.must.animate__animated.animate__fadeInUp
+            必須
+          = f.label :worker_login_id, "①社員アカウントID"
+        = f.text_field :worker_login_id, autofocus: true,placeholder: "\uf1ad  例) ABcd123", class: 'fa in_logo_company'
+      .form-countion
+        %i.fas.fa-exclamation-triangle.company_login_id_countion
+        社員アカウントIDはサービスを利用する為に必要な情報です。忘れないようにメモ等で情報を保管下さい。
+      .chain-border
+      .field
+        .input-title
+          %span.must.animate__animated.animate__fadeInUp
+            必須
+          = f.label :password, "②パスワード"
+        = f.password_field :password, autofocus: true, placeholder: "\uf023  6文字以上で入力ください", class: 'fa in_logo_mail', autocomplete: "new-password"
+      .chain-border
+      .field
+        .input-title
+          %span.must.animate__animated.animate__fadeInUp
+            必須
+          = f.label :password_confirmation, "③確認用パスワード"
+        = f.password_field :password_confirmation, autofocus: true, placeholder: "\uf2ea  6文字以上で入力ください", class: 'fa in_logo_mail', autocomplete: "new-password"
+      .form-countion
+        %i.fas.fa-exclamation-triangle.company_login_id_countion
+        パスワードもサービスを利用する為に必要な情報です。忘れないようにメモ等で情報を保管下さい。
+      .chain-border
+      .compact-wrapper
+        .field
+          .input-title.conpact
+            .in-conpact
+              %span.must.animate__animated.animate__fadeInUp
+                必須
+              = f.label :last_name, "④姓" 
+            = f.text_field :last_name, autofocus: true,placeholder: "例) 不動", class: 'fa conpact_input'
+        .field
+          .input-title.conpact
+            .in-conpact
+              %span.must.animate__animated.animate__fadeInUp
+                必須
+              = f.label :first_name, "⑤名" 
+            = f.text_field :first_name, autofocus: true,placeholder: "例) 産太郎", class: 'fa conpact_input'
+      .chain-border
+      .compact-wrapper
+        .field
+          .input-title.conpact
+            .in-conpact
+              %span.must.animate__animated.animate__fadeInUp
+                必須
+              = f.label :last_name_kana, "⑥姓(カナ)" 
+            = f.text_field :last_name_kana, autofocus: true,placeholder: "例) フドウ", class: 'fa conpact_input'
+        .field
+          .input-title.conpact
+            .in-conpact
+              %span.must.animate__animated.animate__fadeInUp
+                必須
+              = f.label :first_name_kana, "⑦名(カナ)" 
+            = f.text_field :first_name_kana, autofocus: true,placeholder: "例) サンタロウ", class: 'fa conpact_input'
+      .chain-border
+      .field
+        .input-title
+          %span.must.animate__animated.animate__fadeInUp
+            必須
+          = f.label :email, "⑧メールアドレス"
+        = f.email_field :email, autofocus: true, placeholder: "\uf0e0  例) hudosantaro@gmail.com", class: 'fa in_logo_mail', autocomplete: "email"
+      .chain-border
+      .field
+        .input-title
+          %span.must.animate__animated.animate__fadeInUp
+            必須
+          = f.label :image, "⑨プロフィール画像"
+        = f.file_field :image, id:"item-image", autofocus: true
+      .chain-border
+      .field
+        .input-title
+          %span.must.animate__animated.animate__fadeInUp
+            必須
+          = f.label :gender, "⑩性別"
+        .gender-flex  
+          = f.radio_button :gender, FALSE, class: 'fa in_logo input_radio'
+          %i.fas.fa-mars
+          男
+          = f.radio_button :gender, TRUE, class: 'fa in_logo input_radio'
+          %i.fas.fa-venus
+          女
+      .chain-border
+      .field
+        .input-title
+          %span.must.animate__animated.animate__fadeInUp
+            必須
+          = f.label :character_id, "⑪自分の性格" 
+        = f.collection_select(:character_id, Character.all, :id, :name, {}, {class:"select-box"}) 
+      .chain-border
+      .field
+        .input-title
+          %span.must.animate__animated.animate__fadeInUp
+            必須
+          = f.label :position_id, "⑫役職" 
+        = f.collection_select(:position_id, Position.all, :id, :name, {}, {class:"select-box"}) 
+      .chain-border
+      .field
+        .input-title
+          %span.must.animate__animated.animate__fadeInUp
+            必須
+          = f.label :born, "⑬誕生月" 
+        .birth-wrapper
+          = raw sprintf(                               |
+            f.date_select(                             |
+              :born,                                   |
+              class:'select-birth',                    |
+              id:"birth-date",                         |
+              use_month_numbers: true,                 |
+              prompt:'--',                             |
+              start_year: 1930,                        |
+              end_year: (Time.now.year - 5),           |
+              date_separator: '%s'),                   |
+            "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" |
+      .chain-border
+      .field
+        .input-title
+          %span.must.animate__animated.animate__fadeInUp.optional 
+            任意
+          = f.label :qualification_id, "⑭資格" 
+        = f.collection_select(:qualification_id, Qualification.all, :id, :name, {}, {class:"select-box"}) 
+      .submit-recaptcha-wrap
+        = recaptcha_tags 
+        = f.submit "アカウントを作成", class: "create-company-account"
+    -# = render "companies/shared/links"
+
+  .button-back-ground.animate__animated.animate__fadeInRight
+    = link_to new_worker_session_path, class: "move-button" do
+      %i.fas.fa-sign-in-alt.exit-or-in
+      .exit-or-in-comment
+        社員ログイン
+  .button-back-ground-2.animate__animated.animate__fadeInRight
+    = link_to destroy_company_session_path, class: "move-button", method: :delete do
+      %i.fas.fa-sign-out-alt.exit-or-in
+      .exit-or-in-comment
+        ログアウト
+
+.worker-border.animate__animated.animate__fadeInLeftBig

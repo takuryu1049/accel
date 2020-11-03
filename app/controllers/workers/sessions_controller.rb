@@ -56,11 +56,11 @@ class Workers::SessionsController < Devise::SessionsController
     # また、paramsの動きが変わっていたので、型に合わせて、
     # 取得方法を入れ替えている。
     if params.class ==  ActionController::Parameters
-      email_params = params[:worker][:email]
+      worker_login_id_params = params[:worker][:worker_login_id]
     else
-      email_params = params[:email]
+      worker_login_id_params = params[:worker_login_id]
     end
-    @worker = Worker.find_by(email: email_params) 
+    @worker = Worker.find_by(worker_login_id: worker_login_id_params) 
     # 社員情報が登録されているか判定する
     if @worker
       # 「会社でログイン」かつ「ログインしている会社のID」と「ログインしている社員の会社のID」が一致する場合には、処理を抜け、ログイン処理を行う。
@@ -70,15 +70,16 @@ class Workers::SessionsController < Devise::SessionsController
         # ログイン画面にレンダリングを行う。 and returnでエラー防止。
         # @で入力値を保管していない為注意が必要。
       elsif company_signed_in? && current_company.id != @worker.company_id
-        flash.now[:notice] = "他社社員です。(該当する社員情報はありません！)"
-        @worker = Worker.new(email: email_params)
-        render :new and return
+        flash[:alert] = "他社社員です。(該当する社員情報はありません！)"
+        flash.keep(:alert)
+        @worker = Worker.new(worker_login_id: worker_login_id_params)
+        redirect_to new_worker_session_path and return
       end
     else
       # 社員登録情報が見つからない場合には、
       # 入力情報を保持させるためにemailのみを持ったインスタンスを作成して、
       # エラーハンドリング表示を行えるようにする
-      @worker = Worker.new(email: email_params)
+      @worker = Worker.new(worker_login_id: worker_login_id_params)
       flash.now[:notice] = "社員情報が間違えています"
       render :new and return
     end

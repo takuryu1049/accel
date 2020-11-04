@@ -47,7 +47,7 @@
                   %i.fas.fa-building
                   物件一覧
               %li
-                = link_to "#" do
+                = link_to properties_path do
                   %i.fas.fa-plus-circle.animate__animated.animate__jackInTheBox
                   物件登録
               %li
@@ -63,11 +63,14 @@
                   %i.far.fa-newspaper.animate__animated.animate__jackInTheBox
                   NEWS
           .user-navi.animate__animated.animate__lightSpeedInRight
-            = link_to "#", class: "profile-img"  do
-              = image_tag current_worker.image
+            - if current_worker.gender == FALSE
+              = link_to "#", class: "profile-img"  do
+                = image_tag current_worker.image, class: "mens-color"
+            - else
+              = link_to "#", class: "profile-img"  do
+                = image_tag current_worker.image, class: "woman-color" 
             .profile-navi
               .profile-name
-                %i.fas.fa-venus.gender
                 = link_to "#" do  
                   = "#{current_worker.last_name}#{current_worker.first_name}"
             .profile-navi
@@ -90,25 +93,9 @@
                   %i.fas.fa-shoe-prints.animate__animated.animate__jackInTheBox
                   データベース
               %li
-                = link_to "#" do
-                  %i.fas.fa-th-large.animate__animated.animate__jackInTheBox.other
-          .user-navi-second.animate__animated.animate__heartBeat
-            .score-box-1
-              .my-store
-                = link_to "#" do  
-                  %i.fas.fa-store
-                  店舗：西新宿本店
-              .my-work-year
-                = link_to "#" do
-                  %i.fas.fa-house-user
-                  在籍年数：5年
-            .score-box-2
-              .my-position
-                = link_to "#" do  
-                  %i.fas.fa-male
-                  役職：店長
-              .year-result-percentage
-                = link_to "ログアウト", destroy_worker_session_path, method: :delete
+                = link_to destroy_worker_session_path, method: :delete do
+                  %i.fas.fa-sign-out-alt
+                  ログアウト
   = yield
   %footer
     .copyright

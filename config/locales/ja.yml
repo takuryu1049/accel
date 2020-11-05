@@ -1,0 +1,21 @@
+ja:
+  activerecord:
+    attributes:
+      company:
+        name: 会社名称
+        image: 会社プロフィール画像
+        company_login_id: アカウントID
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        post_code: 郵便番号
+        prefecture_id: 都道府県
+        city: 市区町村
+        street: 番地
+  recaptcha: 
+    errors: 
+      verification_failed: 'reCAPTCHA認証に失敗しました'
+      recaptcha_unreachable: 'reCAPTCHA検証サーバーエラー、もう一度お試しください'
+      tweet:
+        text: テキスト
+        image: 画像

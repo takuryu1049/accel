@@ -9,13 +9,25 @@
       %i.fas.fa-info-circle.make_account_information_mark
       サービスを利用する為に必要な情報です。間違いのないようご入力お願いします。
     = form_with model: @company, url: company_registration_path, local: true do |f|
-      = render "shared/error_messages", model: f.object 
+      - if @company.errors.any?
+        #error_explanation
+          %i.fas.fa-exclamation-circle.error-icon-big
+          %h2
+            申し訳ございません。
+            %br/
+            = pluralize(@company.errors.count, "箇所の入力不備があります")
+          %h3
+            お手数ですが、入力項目をご確認のうえ、再度ご入力ください。
       .field
         .input-title
           %span.must.animate__animated.animate__fadeInUp
             必須
           = f.label :name, "①会社名称"
         = f.text_field :name, autofocus: true,placeholder: "\uf1ad  例) 株式会社アクセル不動産", class: 'fa in_logo_company', autocomplete: "organization" 
+      - if @company.errors.include?(:name)
+        .error
+          %i.fas.fa-exclamation-circle.error-icon
+          = @company.errors.full_messages_for(:name).first
       .chain-border
       .field
         .input-title
@@ -23,6 +35,10 @@
             必須
           = f.label :image, "②会社プロフィール画像"
         = f.file_field :image, id:"item-image", autofocus: true
+      - if @company.errors.include?(:image)
+        .error
+          %i.fas.fa-exclamation-circle.error-icon
+          = @company.errors.full_messages_for(:image).first
       .chain-border
       .field
         .input-title
@@ -30,6 +46,15 @@
             必須
           = f.label :company_login_id, "③アカウントID" 
         = f.text_field :company_login_id, autofocus: true,placeholder: "\uf084  6文字以上12文字以内", class: 'fa in_logo_key',  maxlength: "12"
+      - if @company.errors.include?(:company_login_id)
+        -if @company.errors.full_messages_for(:company_login_id).first.length >= 40
+          .error-longer
+            %i.fas.fa-exclamation-circle.error-icon
+            = @company.errors.full_messages_for(:company_login_id).first
+        -else
+          .error
+            %i.fas.fa-exclamation-circle.error-icon
+            = @company.errors.full_messages_for(:company_login_id).first
       .form-countion
         %i.fas.fa-exclamation-triangle.company_login_id_countion
         アカウントIDはサービスを利用する為に必要な情報です。忘れないようにメモ等で情報を保管下さい。
@@ -42,6 +67,10 @@
             必須
           = f.label :email, "④メールアドレス"
         = f.email_field :email, autofocus: true, placeholder: "\uf0e0  例) accel@gmail.com", class: 'fa in_logo_mail', autocomplete: "email"
+      - if @company.errors.include?(:email)
+        .error
+          %i.fas.fa-exclamation-circle.error-icon
+          = @company.errors.full_messages_for(:email).first
       .chain-border        
       .field
         .input-title
@@ -49,6 +78,10 @@
             必須
           = f.label :password, "⑤パスワード"
         = f.password_field :password, autofocus: true, placeholder: "\uf023  6文字以上で入力ください", class: 'fa in_logo_mail', autocomplete: "new-password"
+      - if @company.errors.include?(:password)
+        .error
+          %i.fas.fa-exclamation-circle.error-icon
+          = @company.errors.full_messages_for(:password).first
       .chain-border
       .field
         .input-title
@@ -56,6 +89,10 @@
             必須
           = f.label :password_confirmation, "⑥確認用パスワード"
         = f.password_field :password_confirmation, autofocus: true, placeholder: "\uf2ea  6文字以上で入力ください", class: 'fa in_logo_mail', autocomplete: "new-password"
+      - if @company.errors.include?(:password_confirmation)
+        .error
+          %i.fas.fa-exclamation-circle.error-icon
+          = @company.errors.full_messages_for(:password_confirmation).first
       .form-countion
         %i.fas.fa-exclamation-triangle.company_login_id_countion
         パスワードもサービスを利用する為に必要な情報です。忘れないようにメモ等で情報を保管下さい。
@@ -66,6 +103,10 @@
             必須
           = f.label :post_code, "⑦郵便番号" 
         = f.text_field :post_code, autofocus: true,placeholder: "〒  例) 163-8001", class: 'fa in_logo', autocomplete: "postal-code" 
+      - if @company.errors.include?(:post_code)
+        .error
+          %i.fas.fa-exclamation-circle.error-icon
+          = @company.errors.full_messages_for(:post_code).first
       .chain-border
       .field
         .input-title
@@ -73,6 +114,10 @@
             必須
           = f.label :prefecture_id, "⑧都道府県" 
         = f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box"}) 
+      - if @company.errors.include?(:prefecture_id)
+        .error
+          %i.fas.fa-exclamation-circle.error-icon
+          = @company.errors.full_messages_for(:prefecture_id).first
       .chain-border
       .field
         .input-title
@@ -80,6 +125,10 @@
             必須
           = f.label :city, "⑨市区町村" 
         = f.text_field :city, autofocus: true,placeholder: " 例) 新宿区西新宿", class: 'fa', autocomplete: "address-level2"
+      - if @company.errors.include?(:city)
+        .error
+          %i.fas.fa-exclamation-circle.error-icon
+          = @company.errors.full_messages_for(:city).first
       .chain-border
       .field
         .input-title
@@ -87,6 +136,10 @@
             必須
           = f.label :street, "⑩番地" 
         = f.text_field :street, autofocus: true,placeholder: " 例) 2丁目8-1", class: 'fa', autocomplete: "address-line1" 
+      - if @company.errors.include?(:street)
+        .error
+          %i.fas.fa-exclamation-circle.error-icon
+          = @company.errors.full_messages_for(:street).first
       .chain-border
       .field
         .input-title
@@ -96,7 +149,11 @@
         = f.text_field :building_name, autofocus: true,placeholder: " 例) 東京都庁", class: 'fa', autocomplete: "address-line2" 
       .submit-recaptcha-wrap
         = recaptcha_tags 
-        = f.submit "アカウントを作成", class: "create-company-account"
+        = f.button 'アカウント作成', class: "create-company-account",type: 'button', onclick: 'submit();'
+      - if @company.errors.include?(:base)
+        .error-recaptcha
+          %i.fas.fa-exclamation-circle.error-icon
+          = @company.errors.full_messages_for(:base).first
     -# = render "companies/shared/links"
 
   .button-back-ground.animate__animated.animate__fadeInRight

@@ -20,6 +20,10 @@
   box-sizing: border-box;
 }
 
+html{
+  scroll-behavior: smooth;
+}
+
 body{
   background-color: $back-color;
   font-size: 13px; 

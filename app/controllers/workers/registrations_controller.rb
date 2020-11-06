@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 class Workers::RegistrationsController < Devise::RegistrationsController
-  before_action :configure_sign_up_params, only: [:create]
+  prepend_before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
   # 🔃  recapcha
-  prepend_before_action :check_captcha, only: [:create]
+  before_action :check_captcha, only: [:create]
   prepend_before_action :require_no_authentication, only: [:new]
   # GET /resource/sign_up
   def new

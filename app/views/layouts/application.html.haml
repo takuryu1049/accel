@@ -16,7 +16,7 @@
           = link_to "#" do
             = embedded_svg "Acell.logo.svg", class: "good-svg single-logo animate__animated animate__wobble"
           .navi-flex
-            %ul.animate__animated.animate__slideInRight
+            %ul
               %li
                 = link_to "ACCELについて", "#"
               %li
@@ -41,28 +41,28 @@
       .header-app
         .container-1
           .navi-flex
-            %ul.app.animate__animated.animate__bounceIn
+            %ul.app
               %li
                 = link_to "#" do
                   %i.fas.fa-building
                   物件一覧
               %li
                 = link_to properties_path do
-                  %i.fas.fa-plus-circle.animate__animated.animate__jackInTheBox
+                  %i.fas.fa-plus-circle
                   物件登録
               %li
                 = link_to "#" do
-                  %i.fas.fa-book-open.animate__animated.animate__jackInTheBox
+                  %i.fas.fa-book-open
                   レポート一覧
               %li
                 = link_to "#" do
-                  %i.far.fa-plus-square.animate__animated.animate__jackInTheBox
+                  %i.far.fa-plus-square
                   レポート作成
               %li
                 = link_to "#" do
-                  %i.far.fa-newspaper.animate__animated.animate__jackInTheBox
+                  %i.far.fa-newspaper
                   NEWS
-          .user-navi.animate__animated.animate__lightSpeedInRight
+          .user-navi
             - if current_worker.gender == FALSE
               = link_to "#", class: "profile-img"  do
                 = image_tag current_worker.image, class: "mens-color"
@@ -79,7 +79,7 @@
                   = current_company.name
         .container-2
           .navi-flex
-            %ul.app.animate__animated.animate__bounceIn
+            %ul
               %li
                 = link_to "#" do
                   %i.fas.fa-search
@@ -90,7 +90,7 @@
                   オーナー検索
               %li
                 = link_to "#" do
-                  %i.fas.fa-shoe-prints.animate__animated.animate__jackInTheBox
+                  %i.fas.fa-shoe-prints
                   データベース
               %li
                 = link_to destroy_worker_session_path, method: :delete do

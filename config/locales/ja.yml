@@ -12,6 +12,22 @@ ja:
         prefecture_id: 都道府県
         city: 市区町村
         street: 番地
+      worker:
+        company_id: 会社ID
+        worker_login_id: 社員アカウントID
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        last_name: 姓
+        first_name: 名
+        last_name_kana: 姓(カナ)
+        first_name_kana: 名(カナ)
+        email: メールアドレス
+        image: 社員プロフィール画像
+        gender: 性別
+        character_id: 自分の性格
+        position_id: 役職
+        born: 誕生月
+        qualification_id: 資格
   recaptcha: 
     errors: 
       verification_failed: 'reCAPTCHA認証に失敗しました'

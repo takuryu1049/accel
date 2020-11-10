@@ -9,8 +9,12 @@
       %i.fas.fa-info-circle.make_account_information_mark
       ログインする際に必要な情報は、会社ごとに徹底した管理をお願い致します。
     = form_with model: @worker, url: worker_session_path, local: true do |f|
-      = flash[:notice]
-      = flash[:alert]
+      - if flash[:notice] || flash[:alert]
+        #error_flash
+          %i.fas.fa-info-circle.error-icon-big
+          %h2
+            = flash[:notice]
+            = flash[:alert]
       .field
         .input-title
           = f.label :worker_login_id, "①社員アカウントID"

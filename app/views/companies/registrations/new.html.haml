@@ -20,7 +20,7 @@
             お手数ですが、入力項目をご確認のうえ、再度ご入力ください。
       .field
         .input-title
-          %span.must.animate__animated.animate__fadeInUp
+          %span.must.animate__animated.animate__fadeInUp.infinite
             必須
           = f.label :name, "①会社名称"
         = f.text_field :name, autofocus: true,placeholder: "\uf1ad  例) 株式会社アクセル不動産", class: 'fa in_logo_company', autocomplete: "organization" 

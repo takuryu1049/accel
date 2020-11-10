@@ -8,6 +8,8 @@ function RegiFormSwitch() {
   const CompanySwitch = document.getElementById('company-switch');
   const OwnerCompanyName = document.getElementById('owner-company-name');
   const OwnerCompanyNameInput = document.getElementById('owner-company-name-input');
+  const OwnerCompanyNameKana = document.getElementById('owner-company-name-kana');
+  const OwnerCompanyNameKanaInput = document.getElementById('owner-company-name-kana-input');
   const OwnerLastName = document.getElementById('owner-last-name');
   const OwnerLastNameInput = document.getElementById('owner-last-name-input');
   const OwnerFirstName = document.getElementById('owner-first-name');
@@ -21,6 +23,8 @@ function RegiFormSwitch() {
   HumanSwitch.addEventListener("change", () => {
     OwnerCompanyNameInput.value = "";
     OwnerCompanyName.classList.add('animate__animated',"animate__zoomOut");
+    OwnerCompanyNameKanaInput.value = "";
+    OwnerCompanyNameKana.classList.add('animate__animated',"animate__zoomOut");
     OwnerLastName.classList.remove('animate__animated',"animate__zoomOut","owner-last-name-none");
     OwnerFirstName.classList.remove('animate__animated',"animate__zoomOut","owner-first-name-none");
     OwnerLastNameKana .classList.remove('animate__animated',"animate__zoomOut","owner-last-name-kana-none");
@@ -28,6 +32,7 @@ function RegiFormSwitch() {
 
     setTimeout(() => {
       OwnerCompanyName.classList.add("owner-company-name-none");
+      OwnerCompanyNameKana.classList.add("owner-company-name-kana-none");
     }, 130)
   });
 
@@ -42,6 +47,7 @@ function RegiFormSwitch() {
     OwnerFirstNameKanaInput.value = "";
     OwnerFirstNameKana.classList.add('animate__animated',"animate__zoomOut");
     OwnerCompanyName.classList.remove('animate__animated',"animate__zoomOut","owner-company-name-none");
+    OwnerCompanyNameKana.classList.remove('animate__animated',"animate__zoomOut","owner-company-name-kana-none");
 
 
     setTimeout(() => {

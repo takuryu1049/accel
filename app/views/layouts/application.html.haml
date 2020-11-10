@@ -47,7 +47,7 @@
                   %i.fas.fa-building
                   物件一覧
               %li
-                = link_to properties_path do
+                = link_to new_property_path do
                   %i.fas.fa-plus-circle
                   物件登録
               %li
@@ -59,9 +59,11 @@
                   %i.far.fa-plus-square
                   レポート作成
               %li
-                = link_to "#" do
+                = link_to "#",class: "news" do
                   %i.far.fa-newspaper
                   NEWS
+                  .num.animate__animated.animate__wobble.animate__infinite
+                    13
           .user-navi
             - if current_worker.gender == FALSE
               = link_to "#", class: "profile-img"  do
@@ -93,9 +95,14 @@
                   %i.fas.fa-shoe-prints
                   データベース
               %li
-                = link_to destroy_worker_session_path, method: :delete do
+                = link_to destroy_worker_session_path, method: :delete, data: { confirm: '本当にログアウトしますか?' } do
                   %i.fas.fa-sign-out-alt
                   ログアウト
+        = image_tag "Acell.logo.svg", class: "apps-home-logo"
+        - if current_page?(new_property_path)
+          = link_to app_tops_path, class: "current-logo-registration" do
+            %span.material-icons.home-logo
+              home
   = yield
   %footer
     .copyright

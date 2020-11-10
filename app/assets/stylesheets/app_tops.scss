@@ -8,6 +8,38 @@ $accel_black: #13202F;
   box-shadow: 0px 0px 6px 1px inset rgba(0,0,0,0.3);
   position:relative;
   z-index: 1;
+  .apps-home-logo{
+    height: 50px;
+    width: 160px;
+    position: absolute;
+    top: 0px;
+    left: 10px;
+  }
+  .current-logo-registration{
+    display: block;
+    background-color: #ff954a;
+    height: 300px;
+    width:  300px;
+    position: absolute;
+    top: -200px;
+    right:-220px;
+    transform: rotate(45deg);
+    &:hover{
+      position: absolute;
+      top: -198px;
+      right:-218px;
+      opacity: .6;
+    }
+  }
+  .home-logo{
+    font-size: 40px;
+    color: #FFFFFF;
+    position: absolute;
+    top: 245px;
+    right: 145px;
+    transform: rotate(-45deg);
+  }
+
   .container-1{
     height: 70px;
     width: 100%;
@@ -40,6 +72,24 @@ $accel_black: #13202F;
               font-size:22px;
               border-radius: 3px;
               border: ridge 2px $accel_pink; 
+            }
+          }
+          .news{
+            position: relative;
+            &:hover{
+              .num{
+                top: 0px;
+              }
+            }
+            .num{
+              border-radius: 50%;
+              font-size: 11px;
+              color: #FFFFFF;
+              background-color: red;
+              padding: 3px;
+              position: absolute;
+              top: 10px;
+              right: 0;
             }
           }
         }
@@ -172,28 +222,11 @@ $accel_black: #13202F;
   .app-content{
     width:100%;
     .app-analytics-bar{
-      height: 60px;
-      background-color: #e8f0fe;
-      padding-left: 10%;
-      padding-right: 10%;
-      font-size: 10px;
+      background-color: $accel_black;
+      height: 30px;
       display: flex;
-      box-shadow: 0 2px 4px 2px rgba(0,0,0,0.3);
-      font-family: "メイリオ";
-      h1.analytics-store-select{
-        margin-top: 15px;
-        a{
-          text-decoration: none;
-          color: $accel_black;
-        }
-      }
-      h1.analytics-month-select{
-        margin-top:15px;
-        margin-left: 50px;
-        a{
-          text-decoration: none;
-          color: $accel_black;
-        }
+      h1{
+        color: #FFFFFF;
       }
     }
     .app-analytics{

@@ -3,6 +3,7 @@ class CreateOwners < ActiveRecord::Migration[6.0]
     create_table :owners do |t|
       t.boolean :swicth_owner_form, null: false, default: false
       t.string :company_name 
+      t.string :company_name_kana
       t.string :last_name
       t.string :first_name 
       t.string :lastname_kana

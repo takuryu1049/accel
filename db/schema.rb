@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 2020_11_11_070444) do
   create_table "owners", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.boolean "swicth_owner_form", default: false, null: false
     t.string "company_name "
+    t.string "company_name_kana"
     t.string "last_name"
     t.string "first_name "
     t.string "lastname_kana"

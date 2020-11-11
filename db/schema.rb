@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_11_031726) do
+ActiveRecord::Schema.define(version: 2020_11_11_052654) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "name", null: false
@@ -51,6 +51,22 @@ ActiveRecord::Schema.define(version: 2020_11_11_031726) do
     t.index ["company_login_id"], name: "index_companies_on_company_login_id", unique: true
     t.index ["email"], name: "index_companies_on_email", unique: true
     t.index ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
+  end
+
+  create_table "owner_work_companies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+    t.string "company_name"
+    t.string "company_name_kana"
+    t.string "postal_code"
+    t.integer "prefecture_id"
+    t.string "city"
+    t.string "street"
+    t.string "building_name"
+    t.string "company_phone_num"
+    t.string "job_description"
+    t.bigint "owner_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["owner_id"], name: "index_owner_work_companies_on_owner_id"
   end
 
   create_table "owners", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC", force: :cascade do |t|
@@ -127,6 +143,7 @@ ActiveRecord::Schema.define(version: 2020_11_11_031726) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "owner_work_companies", "owners"
   add_foreign_key "properties", "companies"
   add_foreign_key "properties", "workers"
   add_foreign_key "workers", "companies"

@@ -1,0 +1,2 @@
+class OwnerWorkCompany < ApplicationRecord
+end

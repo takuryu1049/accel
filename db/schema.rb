@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_10_134755) do
+ActiveRecord::Schema.define(version: 2020_11_11_031726) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "name", null: false
@@ -51,6 +51,34 @@ ActiveRecord::Schema.define(version: 2020_11_10_134755) do
     t.index ["company_login_id"], name: "index_companies_on_company_login_id", unique: true
     t.index ["email"], name: "index_companies_on_email", unique: true
     t.index ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
+  end
+
+  create_table "owners", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+    t.boolean "swicth_owner_form", default: false, null: false
+    t.string "company_name "
+    t.string "last_name"
+    t.string "first_name "
+    t.string "lastname_kana"
+    t.string "first_name_kana"
+    t.boolean "gender", default: false, null: false
+    t.date "born"
+    t.integer "character_id"
+    t.text "character_about"
+    t.string "postal_code", null: false
+    t.integer "prefecture_id", null: false
+    t.string "city", null: false
+    t.string "street", null: false
+    t.string "building_name"
+    t.string "main_communication", null: false
+    t.text "communication_about", null: false
+    t.string "home_phone_num"
+    t.string "phone_num"
+    t.string "other_phone_num"
+    t.string "fax_num"
+    t.string "email"
+    t.text "caution_and_about"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "properties", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC", force: :cascade do |t|

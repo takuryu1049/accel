@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_11_052654) do
+ActiveRecord::Schema.define(version: 2020_11_11_070444) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "name", null: false
@@ -117,6 +117,17 @@ ActiveRecord::Schema.define(version: 2020_11_11_052654) do
     t.index ["worker_id"], name: "index_properties_on_worker_id"
   end
 
+  create_table "utilities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+    t.integer "water_supply", null: false
+    t.integer "sewer", null: false
+    t.integer "electrical", null: false
+    t.integer "gas", null: false
+    t.bigint "property_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["property_id"], name: "index_utilities_on_property_id"
+  end
+
   create_table "workers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "worker_login_id", null: false
     t.string "last_name", null: false
@@ -146,5 +157,6 @@ ActiveRecord::Schema.define(version: 2020_11_11_052654) do
   add_foreign_key "owner_work_companies", "owners"
   add_foreign_key "properties", "companies"
   add_foreign_key "properties", "workers"
+  add_foreign_key "utilities", "properties"
   add_foreign_key "workers", "companies"
 end

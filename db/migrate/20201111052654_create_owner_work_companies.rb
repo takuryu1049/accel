@@ -3,7 +3,7 @@ class CreateOwnerWorkCompanies < ActiveRecord::Migration[6.0]
     create_table :owner_work_companies do |t|
       t.string :company_name
       t.string :company_name_kana
-      t.string :postal_code
+      t.string :post_code
       t.integer :prefecture_id
       t.string :city
       t.string :street

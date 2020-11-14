@@ -18,9 +18,11 @@
         %i.fas.fa-pencil-alt#pen.pen-none
           入力中
       .properties-registration-form-full-wrapper
-        = form_with url: worker_registration_path, class: "float-form", local: true do |f|
+        = form_with model: @property_owner_utility_equipment_facility,url: properties_path, class: "float-form", local: true do |f|
           =# render "shared/error_messages", model: f.object
           .properties-registration-form-wrap
+            = f.hidden_field :company_id, :value => current_company.id
+            = f.hidden_field :worker_id, :value => current_worker.id
             - for i in 0..10 do
               = content_tag(:div, "", id: "switch#{i+1}", class: "properties-registration-form-wrap-line#{i+1}") do
                 .form-border
@@ -35,14 +37,14 @@
                         .input-title
                           %span.must
                             必須
-                          = f.label :worker_login_id, "物件名称"
-                        = f.text_field :worker_login_id, autofocus: true,class: 'fa',placeholder: "例) 東京マンション"
+                          = f.label :name, "物件名称"
+                        = f.text_field :name, autofocus: true,class: 'fa',placeholder: "例) 東京マンション"
                       .field
                         .input-title
                           %span.must
                             必須
-                          = f.label :worker_login_id, "物件名称(カナ)"
-                        = f.text_field :worker_login_id, autofocus: true,class: 'fa',placeholder: "例) トウキョウマンション"
+                          = f.label :name_kana, "物件名称(カナ)"
+                        = f.text_field :name_kana, autofocus: true,class: 'fa',placeholder: "例) トウキョウマンション"
                         .description
                           %span.fas.fa-exclamation-circle 注意点
                           号室の記入は必要ありません。※分譲一室の場合も必要ありませんのでご注意下さい。
@@ -105,7 +107,7 @@
                           %span.must
                             必須
                           = f.label :units, "戸数" 
-                        = f.number_field :units, autofocus: true, class: 'fa',min: 1
+                        = f.number_field :units, autofocus: true, class: 'fa', min: 1, max: 3000
                         .description
                           %span.fas.fa-exclamation-circle 注意点
                           管理形態に関わらず、物件の総戸数入力してください。
@@ -136,7 +138,7 @@
                         .input-title
                           %span.must
                             必須
-                          = f.label :sewer, "上水道" 
+                          = f.label :sewer_id, "上水道" 
                         = f.collection_select(:sewer_id, Sewer.all, :id, :name, {}, {class:"select-box"})
                       .field
                         .input-title
@@ -154,8 +156,8 @@
                         .input-title
                           %span.must
                             必須
-                          = f.label :ga_id, "ガス" 
-                        = f.collection_select(:ga_id, Ga .all, :id, :name, {}, {class:"select-box"})
+                          = f.label :gas_id, "ガス" 
+                        = f.collection_select(:gas_id, Ga .all, :id, :name, {}, {class:"select-box"})
                   - case i+1
                   - when 7 then
                     .properties-registration-form-title
@@ -164,11 +166,10 @@
                         %i.far.fa-question-circle.info-icon
                     .field-space
                       .field
-                        = f.collection_check_boxes(:equipment_id, Equipment.all, :id, :name, {}, {class:"check-box"})do |b|
+                        = f.collection_check_boxes(:equipment_id, Equipment.all, :id, :name, {}, {class:"check-box"})do |f|
                           .wrap 
-                            = b.check_box
-                            = b.label
-                      -# ❎追加実装(エレベーター・駐車場・集合郵便受け・自転車置き場などの建物に付随刷る設備に関する情報、多岐に渡るので、スペースは広く撮っていますラジオボタンで区別ができるようにしています。)
+                            = f.check_box
+                            = f.label
                   - case i+1
                   - when 8 then
                     .properties-registration-form-title
@@ -177,10 +178,10 @@
                         %i.far.fa-question-circle.info-icon
                     .field-space
                       .field
-                        = f.collection_check_boxes(:facility_id,  Facility.all, :id, :name, {}, {class:"check-box"})do |b|
+                        = f.collection_check_boxes(:facility_id,  Facility.all, :id, :name, {}, {class:"check-box"})do |f|
                           .wrap 
-                            = b.check_box
-                            = b.label
+                            = f.check_box
+                            = f.label
                   - case i+1
                   - when 9 then
                     .properties-registration-form-title
@@ -210,7 +211,7 @@
                         .input-title
                           %span.must
                             必須
-                          = f.label :rank, "ランク"
+                          = f.label :rank_id, "ランク"
                         = f.collection_select(:rank_id, Rank.all, :id, :name, {}, {class:"select-box"}) 
                         .description
                           %span.fas.fa-exclamation-circle 注意点
@@ -230,10 +231,10 @@
                     .field-space
                       .field
                         .input-title
-                          %span.must
+                          %span.must.optional
                             必須
-                          = f.label :hoge, "注意事項"
-                        = f.text_area :name, class: 'fa', autofocus: true
+                          = f.label :caution, "注意事項"
+                        = f.text_area :caution, class: 'fa', autofocus: true
           .properties-registration-form-wrap-2
             - for i in 0..5 do
               = content_tag(:div, "", id: "switch2-#{i+1}", class: "properties-registration-form-wrap-2-line-#{i+1}") do
@@ -249,11 +250,11 @@
                         .input-title
                           %span.must
                             必須
-                          = f.label :worker_login_id, "所有形態"
-                        = f.radio_button :gender, FALSE, class: 'fa in_logo input_radio', id: "human-switch",checked: true
+                          = f.label :swicth_owner_form, "所有形態"
+                        = f.radio_button :swicth_owner_form, FALSE, class: 'fa in_logo input_radio', id: "human-switch",checked: true
                         .switch-name
                           個人
-                        = f.radio_button :gender, TRUE, class: 'fa in_logo input_radio', id: "company-switch"
+                        = f.radio_button :swicth_owner_form, TRUE, class: 'fa in_logo input_radio', id: "company-switch"
                         .switch-name
                           法人
                       .company-wrap
@@ -261,39 +262,39 @@
                           .input-title
                             %span.must
                               必須
-                            = f.label :worker_login_id, "会社名"
-                          = f.text_field :hoge, autofocus: true, class: 'fa', id: 'owner-company-name-input'
+                            = f.label :owner_company_name, "会社名"
+                          = f.text_field :owner_company_name, autofocus: true, class: 'fa', id: 'owner-company-name-input'
                         .field#owner-company-name-kana.owner-company-name-kana-none
                           .input-title
                             %span.must
                               必須
-                            = f.label :worker_login_id, "会社名(カナ)"
-                          = f.text_field :hoge, autofocus: true, class: 'fa', id: 'owner-company-name-kana-input'
+                            = f.label :owner_company_name_kana, "会社名(カナ)"
+                          = f.text_field :owner_company_name_kana, autofocus: true, class: 'fa', id: 'owner-company-name-kana-input'
                       .name-wrap
                         .field#owner-last-name
                           .input-title.short
                             %span.must
                               必須
-                            = f.label :worker_login_id, "姓"
-                          = f.text_field :hoge, autofocus: true, class: 'fa name-input', id: 'owner-last-name-input'
+                            = f.label :last_name, "姓"
+                          = f.text_field :last_name, autofocus: true, class: 'fa name-input', id: 'owner-last-name-input'
                         .field#owner-first-name
                           .input-title.short
                             %span.must
                               必須
-                            = f.label :worker_login_id, "名"
-                          = f.text_field :hoge, autofocus: true, class: 'fa name-input', id: 'owner-first-name-input'
+                            = f.label :first_name, "名"
+                          = f.text_field :first_name, autofocus: true, class: 'fa name-input', id: 'owner-first-name-input'
                         .field#owner-last-name-kana
                           .input-title
                             %span.must
                               必須
-                            = f.label :worker_login_id, "姓(カナ)"
-                          = f.text_field :hoge, autofocus: true, class: 'fa name-input', id: 'owner-last-name-kana-input'
+                            = f.label :last_name_kana, "姓(カナ)"
+                          = f.text_field :last_name_kana, autofocus: true, class: 'fa name-input', id: 'owner-last-name-kana-input'
                         .field#owner-first-name-kana
                           .input-title
                             %span.must
                               必須
-                            = f.label :worker_login_id, "名(メイ)"
-                          = f.text_field :hoge, autofocus: true, class: 'fa name-input', id: 'owner-first-name-kana-input'
+                            = f.label :first_name_kana, "名(メイ)"
+                          = f.text_field :first_name_kana, autofocus: true, class: 'fa name-input', id: 'owner-first-name-kana-input'
                   - case i+1
                   - when 2 then
                     .properties-registration-form-title
@@ -307,7 +308,7 @@
                             必須
                           = f.label :gender, "性別"
                         .gender-flex
-                          = f.radio_button :gender, FALSE, class: 'fa input_radio'
+                          = f.radio_button :gender, FALSE, class: 'fa input_radio',checked: true
                           %i.fas.fa-mars
                           男
                           = f.radio_button :gender, TRUE, class: 'fa input_radio'
@@ -340,8 +341,8 @@
                         .input-title
                           %span.must.optional
                             任意
-                          = f.label :prefecture_id, "所有者についての補足" 
-                        = f.text_area :name, class: 'fa', autofocus: true
+                          = f.label :character_about, "所有者についての補足" 
+                        = f.text_area :character_about, class: 'fa', autofocus: true
                         .description
                           %span.fas.fa-exclamation-circle 注意点
                           大家様について、社内全体に共有するべき情報を入力してください。※電話等の連絡に関する情報は「4.連絡先等」に入力してください
@@ -356,32 +357,32 @@
                         .input-title
                           %span.must
                             必須
-                          = f.label :post_code, "郵便番号" 
-                        = f.text_field :post_code, autofocus: true,class: 'fa in_logo', autocomplete: "postal-code" 
+                          = f.label :owner_post_code, "郵便番号" 
+                        = f.text_field :owner_post_code, autofocus: true,class: 'fa in_logo', autocomplete: "postal-code" 
                       .field
                         .input-title
                           %span.must
                             必須
-                          = f.label :prefecture_id, "都道府県" 
-                        = f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box"}) 
+                          = f.label :owner_prefecture_id, "都道府県" 
+                        = f.collection_select(:owner_prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box"}) 
                       .field
                         .input-title
                           %span.must
                             必須
-                          = f.label :city, "市区町村" 
-                        = f.text_field :city, autofocus: true, autocomplete: "address-level2"
+                          = f.label :owner_city, "市区町村" 
+                        = f.text_field :owner_city, autofocus: true, autocomplete: "address-level2"
                       .field
                         .input-title
                           %span.must
                             必須
-                          = f.label :street, "番地" 
-                        = f.text_field :street, autofocus: true, class: 'fa', autocomplete: "address-line1" 
+                          = f.label :owner_street, "番地" 
+                        = f.text_field :owner_street, autofocus: true, class: 'fa', autocomplete: "address-line1" 
                       .field
                         .input-title
                           %span.must.optional
                             任意
-                          = f.label :building_name, "建物名(号室まで)" 
-                        = f.text_field :building_name, autofocus: true, class: 'fa', autocomplete: "address-line2" 
+                          = f.label :owner_building_name, "建物名(号室まで)" 
+                        = f.text_field :owner_building_name, autofocus: true, class: 'fa', autocomplete: "address-line2" 
                   - case i+1
                   - when 4 then
                     .properties-registration-form-title
@@ -393,8 +394,8 @@
                         .input-title
                           %span.must
                             必須
-                          = f.label :post_code, "主要なやり取りの人物"
-                        = f.text_field :post_code, autofocus: true,class: 'fa in_logo', autocomplete: "postal-code" 
+                          = f.label :main_communication, "主要なやり取りの人物"
+                        = f.text_field :main_communication, autofocus: true,class: 'fa in_logo'
                       .description
                         %span.fas.fa-exclamation-circle 注意点
                         主要なやり取り人物が分散している場合には、やり取り方法についての欄に、
@@ -403,38 +404,38 @@
                         .input-title
                           %span.must
                             必須
-                          = f.label :prefecture_id, "やり取り方法について" 
-                        = f.text_area :name, class: 'fa', autofocus: true
+                          = f.label :communication_about, "やり取り方法について" 
+                        = f.text_area :communication_about, class: 'fa', autofocus: true
                       .field
                         .input-title
                           %span.must.optional
                             任意(推奨)
-                          = f.label :city, "固定電話番号" 
-                        = f.text_field :city, autofocus: true, autocomplete: "address-level2"
+                          = f.label :home_phone_num, "固定電話番号" 
+                        = f.text_field :home_phone_num, autofocus: true, class: 'fa'
                       .field
                         .input-title
                           %span.must.optional
                             任意(推奨)
-                          = f.label :street, "携帯電話番号"
-                        = f.text_field :street, autofocus: true, class: 'fa', autocomplete: "address-line1" 
+                          = f.label :phone_num, "携帯電話番号"
+                        = f.text_field :phone_num, autofocus: true, class: 'fa', autocomplete: "address-line1" 
                       .field
                         .input-title
                           %span.must.optional
                             任意(推奨)
-                          = f.label :building_name, "その他電話番号" 
-                        = f.text_field :building_name, autofocus: true, class: 'fa', autocomplete: "address-line2" 
+                          = f.label :other_phone_num, "その他電話番号" 
+                        = f.text_field :other_phone_num, autofocus: true, class: 'fa', autocomplete: "address-line2" 
                       .field
                         .input-title
                           %span.must.optional
                             任意(推奨)
-                          = f.label :building_name, "FAX番号" 
-                        = f.text_field :building_name, autofocus: true, class: 'fa', autocomplete: "address-line2" 
+                          = f.label :fax_num, "FAX番号" 
+                        = f.text_field :fax_num, autofocus: true, class: 'fa', autocomplete: "address-line2" 
                       .field
                         .input-title
                           %span.must.optional
                             任意(推奨)
-                          = f.label :building_name, "メールアドレス" 
-                        = f.text_field :building_name, autofocus: true, class: 'fa', autocomplete: "address-line2" 
+                          = f.label :email, "メールアドレス" 
+                        = f.text_field :email, autofocus: true, class: 'fa', autocomplete: "address-line2" 
                   - case i+1
                   - when 5 then
                     .properties-registration-form-title
@@ -444,40 +445,58 @@
                     .field-space
                       .field
                         .input-title
-                          %span.must
+                          %span.must.optional
                             必須
-                          = f.label :worker_login_id, "会社名"
-                        = f.text_field :hoge, autofocus: true, class: 'fa', id: 'owner-company-name-input'
+                          = f.label :w_company_name, "会社名"
+                        = f.text_field :w_company_name, autofocus: true, class: 'fa', id: 'owner-company-name-input'
                       .field
                         .input-title
-                          %span.must
+                          %span.must.optional
                             必須
-                          = f.label :post_code, "郵便番号" 
-                        = f.text_field :post_code, autofocus: true,class: 'fa in_logo', autocomplete: "postal-code" 
+                          = f.label :w_company_name_kana, "会社名(カナ)"
+                        = f.text_field :w_company_name_kana, autofocus: true, class: 'fa', id: 'owner-company-name-kana-input'
                       .field
                         .input-title
-                          %span.must
+                          %span.must.optional
                             必須
-                          = f.label :prefecture_id, "都道府県" 
-                        = f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box"}) 
+                          = f.label :w_post_code, "郵便番号" 
+                        = f.text_field :w_post_code, autofocus: true,class: 'fa in_logo', autocomplete: "postal-code" 
                       .field
                         .input-title
-                          %span.must
+                          %span.must.optional
                             必須
-                          = f.label :city, "市区町村" 
-                        = f.text_field :city, autofocus: true, autocomplete: "address-level2"
+                          = f.label :w_prefecture_id, "都道府県" 
+                        = f.collection_select(:w_prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box"}) 
                       .field
                         .input-title
-                          %span.must
+                          %span.must.optional
                             必須
-                          = f.label :street, "番地" 
-                        = f.text_field :street, autofocus: true, class: 'fa', autocomplete: "address-line1" 
+                          = f.label :w_city, "市区町村" 
+                        = f.text_field :w_city, autofocus: true, autocomplete: "address-level2"
+                      .field
+                        .input-title
+                          %span.must.optional
+                            必須
+                          = f.label :w_street, "番地" 
+                        = f.text_field :w_street, autofocus: true, class: 'fa', autocomplete: "address-line1" 
                       .field
                         .input-title
                           %span.must.optional
                             任意
-                          = f.label :building_name, "建物名(号室まで)" 
-                        = f.text_field :building_name, autofocus: true, class: 'fa', autocomplete: "address-line2" 
+                          = f.label :w_building_name, "建物名(号室まで)" 
+                        = f.text_field :w_building_name, autofocus: true, class: 'fa'
+                      .field
+                        .input-title
+                          %span.must.optional
+                            任意
+                          = f.label :w_company_phone_num, "携帯電話番号"
+                        = f.text_field :w_company_phone_num, autofocus: true, class: 'fa'
+                      .field
+                        .input-title
+                          %span.must.optional
+                            任意
+                          = f.label :w_job_description, "仕事内容"
+                        = f.text_field :w_job_description, autofocus: true, class: 'fa'
                   - case i+1
                   - when 6 then
                     .properties-registration-form-title
@@ -489,6 +508,6 @@
                         .input-title
                           %span.must
                             必須
-                          = f.label :hoge, "注意事項"
-                        = f.text_area :name, class: 'fa', autofocus: true
-          = f.button '物件情報を登録する', class: "submit-btn",type: 'button', onclick: 'submit();'
+                          = f.label :owner_caution_and_about, "注意事項"
+                        = f.text_area :owner_caution_and_about, class: 'fa', autofocus: true
+          = f.button '登録する', class: "submit-btn",type: 'button', onclick: 'submit();'

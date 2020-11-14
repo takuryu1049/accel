@@ -5,7 +5,7 @@ class CreateUtilities < ActiveRecord::Migration[6.0]
       t.integer :sewer_id, null: false
       t.integer :electrical_id, null: false
       t.integer :gas_id, null: false
-      t.references :property_id, null: false, foreign_key: true
+      t.references :property, null: false, foreign_key: true
       t.timestamps
     end
   end

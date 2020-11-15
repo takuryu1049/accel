@@ -225,8 +225,12 @@ $accel_black: #13202F;
       background-color: $accel_black;
       height: 30px;
       display: flex;
-      h1{
+      .breadcrumbs-list{
+        margin: auto 0 auto 10px;
+        font-size: 16px;
         color: #FFFFFF;
+        text-decoration: none;
+        font-weight: bold;
       }
     }
     .app-analytics{

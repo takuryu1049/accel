@@ -77,3 +77,5 @@ gem 'active_hash'
 gem 'material_icons'
 
 gem 'rails-i18n'
+
+gem "gretel"

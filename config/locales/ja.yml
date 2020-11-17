@@ -28,6 +28,36 @@ ja:
         position_id: 役職
         born: 誕生月
         qualification_id: 資格
+  activemodel:
+    attributes:
+        property_owner_utility_equipment_facility:
+          name: 物件名称
+          name_kana: 物件名称カナ
+          post_code: 郵便番号
+          prefecture_id: 都道府県
+          city: 市区町村
+          street: 番地
+          type_id: 物件種別
+          units: 総戸数
+          management_form_id: 管理形態
+          sewer_id: 上水道
+          water_supply_id: 下水道
+          electrical_id: 電気
+          gas_id: ガス
+          image: 物件画像
+          rank_id: 物件ランク
+          owner_company_name: 会社名
+          owner_company_name_kana: 会社名カナ
+          last_name: 姓
+          first_name: 名
+          last_name_kana: 姓(カナ)
+          first_name_kana: 名(カナ)
+          owner_post_code: 郵便番号
+          owner_prefecture_id: 都道府県
+          owner_city: 市区町村
+          owner_street: 番地
+          main_communication: 主要やり取り人物
+          communication_about: やり取り方法について
   recaptcha: 
     errors: 
       verification_failed: 'reCAPTCHA認証に失敗しました'

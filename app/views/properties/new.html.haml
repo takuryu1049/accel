@@ -25,7 +25,7 @@
               %h2
                 申し訳ございません。
                 %br/
-                = pluralize(@property_owner_utility_equipment_facility.errors.count, "箇所の入力不備があります。")
+                入力不備のため登録ができません。
               %h3
                 お手数ですが、入力項目をご確認のうえ、再度ご入力ください。
           .properties-registration-form-wrap
@@ -104,7 +104,7 @@
                           %span.must
                             必須
                           = f.label :street, "番地" 
-                        = f.text_field :street, autofocus: true, class: "fa" 
+                        = f.text_field :street, autofocus: true, class: "fa", autocomplete: "off"
                       - if @property_owner_utility_equipment_facility.errors.include?(:street)
                         .error
                           %i.fas.fa-exclamation-circle.error-icon
@@ -414,7 +414,7 @@
                         .input-title
                           %span.must.optional
                             任意
-                          = f.label :character_about, "所有者についての注意事項等" 
+                          = f.label :character_about, "所有者についての共有事項" 
                         = f.text_area :character_about, class: 'fa', autofocus: true
                   - case i+1
                   - when 3 then
@@ -478,12 +478,12 @@
                           主要なやり取り人物が複数人いる場合には、やり取り方法についての欄に、
                           やり取り方法の詳細を入力してください。
                     .field-space
-                      .field
+                      .field.col-flex
                         .input-title
                           %span.must
                             必須
                           = f.label :main_communication, "主要やり取り人物"
-                        = f.text_field :main_communication, autofocus: true,class: 'fa in_logo', autocomplete: "off"
+                        = f.text_field :main_communication, autofocus: true,class: 'fa in_logo',placeholder: "例) 本人・娘・父・知人の●●さんなど", autocomplete: "off"
                       - if @property_owner_utility_equipment_facility.errors.include?(:main_communication)
                         .error
                           %i.fas.fa-exclamation-circle.error-icon
@@ -502,31 +502,31 @@
                         .field
                           .input-title
                             %span.must.optional
-                              任意(推奨)
+                              任意
                             = f.label :home_phone_num, "固定電話番号" 
                           = f.text_field :home_phone_num, autofocus: true, class: 'fa', autocomplete: "off"
                         .field
                           .input-title
                             %span.must.optional
-                              任意(推奨)
+                              任意
                             = f.label :phone_num, "携帯電話番号"
                           = f.text_field :phone_num, autofocus: true, class: 'fa', autocomplete: "off"
                         .field
                           .input-title
                             %span.must.optional
-                              任意(推奨)
+                              任意
                             = f.label :other_phone_num, "その他電話番号" 
                           = f.text_field :other_phone_num, autofocus: true, class: 'fa', autocomplete: "off"
                         .field
                           .input-title
                             %span.must.optional
-                              任意(推奨)
+                              任意
                             = f.label :fax_num, "FAX番号" 
                           = f.text_field :fax_num, autofocus: true, class: 'fa', autocomplete: "off"
                         .field
                           .input-title
                             %span.must.optional
-                              任意(推奨)
+                              任意
                             = f.label :email, "メールアドレス" 
                           = f.text_field :email, autofocus: true, class: 'fa', autocomplete: "off"
                   - case i+1
@@ -565,29 +565,29 @@
                           %span.must.optional
                             任意
                           = f.label :w_city, "市区町村" 
-                        = f.text_field :w_city, autofocus: true, autocomplete: "address-level2", class: "remove-input", id: "remove-city", autocomplete: "off"
+                        = f.text_field :w_city, autofocus: true, autocomplete: "address-level2", class: "remove-input fa", id: "remove-city", autocomplete: "off"
                       .field
                         .input-title
                           %span.must.optional
                             任意
                           = f.label :w_street, "番地" 
-                        = f.text_field :w_street, autofocus: true, class: 'fa', autocomplete: "address-line1" , class: "remove-input", id: "remove-street", autocomplete: "off"
+                        = f.text_field :w_street, autofocus: true, autocomplete: "address-line1" , class: "remove-input fa", id: "remove-street", autocomplete: "off"
                       .field
                         .input-title
                           %span.must.optional
                             任意
                           = f.label :w_building_name, "建物名(号室まで)" 
-                        = f.text_field :w_building_name, autofocus: true, class: 'fa', class: "remove-input", id: "remove-building_name", autocomplete: "off"
+                        = f.text_field :w_building_name, autofocus: true, class: "fa remove-input", id: "remove-building_name", autocomplete: "off"
                       .field
                         .input-title
                           %span.must.optional
                             任意
-                          = f.label :w_company_phone_num, "携帯電話番号"
-                        = f.text_field :w_company_phone_num, autofocus: true, class: 'fa', class: "remove-input", id: "remove-company_phone_num", autocomplete: "off"
+                          = f.label :w_company_phone_num, "勤務先電話番号"
+                        = f.text_field :w_company_phone_num, autofocus: true, class: "fa remove-input", id: "remove-company_phone_num", autocomplete: "off"
                       .field
                         .input-title
                           %span.must.optional
                             任意
                           = f.label :w_job_description, "仕事内容"
-                        = f.text_field :w_job_description, autofocus: true, class: 'fa', class: "remove-input", id: "remove-job_description", autocomplete: "off"
+                        = f.text_field :w_job_description, autofocus: true, class: "fa remove-input", id: "remove-job_description", autocomplete: "off"
           = f.button '登録する', class: "submit-btn",type: 'button', onclick: 'submit();'

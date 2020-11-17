@@ -18,6 +18,16 @@ function RegiFormSwitch() {
   const OwnerLastNameKanaInput = document.getElementById('owner-last-name-kana-input');
   const OwnerFirstNameKana = document.getElementById('owner-first-name-kana');
   const OwnerFirstNameKanaInput = document.getElementById('owner-first-name-kana-input');
+  
+  // エラーハンドリング後のレンダリング時に法人を選択していた場合に表示を切り替え
+  if(CompanySwitch.checked == true){
+    OwnerCompanyName.classList.remove('animate__animated',"animate__zoomOut","owner-company-name-none");
+    OwnerCompanyNameKana.classList.remove('animate__animated',"animate__zoomOut","owner-company-name-kana-none");
+    OwnerLastName.classList.add("owner-last-name-none");
+    OwnerFirstName.classList.add("owner-first-name-none");
+    OwnerLastNameKana.classList.add("owner-last-name-kana-none");
+    OwnerFirstNameKana.classList.add("owner-first-name-kana-none");
+  }
 
   // 個人ラジオボタンに変更された時の挙動
   HumanSwitch.addEventListener("change", () => {

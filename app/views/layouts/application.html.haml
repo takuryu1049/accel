@@ -1,3 +1,4 @@
+
 !!!
 %html
   %head
@@ -99,7 +100,7 @@
                   %i.fas.fa-sign-out-alt
                   ログアウト
         = image_tag "Acell.logo.svg", class: "apps-home-logo"
-        - if current_page?(new_property_path)
+        - if company_signed_in? && worker_signed_in?
           = link_to app_tops_path, class: "current-logo-registration" do
             %span.material-icons.home-logo
               home

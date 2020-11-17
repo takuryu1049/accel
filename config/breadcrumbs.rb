@@ -7,9 +7,9 @@ crumb :new_property do
   parent :root
 end
 
-crumb :contacts do
-  link "コンタクト", contacts_index_path
-  parent :tweets
+crumb :index_property do
+  link "物件一覧", properties_path
+  parent :root
 end
 
 

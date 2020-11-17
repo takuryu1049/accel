@@ -557,11 +557,15 @@ $list-position: 20%;
 .field_with_errors{
   input{
     border-radius: 0 !important;
-    background-color:#f9e0e0 !important;
+    background-color:#fff0f0 !important;
   }
   select{
     border-radius: 0 !important;
-    background-color:#f9e0e0 !important;
+    background-color:#fff0f0 !important;
+  }
+  textarea{
+    border-radius: 0 !important;
+    background-color:#fff0f0 !important;
   }
 }
 

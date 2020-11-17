@@ -20,10 +20,16 @@
   box-sizing: border-box;
 }
 
+html{
+  scroll-behavior: smooth;
+  font-family: noto-sans-cjk-jp, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", 游ゴシック, "Yu Gothic", sans-serif;
+}
+
 body{
   background-color: $back-color;
   font-size: 13px; 
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: noto-sans-cjk-jp, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", 游ゴシック, "Yu Gothic", sans-serif;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow: hidden;

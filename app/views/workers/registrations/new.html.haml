@@ -9,7 +9,15 @@
       %i.fas.fa-info-circle.make_account_information_mark
       サービスを利用する為に必要な情報です。間違いのないようご入力お願いします。
     = form_with model: @worker, url: worker_registration_path, local: true do |f|
-      = render "shared/error_messages", model: f.object 
+      - if @worker.errors.any?
+        #error_explanation
+          %i.fas.fa-exclamation-circle.error-icon-big
+          %h2
+            申し訳ございません。
+            %br/
+            = pluralize(@worker.errors.count, "箇所の入力不備があります。")
+          %h3
+            お手数ですが、入力項目をご確認のうえ、再度ご入力ください。
       .filed.support-message
         = image_tag current_company.image, class: "company-image-header"
         .description-company-make
@@ -23,6 +31,15 @@
             必須
           = f.label :worker_login_id, "①社員アカウントID"
         = f.text_field :worker_login_id, autofocus: true,placeholder: "\uf1ad  例) ABcd123", class: 'fa in_logo_company'
+      - if @worker.errors.include?(:worker_login_id)
+        -if @worker.errors.full_messages_for(:worker_login_id).first.length >= 40
+          .error-longer
+            %i.fas.fa-exclamation-circle.error-icon
+            = @worker.errors.full_messages_for(:worker_login_id).first
+        -else
+          .error
+            %i.fas.fa-exclamation-circle.error-icon
+            = @worker.errors.full_messages_for(:worker_login_id).first
       .form-countion
         %i.fas.fa-exclamation-triangle.company_login_id_countion
         社員アカウントIDはサービスを利用する為に必要な情報です。忘れないようにメモ等で情報を保管下さい。
@@ -33,6 +50,10 @@
             必須
           = f.label :password, "②パスワード"
         = f.password_field :password, autofocus: true, placeholder: "\uf023  6文字以上で入力ください", class: 'fa in_logo_mail', autocomplete: "new-password"
+      - if @worker.errors.include?(:password)
+        .error
+          %i.fas.fa-exclamation-circle.error-icon
+          = @worker.errors.full_messages_for(:password).first
       .chain-border
       .field
         .input-title
@@ -40,6 +61,10 @@
             必須
           = f.label :password_confirmation, "③確認用パスワード"
         = f.password_field :password_confirmation, autofocus: true, placeholder: "\uf2ea  6文字以上で入力ください", class: 'fa in_logo_mail', autocomplete: "new-password"
+      - if @worker.errors.include?(:password_confirmation)
+        .error
+          %i.fas.fa-exclamation-circle.error-icon
+          = @worker.errors.full_messages_for(:password_confirmation).first
       .form-countion
         %i.fas.fa-exclamation-triangle.company_login_id_countion
         パスワードもサービスを利用する為に必要な情報です。忘れないようにメモ等で情報を保管下さい。
@@ -59,6 +84,29 @@
                 必須
               = f.label :first_name, "⑤名" 
             = f.text_field :first_name, autofocus: true,placeholder: "例) 産太郎", class: 'fa conpact_input'
+      .error-wrapper
+        - if @worker.errors.include?(:last_name)
+          -if @worker.errors.full_messages_for(:last_name).first.length >= 15
+            .error-line1
+              .error-longer
+                %i.fas.fa-exclamation-circle.error-icon
+                = @worker.errors.full_messages_for(:last_name).first
+          -else
+            .error-line1
+              .error
+                %i.fas.fa-exclamation-circle.error-icon
+                = @worker.errors.full_messages_for(:last_name).first
+        - if @worker.errors.include?(:first_name)
+          -if @worker.errors.full_messages_for(:first_name).first.length >= 15
+            .error-line2
+              .error-longer
+                %i.fas.fa-exclamation-circle.error-icon
+                = @worker.errors.full_messages_for(:first_name).first
+          -else
+            .error-line2
+              .error
+                %i.fas.fa-exclamation-circle.error-icon
+                = @worker.errors.full_messages_for(:first_name).first
       .chain-border
       .compact-wrapper
         .field
@@ -75,6 +123,29 @@
                 必須
               = f.label :first_name_kana, "⑦名(カナ)" 
             = f.text_field :first_name_kana, autofocus: true,placeholder: "例) サンタロウ", class: 'fa conpact_input'
+      .error-wrapper
+        - if @worker.errors.include?(:last_name_kana)
+          -if @worker.errors.full_messages_for(:last_name_kana).first.length >= 15
+            .error-line1
+              .error-longer
+                %i.fas.fa-exclamation-circle.error-icon
+                = @worker.errors.full_messages_for(:last_name_kana).first
+          -else
+            .error-line1
+              .error
+                %i.fas.fa-exclamation-circle.error-icon
+                = @worker.errors.full_messages_for(:last_name_kana).first
+        - if @worker.errors.include?(:first_name_kana)
+          -if @worker.errors.full_messages_for(:first_name_kana).first.length >= 15
+            .error-line2
+              .error-longer
+                %i.fas.fa-exclamation-circle.error-icon
+                = @worker.errors.full_messages_for(:first_name_kana).first
+          -else
+            .error-line2
+              .error
+                %i.fas.fa-exclamation-circle.error-icon
+                = @worker.errors.full_messages_for(:first_name_kana).first
       .chain-border
       .field
         .input-title
@@ -82,6 +153,10 @@
             必須
           = f.label :email, "⑧メールアドレス"
         = f.email_field :email, autofocus: true, placeholder: "\uf0e0  例) hudosantaro@gmail.com", class: 'fa in_logo_mail', autocomplete: "email"
+      - if @worker.errors.include?(:email)
+        .error
+          %i.fas.fa-exclamation-circle.error-icon
+          = @worker.errors.full_messages_for(:email).first
       .chain-border
       .field
         .input-title
@@ -89,6 +164,10 @@
             必須
           = f.label :image, "⑨プロフィール画像"
         = f.file_field :image, id:"item-image", autofocus: true
+      - if @worker.errors.include?(:image)
+        .error
+          %i.fas.fa-exclamation-circle.error-icon
+          = @worker.errors.full_messages_for(:image).first
       .chain-border
       .field
         .input-title
@@ -102,6 +181,10 @@
           = f.radio_button :gender, TRUE, class: 'fa in_logo input_radio'
           %i.fas.fa-venus
           女
+      - if @worker.errors.include?(:gender)
+        .error
+          %i.fas.fa-exclamation-circle.error-icon
+          = @worker.errors.full_messages_for(:gender).first
       .chain-border
       .field
         .input-title
@@ -109,6 +192,10 @@
             必須
           = f.label :character_id, "⑪自分の性格" 
         = f.collection_select(:character_id, Character.all, :id, :name, {}, {class:"select-box"}) 
+      - if @worker.errors.include?(:character_id)
+        .error
+          %i.fas.fa-exclamation-circle.error-icon
+          = @worker.errors.full_messages_for(:character_id).first
       .chain-border
       .field
         .input-title
@@ -116,12 +203,16 @@
             必須
           = f.label :position_id, "⑫役職" 
         = f.collection_select(:position_id, Position.all, :id, :name, {}, {class:"select-box"}) 
+      - if @worker.errors.include?(:position_id)
+        .error
+          %i.fas.fa-exclamation-circle.error-icon
+          = @worker.errors.full_messages_for(:position_id).first
       .chain-border
       .field
         .input-title
           %span.must.animate__animated.animate__fadeInUp
             必須
-          = f.label :born, "⑬誕生月" 
+          = f.label :born, "⑬誕生年月日" 
         .birth-wrapper
           = raw sprintf(                               |
             f.date_select(                             |
@@ -134,6 +225,10 @@
               end_year: (Time.now.year - 5),           |
               date_separator: '%s'),                   |
             "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" |
+      - if @worker.errors.include?(:born)
+        .error
+          %i.fas.fa-exclamation-circle.error-icon
+          = @worker.errors.full_messages_for(:born).first
       .chain-border
       .field
         .input-title
@@ -143,7 +238,11 @@
         = f.collection_select(:qualification_id, Qualification.all, :id, :name, {}, {class:"select-box"}) 
       .submit-recaptcha-wrap
         = recaptcha_tags 
-        = f.submit "アカウントを作成", class: "create-company-account"
+        = f.submit "アカウント作成", class: "create-company-account"
+      - if @worker.errors.include?(:base)
+        .error-recaptcha
+          %i.fas.fa-exclamation-circle.error-icon
+          = @worker.errors.full_messages_for(:base).first
     -# = render "companies/shared/links"
 
   .button-back-ground.animate__animated.animate__fadeInRight

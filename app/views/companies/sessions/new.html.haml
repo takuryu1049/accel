@@ -9,8 +9,12 @@
       %i.fas.fa-info-circle.make_account_information_mark
       社員ログインをするには、会社でのログインが必要です。
     = form_with model: @company, url: company_session_path, local: true do |f|
-      = flash[:notice]
-      = flash[:alert]
+      - if flash[:notice] || flash[:alert]
+        #error_flash
+          %i.fas.fa-info-circle.error-icon-big
+          %h2
+            = flash[:notice]
+            = flash[:alert]
       .field
         .input-title
           = f.label :company_login_id, "①アカウントID"

@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 class Companies::RegistrationsController < Devise::RegistrationsController
-  before_action :configure_sign_up_params, only: [:create]
+  prepend_before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
   # 🔃  recapcha
-  prepend_before_action :check_captcha, only: [:create]
+  before_action :check_captcha, only: [:create]
   prepend_before_action :require_no_authentication, only: [:new]
 
   # GET /resource/sign_up
@@ -44,17 +44,18 @@ class Companies::RegistrationsController < Devise::RegistrationsController
   # protected
   private
 
-  # 🔃 recaptcha
-  def check_captcha
-    self.resource = resource_class.new sign_up_params
-    resource.validate
-    respond_with_navigational(resource) { render :new } unless verify_recaptcha(model: resource)
-  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # 💌 ↓params:passwordとpassword_confirmationは念のため渡しています
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: %i[name company_login_id email password password_confirmation post_code prefecture_id city street building_name image])
+  end
+
+  # 🔃 recaptcha
+  def check_captcha
+    self.resource = resource_class.new sign_up_params
+    resource.validate
+    respond_with_navigational(resource) { render :new } unless verify_recaptcha(model: resource)
   end
 
   def require_no_authentication

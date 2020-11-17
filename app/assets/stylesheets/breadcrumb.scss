@@ -1,0 +1,15 @@
+.breadcrumbs-list{
+  margin: auto 0 auto 10px;
+  font-size: 16px;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-weight: bold;
+  a{
+    color: #FFFFFF;
+    text-decoration: none;
+    border-bottom: dashed .1px #FFFFFF;
+    &:hover{
+      opacity: .8;
+    }
+  }
+}

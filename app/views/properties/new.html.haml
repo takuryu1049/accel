@@ -1,0 +1,593 @@
+- list_box = ["物件名称","物件所在地","物件種別","総戸数","管理形態","ライフライン","建物設備","周辺施設情報","物件写真登録","物件ランク","物件注意事項"]
+- list_box_2 = ["所有者名称","所有者について","所有者住所","連絡先等","勤務先情報"]
+.properties-registration-page-wrapper
+  .sub-header
+    - breadcrumb :new_property
+    = breadcrumbs pretext: "", separator: " &rsaquo; ", class: "breadcrumbs-list"
+  .content-wrap
+    .main-content
+      .support-bar
+        .registration_list-title
+          = "物件情報 (#{list_box.length})"
+        - for i in 0..10 do
+          = link_to "#{i+1}.#{list_box[i]}", "#switch#{i+1}" , class: "support-bar-line#{i+1}"
+        .registration_list-title-2
+          = "所有者情報 (#{list_box_2.length})"
+        - for i in 0..4 do
+          = link_to "#{i+1}.#{list_box_2[i]}", "#switch2-#{i+1}" , class: "support-bar-line2-#{i+1}"
+        %i.fas.fa-pencil-alt#pen.pen-none
+          入力中
+      .properties-registration-form-full-wrapper
+        = form_with model: @property_owner_utility_equipment_facility,url: properties_path, class: "float-form", local: true do |f|
+          - if @property_owner_utility_equipment_facility.errors.any?
+            #error_explanation
+              %i.fas.fa-exclamation-circle.error-icon-big
+              %h2
+                申し訳ございません。
+                %br/
+                入力不備のため登録ができません。
+              %h3
+                お手数ですが、入力項目をご確認のうえ、再度ご入力ください。
+          .properties-registration-form-wrap
+            = f.hidden_field :company_id, :value => current_company.id
+            = f.hidden_field :worker_id, :value => current_worker.id
+            - for i in 0..10 do
+              = content_tag(:div, "", id: "switch#{i+1}", class: "properties-registration-form-wrap-line#{i+1}") do
+                .form-border
+                  - case i+1
+                  - when 1 then
+                    .properties-registration-form-title
+                      %h1.box-title
+                        = "#{i+1}.#{list_box[i]}" 
+                        %i.far.fa-question-circle.info-icon
+                        .description
+                          号室の記入は必要ありません。※分譲一室の場合も必要ありませんのでご注意下さい。
+                    .field-space
+                      .field
+                        .input-title
+                          %span.must
+                            必須
+                          = f.label :name, "物件名称"
+                        = f.text_field :name, autofocus: true,class: 'fa',placeholder: "例) 佐藤アパート", autocomplete: "off"
+                      - if @property_owner_utility_equipment_facility.errors.include?(:name)
+                        .error
+                          %i.fas.fa-exclamation-circle.error-icon
+                          = @property_owner_utility_equipment_facility.errors.full_messages_for(:name).first
+                      .field
+                        .input-title
+                          %span.must
+                            必須
+                          = f.label :name_kana, "物件名称 (カナ)"
+                        = f.text_field :name_kana, autofocus: true,class: 'fa',placeholder: "例) サトウアパート", autocomplete: "off"
+                      - if @property_owner_utility_equipment_facility.errors.include?(:name_kana)
+                        .error
+                          %i.fas.fa-exclamation-circle.error-icon
+                          = @property_owner_utility_equipment_facility.errors.full_messages_for(:name_kana).first
+                  - case i+1
+                  - when 2 then
+                    .properties-registration-form-title
+                      %h1.box-title
+                        = "#{i+1}.#{list_box[i]}" 
+                    .field-space
+                      .field
+                        .input-title
+                          %span.must
+                            必須
+                          = f.label :post_code, "郵便番号" 
+                        = f.text_field :post_code, autofocus: true,class: 'fa in_logo', placeholder: "\uf7d7 例) 123-1234 (ハイフン含む)", autocomplete: "off"
+                      - if @property_owner_utility_equipment_facility.errors.include?(:post_code)
+                        .error
+                          %i.fas.fa-exclamation-circle.error-icon
+                          = @property_owner_utility_equipment_facility.errors.full_messages_for(:post_code).first
+                      .field
+                        .input-title
+                          %span.must
+                            必須
+                          = f.label :prefecture_id, "都道府県" 
+                        = f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box fa"})
+                      - if @property_owner_utility_equipment_facility.errors.include?(:prefecture_id)
+                        .error
+                          %i.fas.fa-exclamation-circle.error-icon
+                          = @property_owner_utility_equipment_facility.errors.full_messages_for(:prefecture_id).first
+                      .field
+                        .input-title
+                          %span.must
+                            必須
+                          = f.label :city, "市区町村" 
+                        = f.text_field :city, autofocus: true, autocomplete: "address-level2" ,placeholder: "※町名まで入力をしてください",class: "fa" , autocomplete: "off"
+                      - if @property_owner_utility_equipment_facility.errors.include?(:city)
+                        .error
+                          %i.fas.fa-exclamation-circle.error-icon
+                          = @property_owner_utility_equipment_facility.errors.full_messages_for(:city).first
+                      .field
+                        .input-title
+                          %span.must
+                            必須
+                          = f.label :street, "番地" 
+                        = f.text_field :street, autofocus: true, class: "fa", autocomplete: "off"
+                      - if @property_owner_utility_equipment_facility.errors.include?(:street)
+                        .error
+                          %i.fas.fa-exclamation-circle.error-icon
+                          = @property_owner_utility_equipment_facility.errors.full_messages_for(:street).first
+                  - case i+1
+                  - when 3 then
+                    .properties-registration-form-title
+                      %h1.box-title
+                        = "#{i+1}.#{list_box[i]}" 
+                        %i.far.fa-question-circle.info-icon
+                        .description
+                          ACCELでは物件種別に明確な基準を設けていません。用意してある項目に準拠して、会社ごとに統一した基準を設けてください。
+                    .field-space
+                      .field
+                        .input-title
+                          %span.must
+                            必須
+                          = f.label :type_id, "物件種別" 
+                        = f.collection_select(:type_id, Type.all, :id, :name, {}, {class:"select-box fa"}) 
+                      - if @property_owner_utility_equipment_facility.errors.include?(:type_id)
+                        .error
+                          %i.fas.fa-exclamation-circle.error-icon
+                          = @property_owner_utility_equipment_facility.errors.full_messages_for(:type_id).first
+                  - case i+1
+                  - when 4 then
+                    .properties-registration-form-title
+                      %h1.box-title
+                        = "#{i+1}.#{list_box[i]}" 
+                        %i.far.fa-question-circle.info-icon
+                        .description
+                          管理形態・物件状況に関わらず、
+                          %br
+                          物件の総戸数を入力してください。
+                    .field-space
+                      .field
+                        .input-title
+                          %span.must
+                            必須
+                          = f.label :units, "総戸数" 
+                        = f.number_field :units, autofocus: true, class: 'fa', min: 1, max: 3000
+                        .units
+                          戸
+                      - if @property_owner_utility_equipment_facility.errors.include?(:units)
+                        .error
+                          %i.fas.fa-exclamation-circle.error-icon
+                          = @property_owner_utility_equipment_facility.errors.full_messages_for(:units).first
+                  - case i+1
+                  - when 5 then
+                    .properties-registration-form-title
+                      %h1.box-title
+                        = "#{i+1}.#{list_box[i]}" 
+                        %i.far.fa-question-circle.info-icon
+                        .description
+                          管理形態が「物件内混合」の場合には、情報が複雑な場合がある為、物件の注意事項にその内容を詳細に入力してください。
+                    .field-space
+                      .field
+                        .input-title
+                          %span.must
+                            必須
+                          = f.label :management_form_id, "管理形態"
+                        = f.collection_select(:management_form_id, ManagementForm.all, :id, :name, {}, {class:"select-box fa"}) 
+                      - if @property_owner_utility_equipment_facility.errors.include?(:management_form_id)
+                        .error
+                          %i.fas.fa-exclamation-circle.error-icon
+                          = @property_owner_utility_equipment_facility.errors.full_messages_for(:management_form_id).first
+                  - case i+1
+                  - when 6 then
+                    .properties-registration-form-title
+                      %h1.box-title
+                        = "#{i+1}.#{list_box[i]}" 
+                    .field-space
+                      .field
+                        .input-title
+                          %span.must
+                            必須
+                          = f.label :sewer_id, "上水道" 
+                        = f.collection_select(:sewer_id, Sewer.all, :id, :name, {}, {class:"select-box fa"})
+                        - if @property_owner_utility_equipment_facility.errors.include?(:sewer_id)
+                          .error
+                            %i.fas.fa-exclamation-circle.error-icon
+                            = @property_owner_utility_equipment_facility.errors.full_messages_for(:sewer_id).first
+                      .field
+                        .input-title
+                          %span.must
+                            必須
+                          = f.label :water_supply_id, "下水道" 
+                        = f.collection_select(:water_supply_id, WaterSupply.all, :id, :name, {}, {class:"select-box fa"})
+                        - if @property_owner_utility_equipment_facility.errors.include?(:water_supply_id)
+                          .error
+                            %i.fas.fa-exclamation-circle.error-icon
+                            = @property_owner_utility_equipment_facility.errors.full_messages_for(:water_supply_id).first
+                      .field
+                        .input-title
+                          %span.must
+                            必須
+                          = f.label :electrical_id, "電気" 
+                        = f.collection_select(:electrical_id, Electrical.all, :id, :name, {}, {class:"select-box fa"})
+                        - if @property_owner_utility_equipment_facility.errors.include?(:electrical_id)
+                          .error
+                            %i.fas.fa-exclamation-circle.error-icon
+                            = @property_owner_utility_equipment_facility.errors.full_messages_for(:electrical_id).first
+                      .field
+                        .input-title
+                          %span.must
+                            必須
+                          = f.label :gas_id, "ガス" 
+                        = f.collection_select(:gas_id, Ga .all, :id, :name, {}, {class:"select-box fa"})
+                        - if @property_owner_utility_equipment_facility.errors.include?(:gas_id)
+                          .error
+                            %i.fas.fa-exclamation-circle.error-icon
+                            = @property_owner_utility_equipment_facility.errors.full_messages_for(:gas_id).first
+                  - case i+1
+                  - when 7 then
+                    .properties-registration-form-title
+                      %h1.box-title
+                        = "#{i+1}.#{list_box[i]}  (該当項目すべてを選択)" 
+                    .field-space
+                      .field
+                        = f.collection_check_boxes(:equipment_id, Equipment.all, :id, :name, {}, {class:"check-box"})do |f|
+                          .wrap 
+                            = f.check_box
+                            = f.label
+                  - case i+1
+                  - when 8 then
+                    .properties-registration-form-title
+                      %h1.box-title
+                        = "#{i+1}.#{list_box[i]}  (該当項目すべてを選択)" 
+                    .field-space
+                      .field
+                        = f.collection_check_boxes(:facility_id,  Facility.all, :id, :name, {}, {class:"check-box"})do |f|
+                          .wrap 
+                            = f.check_box
+                            = f.label
+                  - case i+1
+                  - when 9 then
+                    .properties-registration-form-title
+                      %h1.box-title
+                        = "#{i+1}.#{list_box[i]}" 
+                        %i.far.fa-question-circle.info-icon
+                        .description
+                          物件の外観を掲載してください。
+                    .field-space
+                      .field
+                        .input-title
+                          %span.must.animate__animated.animate__fadeInUp
+                            必須
+                          = f.label :image, "物件写真"
+                        = f.file_field :image, id:"item-image", autofocus: true, class: "fa" 
+                        - if @property_owner_utility_equipment_facility.errors.include?(:image)
+                          .error
+                            %i.fas.fa-exclamation-circle.error-icon
+                            = @property_owner_utility_equipment_facility.errors.full_messages_for(:image).first
+                      #image-list
+                        = image_tag "No-image.png", id: "no-image"
+                  - case i+1
+                  - when 10 then
+                    .properties-registration-form-title
+                      %h1.box-title
+                        = "#{i+1}.#{list_box[i]}" 
+                    .field-space
+                      .field
+                        .input-title
+                          %span.must
+                            必須
+                          = f.label :rank_id, "物件ランク"
+                        = f.collection_select(:rank_id, Rank.all, :id, :name, {}, {class:"select-box fa"}) 
+                      - if @property_owner_utility_equipment_facility.errors.include?(:rank_id)
+                        .error
+                          %i.fas.fa-exclamation-circle.error-icon
+                          = @property_owner_utility_equipment_facility.errors.full_messages_for(:rank_id).first
+                      .important-description
+                        %span.fas.fa-exclamation-circle 注意点
+                        A: 掲載等をしていれば何もしなくても成約する可能性が高い物件
+                        %br/
+                        B: 1つ提案が決まれば決まる可能性が高い物件
+                        %br/
+                        C: 2つ以上の提案を行えば、Bランクになる可能性が高い物件
+                        %br/
+                        D: 2つ以上の提案をしても、Bランクになる可能性が低い物件
+                  - case i+1
+                  - when 11 then
+                    .properties-registration-form-title
+                      %h1.box-title
+                        = "#{i+1}.#{list_box[i]}" 
+                    .field-space
+                      .field
+                        .input-title
+                          %span.must.optional
+                            任意
+                          = f.label :caution, "物件注意事項"
+                        = f.text_area :caution, class: 'fa', autofocus: true
+          .properties-registration-form-wrap-2
+            - for i in 0..4 do
+              = content_tag(:div, "", id: "switch2-#{i+1}", class: "properties-registration-form-wrap-2-line-#{i+1}") do
+                .form-border
+                  - case i+1
+                  - when 1 then
+                    .properties-registration-form-title
+                      %h1.box-title
+                        = "#{i+1}.#{list_box_2[i]}" 
+                        %i.far.fa-question-circle.info-icon
+                        .description
+                          個人・法人のいずれかを選択してください。
+                    .field-space
+                      .switch-field
+                        .input-title
+                          %span.must
+                            必須
+                          = f.label :swicth_owner_form, "所有形態"
+                        = f.radio_button :swicth_owner_form, FALSE, class: 'fa in_logo input_radio', id: "human-switch",checked: true
+                        .switch-name
+                          個人
+                        = f.radio_button :swicth_owner_form, TRUE, class: 'fa in_logo input_radio', id: "company-switch"
+                        .switch-name
+                          法人
+                      .company-wrap
+                        .field#owner-company-name.owner-company-name-none
+                          .input-title
+                            %span.must
+                              必須
+                            = f.label :owner_company_name, "会社名"
+                          = f.text_field :owner_company_name, autofocus: true, class: 'fa', id: 'owner-company-name-input', autocomplete: "off"
+                          - if @property_owner_utility_equipment_facility.errors.include?(:owner_company_name)
+                            .error
+                              %i.fas.fa-exclamation-circle.error-icon
+                              = @property_owner_utility_equipment_facility.errors.full_messages_for(:owner_company_name).first
+                        .field#owner-company-name-kana.owner-company-name-kana-none
+                          .input-title
+                            %span.must
+                              必須
+                            = f.label :owner_company_name_kana, "会社名(カナ)"
+                          = f.text_field :owner_company_name_kana, autofocus: true, class: 'fa', id: 'owner-company-name-kana-input', autocomplete: "off"
+                          - if @property_owner_utility_equipment_facility.errors.include?(:owner_company_name_kana)
+                            .error
+                              %i.fas.fa-exclamation-circle.error-icon
+                              = @property_owner_utility_equipment_facility.errors.full_messages_for(:owner_company_name_kana).first
+                      .name-wrap
+                        .field#owner-last-name
+                          .input-title.short
+                            %span.must
+                              必須
+                            = f.label :last_name, "姓"
+                          = f.text_field :last_name, autofocus: true, class: 'fa name-input', id: 'owner-last-name-input', autocomplete: "off"
+                          - if @property_owner_utility_equipment_facility.errors.include?(:last_name)
+                            .error
+                              %i.fas.fa-exclamation-circle.error-icon
+                              = @property_owner_utility_equipment_facility.errors.full_messages_for(:last_name).first
+                        .field#owner-first-name
+                          .input-title.short
+                            %span.must
+                              必須
+                            = f.label :first_name, "名"
+                          = f.text_field :first_name, autofocus: true, class: 'fa name-input', id: 'owner-first-name-input', autocomplete: "off"
+                          - if @property_owner_utility_equipment_facility.errors.include?(:first_name)
+                            .error
+                              %i.fas.fa-exclamation-circle.error-icon
+                              = @property_owner_utility_equipment_facility.errors.full_messages_for(:first_name).first
+                        .field#owner-last-name-kana
+                          .input-title
+                            %span.must
+                              必須
+                            = f.label :last_name_kana, "姓(カナ)"
+                          = f.text_field :last_name_kana, autofocus: true, class: 'fa name-input', id: 'owner-last-name-kana-input', autocomplete: "off"
+                          - if @property_owner_utility_equipment_facility.errors.include?(:last_name_kana)
+                            .error
+                              %i.fas.fa-exclamation-circle.error-icon
+                              = @property_owner_utility_equipment_facility.errors.full_messages_for(:last_name_kana).first
+                        .field#owner-first-name-kana
+                          .input-title
+                            %span.must
+                              必須
+                            = f.label :first_name_kana, "名(メイ)"
+                          = f.text_field :first_name_kana, autofocus: true, class: 'fa name-input', id: 'owner-first-name-kana-input', autocomplete: "off"
+                          - if @property_owner_utility_equipment_facility.errors.include?(:first_name_kana)
+                            .error
+                              %i.fas.fa-exclamation-circle.error-icon
+                              = @property_owner_utility_equipment_facility.errors.full_messages_for(:first_name_kana).first
+                  - case i+1
+                  - when 2 then
+                    .properties-registration-form-title
+                      %h1.box-title
+                        = "#{i+1}.#{list_box_2[i]}" 
+                        %i.far.fa-question-circle.info-icon
+                        .description
+                          大家様について、社内全体に共有するべき情報を入力してください。※電話等の連絡に関する情報は「4.連絡先等」に入力してください。
+                    .field-space
+                      .field-wrap-conpact
+                        .field.field-1
+                          .input-title.short
+                            %span.must
+                              必須
+                            = f.label :gender, "性別"
+                          .gender-flex
+                            = f.radio_button :gender, FALSE, class: 'fa input_radio',checked: true
+                            %i.fas.fa-mars
+                            男
+                            = f.radio_button :gender, TRUE, class: 'fa input_radio'
+                            %i.fas.fa-venus
+                            女
+                        .field.field-3
+                          .input-title
+                            %span.must.optional
+                              任意(推奨)
+                            = f.label :character_id, "性格" 
+                          = f.collection_select(:character_id, Character.all, :id, :name, {}, {class:"select-box fa"}) 
+                      .field.field-4
+                        .input-title
+                          %span.must.optional
+                            任意
+                          = f.label :character_about, "所有者についての共有事項" 
+                        = f.text_area :character_about, class: 'fa', autofocus: true
+                  - case i+1
+                  - when 3 then
+                    .properties-registration-form-title
+                      %h1.box-title
+                        = "#{i+1}.#{list_box_2[i]}" 
+                    .field-space
+                      .field
+                        .input-title
+                          %span.must
+                            必須
+                          = f.label :owner_post_code, "郵便番号" 
+                        = f.text_field :owner_post_code, autofocus: true,class: 'fa in_logo', autocomplete: "off"
+                      - if @property_owner_utility_equipment_facility.errors.include?(:owner_post_code)
+                        .error
+                          %i.fas.fa-exclamation-circle.error-icon
+                          = @property_owner_utility_equipment_facility.errors.full_messages_for(:owner_post_code).first
+                      .field
+                        .input-title
+                          %span.must
+                            必須
+                          = f.label :owner_prefecture_id, "都道府県" 
+                        = f.collection_select(:owner_prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box fa"}) 
+                      - if @property_owner_utility_equipment_facility.errors.include?(:owner_prefecture_id)
+                        .error
+                          %i.fas.fa-exclamation-circle.error-icon
+                          = @property_owner_utility_equipment_facility.errors.full_messages_for(:owner_prefecture_id).first
+                      .field
+                        .input-title
+                          %span.must
+                            必須
+                          = f.label :owner_city, "市区町村" 
+                        = f.text_field :owner_city, autofocus: true, class: 'fa', autocomplete: "off"
+                      - if @property_owner_utility_equipment_facility.errors.include?(:owner_city)
+                        .error
+                          %i.fas.fa-exclamation-circle.error-icon
+                          = @property_owner_utility_equipment_facility.errors.full_messages_for(:owner_city).first
+                      .field
+                        .input-title
+                          %span.must
+                            必須
+                          = f.label :owner_street, "番地" 
+                        = f.text_field :owner_street, autofocus: true, class: 'fa', autocomplete: "off"
+                      - if @property_owner_utility_equipment_facility.errors.include?(:owner_street)
+                        .error
+                          %i.fas.fa-exclamation-circle.error-icon
+                          = @property_owner_utility_equipment_facility.errors.full_messages_for(:owner_street).first
+                      .field
+                        .input-title
+                          %span.must.optional
+                            任意
+                          = f.label :owner_building_name, "建物名(号室まで)" 
+                        = f.text_field :owner_building_name, autofocus: true, class: 'fa', autocomplete: "off"
+                  - case i+1
+                  - when 4 then
+                    .properties-registration-form-title
+                      %h1.box-title
+                        = "#{i+1}.#{list_box_2[i]}" 
+                        %i.far.fa-question-circle.info-icon
+                        .description
+                          主要なやり取り人物が複数人いる場合には、やり取り方法についての欄に、
+                          やり取り方法の詳細を入力してください。
+                    .field-space
+                      .field.col-flex
+                        .input-title
+                          %span.must
+                            必須
+                          = f.label :main_communication, "主要やり取り人物"
+                        = f.text_field :main_communication, autofocus: true,class: 'fa in_logo',placeholder: "例) 本人・娘・父・知人の●●さんなど", autocomplete: "off"
+                      - if @property_owner_utility_equipment_facility.errors.include?(:main_communication)
+                        .error
+                          %i.fas.fa-exclamation-circle.error-icon
+                          = @property_owner_utility_equipment_facility.errors.full_messages_for(:main_communication).first
+                      .field.col-flex
+                        .input-title
+                          %span.must
+                            必須
+                          = f.label :communication_about, "やり取り方法について" 
+                        = f.text_area :communication_about, class: 'fa', autofocus: true, autocomplete: "off"
+                      - if @property_owner_utility_equipment_facility.errors.include?(:communication_about)
+                        .error
+                          %i.fas.fa-exclamation-circle.error-icon
+                          = @property_owner_utility_equipment_facility.errors.full_messages_for(:communication_about).first
+                      .wrap-flex
+                        .field
+                          .input-title
+                            %span.must.optional
+                              任意
+                            = f.label :home_phone_num, "固定電話番号" 
+                          = f.text_field :home_phone_num, autofocus: true, class: 'fa', autocomplete: "off"
+                        .field
+                          .input-title
+                            %span.must.optional
+                              任意
+                            = f.label :phone_num, "携帯電話番号"
+                          = f.text_field :phone_num, autofocus: true, class: 'fa', autocomplete: "off"
+                        .field
+                          .input-title
+                            %span.must.optional
+                              任意
+                            = f.label :other_phone_num, "その他電話番号" 
+                          = f.text_field :other_phone_num, autofocus: true, class: 'fa', autocomplete: "off"
+                        .field
+                          .input-title
+                            %span.must.optional
+                              任意
+                            = f.label :fax_num, "FAX番号" 
+                          = f.text_field :fax_num, autofocus: true, class: 'fa', autocomplete: "off"
+                        .field
+                          .input-title
+                            %span.must.optional
+                              任意
+                            = f.label :email, "メールアドレス" 
+                          = f.text_field :email, autofocus: true, class: 'fa', autocomplete: "off"
+                  - case i+1
+                  - when 5 then
+                    .properties-registration-form-title
+                      %h1.box-title
+                        = "#{i+1}.#{list_box_2[i]}" 
+                        %i.far.fa-question-circle.info-icon
+                    .field-space
+                      .field
+                        .input-title
+                          %span.must.optional
+                            任意
+                          = f.label :w_company_name, "会社名"
+                        = f.text_field :w_company_name, autofocus: true, class: 'fa', id: 'owner-company-name-input', id: "remove-company-name", autocomplete: "off"
+                      .field
+                        .input-title
+                          %span.must.optional
+                            任意
+                          = f.label :w_company_name_kana, "会社名(カナ)"
+                        = f.text_field :w_company_name_kana, autofocus: true, class: 'fa', id: 'owner-company-name-kana-input', id: "remove-company-kana-name", autocomplete: "off"
+                      .field
+                        .input-title
+                          %span.must.optional
+                            任意
+                          = f.label :w_post_code, "郵便番号" 
+                        = f.text_field :w_post_code, autofocus: true,class: 'fa in_logo', autocomplete: "postal-code", id: "remove-post-code" , autocomplete: "off"
+                      .field
+                        .input-title
+                          %span.must.optional
+                            任意
+                          = f.label :w_prefecture_id, "都道府県" 
+                        = f.collection_select(:w_prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box remove-input fa", id: "remove-prefecture"})
+                      .field
+                        .input-title
+                          %span.must.optional
+                            任意
+                          = f.label :w_city, "市区町村" 
+                        = f.text_field :w_city, autofocus: true, autocomplete: "address-level2", class: "remove-input fa", id: "remove-city", autocomplete: "off"
+                      .field
+                        .input-title
+                          %span.must.optional
+                            任意
+                          = f.label :w_street, "番地" 
+                        = f.text_field :w_street, autofocus: true, autocomplete: "address-line1" , class: "remove-input fa", id: "remove-street", autocomplete: "off"
+                      .field
+                        .input-title
+                          %span.must.optional
+                            任意
+                          = f.label :w_building_name, "建物名(号室まで)" 
+                        = f.text_field :w_building_name, autofocus: true, class: "fa remove-input", id: "remove-building_name", autocomplete: "off"
+                      .field
+                        .input-title
+                          %span.must.optional
+                            任意
+                          = f.label :w_company_phone_num, "勤務先電話番号"
+                        = f.text_field :w_company_phone_num, autofocus: true, class: "fa remove-input", id: "remove-company_phone_num", autocomplete: "off"
+                      .field
+                        .input-title
+                          %span.must.optional
+                            任意
+                          = f.label :w_job_description, "仕事内容"
+                        = f.text_field :w_job_description, autofocus: true, class: "fa remove-input", id: "remove-job_description", autocomplete: "off"
+          = f.button '登録する', class: "submit-btn",type: 'button', onclick: 'submit();'

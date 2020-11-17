@@ -2,8 +2,44 @@ $accel_pink: #E43AD2;
 $accel_black: #13202F;  
 
 .header-app{
-  background-color: black;
+  background-color: white;
   height: 140px;
+  color: $accel_black;
+  box-shadow: 0px 0px 6px 1px inset rgba(0,0,0,0.3);
+  position:relative;
+  z-index: 1;
+  .apps-home-logo{
+    height: 50px;
+    width: 160px;
+    position: absolute;
+    top: 0px;
+    left: 10px;
+  }
+  .current-logo-registration{
+    display: block;
+    background-color: #ff954a;
+    height: 300px;
+    width:  300px;
+    position: absolute;
+    top: -200px;
+    right:-220px;
+    transform: rotate(45deg);
+    &:hover{
+      position: absolute;
+      top: -198px;
+      right:-218px;
+      opacity: .6;
+    }
+  }
+  .home-logo{
+    font-size: 40px;
+    color: #FFFFFF;
+    position: absolute;
+    top: 245px;
+    right: 145px;
+    transform: rotate(-45deg);
+  }
+
   .container-1{
     height: 70px;
     width: 100%;
@@ -18,16 +54,8 @@ $accel_black: #13202F;
         display: flex;
         justify-content: center;
         margin-left: 20px;
-        border-bottom:3px dotted;
-        border-color: rgba(255, 255, 255 , 0.8);
         li{
           list-style: none;
-          border-left:3px dotted;
-          border-color: rgba(255, 255, 255 , 0.8);
-          &:hover{
-            height:70px;
-            background-color: $accel_pink;
-          }
           a{
             height:70px;
             display: block;
@@ -36,16 +64,32 @@ $accel_black: #13202F;
             padding-right: 20px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 20px;
-            color:white;
-            .other{
-              font-size: 30px;
-              padding-left: 20px;
-              padding-right: 20px;
-            }
+            font-size: 15px;
+            color: $accel_black;
             &:hover{
-              opacity: 0.6;
-              color: a;
+              height:70px;
+              color: accel_black;
+              font-size:22px;
+              border-radius: 3px;
+              border: ridge 2px $accel_pink; 
+            }
+          }
+          .news{
+            position: relative;
+            &:hover{
+              .num{
+                top: 0px;
+              }
+            }
+            .num{
+              border-radius: 50%;
+              font-size: 11px;
+              color: #FFFFFF;
+              background-color: red;
+              padding: 3px;
+              position: absolute;
+              top: 10px;
+              right: 0;
             }
           }
         }
@@ -61,14 +105,37 @@ $accel_black: #13202F;
         display: block;
         display: flex;
         align-items: center;
-        &:hover{
-          opacity:0.8;
-        }
-        img{
+        .mens-color{
+          border: solid 3px rgba(0, 153, 204 , 0.3);
+          border-radius: 50%;
           width: 60px;
           height: 60px;
-          border-radius:30px;
-          border: solid 2px rgba(255, 255, 255 , 0.8);
+          &:hover{
+            opacity:0.8;
+            border: dotted 3px rgba(0, 153, 204 , 0.6);
+            transform: rotate3d(1,1,1,10deg);
+            color: accel_black;
+            font-size:22px;
+            border-radius: 3px;
+            border: ridge 2px $accel_pink; 
+            border-radius: 50%;
+          }
+        }
+        .woman-color{
+          border: solid 3px rgba(255, 153, 204, 0.6);
+          border-radius: 50%;
+          width: 60px;
+          height: 60px;
+          &:hover{
+            opacity:0.8;
+            border: dotted 3px rgba(0, 153, 204 , 0.6);
+            transform: rotate3d(1,1,1,10deg);
+            color: accel_black;
+            font-size:22px;
+            border-radius: 3px;
+            border: ridge 2px $accel_pink; 
+            border-radius: 50%;
+          }
         }
       }
       .profile-navi{
@@ -78,15 +145,15 @@ $accel_black: #13202F;
         .profile-name{
           margin-top: 21.5px;
           margin-left: 10px;
-          .gender{
-            color: white;
-          }
           a{
+            display: block;
             text-decoration: none;
-            color: rgba(255,255,255,0.8);
-            font-weight:bold;
+            color: $accel_black;
             &:hover{
-              color: rgba(255,255,255,1);
+              color: $accel_black;
+              font-size:19px;
+              border-radius: 3px;
+              border-bottom: ridge 2px $accel_pink; 
             }
           }
         }
@@ -95,9 +162,14 @@ $accel_black: #13202F;
           margin-left: 10px;
           a{
             text-decoration: none;
-            color: rgba(255,255,255,0.8);
+            color: $accel_black;
+            display: block;
             &:hover{
-              color: rgba(255,255,255,1);
+              color: $accel_black;
+              opacity:0.7;
+              font-size:19px;
+              border-radius: 3px;
+              border-bottom: ridge 2px $accel_pink; 
             }
           }
         }
@@ -110,7 +182,6 @@ $accel_black: #13202F;
     max-width: 1440px;
     margin: 0 auto;
     display: flex;
-    box-shadow: 0 2px 4px 2px rgba(0,0,0,0.3);
     .navi-flex{
       width: 830px;
       display: flex;
@@ -121,89 +192,27 @@ $accel_black: #13202F;
         margin-left: 20px;
         li{
           list-style: none;
-          border-left:3px dotted;
-          border-color: rgba(255, 255, 255 , 0.8);
-          &:hover{
-            height:70px;
-            background-color: $accel_pink;
-          }
           a{
             height:70px;
+            display: block;
             padding-top: 20px;
             padding-left: 20px;
             padding-right: 20px;
-            display: block;
             text-decoration: none;
             font-weight: 700;
-            font-size: 20px;
-            color:white;
+            font-size: 15px;
+            color: $accel_black;
             &:hover{
-              opacity: 0.6;
-              color: $accel_black;
-            }
-            .other{
-              padding-left: 25px;
-              padding-right: 25px;
+              height:70px;
+              color: accel_black;
+              font-size:22px;
+              border-radius: 3px;
+              border: ridge 2px $accel_pink; 
             }
           }
         }
       }
     }
-    .user-navi-second{
-      color: white;
-      font-size: 20px;
-      display:flex;
-      .score-box-1{
-        display:flex;
-        flex-direction: column;
-        width: 290px;
-        .my-store{
-          margin-left: 30px;
-          a{
-            text-decoration: none;
-            color: rgba(255,255,255,0.8);
-            &:hover{
-              color: rgba(255,255,255,1);
-            }
-          }
-        }
-        .my-work-year{
-          margin-left: 30px;
-          a{
-            text-decoration: none;
-            color: rgba(255,255,255,0.8);
-            &:hover{
-              color: rgba(255,255,255,1);
-            }
-          }
-        }
-      }
-      .score-box-2{
-        display:flex;
-        flex-direction: column;
-        width: 290px;
-        .my-position{
-          margin-left: 20px;
-          a{
-            text-decoration: none;
-            color: rgba(255,255,255,0.8);
-            &:hover{
-              color: rgba(255,255,255,1);
-            }
-          }
-        }
-        .year-result-percentage{
-          margin-left: 20px;
-          a{
-            text-decoration: none;
-            color: rgba(255,255,255,0.8);
-            &:hover{
-              color: rgba(255,255,255,1);
-            }
-          }
-        }
-      }
-    } 
   }
 }
 
@@ -213,28 +222,15 @@ $accel_black: #13202F;
   .app-content{
     width:100%;
     .app-analytics-bar{
-      height: 60px;
-      background-color: #e8f0fe;
-      padding-left: 10%;
-      padding-right: 10%;
-      font-size: 10px;
+      background-color: $accel_black;
+      height: 30px;
       display: flex;
-      box-shadow: 0 2px 4px 2px rgba(0,0,0,0.3);
-      font-family: "メイリオ";
-      h1.analytics-store-select{
-        margin-top: 15px;
-        a{
-          text-decoration: none;
-          color: $accel_black;
-        }
-      }
-      h1.analytics-month-select{
-        margin-top:15px;
-        margin-left: 50px;
-        a{
-          text-decoration: none;
-          color: $accel_black;
-        }
+      .breadcrumbs-list{
+        margin: auto 0 auto 10px;
+        font-size: 16px;
+        color: #FFFFFF;
+        text-decoration: none;
+        font-weight: bold;
       }
     }
     .app-analytics{

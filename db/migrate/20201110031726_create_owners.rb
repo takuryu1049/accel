@@ -9,7 +9,6 @@ class CreateOwners < ActiveRecord::Migration[6.0]
       t.string :last_name_kana
       t.string :first_name_kana
       t.boolean :gender, null: false, default: false
-      t.date :born
       t.integer :character_id
       t.text :character_about
       t.string :post_code, null: false
@@ -24,7 +23,6 @@ class CreateOwners < ActiveRecord::Migration[6.0]
       t.string :other_phone_num
       t.string :fax_num
       t.string :email
-      t.text :caution_and_about
       t.timestamps
     end
   end

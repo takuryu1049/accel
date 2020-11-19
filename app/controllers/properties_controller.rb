@@ -1,7 +1,23 @@
 class PropertiesController < ApplicationController
 
-  def index
-    
+  def sort
+    @sort_num = params[:id]
+    @properties_count = current_company.properties.count
+    if @sort_num == "1"
+      @properties = current_company.properties.order(created_at: "DESC")
+    elsif @sort_num == "2"
+      @properties = current_company.properties.order(created_at: "ASC")
+    elsif @sort_num == "3"
+      @properties = current_company.properties.order(rank_id: "ASC")
+    elsif @sort_num == "4"
+      @properties = current_company.properties.order(rank_id: "DESC")
+    elsif @sort_num == "5"
+      @properties = current_company.properties.order(units: "DESC")
+    elsif @sort_num == "6"
+      @properties = current_company.properties.order(units: "ASC")
+    else
+      @properties = current_company.properties.order(created_at: "DESC")
+    end
   end
   
   def new
@@ -12,9 +28,9 @@ class PropertiesController < ApplicationController
     @property_owner_utility_equipment_facility = PropertyOwnerUtilityEquipmentFacility.new(property_owner_utility_equipment_facility_params)
     if @property_owner_utility_equipment_facility.valid?
       @property_owner_utility_equipment_facility.save
-        redirect_to properties_path
-      else
-        render action: :new
+        redirect_to sort_property_path(1)
+    else
+      render action: :new
     end
   end
 

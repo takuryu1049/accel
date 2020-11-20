@@ -1,9 +1,9 @@
 class Property < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to_active_hash :equipment
-  belongs_to_active_hash :facility
-  serialize :equipment
-  serialize :facility
+  belongs_to_active_hash :prefecture
+  belongs_to_active_hash :type
+  belongs_to_active_hash :management_form
+  belongs_to_active_hash :rank
   # has_many :rooms
   # has_many :traffics
   # has_many :car_parks, through: property_car_parks 

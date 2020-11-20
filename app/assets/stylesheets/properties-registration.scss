@@ -32,6 +32,7 @@ $registration_theme: rgb(255, 149, 74);
   }
   &:hover{
     font-weight: bold;
+    cursor: help;
   }
 }
 @mixin input-title{
@@ -317,7 +318,7 @@ $registration_theme: rgb(255, 149, 74);
                             border-right: solid 10px rgba(57, 57, 57, 0.8);
                             top: 10%;
                             left: -1.6%;
-                            transform: translateX(-50%);/*一応ズレを補正*/
+                            transform: translateX(-50%);
                           }
                         }
                       }

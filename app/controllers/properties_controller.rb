@@ -34,6 +34,10 @@ class PropertiesController < ApplicationController
     end
   end
 
+  def show
+
+  end
+  
   private
 
 

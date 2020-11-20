@@ -1,0 +1,16 @@
+.properties-index-page-wrapper
+  .sub-header
+    - breadcrumb :show_property
+    = breadcrumbs pretext: "", separator: " &rsaquo; ", class: "breadcrumbs-list"
+  %main.horizontal-top-line
+    %section
+      .section-title
+        %span - PROPERTY ABOUT-
+        %h3
+          = "物件詳細" 
+      .property-name
+        %ruby
+          %rb
+            = @property.name
+          %rt
+            = @property.name_kana

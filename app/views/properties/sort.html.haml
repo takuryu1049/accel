@@ -19,7 +19,7 @@
       %ul.property-block-list
         - @properties.each do |property|
           %li.property-block
-            = link_to "#", class: "link-box" do
+            = link_to property_path(property.id), class: "link-box" do
               - case property.rank.id
               - when 1 then
                 = image_tag "a-rank-gold.png", class: "rank-img"
@@ -63,6 +63,6 @@
             .circle
             .select-line
             .about-wrap
-              = link_to "物件詳細", "#"
+              = link_to "物件詳細", property_path(property.id)
               = link_to "部屋一覧", "#"
               = link_to "レポート一覧", "#"

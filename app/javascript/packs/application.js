@@ -12,6 +12,7 @@ require('../regi-form-switch')
 require('../input_pen') 
 require('../work_place-switch')
 require('../sort')
+require('../map')
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.

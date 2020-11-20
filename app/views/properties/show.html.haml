@@ -1,4 +1,5 @@
-.properties-index-page-wrapper
+%script{src: "https://maps.googleapis.com/maps/api/js?key=AIzaSyCaySzq6ccMnlPHQOSEm0Ay_hM0P7NdoMI&callback=initMap"}
+.properties-show-page-wrapper
   .sub-header
     - breadcrumb :show_property
     = breadcrumbs pretext: "", separator: " &rsaquo; ", class: "breadcrumbs-list"
@@ -8,9 +9,25 @@
         %span - PROPERTY ABOUT-
         %h3
           = "物件詳細" 
-      .property-name
-        %ruby
-          %rb
-            = @property.name
-          %rt
-            = @property.name_kana
+      .content-wrapper
+        .property-title-line
+          .dom-block-1.slash
+            %h1
+              Property Name
+            %ruby
+              %rb
+                = @property.name
+              %rt
+                = @property.name_kana
+          .dom-block-2.slash
+        .property-image-line
+          .property-block
+            = image_tag @property.image, class: "property-img" if @property.image.attached?
+          .about-text
+            %table.type-black
+              %tr
+                %th.fix-width-left
+                  = "物件所在地"
+                %th.fix-width-right#map-dom
+                  = "#{@property.prefecture.name}#{@property.city}#{@property.street}"
+            #map

@@ -17,52 +17,60 @@
           .sort-title 並び替え:
           = select_tag 'sort-num', options_for_select([["登録が新しい順","1",], ["登録が古い順","2"], ["ランクが高い順","3"], ["ランクが低い順","4"], ["総戸数が多い順","5"], ["総戸数が少ない順","6"]],:selected=>@sort_num)
       %ul.property-block-list
-        - @properties.each do |property|
-          %li.property-block
-            = link_to property_path(property.id), class: "link-box" do
-              - case property.rank.id
-              - when 1 then
-                = image_tag "a-rank-gold.png", class: "rank-img"
-                .rank-text-a
-                  = property.rank.name
-              - when 2 then
-                = image_tag "b-rank-silver.png", class: "rank-img"
-                .rank-text-b
-                  = property.rank.name
-              - when 3 then
-                = image_tag "c-rank-bronze.png", class: "rank-img"
-                .rank-text-c
-                  = property.rank.name
-              - when 4 then
-                = image_tag "d-rank-skull.png", class: "rank-img"
-                .rank-text-d
-              = image_tag property.image, class: "property-img" if property.image.attached?
-              %span.property-tag
-                = "作成日: #{property.created_at.strftime('%Y/%m/%d')}"
-              .text-wrap
-                %p.property-name
-                  %ruby
-                    %rb
-                      = property.name
-                    %rt
-                      = property.name_kana
-                .property-about
-                  .prefecture-city
-                    = "#{property.prefecture.name}#{property.city}"
-                  %table.type-black
-                    %tr
-                      %th.fix-width-left
-                        = "総戸数"
-                      %th.fix-width-right
-                        = "管理形態"
-                    %tr
-                      %th.type-white
-                        = "#{property.units}戸"
-                      %th.type-white
-                        = property.management_form.name
-            .circle
-            .select-line
-            .about-wrap
-              = link_to "物件詳細", property_path(property.id)
-              = link_to "部屋一覧", "#"
-              = link_to "レポート一覧", "#"
+        - if @not_find_switch
+          .title-wrap
+            %h1 Property Not Found
+            %p 物件情報が見つかりませんでした
+            = link_to "物件登録をする", new_property_path
+            = link_to "HOMEボードに戻る", app_tops_path
+            %span.far.fa-comment-dots
+        - else
+          - @properties.each do |property|
+            %li.property-block
+              = link_to property_path(property.id), class: "link-box" do
+                - case property.rank.id
+                - when 1 then
+                  = image_tag "a-rank-gold.png", class: "rank-img"
+                  .rank-text-a
+                    = property.rank.name
+                - when 2 then
+                  = image_tag "b-rank-silver.png", class: "rank-img"
+                  .rank-text-b
+                    = property.rank.name
+                - when 3 then
+                  = image_tag "c-rank-bronze.png", class: "rank-img"
+                  .rank-text-c
+                    = property.rank.name
+                - when 4 then
+                  = image_tag "d-rank-skull.png", class: "rank-img"
+                  .rank-text-d
+                = image_tag property.image, class: "property-img" if property.image.attached?
+                %span.property-tag
+                  = "作成日: #{property.created_at.strftime('%Y/%m/%d')}"
+                .text-wrap
+                  %p.property-name
+                    %ruby
+                      %rb
+                        = property.name
+                      %rt
+                        = property.name_kana
+                  .property-about
+                    .prefecture-city
+                      = "#{property.prefecture.name}#{property.city}"
+                    %table.type-black
+                      %tr
+                        %th.fix-width-left
+                          = "総戸数"
+                        %th.fix-width-right
+                          = "管理形態"
+                      %tr
+                        %th.type-white
+                          = "#{property.units}戸"
+                        %th.type-white
+                          = property.management_form.name
+              .circle
+              .select-line
+              .about-wrap
+                = link_to "物件詳細", property_path(property.id)
+                = link_to "部屋一覧", "#"
+                = link_to "レポート一覧", "#"

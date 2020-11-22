@@ -20,14 +20,221 @@
               %rt
                 = @property.name_kana
           .dom-block-2.slash
+            -if @property.rank.id != 4
+              %h1
+                Rank
+            -else
+              %h1.opacity-text
+                Rank
+            - case @property.rank.id
+            - when 1 then
+              %h2.rank-text-a
+                = "#{@property.rank.name}ランク"
+                = image_tag "a-rank-gold.png", class: "rank-img"
+            - when 2 then
+              %h2.rank-text-b
+                = "#{@property.rank.name}ランク"
+                = image_tag "b-rank-silver.png", class: "rank-img"
+            - when 3 then
+              %h2.rank-text-c
+                = "#{@property.rank.name}ランク"
+                = image_tag "c-rank-bronze.png", class: "rank-img"
+            - when 4 then
+              %h2.rank-text-d
+                = "#{@property.rank.name}ランク"
+                = image_tag "d-rank-skull.png", class: "rank-img"
+          -# 算出する為のロジックを考えるのに時間がかかるので一時的なコメントアウト😀
+          -# .dom-block-3.slash
+          -#   %table
+          -#     %tr
+          -#       %th
+          -#         現在の総収益リソース
+          -#       %th
+          -#         ¥360,000
+          -#       %th
+          -#         前月の総収益リソース:
+          -#       %th
+          -#         ¥390,000
+          -#       %th
+          -#         前月比:
+          -#       %th
+          -#         +8.3%増
+          -#     %tr
+          -#       %th
+          -#         総収益リソース前月比:
+          -#       %th
+          -#         +13%
+          -#     %tr
+          -#       %th
+          -#         達成高:
+          -#       %th
+          -#         ¥100,000
         .property-image-line
-          .property-block
+          .property-image
+            %h1
+              ImagePhoto
             = image_tag @property.image, class: "property-img" if @property.image.attached?
-          .about-text
+          .about-address
+            %h1
+              Address
             %table.type-black
               %tr
                 %th.fix-width-left
                   = "物件所在地"
+                %th.fix-width-middle
+                  %i.fas.fa-tenge
+                  = @property.post_code 
                 %th.fix-width-right#map-dom
                   = "#{@property.prefecture.name}#{@property.city}#{@property.street}"
             #map
+        .double-wrap
+          .property-about-line
+            .title-wrap
+              %h1 About
+              %h1.ja 物件概要
+            %table
+              %tr
+                %th 物件種別
+                %th 総戸数
+                %th 管理形態
+              %tr
+                %td=@property.type.name
+                %td= "#{@property.units}戸"
+                %td= "#{@property.management_form.name}"
+            %table
+              %tr
+                %th.coution ※ 注意事項 ※
+              %tr
+                %td.coution-text= "#{@property.caution}"
+          .property-lifeline-line
+            .title-wrap
+              %h1 LifeLine
+              %h1.ja ライフライン
+            %table
+              %tr
+                %th 上水道
+                %th 下水道
+                %th 電気
+                %th ガス
+              %tr
+                %td
+                  ="#{@property.utility.water_supply.name}"
+                  %i.fas.fa-check
+                %td
+                  = "#{@property.utility.sewer.name}"
+                  %i.fas.fa-check
+                %td
+                  = "#{@property.utility.electrical.name}"
+                  %i.fas.fa-check
+                %td
+                  = "#{@property.utility.ga.name}"
+                  %i.fas.fa-check
+            =link_to "機関情報を追加する", "#"
+        .property-owner-line
+          .left-block
+            .title-wrap
+              %h1 Owner
+              %h1.ja 所有者情報
+              =link_to "▶所有者詳細に進む", "#", class: "owner-show"
+            %table.first
+              %tr
+                %th.top-cell 所有形態
+                -unless @property.owner.swicth_owner_form
+                  %td 個人
+                -else
+                  %td 法人
+                -unless @property.owner.swicth_owner_form
+                  -unless @property.owner.gender
+                    %th.top-cell 性別
+                    %td 男性
+                    %td.gender-cell-mars
+                      %i.fas.fa-mars
+                  -else
+                    %th.top-cell 性別
+                    %td 女性
+                    %td.gender-cell-venus
+                      %i.fas.fa-venus
+            %table.second
+              %tr
+                %th.top-cell カナ
+                -unless @property.owner.swicth_owner_form
+                  %td="#{@property.owner.last_name_kana} #{@property.owner.first_name_kana}"
+                -else
+                  %td 法人
+              %tr
+                %th.top-cell 所有者名称
+                -unless @property.owner.swicth_owner_form
+                  %td="#{@property.owner.last_name} #{@property.owner.first_name}"
+                -else
+                  %td 法人
+            %table.third
+              %tr
+                %th.top-cell 主要なやり取り人物
+                %td="#{@property.owner.main_communication}"
+            .relation-person-make
+              = link_to "▶関係人物を作成する", "#",class: "new-relation-person"
+              = link_to "▶リレーションを構築する", "#", class: "relation-build"
+            %table.fourth
+              %tr
+                %th やり取り方法について
+              %tr
+                %td="#{@property.owner.communication_about}"
+            %table.fifth
+              %tr
+                %th.top-cell 固定電話番号
+                -unless @property.owner.home_phone_num.empty?
+                  %td="#{@property.owner.home_phone_num}"
+                -else
+                  %td -
+              %tr
+                %th.top-cell 携帯電話番号
+                -unless @property.owner.phone_num.empty?
+                  %td="#{@property.owner.phone_num}"
+                -else
+                  %td -
+              %tr
+                %th.top-cell その他電話番号
+                -unless @property.owner.other_phone_num.empty?
+                  %td="#{@property.owner.other_phone_num}"
+                -else
+                  %td -
+              %tr
+                %th.top-cell FAX番号
+                -unless @property.owner.fax_num.empty?
+                  %td="#{@property.owner.fax_num}"
+                -else
+                  %td -
+              %tr
+                %th.top-cell メールアドレス
+                -unless @property.owner.email.empty?
+                  %td="#{@property.owner.email}"
+                -else
+                  %td -
+          .about-address
+            %h1
+              Address
+            %table
+              %tr
+                %th.fix-width-left
+                  = "所有者住所"
+                %th.fix-width-middle
+                  %i.fas.fa-tenge
+                  = @property.post_code 
+                %th.fix-width-right#owner-map-dom
+                  = "#{@property.owner.prefecture.name}#{@property.owner.city}#{@property.owner.street}#{@property.owner.building_name}"
+            #map-owner
+        .property-room-line
+          .title-wrap
+            %h1
+              RoomStore
+            %h1.ja
+              部屋情報
+          .coution-no-create
+            = "#{@property.units}室登録ができていない物件があります。登録されていない物件がある場合には、正しいデータを提供できない場合がございますので、ご注意ください。😼作成されていない物件が一つでもあれば、表示する！"
+          .room-wrap
+            - @property.units.times do |unit|
+              .room-box
+                .room-upper
+                  未登録
+                = content_tag(:div, id: "room-content#{unit+1}", class: "room-rower") do
+                  = link_to "部屋登録", "#"

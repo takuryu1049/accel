@@ -122,7 +122,7 @@ ActiveRecord::Schema.define(version: 2020_11_11_070444) do
     t.integer "water_supply_id", null: false
     t.integer "sewer_id", null: false
     t.integer "electrical_id", null: false
-    t.integer "gas_id", null: false
+    t.integer "ga_id", null: false
     t.bigint "property_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

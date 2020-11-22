@@ -43,7 +43,7 @@ ja:
           sewer_id: 上水道
           water_supply_id: 下水道
           electrical_id: 電気
-          gas_id: ガス
+          ga_id: ガス
           image: 物件画像
           rank_id: 物件ランク
           owner_company_name: 会社名

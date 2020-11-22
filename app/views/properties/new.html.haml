@@ -210,12 +210,12 @@
                         .input-title
                           %span.must
                             必須
-                          = f.label :gas_id, "ガス" 
-                        = f.collection_select(:gas_id, Ga .all, :id, :name, {}, {class:"select-box fa"})
-                        - if @property_owner_utility_equipment_facility.errors.include?(:gas_id)
+                          = f.label :ga_id, "ガス" 
+                        = f.collection_select(:ga_id, Ga.all, :id, :name, {}, {class:"select-box fa"})
+                        - if @property_owner_utility_equipment_facility.errors.include?(:ga_id)
                           .error
                             %i.fas.fa-exclamation-circle.error-icon
-                            = @property_owner_utility_equipment_facility.errors.full_messages_for(:gas_id).first
+                            = @property_owner_utility_equipment_facility.errors.full_messages_for(:ga_id).first
                   - case i+1
                   - when 7 then
                     .properties-registration-form-title

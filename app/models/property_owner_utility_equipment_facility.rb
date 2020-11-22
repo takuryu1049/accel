@@ -1,6 +1,6 @@
 class PropertyOwnerUtilityEquipmentFacility
   include ActiveModel::Model
-  attr_accessor :name, :name_kana, :post_code, :prefecture_id, :city, :street, :type_id, :units, :management_form_id, :rank_id, :caution, :image, :company_id, :worker_id, :swicth_owner_form, :owner_company_name, :owner_company_name_kana, :last_name, :first_name, :last_name_kana, :first_name_kana, :gender, :character_id, :character_about, :owner_post_code, :owner_prefecture_id, :owner_city, :owner_street, :owner_building_name, :main_communication, :communication_about, :home_phone_num, :phone_num, :other_phone_num, :fax_num, :email, :w_company_name, :w_company_name_kana, :w_post_code, :w_prefecture_id, :w_city, :w_street, :w_building_name, :w_company_phone_num, :w_job_description, :water_supply_id, :sewer_id, :electrical_id, :gas_id, :equipment_id, :facility_id
+  attr_accessor :name, :name_kana, :post_code, :prefecture_id, :city, :street, :type_id, :units, :management_form_id, :rank_id, :caution, :image, :company_id, :worker_id, :swicth_owner_form, :owner_company_name, :owner_company_name_kana, :last_name, :first_name, :last_name_kana, :first_name_kana, :gender, :character_id, :character_about, :owner_post_code, :owner_prefecture_id, :owner_city, :owner_street, :owner_building_name, :main_communication, :communication_about, :home_phone_num, :phone_num, :other_phone_num, :fax_num, :email, :w_company_name, :w_company_name_kana, :w_post_code, :w_prefecture_id, :w_city, :w_street, :w_building_name, :w_company_phone_num, :w_job_description, :water_supply_id, :sewer_id, :electrical_id, :ga_id, :equipment_id, :facility_id
 
   with_options presence: true do
     # Properties(物件情報のバリデーション)
@@ -26,7 +26,7 @@ class PropertyOwnerUtilityEquipmentFacility
     validates :water_supply_id, numericality: { other_than: 0, message: "の選択が必要です" }
     validates :sewer_id, numericality: { other_than: 0, message: "の選択が必要です" }
     validates :electrical_id, numericality: { other_than: 0, message: "の選択が必要です" }
-    validates :gas_id, numericality: { other_than: 0, message: "の選択が必要です" }
+    validates :ga_id, numericality: { other_than: 0, message: "の選択が必要です" }
   end
 
   # owner
@@ -41,7 +41,7 @@ class PropertyOwnerUtilityEquipmentFacility
     owner = Owner.create(swicth_owner_form: swicth_owner_form, company_name: owner_company_name, company_name_kana: owner_company_name_kana, last_name: last_name, first_name: first_name, last_name_kana: last_name_kana, first_name_kana: first_name_kana, gender: gender, character_id: character_id, character_about: character_about, post_code: owner_post_code, prefecture_id: owner_prefecture_id, city: owner_city, street: owner_street, building_name: owner_building_name, main_communication: main_communication, communication_about: communication_about, home_phone_num: home_phone_num, phone_num: phone_num, other_phone_num: other_phone_num, fax_num: fax_num, email: email)
     property = Property.create(name: name, name_kana: name_kana, post_code: post_code, prefecture_id: prefecture_id, city: city, street: street, type_id: type_id, units: units, management_form_id: management_form_id, rank_id: rank_id, caution: caution, image: image,company_id: company_id, worker_id: worker_id, owner_id: owner.id)
     OwnerWorkCompany.create(company_name: w_company_name, company_name_kana: w_company_name_kana, post_code: w_post_code, prefecture_id: w_prefecture_id, city: w_city, street: w_street, building_name: w_building_name, company_phone_num: w_company_phone_num, job_description: w_job_description, owner_id: owner.id)
-    Utility.create(water_supply_id: water_supply_id, sewer_id: sewer_id, electrical_id: electrical_id, gas_id: gas_id, property_id: property.id)
+    Utility.create(water_supply_id: water_supply_id, sewer_id: sewer_id, electrical_id: electrical_id, ga_id: ga_id, property_id: property.id)
   end
 0
   def swicth_owner_form_is_company?

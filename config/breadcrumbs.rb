@@ -13,8 +13,13 @@ crumb :index_property do
 end
 
 crumb :show_property do
-  link "物件詳細", property_path
+  link "物件詳細", property_path(params[:id])
   parent :index_property
+end
+
+crumb :new_room do
+  link "部屋登録", room_path
+  parent :show_property
 end
 
 

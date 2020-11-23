@@ -7,7 +7,11 @@ Rails.application.routes.draw do
       get 'sort'
     end
   end
-  resources :rooms, only:[:new]
+  resources :rooms, only:[:create] do
+    member do
+      get "new"
+    end
+  end
   devise_for :companies, controllers: {
     sessions: 'companies/sessions',
     passwords: 'companies/passwords',

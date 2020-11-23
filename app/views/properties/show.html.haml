@@ -237,4 +237,4 @@
                 .room-upper
                   未登録
                 = content_tag(:div, id: "room-content#{unit+1}", class: "room-rower") do
-                  = link_to "部屋登録", "#"
+                  = link_to "部屋登録", room_path(@property.id)

@@ -8,8 +8,13 @@ crumb :new_property do
 end
 
 crumb :index_property do
-  link "物件一覧", properties_path
+  link "物件一覧", sort_property_path
   parent :root
+end
+
+crumb :show_property do
+  link "物件詳細", property_path
+  parent :index_property
 end
 
 

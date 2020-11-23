@@ -267,8 +267,8 @@ $registration_theme: rgb(255, 149, 74);
               }
             }
             table{
-              width: 90%;
-              margin: 6px auto 0 auto;
+              width: 95%;
+              margin: 6px auto 10px auto;
             }
             table, tr, th, td {
               text-align: center;
@@ -289,6 +289,12 @@ $registration_theme: rgb(255, 149, 74);
               margin: auto 0 auto 10px;
               color: #FFFFFFFF;
               background-color: $registration_theme;
+            }
+            .organization_add{
+              display: block;
+              text-decoration: none;
+              color: rgba(255, 149, 74, .8);
+              margin-left: 20px;
             }
           }
         }

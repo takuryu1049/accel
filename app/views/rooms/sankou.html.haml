@@ -1,0 +1,65 @@
+.rooms-new-page-wrapper
+  .sub-header
+    - breadcrumb :new_room
+    = breadcrumbs pretext: "", separator: " &rsaquo; ", class: "breadcrumbs-list"
+  %main
+    %section
+      .section-title
+        %span - MAKE ROOM -
+        %h3
+          = " 部屋登録" 
+      = form_with model: @property_owner_utility_equipment_facility,url: properties_path, class: "float-form ", local: true do |f|
+        #block-wrap
+          .left-block
+            .room-info-block
+              %table.first
+                %tr
+                  %th{colspan: "2",class: "title-cell"} ①基本情報
+                %tr
+                  %th 部屋番号
+                  %td= f.text_field :name, autofocus: true, placeholder: "※入力必須", autocomplete: "off"
+                -# %tr
+                -#   %th 入居状況
+                -#   %td= f.collection_select(:character_id, Character.all, :id, :name, {}, {class:"select-box"})
+                %tr
+                  %th 管理形態
+                  %td= f.text_field :name, autofocus: true, placeholder: "※入力必須", autocomplete: "off"
+                %tr
+                  %th 階数 (例: 1F)
+                  %td= f.text_field :name, autofocus: true, placeholder: "※入力必須", autocomplete: "off"
+              %table.second
+                %tr
+                  %th{colspan: "6",class: "title-cell"} ②入居状況等
+                %tr
+                  %th 入居状況
+                  %td= f.text_field :name, autofocus: true, placeholder: "※入力必須", autocomplete: "off"
+                -# %tr
+                -#   %th 入居状況
+                -#   %td= f.collection_select(:character_id, Character.all, :id, :name, {}, {class:"select-box"})
+                %tr
+                  %th 空室状況
+                  %td= f.text_field :name, autofocus: true, placeholder: "※入力必須", autocomplete: "off"
+                %tr
+                  %th 契約進捗状況
+                  %td= f.text_field :name, autofocus: true, placeholder: "※入力必須", autocomplete: "off"
+              %table.third
+                %tr
+                  %th{colspan: "6",class: "title-cell"} ②入居状況等
+                %tr
+                  %th 空室状況
+                  %td= f.text_field :name, autofocus: true, placeholder: "※入力必須", autocomplete: "off"
+                %tr
+                  %th 契約進捗状況
+                  %td= f.text_field :name, autofocus: true, placeholder: "※入力必須", autocomplete: "off"
+              %table.fourth
+                %tr
+                  %th{colspan: "6",class: "title-cell"} ②入居状況等
+                %tr
+                  %th 空室状況
+                  %td= f.text_field :name, autofocus: true, placeholder: "※入力必須", autocomplete: "off"
+                %tr
+                  %th 契約進捗状況
+                  %td= f.text_field :name, autofocus: true, placeholder: "※入力必須", autocomplete: "off"
+          .right-block
+            =image_tag "misoku.jpg", id: "a"
+            %i.fas.fa-search-plus#look

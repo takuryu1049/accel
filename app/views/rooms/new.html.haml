@@ -11,24 +11,24 @@
       = form_with model: @property_owner_utility_equipment_facility,url: properties_path, local: true do |f|
         .data-line-1
           .data-box-20
-            = f.label :worker_login_id, "部屋番号"
+            = f.label :room_num, "部屋番号"
             %span 必須
-            =f.text_field :aa, autofocus: true, autocomplete: "off"
+            =f.text_field :room_num, autofocus: true, autocomplete: "off"
         .data-line-2
           .data-box-20
-            = f.label :worker_login_id, "階数"
+            = f.label :floor, "階数"
             %span 必須
-            =f.text_field :na, autofocus: true, autocomplete: "off"
+            =f.text_field :floor, autofocus: true, autocomplete: "off"
         %h1 入居状況
         %span.i 必須
         .data-line-3
           .data-box
             %label#select1
-              =f.radio_button :name, autofocus: true, autocomplete: "off"
+              =f.radio_button :room_status, autofocus: true, autocomplete: "off"
               %span 入居中
           .data-box
             %label#select2
-              =f.radio_button :name, autofocus: true, autocomplete: "off"
+              =f.radio_button :room_status, autofocus: true, autocomplete: "off"
               %span 空室
         = f.button '登録する', id: "create-room",type: 'button', onclick: 'submi;'
         -# %table.first

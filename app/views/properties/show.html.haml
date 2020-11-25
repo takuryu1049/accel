@@ -230,11 +230,103 @@
             %h1.ja
               部屋情報
           .coution-no-create
-            = "#{@property.units}室登録ができていない物件があります。登録されていない物件がある場合には、正しいデータを提供できない場合がございますので、ご注意ください。😼作成されていない物件が一つでもあれば、表示する！"
+            = "#{@property.units-Property.find(@property.id).rooms.count}室登録ができていない物件があります。登録されていない物件がある場合には、正しいデータを提供できない場合がございますので、ご注意ください。😼作成されていない物件が一つでもあれば、表示する！"
           .room-wrap
-            - @property.units.times do |unit|
-              .room-box
-                .room-upper
-                  未登録
-                = content_tag(:div, id: "room-content#{unit+1}", class: "room-rower") do
-                  = link_to "部屋登録", room_path(@property.id)
+            -if @property.rooms.empty?
+              - @property.units.times do |unit|
+                .room-box
+                  .room-upper
+                    未登録
+                  = content_tag(:div, id: "room-content#{unit+1}", class: "room-rower") do
+                    = link_to "部屋登録", room_path(@property.id)
+            -unless @property.rooms.empty?
+              - rooms = Property.find(@property.id).rooms.order(room_num: "asc")
+              - room_count = Property.find(@property.id).rooms.count
+              - floor_count = Property.find(@property.id).rooms.select(:floor).distinct.count
+              - floor_num = Property.find(@property.id).rooms.select(:floor).distinct.order(floor: "asc")
+              -floor_count.times do |i|
+              -floor_room = @property.rooms.where(floor: i+1).order(room_num: "asc")
+                .floor
+                  .floor-number-area
+                    ="#{floor_num[i].floor}F"
+                  %span
+                  %table
+                    -floor_room.count.times do |room|
+                      %tr
+                        %th{collspan: 1}=floor_room[room].room_num
+                        %th{collspan: 1}
+                          -if floor_room[room].room_status
+                            .room-status-in
+                              入居中
+                          -else 
+                            .room-status-out
+                              空室
+                        %td
+                          =link_to "物件詳細", "#"
+                          %br
+                          =link_to "収益リソース登録", "#", class: "red"
+                          %br
+              -# %table
+              -#   %tr
+              -#     -room_count.times do |i|
+              -#       %th=@property.rooms.order(room_num: "asc")[i].room_num
+              -#   %tr
+              -#     -room_count.times do |i|
+              -#       %td
+              -#         =link_to "部屋詳細", room_path(@property.id)
+              -#         %br
+              -#         =link_to "リソース構築", room_path(@property.id)
+              -#         %br
+              -#         =link_to "", room_path(@property.id)
+                -# - i = 0
+                -# -while room_count >= i+1 do
+                -#   %tr
+                -#     -while room_count >= i+1 do
+                -#       %th=@property.rooms.order(room_num: "asc")[i].room_num
+                -# -while room_count >= i+1 do
+                -# - i = 0
+                -#   %tr
+                -#     -while room_count >= i+1 do
+                -#       %td b
+                -#       -i = i + 1;
+                    -# -while ((room_count != i)) do
+                      %th a
+                      %td b
+                      -i = i + 1;
+                    -# -while (rooms%10) || (not(rooms) == 0)
+                    -# -while (rooms%10) || (not(rooms) == 0)
+                    -#   %th a
+                    -#   %td b
+                -# -room_count.times do |count|
+                -#   -if (count+1 == 1) || ((count+1)%10 == 0) 
+                -#     %tr
+                -#       %th=rooms[count].room_num
+                -#     %tr
+                -#       %td=link_to "部屋詳細", room_path(@property.rooms[count])
+              -#     -else
+              -#       %th=rooms[count].room_num
+              -#       %td=link_to "部屋詳細", room_path(@property.rooms[count])
+              -#     -else
+              -#       -room_count.times do |count| 
+              -#         -if room_count >= count+1
+              -#           -unless room_count%10
+              -#             %td= link_to "部屋詳細", room_path(@property.rooms[count])
+              -# -if @property.units >= room_count
+              -#   - no_create_room_count = @property.units - room_count
+              -#   %table.no-create
+              -#     %tr
+              -#       - no_create_room_count.times do |room|
+              -#         %th 未登録
+              -#     %tr
+              -#       - no_create_room_count.times do |room|
+              -#         %td= link_to "登録する", room_path(@property.id)
+                      
+                      
+                -# -else
+                -#   .room-box
+                -#     .room-upper
+                -#       未登録
+                -#     = content_tag(:div, id: "room-content#{unit+1}", class: "room-rower") do
+                -#       = link_to "部屋登録", room_path(@property.id)
+
+

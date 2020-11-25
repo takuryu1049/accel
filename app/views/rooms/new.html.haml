@@ -2,3 +2,55 @@
   .sub-header
     - breadcrumb :new_room
     = breadcrumbs pretext: "", separator: " &rsaquo; ", class: "breadcrumbs-list"
+  %main
+    %section
+      .section-title
+        %span - ROOM CREATE -
+        %h3
+          = " 部屋登録" 
+      = form_with model: @property_owner_utility_equipment_facility,url: properties_path, local: true do |f|
+        .data-line-1
+          .data-box-20
+            = f.label :worker_login_id, "部屋番号"
+            %span 必須
+            =f.text_field :aa, autofocus: true, autocomplete: "off"
+        .data-line-2
+          .data-box-20
+            = f.label :worker_login_id, "階数"
+            %span 必須
+            =f.text_field :na, autofocus: true, autocomplete: "off"
+        %h1 入居状況
+        %span.i 必須
+        .data-line-3
+          .data-box
+            %label#select1
+              =f.radio_button :name, autofocus: true, autocomplete: "off"
+              %span 入居中
+          .data-box
+            %label#select2
+              =f.radio_button :name, autofocus: true, autocomplete: "off"
+              %span 空室
+        = f.button '登録する', id: "create-room",type: 'button', onclick: 'submi;'
+        -# %table.first
+        -#   %tr
+        -#     %th 部屋番号
+        -#   %tr
+        -#     %td= f.text_field :name, autofocus: true, autocomplete: "off"
+        -#   %tr
+        -#     %th 管理形態
+        -#     %td= f.text_field :name, autofocus: true, autocomplete: "off"
+        -#   %tr
+        -#     %th 階数 (例: 1F)
+        -#     %td= f.text_field :name, autofocus: true,autocomplete: "off"
+        -# %table.first
+        -#   %tr
+        -#     %th{colspan: "2",class: "title-cell"} ①基本情報
+        -#   %tr
+        -#     %th 部屋番号
+        -#     %td= f.text_field :name, autofocus: true, autocomplete: "off"
+        -#   %tr
+        -#     %th 管理形態
+        -#     %td= f.text_field :name, autofocus: true, autocomplete: "off"
+        -#   %tr
+        -#     %th 階数 (例: 1F)
+        -#     %td= f.text_field :name, autofocus: true,autocomplete: "off"

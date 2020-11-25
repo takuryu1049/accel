@@ -8,7 +8,7 @@
         %span - ROOM CREATE -
         %h3
           = " 部屋登録" 
-      = form_with model: @property_owner_utility_equipment_facility,url: properties_path, local: true do |f|
+      = form_with model: @room, url: "/rooms/#{params[:id]}/create", local: true do |f|
         .data-line-1
           .data-box-20
             = f.label :room_num, "部屋番号"
@@ -30,7 +30,7 @@
             %label#select2
               =f.radio_button :room_status, autofocus: true, autocomplete: "off"
               %span 空室
-        = f.button '登録する', id: "create-room",type: 'button', onclick: 'submi;'
+        = f.button '登録する', id: "create-room",type: 'button', onclick: 'submit()'
         -# %table.first
         -#   %tr
         -#     %th 部屋番号

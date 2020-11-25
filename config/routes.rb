@@ -7,9 +7,10 @@ Rails.application.routes.draw do
       get 'sort'
     end
   end
-  resources :rooms, only:[:create] do
+  resources :rooms, only:[:show] do
     member do
       get "new"
+      post "create"
     end
   end
   devise_for :companies, controllers: {

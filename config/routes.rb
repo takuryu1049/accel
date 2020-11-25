@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     member do
       get "new"
       post "create"
+      get "resource"
     end
   end
   devise_for :companies, controllers: {

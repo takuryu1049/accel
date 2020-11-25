@@ -4,7 +4,7 @@ class Property < ApplicationRecord
   belongs_to_active_hash :type
   belongs_to_active_hash :management_form
   belongs_to_active_hash :rank
-  # has_many :rooms
+  has_many :rooms
   # has_many :traffics
   # has_many :car_parks, through: property_car_parks 
   has_one :utility

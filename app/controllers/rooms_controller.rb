@@ -14,6 +14,10 @@ class RoomsController < ApplicationController
     end
   end
 
+  def resource
+    
+  end
+
   private
 
   def room_params

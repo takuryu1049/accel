@@ -22,6 +22,11 @@ crumb :new_room do
   parent :show_property
 end
 
+crumb :new_resource do
+  link "収益リソース登録", resource_room_path
+  parent :new_room
+end
+
 
 # crumb :projects do
 #   link "Projects", projects_path

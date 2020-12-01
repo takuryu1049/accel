@@ -1,0 +1,32 @@
+.rooms-new-resource-page-wrapper
+  .sub-header
+    - breadcrumb :new_resource
+    = breadcrumbs pretext: "", separator: " &rsaquo; ", class: "breadcrumbs-list"
+  %main
+    %section
+      .section-title
+        %span - RESOURCE CREATE -
+        %h3
+          = "収益リソース登録" 
+      = form_with model: @room, local: true do |f|
+        .left-wrapper
+          -# %h1 - 収益リソースの内訳 - 
+          -# .table-flex-wrapper-1
+          -#   ※内訳データは入力次第、自動で計算されます。
+          -#   %table.total-table
+          -#     %tr
+          -#       %th 収益リソース高
+          -#       %td{colspan: 4} 3,020,000
+          -#       %td.sub 円
+          -#   %p※部屋情報を作成後、上記情報などを含んだ分析画面・部屋情報詳細画面が自動で作成されます。
+          .table-flex-wrapper-2
+            .data-box
+              = f.label :floor, "仲介手数料"
+              %span 必須
+              =f.text_field :floor, autofocus: true, autocomplete: "off"
+            .data-box
+              = f.label :floor, "広告手数料"
+              %span 必須
+              =f.text_field :floor, autofocus: true, autocomplete: "off"
+          = f.button '登録する', id: "create-resources",type: 'button', onclick: 'submit()'
+

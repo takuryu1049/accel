@@ -42,29 +42,18 @@
       .header-app
         .container-1
           .navi-flex
+            = link_to "#" do
+              = image_tag "Acell.logo.svg", class: "apps-home-logo"
             %ul.app
               %li
                 = link_to sort_property_path(1) do
-                  %i.fas.fa-building
                   物件一覧
               %li
                 = link_to new_property_path do
-                  %i.fas.fa-plus-circle
                   物件登録
               %li
-                = link_to "#" do
-                  %i.fas.fa-book-open
-                  レポート一覧
-              %li
-                = link_to "#" do
-                  %i.far.fa-plus-square
-                  レポート作成
-              %li
-                = link_to "#",class: "news" do
-                  %i.far.fa-newspaper
-                  NEWS
-                  .num.animate__animated.animate__wobble.animate__infinite
-                    13
+                = link_to destroy_worker_session_path, method: :delete, data: { confirm: '本当にログアウトしますか?' } do
+                  ログアウト
           .user-navi
             - if current_worker.gender == FALSE
               = link_to "#", class: "profile-img"  do
@@ -80,30 +69,23 @@
               .profile-company
                 = link_to "#" do
                   = current_company.name
-        .container-2
-          .navi-flex
-            %ul
-              %li
-                = link_to "#" do
-                  %i.fas.fa-search
-                  物件検索
-              %li
-                = link_to "#" do
-                  %i.fab.fa-searchengin
-                  オーナー検索
-              %li
-                = link_to "#" do
-                  %i.fas.fa-shoe-prints
-                  データベース
-              %li
-                = link_to destroy_worker_session_path, method: :delete, data: { confirm: '本当にログアウトしますか?' } do
-                  %i.fas.fa-sign-out-alt
-                  ログアウト
-        = image_tag "Acell.logo.svg", class: "apps-home-logo"
         - if company_signed_in? && worker_signed_in?
           = link_to app_tops_path, class: "current-logo-registration" do
             %span.material-icons.home-logo
               home
+        %i.fas.fa-bars#humburger
+        #menu
+          %ul
+            %i.fas.fa-times-circle#close
+            %li
+              = link_to sort_property_path(1) do
+                物件一覧
+            %li
+              = link_to new_property_path do
+                物件登録
+            %li
+              = link_to destroy_worker_session_path, method: :delete, data: { confirm: '本当にログアウトしますか?' } do
+                ログアウト
   = yield
   %footer
     .copyright

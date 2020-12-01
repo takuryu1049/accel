@@ -2,24 +2,23 @@ $accel_pink: #E43AD2;
 $accel_black: #13202F;  
 
 .header-app{
-            font-family: century-gothic,Avenir Next,Century Gothic,sans-serif;
+  font-family: century-gothic,Avenir Next,Century Gothic,sans-serif;
   background-color: white;
-  height: 140px;
+  height: 70px;
   color: $accel_black;
   box-shadow: 0px 0px 6px 1px inset rgba(0,0,0,0.3);
   position:relative;
   z-index: 1;
   .apps-home-logo{
-    height: 50px;
+    height: 70px;
     width: 160px;
-    position: absolute;
-    top: 0px;
-    left: 10px;
+    max-width: 160px;
+    margin-left: 20px;
   }
   .current-logo-registration{
     display: block;
-    background-color: #ff954a;
-    height: 300px;
+    background-color: rgb(255, 149, 74);
+    height: 280px;
     width:  300px;
     position: absolute;
     top: -200px;
@@ -31,31 +30,95 @@ $accel_black: #13202F;
       right:-218px;
       opacity: .6;
     }
+    @media (max-width: 1000px){
+      display: none;
+    }
+  }
+  .fa-bars{
+    display: none;
+    font-size: 50px;
+    height: 70px;
+    line-height: 70px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    margin-right: 20px;
+    &:active{
+      color: rgb(255, 149, 74);
+    }
+    @media (max-width: 1000px){
+      display: block;
+    }
+  }
+  #menu{
+    display:none;
+    width: 100px;
+    background-color: rgb(255, 255, 255);
+    border: 2px solid rgba(255, 149, 74, 0.3);
+    box-shadow: 1px 1px 1px rgba(255, 149, 74, 0.3);
+    position: absolute;
+    top: 10px;
+    right: 0;
+    z-index: 1;
+    ul{
+      background-color: rgb(255, 255, 255);
+      list-style: none;
+      position: relative;
+      i.fas.fa-times-circle{
+        position: absolute;
+        top: -10px;
+        left: -16px;
+        font-size: 1.2rem;
+        &:hover{
+          color: red;
+        }
+      }
+      li{
+        a{
+          display: block;
+          color: $accel_black;
+          text-decoration: none;
+          font-size: 16px;
+        }
+        &:hover{
+          border-radius: 3px;
+          border: ridge 2px $accel_pink; 
+        }
+      }
+    }
+  }
+  .display-block{
+    display: block !important;
   }
   .home-logo{
-    font-size: 40px;
+    font-size: 30px;
     color: #FFFFFF;
     position: absolute;
     top: 245px;
-    right: 145px;
+    right: 143px;
     transform: rotate(-45deg);
   }
-
   .container-1{
     height: 70px;
-    width: 100%;
-    max-width: 1440px;
     margin: 0 auto;
     display: flex;
     .navi-flex{
-      width: 830px;
+      width: 650px;
+      max-width: 650px;
       display: flex;
       justify-content: start;
+      img{
+        
+      }
       ul{
         display: flex;
         justify-content: center;
         margin-left: 20px;
+        @media (max-width: 1000px){
+          display: none;
+        } 
         li{
+          border-left: 1px dotted rgba(0,0,0,0.3);
           list-style: none;
           a{
             height:70px;
@@ -65,7 +128,7 @@ $accel_black: #13202F;
             padding-right: 20px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 15px;
+            font-size: 17px;
             color: $accel_black;
             &:hover{
               height:70px;
@@ -75,24 +138,6 @@ $accel_black: #13202F;
               border: ridge 2px $accel_pink; 
             }
           }
-          .news{
-            position: relative;
-            &:hover{
-              .num{
-                top: 0px;
-              }
-            }
-            .num{
-              border-radius: 50%;
-              font-size: 11px;
-              color: #FFFFFF;
-              background-color: red;
-              padding: 3px;
-              position: absolute;
-              top: 10px;
-              right: 0;
-            }
-          }
         }
       }
     }
@@ -100,6 +145,9 @@ $accel_black: #13202F;
       width: 500px;
       display: flex;
       font-size:18px;
+      @media (max-width: 1000px){
+        display: none;
+      }
       .profile-img{
         margin: 5px 0px;
         margin-left: 20px;
@@ -177,46 +225,7 @@ $accel_black: #13202F;
       }
     }
   }
-  .container-2{
-    height: 70px;
-    width: 100%;
-    max-width: 1440px;
-    margin: 0 auto;
-    display: flex;
-    .navi-flex{
-      width: 830px;
-      display: flex;
-      justify-content: start;
-      ul{
-        display: flex;
-        justify-content: center;
-        margin-left: 20px;
-        li{
-          list-style: none;
-          a{
-            height:70px;
-            display: block;
-            padding-top: 20px;
-            padding-left: 20px;
-            padding-right: 20px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 15px;
-            color: $accel_black;
-            &:hover{
-              height:70px;
-              color: accel_black;
-              font-size:22px;
-              border-radius: 3px;
-              border: ridge 2px $accel_pink; 
-            }
-          }
-        }
-      }
-    }
-  }
 }
-
 .app-main-content-wrap{
   background-color: white;
   overflow: hidden;
@@ -226,6 +235,9 @@ $accel_black: #13202F;
       background-color: $accel_black;
       height: 30px;
       display: flex;
+      @media (max-width: 1000px){
+        display: none;
+      }
       .breadcrumbs-list{
         margin: auto 0 auto 10px;
         font-size: 16px;

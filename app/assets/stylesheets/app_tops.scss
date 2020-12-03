@@ -1,6 +1,5 @@
 $accel_pink: #E43AD2;
 $accel_black: #13202F;  
-
 .header-app{
   font-family: century-gothic,Avenir Next,Century Gothic,sans-serif;
   background-color: white;
@@ -9,6 +8,9 @@ $accel_black: #13202F;
   box-shadow: 0px 0px 6px 1px inset rgba(0,0,0,0.3);
   position:relative;
   z-index: 1;
+  @media (max-width: 960px){
+    display: none;
+  }
   .apps-home-logo{
     height: 70px;
     width: 160px;

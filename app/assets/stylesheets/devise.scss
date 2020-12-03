@@ -387,6 +387,9 @@ $list-position: 20%;
         height:40px;
         font-size:16px;
         background-color: #FFFFFF;
+        &:focus{
+          border-color: #E43AD2 ;
+        }
       }
       input.conpact_input{
         width:130px;

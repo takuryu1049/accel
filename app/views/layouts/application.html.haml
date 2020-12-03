@@ -1,5 +1,6 @@
 
 !!!
+%meta{content: "width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0", name: "viewport"}
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
@@ -10,6 +11,7 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
+  #cursor
   .site-wrapper
     - if current_page?(root_path)
       .header
@@ -19,13 +21,13 @@
           .navi-flex
             %ul
               %li
-                = link_to "ACCELについて", "#"
+                = link_to "ACCELについて", "#", class: "li-1"
               %li
-                = link_to "ACCELの使い方", "#"
-              %li 
-                = link_to "料金プラン", "#"
+                = link_to "ACCELの使い方", "#", class: "li-2"
               %li
-                = link_to "お問い合わせ", "#"
+                = link_to "料金プラン", "#", class: "li-3"
+              %li
+                = link_to "お問い合わせ", "#", class: "li-4"
               - if company_signed_in? && worker_signed_in?
                 - if current_company.id == current_worker.company_id
                   %li.login_button
@@ -35,9 +37,10 @@
                   = link_to "ログイン", worker_session_path, class: "login_button_a"
               - else
                 %li.login_button
-                  = link_to "無料で始める", new_company_registration_path, class: "login_button_a"
+                  = link_to "アカウント作成", new_company_registration_path, class: "login_button_a"
                 %li.login_button
                   = link_to "ログイン", new_company_session_path, class: "login_button_a"
+          %i.fas.fa-bars
     - elsif company_signed_in? && worker_signed_in?
       .header-app
         .container-1
@@ -90,6 +93,6 @@
   %footer
     .copyright
       = embedded_svg "Acell.logo.svg", class: "footer_logo"
-      %h1 ©2020 不動産賃貸仲介業特化型戦略マネジメントツールACCEL(アクセル)
+      %h1 ©2020 ACCEL(アクセル)
       %h2 利用規約
       %h3 プライバシーポリシー

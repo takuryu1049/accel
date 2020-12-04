@@ -120,7 +120,7 @@ ActiveRecord::Schema.define(version: 2020_12_04_013809) do
 
   create_table "resources", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.integer "brokerage_fee", null: false
-    t.integer "add_fee", null: false
+    t.integer "ad_fee", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

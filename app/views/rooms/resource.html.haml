@@ -8,7 +8,7 @@
         %span - RESOURCE CREATE -
         %h3
           = "収益リソース登録" 
-      = form_with model: @resource, local: true do |f|
+      = form_with model: @resource,url:resource_create_room_path(params[:id]),local: true do |f|
         .left-wrapper
           -# %h1 - 収益リソースの内訳 - 
           -# .table-flex-wrapper-1

@@ -1,13 +1,13 @@
 .rooms-new-page-wrapper
   .sub-header
-    - breadcrumb :new_room
+    - breadcrumb :new_resource
     = breadcrumbs pretext: "", separator: " &rsaquo; ", class: "breadcrumbs-list"
   %main
     %section
       .section-title
         %span - ROOM CREATE -
         %h3
-          = " 部屋登録" 
+          = "部屋登録" 
       = form_with model: @room, url: "/rooms/#{params[:id]}/create", local: true do |f|
         .data-line-1
           .data-box-20

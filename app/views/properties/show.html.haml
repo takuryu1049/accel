@@ -264,7 +264,8 @@
                         %td
                           =link_to "物件詳細", "#"
                           %br
-                          =link_to "収益リソース登録", "#", class: "red"
+                          =link_to "収益リソース登録", 
+                          resource_room_path(@property.id), class: "red"
                           %br
               -# %table
               -#   %tr

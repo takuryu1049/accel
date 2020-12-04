@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_25_014148) do
+ActiveRecord::Schema.define(version: 2020_12_04_013809) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "name", null: false
@@ -116,6 +116,13 @@ ActiveRecord::Schema.define(version: 2020_11_25_014148) do
     t.index ["company_id"], name: "index_properties_on_company_id"
     t.index ["owner_id"], name: "index_properties_on_owner_id"
     t.index ["worker_id"], name: "index_properties_on_worker_id"
+  end
+
+  create_table "resources", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+    t.integer "brokerage_fee", null: false
+    t.integer "ad_fee", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC", force: :cascade do |t|

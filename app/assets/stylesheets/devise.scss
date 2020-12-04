@@ -390,6 +390,12 @@ $list-position: 20%;
         &:focus{
           border-color: #E43AD2 ;
         }
+        &.password-input{
+          padding-right:40px;
+        }
+        &.password-confirmation-input{
+          padding-right:40px;
+        }
       }
       input.conpact_input{
         width:130px;
@@ -490,8 +496,38 @@ $list-position: 20%;
         text-shadow: 0 0 3px #000; 
       }
     }
-    ::placeholder {
-      color: rgba(0,0,0,0.2);
+    i.fas.fa-eye{
+      padding-right:10px;
+      font-size: 18px;
+      color: rgba(0, 0, 0, 0.6);
+      line-height: 40px;
+      position: absolute;
+      right:30px;
+      z-index: 10;
+      transition: .1s;
+      &:hover{
+        opacity: .8;
+      }
+      &:active{
+        color: $accel_pink;
+        text-shadow: 1px 1px 10px $accel-black;
+      }
+    }
+    i.fas.fa-eye-slash{
+      padding-right:10px;
+      font-size: 18px;
+      color: rgba(0, 0, 0, 0.6);
+      line-height: 40px;
+      position: absolute;
+      right: 30px;
+      z-index: 10;
+      &:hover{
+        opacity: .8;
+      }
+      &:active{
+        color: $accel_pink;
+        text-shadow: 1px 1px 10px $accel-black;
+      }
     }
   }
 }

@@ -77,7 +77,8 @@
           %span.must.animate__animated.animate__fadeInUp
             必須
           = f.label :password, "⑤パスワード"
-        = f.password_field :password, autofocus: true, placeholder: "\uf023  6文字以上で入力ください", class: 'fa in_logo_mail', autocomplete: "new-password"
+        = f.password_field :password, autofocus: true, placeholder: "6文字以上で入力ください", class: 'fa password-input', autocomplete: "new-password"
+        %i.fas.fa-eye.password-eye
       - if @company.errors.include?(:password)
         .error
           %i.fas.fa-exclamation-circle.error-icon
@@ -88,7 +89,8 @@
           %span.must.animate__animated.animate__fadeInUp
             必須
           = f.label :password_confirmation, "⑥確認用パスワード"
-        = f.password_field :password_confirmation, autofocus: true, placeholder: "\uf2ea  6文字以上で入力ください", class: 'fa in_logo_mail', autocomplete: "new-password"
+        = f.password_field :password_confirmation, autofocus: true, placeholder: "6文字以上で入力ください", class: 'fa password-confirmation-input', autocomplete: "new-password"
+        %i.fas.fa-eye.password-confirmation-eye
       - if @company.errors.include?(:password_confirmation)
         .error
           %i.fas.fa-exclamation-circle.error-icon

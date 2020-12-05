@@ -184,13 +184,35 @@ $list-position: 20%;
   &:hover{
     position: fixed;
     bottom: $list-position -5%;
-    right: -9%;
+    .menu{
+      display: flex;
+      flex-direction: column;
+    }
   }
   @media(max-width: 1350px){
-    display:block;
     display: flex;
     justify-content: start;
-    align-items: center;   
+    flex-direction: column;
+  }
+  i.fas.fa-list-ul{
+  }
+  .menu{
+    display:none;
+    padding: 5px;
+    background-color: #FFFFFF;
+    margin: 10px 0;
+    border: 1px solid rgba(0,0,0, .3);
+    a{
+      display: black;
+      margin: 3px 0;
+      padding-left: 3px;
+      text-decoration: none;
+      color: $accel_black;
+      background-color: rgba(159, 159, 159, 0.1);
+      &:hover{
+        background-color: rgba(0,0,0,0.1);
+      }
+    }
   }
 }
 

@@ -11,7 +11,7 @@ function PassMask() {
       PasswordEye.classList.add("fa-eye-slash"); 
     }else{
       PasswordInput.type = "password";
-      PasswordEye.classList.remove("fa-eye-slash"); 
+      PasswordEye.classList.remove("fa-eye-slash");
       PasswordEye.classList.add("fa-eye");
     }
   });
@@ -20,7 +20,7 @@ function PassMask() {
     if(PasswordConfirmationInput.type === "password"){
       PasswordConfirmationInput.type = "text";
       PasswordConfirmationEye.classList.remove("fa-eye");
-      PasswordConfirmationEye.classList.add("fa-eye-slash"); 
+      PasswordConfirmationEye.classList.add("fa-eye-slash");
     }else{
       PasswordConfirmationInput.type = "password";
       PasswordConfirmationEye.classList.remove("fa-eye-slash"); 

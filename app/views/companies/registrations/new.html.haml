@@ -2,13 +2,12 @@
   .auth_form.animate__animated.animate__fadeIn
     .logo.animate__animated.animate__zoomIn= image_tag "Acell.logo.svg"
     .make-account-title
-      .make-account-border
-      %i.fas.fa-user-circle.account_icon
-      %h2 アカウントの作成
+      -# .make-account-border
+      %h2 アカウントを作成
     %h3 
       %i.fas.fa-info-circle.make_account_information_mark
       サービスを利用する為に必要な情報です。間違いのないようご入力お願いします。
-    = form_with model: @company, url: company_registration_path, local: true do |f|
+    = form_with model: @company, url: company_registration_path, autocomplete: "off", local: true do |f|
       - if @company.errors.any?
         #error_explanation
           %i.fas.fa-exclamation-circle.error-icon-big
@@ -20,10 +19,10 @@
             お手数ですが、入力項目をご確認のうえ、再度ご入力ください。
       .field
         .input-title
-          %span.must.animate__animated.animate__fadeInUp.infinite
+          %span.must
             必須
-          = f.label :name, "①会社名称"
-        = f.text_field :name, autofocus: true,placeholder: "\uf1ad  例) 株式会社アクセル不動産", class: 'fa in_logo_company', autocomplete: "organization" 
+          = f.label :name, "会社名称"
+        = f.text_field :name, autofocus: true,placeholder: "例) 株式会社アクセル不動産"
       - if @company.errors.include?(:name)
         .error
           %i.fas.fa-exclamation-circle.error-icon
@@ -31,10 +30,10 @@
       .chain-border
       .field
         .input-title
-          %span.must.animate__animated.animate__fadeInUp
+          %span.must
             必須
-          = f.label :image, "②会社プロフィール画像"
-        = f.file_field :image, id:"item-image", autofocus: true
+          = f.label :image, "会社プロフィール画像"
+        = f.file_field :image, id:"item-image"
       - if @company.errors.include?(:image)
         .error
           %i.fas.fa-exclamation-circle.error-icon
@@ -42,10 +41,10 @@
       .chain-border
       .field
         .input-title
-          %span.must.animate__animated.animate__fadeInUp
+          %span.must
             必須
-          = f.label :company_login_id, "③アカウントID" 
-        = f.text_field :company_login_id, autofocus: true,placeholder: "\uf084  6文字以上12文字以内", class: 'fa in_logo_key',  maxlength: "12"
+          = f.label :company_login_id, "アカウントID" 
+        = f.text_field :company_login_id, placeholder: "6文字以上12文字以内で入力ください",  maxlength: "12"
       - if @company.errors.include?(:company_login_id)
         -if @company.errors.full_messages_for(:company_login_id).first.length >= 40
           .error-longer
@@ -63,10 +62,10 @@
       .chain-border
       .field
         .input-title
-          %span.must.animate__animated.animate__fadeInUp
+          %span.must
             必須
-          = f.label :email, "④メールアドレス"
-        = f.email_field :email, autofocus: true, placeholder: "\uf0e0  例) accel@gmail.com", class: 'fa in_logo_mail', autocomplete: "email"
+          = f.label :email, "メールアドレス(mail)"
+        = f.email_field :email, placeholder: "例) accel@gmail.com"
       - if @company.errors.include?(:email)
         .error
           %i.fas.fa-exclamation-circle.error-icon
@@ -74,10 +73,10 @@
       .chain-border        
       .field
         .input-title
-          %span.must.animate__animated.animate__fadeInUp
+          %span.must
             必須
-          = f.label :password, "⑤パスワード"
-        = f.password_field :password, autofocus: true, placeholder: "6文字以上で入力ください", class: 'fa password-input', autocomplete: "new-password"
+          = f.label :password, "パスワード"
+        = f.password_field :password, placeholder: "6文字以上で入力ください", class: 'password-input'
         %i.fas.fa-eye.password-eye
       - if @company.errors.include?(:password)
         .error
@@ -88,8 +87,8 @@
         .input-title
           %span.must.animate__animated.animate__fadeInUp
             必須
-          = f.label :password_confirmation, "⑥確認用パスワード"
-        = f.password_field :password_confirmation, autofocus: true, placeholder: "6文字以上で入力ください", class: 'fa password-confirmation-input', autocomplete: "new-password"
+          = f.label :password_confirmation, "確認用パスワード"
+        = f.password_field :password_confirmation, placeholder: "6文字以上で入力ください", class: 'password-confirmation-input'
         %i.fas.fa-eye.password-confirmation-eye
       - if @company.errors.include?(:password_confirmation)
         .error
@@ -103,8 +102,8 @@
         .input-title
           %span.must.animate__animated.animate__fadeInUp
             必須
-          = f.label :post_code, "⑦郵便番号" 
-        = f.text_field :post_code, autofocus: true,placeholder: "〒  例) 163-8001", class: 'fa in_logo', autocomplete: "postal-code" 
+          = f.label :post_code, "郵便番号" 
+        = f.text_field :post_code, placeholder: "例) 163-8001"
       - if @company.errors.include?(:post_code)
         .error
           %i.fas.fa-exclamation-circle.error-icon
@@ -114,7 +113,7 @@
         .input-title
           %span.must.animate__animated.animate__fadeInUp
             必須
-          = f.label :prefecture_id, "⑧都道府県" 
+          = f.label :prefecture_id, "都道府県" 
         = f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box"}) 
       - if @company.errors.include?(:prefecture_id)
         .error
@@ -125,8 +124,8 @@
         .input-title
           %span.must.animate__animated.animate__fadeInUp
             必須
-          = f.label :city, "⑨市区町村" 
-        = f.text_field :city, autofocus: true,placeholder: " 例) 新宿区西新宿", class: 'fa', autocomplete: "address-level2"
+          = f.label :city, "市区町村" 
+        = f.text_field :city,placeholder: "例) 新宿区西新宿"
       - if @company.errors.include?(:city)
         .error
           %i.fas.fa-exclamation-circle.error-icon
@@ -136,8 +135,8 @@
         .input-title
           %span.must.animate__animated.animate__fadeInUp
             必須
-          = f.label :street, "⑩番地" 
-        = f.text_field :street, autofocus: true,placeholder: " 例) 2丁目8-1", class: 'fa', autocomplete: "address-line1" 
+          = f.label :street, "番地" 
+        = f.text_field :street, placeholder: "例) 2丁目8-1"
       - if @company.errors.include?(:street)
         .error
           %i.fas.fa-exclamation-circle.error-icon
@@ -147,8 +146,8 @@
         .input-title
           %span.must.animate__animated.animate__fadeInUp.optional 
             任意
-          = f.label :building_name, "⑪建物名(号室まで)" 
-        = f.text_field :building_name, autofocus: true,placeholder: " 例) 東京都庁", class: 'fa', autocomplete: "address-line2" 
+          = f.label :building_name, "建物名(号室まで)" 
+        = f.text_field :building_name, autofocus: true,placeholder: "例) 東京都庁"
       .submit-recaptcha-wrap
         = recaptcha_tags 
         = f.button 'アカウント作成', class: "create-company-account",type: 'button', onclick: 'submit();'
@@ -169,5 +168,9 @@
         home
       .exit-or-in-comment
         TOPに戻る
+  .mini-width-menu.animate__animated.animate__fadeInRight
+    %i.fas.fa-list-ul
+      メニュー
+    
 
 .company-border.animate__animated.animate__fadeInLeftBig

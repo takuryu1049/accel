@@ -36,6 +36,9 @@ $list-position: 20%;
     bottom: $list-position;
     right: -3%;
   }
+  @media(max-width: 1350px){
+    display:none;
+  }
   .move-button{
     border-radius: 30px;
     opacity: 0.8;
@@ -51,7 +54,7 @@ $list-position: 20%;
     text-align: left;
     display: flex;
     justify-content: start;
-    align-items: center;    
+    align-items: center;
     &:hover{
       color: $accel_pink;
     }
@@ -78,6 +81,9 @@ $list-position: 20%;
     position: fixed;
     bottom: $list-position -5%;
     right: -3%;
+  }
+  @media(max-width: 1350px){
+    display:none;
   }
   .move-button{
     border-radius: 30px;
@@ -150,6 +156,44 @@ $list-position: 20%;
   }
 }
 
+
+.mini-width-menu{
+  display: none;
+  width: 300px;
+  z-index: 100;
+  height: 40px;
+  position: fixed;
+  bottom: $list-position - 5%;;
+  top: 1%;
+  right: -10%;
+  padding: 10px;
+  background-color:rgba(0,0,0,0.1);
+  font-size: 16px;
+  border-radius: 30px;
+  border-radius: 30px;
+  opacity: 0.8;
+  text-decoration: none;
+  font-size: 20px;
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
+  color: $accel_black;
+  font-family: "メイリオ";
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  width: 300px;
+  height:40px;
+  text-align: left; 
+  &:hover{
+    position: fixed;
+    bottom: $list-position -5%;
+    right: -9%;
+  }
+  @media(max-width: 1350px){
+    display:block;
+    display: flex;
+    justify-content: start;
+    align-items: center;   
+  }
+}
+
 .flex-style{
   display: flex;
   align-items: center !important;
@@ -159,7 +203,8 @@ $list-position: 20%;
   z-index:0;
   position: relative; 
   .auth_form {
-    width: 720px;
+    width: 800px;
+    min-width: 800px;
     border-radius: 8px;
     background-color:rgba(255,255,255, 0.9);
     padding: 15px;
@@ -184,17 +229,9 @@ $list-position: 20%;
       border-top-color: rgba(0,0,0,0.1) ;
       border-bottom: dotted 3px;
       border-bottom-color:rgba(0,0,0,0.1) ;
-      .make-account-border{
-        height: 80px;
-        border: 2px dashed #656873;;
-        margin-right: 30px;
-        transform: skewY(-60deg);
-      } 
-      i.account_icon{
-        font-size: 40px;
-      }
       h2{
         font-size: 40px;
+        font-weight:normal;
       }
     }
     h3{
@@ -262,7 +299,7 @@ $list-position: 20%;
           font-size:16px;
           display:inline-block;
           text-align: center;
-          background-color: $accel_pink;
+          background-color: rgba(228, 58, 211, .8);
           border-radius: 2px;
           color:white;
           font-weight: bold;
@@ -275,7 +312,6 @@ $list-position: 20%;
         label{
           color: #656873;
           font-size: 20px;
-          font-weight: bold;
         }
       }
       .birth-wrapper{
@@ -423,6 +459,7 @@ $list-position: 20%;
         }
       }
       .select-box{
+        color: rgba(117, 117, 117, 1);
         border-color: #d8d8d8;
         border: 2px solid #ced4da;
         border-radius: 3px;
@@ -471,18 +508,18 @@ $list-position: 20%;
         width: 200px;
         height:60px;
         padding: 3px;
-        font-size: 18px;
         background-color:rgba(0,0,0,0.1);;
         text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
         color: $accel_black;
         font-family: "メイリオ";
-        &:hover{
-          background-color: $accel_pink;
-          color: white;
-          font-size: 23px;
-          font-weight: bold;
-          transform: skewY(-6deg);
-          border: 6px double rgba(255, 255, 255, 0.9);
+        box-shadow: 0 2px 2px $accel_black;
+        font-size: 23px;
+        font-weight: bold;
+        outline: none;
+        &:active{
+          position : relative;
+          top:  2px;
+          box-shadow: none;
         }
       }
     }
@@ -490,9 +527,12 @@ $list-position: 20%;
       margin-top: 8px;
       font-size: 13px;
       margin-bottom: 8px;
-      border: 1px dashed rgba(0,0,0,0.2);
+      border-top: 1px dashed rgba(0,0,0,0.2);
+      border-bottom: 1px dashed rgba(0,0,0,0.2);
+      padding: 10px 0;
+      background-color: rgba(242, 231, 0, .1);
       .company_login_id_countion{
-        color: #F2E700;
+        color: #fff86b;
         text-shadow: 0 0 3px #000; 
       }
     }
@@ -502,7 +542,7 @@ $list-position: 20%;
       color: rgba(0, 0, 0, 0.6);
       line-height: 40px;
       position: absolute;
-      right:30px;
+      right:70px;
       z-index: 10;
       transition: .1s;
       &:hover{
@@ -519,7 +559,7 @@ $list-position: 20%;
       color: rgba(0, 0, 0, 0.6);
       line-height: 40px;
       position: absolute;
-      right: 30px;
+      right: 70px;
       z-index: 10;
       &:hover{
         opacity: .8;
@@ -594,9 +634,11 @@ $list-position: 20%;
 }
 
 .field_with_errors{
+  font-size: 16px;
   input{
     border-radius: 0 !important;
     background-color:#fff0f0 !important;
+    height: 40px;
   }
   select{
     border-radius: 0 !important;
@@ -614,7 +656,7 @@ $list-position: 20%;
 }
 
 .error{
-  margin-right: 30px;
+  margin-right: 70px;
   text-align: right;
   font-size: 16px;
   color: red;

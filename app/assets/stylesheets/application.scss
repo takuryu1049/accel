@@ -37,9 +37,6 @@ body{
   overflow: hidden;
 }
 
-
-
-
 #cursor{
   pointer-events: none;
   position: fixed;
@@ -53,6 +50,14 @@ body{
   transition: transform 0.2s;  //ちょっと遅れてついてくるように
   transition-timing-function: ease-out;
   z-index: 999;
+  &.hov_{
+    top: -32px;     //大きさに合わせて座標調節
+    left: -32px;    //大きさに合わせて座標調節
+    width: 64px;
+    height: 64px;
+    transition: .5s;
+    background: rgba(228, 58, 210, .3);
+  }
 }
 
 input{

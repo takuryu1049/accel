@@ -3,7 +3,6 @@
     .logo.animate__animated.animate__zoomIn= image_tag "Acell.logo.svg"
     .make-account-title
       .make-account-border
-      %i.fas.fa-door-open.account_icon
       %h2 アカウントでログイン
     %h3 
       %i.fas.fa-info-circle.make_account_information_mark
@@ -17,23 +16,18 @@
             = flash[:alert]
       .field
         .input-title
-          = f.label :company_login_id, "①アカウントID"
-        = f.text_field :company_login_id, autofocus: true, placeholder: "\uf084  6文字以上12文字以内", class: 'fa in_logo_key', maxlength: "12"
+          = f.label :company_login_id, "・アカウントID"
+        = f.text_field :company_login_id, autofocus: true, placeholder: "6文字以上12文字以内", maxlength: "12"
       .form-countion
         %i.fas.fa-exclamation-triangle.company_login_id_countion
         半角6~12文字かつ英大文字・小文字・数字それぞれ１文字以上を含む必要があります
-      .chain-border     
       .field
         .input-title
-          = f.label :password, "②パスワード"
-        = f.password_field :password, placeholder: "\uf023  6文字以上で入力ください", class: 'fa in_logo_mail', autocomplete: "current-password"
-      -# - if devise_mapping.rememberable?
-      -#   .field
-      -#     = f.check_box :remember_me
-      -#     = f.label :remember_me
+          = f.label :password, "・パスワード"
+        = f.password_field :password, placeholder: "6文字以上で入力ください", class: 'password-input'
+        %i.fas.fa-eye.password-eye
       .submit-recaptcha-wrap
-        = f.submit "ログイン", class: "create-company-account"
-      -# = render "companies/shared/links"
+        = f.button 'ログイン', class: "create-company-account",type: 'button', onclick: 'submit();'
 
   .button-back-ground.animate__animated.animate__fadeInRight
     = link_to new_company_registration_path, class: "move-button"do

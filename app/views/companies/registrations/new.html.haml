@@ -85,7 +85,7 @@
       .chain-border
       .field
         .input-title
-          %span.must.animate__animated.animate__fadeInUp
+          %span.must
             必須
           = f.label :password_confirmation, "確認用パスワード"
         = f.password_field :password_confirmation, placeholder: "6文字以上で入力ください", class: 'password-confirmation-input'
@@ -100,7 +100,7 @@
       .chain-border
       .field
         .input-title
-          %span.must.animate__animated.animate__fadeInUp
+          %span.must
             必須
           = f.label :post_code, "郵便番号" 
         = f.text_field :post_code, placeholder: "例) 163-8001"
@@ -111,7 +111,7 @@
       .chain-border
       .field
         .input-title
-          %span.must.animate__animated.animate__fadeInUp
+          %span.must
             必須
           = f.label :prefecture_id, "都道府県" 
         = f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box"}) 
@@ -122,7 +122,7 @@
       .chain-border
       .field
         .input-title
-          %span.must.animate__animated.animate__fadeInUp
+          %span.must
             必須
           = f.label :city, "市区町村" 
         = f.text_field :city,placeholder: "例) 新宿区西新宿"
@@ -133,7 +133,7 @@
       .chain-border
       .field
         .input-title
-          %span.must.animate__animated.animate__fadeInUp
+          %span.must
             必須
           = f.label :street, "番地" 
         = f.text_field :street, placeholder: "例) 2丁目8-1"
@@ -144,7 +144,7 @@
       .chain-border
       .field
         .input-title
-          %span.must.animate__animated.animate__fadeInUp.optional 
+          %span.must.optional 
             任意
           = f.label :building_name, "建物名(号室まで)" 
         = f.text_field :building_name, autofocus: true,placeholder: "例) 東京都庁"

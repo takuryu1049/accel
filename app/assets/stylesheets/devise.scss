@@ -276,14 +276,14 @@ $list-position: 20%;
       padding-bottom: 20px;
       font-size: 22px;
       font-family: "メイリオ";
-      border-left: dashed 3px #656873; 
+      // border-left: dashed 3px #656873; 
       width: 80%;
       height: 80px;
-      margin: 20px auto;
+      margin: 30px auto;
       border-radius: 10px 0 10px 0;
       display: flex;
       justify-content: center;
-      font-weight: bold;
+      // font-weight: bold;
       .company-image-header{
         margin-left: 10px;
         height: 60px;
@@ -293,6 +293,9 @@ $list-position: 20%;
       }
       .description-company-make{
         margin-left: 20px;
+        .fas.fa-key{
+          color: rgba(255, 171, 4, 0.86);
+        }
       }
     }
     .field{
@@ -347,6 +350,8 @@ $list-position: 20%;
         p{
           font-size: 20px;
           margin-top: 10px;
+          margin-right: 6px;
+          margin-left: 6px;
         }
         #worker_born_1i{
           border-color: #d8d8d8;
@@ -511,6 +516,7 @@ $list-position: 20%;
       display: flex;
       justify-content: center;
       width: 720px;
+      padding-left: 30px;
     }
     .submit-recaptcha-wrap{
       // display: flex;

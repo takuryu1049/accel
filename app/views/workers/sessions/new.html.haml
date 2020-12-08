@@ -32,7 +32,7 @@
       -#     = f.check_box :remember_me
       -#     = f.label :remember_me
       .submit-recaptcha-wrap
-        = f.submit "ログイン", class: "create-company-account"
+        = f.button 'ログイン', class: "create-account",type: 'button', onclick: 'submit();'
       -# = render "companies/shared/links"
 
   .button-back-ground.animate__animated.animate__fadeInRight

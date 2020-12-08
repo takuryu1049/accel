@@ -530,7 +530,7 @@ $list-position: 20%;
         margin-bottom:30px;
         margin: 20px auto;
       }
-      .create-company-account{
+      .create-account{
         margin: 25px auto;
         border: 3px double rgba(255, 255, 255, 0.9);
         width: 200px;
@@ -635,7 +635,52 @@ $list-position: 20%;
     color: red;
   }
 }
-
+#error_flash-login{
+  background-color: rgba(255,255,255, .9);
+  position: fixed;
+  z-index: 999;
+  top: -100px;
+  left: calc(50% - 125px);
+  padding:  10px;
+  padding-top: 10px;
+  border-radius: 6px;
+  border: 1px solid $accel_black;
+  border-bottom: 3px solid $accel_black;
+  animation: flash-bar 3s ease .3s 1 normal;
+  width: 250px;
+    // キーフレームの定義
+  // フラッシュを美しく演出するためのアニメーション
+  @keyframes flash-bar{
+    0%{
+      top: -20px;
+      
+    }
+    10%{
+      top: -3px;
+    }
+    30%{
+      top: -6px;
+    }
+    50%{
+      top: -3px;
+    }
+    80%{
+      top: -3px;
+    }
+    100%{
+      top: -60px;
+    }
+  }
+  i.fas.fa-check-circle.error-icon-big{
+    color: rgb(122, 255, 101);
+    font-size: 20px;
+    padding: 10px;
+    // animation: fadeIn .5s ease 3s 1 normal;
+    span{
+      color: $accel_black;
+    }
+  }
+}
 #error_flash{
   border: solid 1px $accel_pink;
   box-shadow: 0 2px 2px 0 $accel_pink;

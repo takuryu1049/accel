@@ -150,7 +150,7 @@
         = f.text_field :building_name, autofocus: true,placeholder: "例) 東京都庁"
       .submit-recaptcha-wrap
         = recaptcha_tags 
-        = f.button 'アカウント作成', class: "create-company-account",type: 'button', onclick: 'submit();'
+        = f.button 'アカウント作成', class: "create-account",type: 'button', onclick: 'submit();'
       - if @company.errors.include?(:base)
         .error-recaptcha
           %i.fas.fa-exclamation-circle.error-icon

@@ -4,6 +4,12 @@
       .breadcrumbs-list
         HOMEボード
     .app-analytics
+      - if flash[:notice] || flash[:alert]
+        #error_flash-login
+          %i.fas.fa-check-circle.error-icon-big
+            %span
+              = flash[:notice]
+              = flash[:alert]
       .countion
         %h1
           %i.fas.fa-exclamation-circle

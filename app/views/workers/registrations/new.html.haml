@@ -240,7 +240,7 @@
         = f.collection_select(:qualification_id, Qualification.all, :id, :name, {}, {class:"select-box"}) 
       .submit-recaptcha-wrap
         = recaptcha_tags 
-        = f.submit "アカウント作成", class: "create-company-account"
+        = f.button 'アカウント作成', class: "create-account",type: 'button', onclick: 'submit();'
       - if @worker.errors.include?(:base)
         .error-recaptcha
           %i.fas.fa-exclamation-circle.error-icon

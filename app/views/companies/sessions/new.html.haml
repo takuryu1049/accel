@@ -27,7 +27,7 @@
         = f.password_field :password, placeholder: "6文字以上で入力ください", class: 'password-input'
         %i.fas.fa-eye.password-eye
       .submit-recaptcha-wrap
-        = f.button 'ログイン', class: "create-company-account",type: 'button', onclick: 'submit();'
+        = f.button 'ログイン', class: "create-account",type: 'button', onclick: 'submit();'
 
   .button-back-ground.animate__animated.animate__fadeInRight
     = link_to new_company_registration_path, class: "move-button"do

@@ -29,7 +29,7 @@
         .input-title
           %span.must
             必須
-          = f.label :worker_login_id, "ログインID"
+          = f.label :worker_login_id, "社員アカウントID"
         = f.text_field :worker_login_id, autofocus: true,placeholder: "例) ABcd123"
       - if @worker.errors.include?(:worker_login_id)
         -if @worker.errors.full_messages_for(:worker_login_id).first.length >= 40

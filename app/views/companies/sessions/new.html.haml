@@ -34,12 +34,18 @@
       %span.material-icons.exit-or-in
         library_add
       .exit-or-in-comment
-        アカウント登録
+        アカウント作成
   .button-back-ground-2.animate__animated.animate__fadeInRight
     = link_to root_path, class: "move-button" do
       %span.material-icons.exit-or-in
         home
       .exit-or-in-comment
         TOPに戻る
+  .mini-width-menu.animate__animated.animate__fadeInRight
+    %i.fas.fa-list-ul
+      メニュー
+    .menu
+      = link_to "アカウント作成", new_company_registration_path
+      = link_to "TOPに戻る", root_path
         
 .company-border.animate__animated.animate__rotateOut

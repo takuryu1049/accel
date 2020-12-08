@@ -23,7 +23,7 @@ class Worker < ApplicationRecord
     validates :email, uniqueness: true
   end
 
-  validates :gender, inclusion: { in: [true, false] }
+  validates :gender, inclusion: { in: [true, false], message: 'を選択してください'}
 
   def email_required?
     false

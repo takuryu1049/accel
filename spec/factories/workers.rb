@@ -3,10 +3,10 @@ FactoryBot.define do
     worker_login_id       { "A#{Faker::Lorem.characters(number: 11, min_alpha: 1, min_numeric: 1)}" }
     password              { Faker::Internet.password(min_length: 6) }
     password_confirmation { password }
-    first_name            { Gimei.last.kanji }
-    last_name             { Gimei.first.kanji }
-    first_name_kana       { Gimei.last.katakana }
-    last_name_kana        { Gimei.first.katakana }
+    first_name            { Gimei.first.kanji }
+    last_name             { Gimei.last.kanji }
+    first_name_kana       { Gimei.first.katakana }
+    last_name_kana        { Gimei.last.katakana }
     email                 { Faker::Internet.free_email }
     gender                { [true,false].sample }
     character_id          { Faker::Number.between(from: 1, to: 3) }

@@ -15,6 +15,7 @@ class Companies::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
+    flash[:notice] = '会社アカウントが登録されました！'
   end
 
   # GET /resource/edit

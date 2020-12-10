@@ -20,19 +20,6 @@
             申し訳ございません。入力不備があります。
           %h3
             お手数ですが、入力項目をご確認のうえ、再度ご入力ください。
-      .filed.support-message
-        .description-company-make
-          %p - 会社アカウント情報 -
-          %table
-            %tr
-              %th{rowspan: 4}= image_tag current_company.image, class: "company-image-header"
-              %td.title{colspan: 3} - 会社名 -
-            %tr
-              %td.date{colspan: 3}="#{current_company.name}" 
-            %tr
-              %td.title{colspan: 3} - 会社アカウントID -
-            %tr
-              %td.date{colspan: 3}="#{current_company.company_login_id}"
       = f.hidden_field :company_id, :value => current_company.id
       .field
         .input-title
@@ -272,5 +259,18 @@
     .menu
       = link_to "社員ログイン", new_worker_session_path
       = link_to "ログアウト", destroy_company_session_path, method: :delete
-
+  .filed.support-message
+    .description-company-make
+      %p 会社アカウント情報
+      %table
+        %tr
+          %th{rowspan: 4}= image_tag current_company.image, class: "company-image-header"
+          %td.title{colspan: 3} - 会社名 -
+        %tr
+          %td.date{colspan: 3}="#{current_company.name}" 
+        %tr
+          %td.title{colspan: 3} - 会社アカウントID -
+        %tr
+          %td.date{colspan: 3}="#{current_company.company_login_id}"
+    %i.fas.fa-address-card.fa-lg
 .worker-border.animate__animated.animate__fadeInLeftBig

@@ -9,11 +9,13 @@
       社員ログインをするには、会社でのログインが必要です。
     = form_with model: @company, url: company_session_path, local: true do |f|
       - if flash[:notice] || flash[:alert]
-        #error_flash
-          %i.fas.fa-info-circle.error-icon-big
-          %h2
-            = flash[:notice]
-            = flash[:alert]
+        - if flash[:notice] == "ログアウトしました。"
+        -else
+          #error_flash
+            %i.fas.fa-info-circle.error-icon-big
+            %h2
+              = flash[:notice]
+              = flash[:alert]
       .field
         .input-title
           = f.label :company_login_id, "・アカウントID"

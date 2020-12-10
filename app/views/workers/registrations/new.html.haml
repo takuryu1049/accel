@@ -8,13 +8,16 @@
       %i.fas.fa-info-circle.make_account_information_mark
       サービスを利用する為に必要な情報です。間違いのないようご入力お願いします。
     = form_with model: @worker, url: worker_registration_path, local: true do |f|
+      - if flash[:notice] == "会社アカウントが登録されました！"
+        #flash-login
+          %i.fas.fa-check-circle.error-icon-big
+            %span
+              = flash[:notice]
       - if @worker.errors.any?
         #error_explanation
           %i.fas.fa-exclamation-circle.error-icon-big
           %h2
-            申し訳ございません。
-            %br/
-            = pluralize(@worker.errors.count, "箇所の入力不備があります。")
+            申し訳ございません。入力不備があります。
           %h3
             お手数ですが、入力項目をご確認のうえ、再度ご入力ください。
       .filed.support-message

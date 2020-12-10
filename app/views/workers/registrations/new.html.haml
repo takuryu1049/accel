@@ -3,7 +3,7 @@
     .logo.animate__animated.animate__zoomIn= image_tag "Acell.logo.svg"
     .make-account-title
       .make-account-border
-      %h2 メンバーを登録 (社員登録)
+      %h2 社員情報の登録
     %h3 
       %i.fas.fa-info-circle.make_account_information_mark
       サービスを利用する為に必要な情報です。間違いのないようご入力お願いします。
@@ -18,13 +18,19 @@
           %h3
             お手数ですが、入力項目をご確認のうえ、再度ご入力ください。
       .filed.support-message
-        = image_tag current_company.image, class: "company-image-header animate__animated animate__bounce animate__infinite"
         .description-company-make
-          %i.fas.fa-key
-          = "登録ID #{current_company.company_login_id}"
-          %br/
-          = "#{current_company.name}の社員登録をします"
-          = f.hidden_field :company_id, :value => current_company.id
+          %p - 会社アカウント情報 -
+          %table
+            %tr
+              %th{rowspan: 4}= image_tag current_company.image, class: "company-image-header"
+              %td.title{colspan: 3} - 会社名 -
+            %tr
+              %td.date{colspan: 3}="#{current_company.name}" 
+            %tr
+              %td.title{colspan: 3} - 会社アカウントID -
+            %tr
+              %td.date{colspan: 3}="#{current_company.company_login_id}"
+      = f.hidden_field :company_id, :value => current_company.id
       .field
         .input-title
           %span.must

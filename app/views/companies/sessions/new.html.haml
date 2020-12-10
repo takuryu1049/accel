@@ -9,11 +9,13 @@
       社員ログインをするには、会社でのログインが必要です。
     = form_with model: @company, url: company_session_path, local: true do |f|
       - if flash[:notice] || flash[:alert]
-        #error_flash
-          %i.fas.fa-info-circle.error-icon-big
-          %h2
-            = flash[:notice]
-            = flash[:alert]
+        - if flash[:notice] == "ログアウトしました。"
+        -else
+          #error_flash
+            %i.fas.fa-info-circle.error-icon-big
+            %h2
+              = flash[:notice]
+              = flash[:alert]
       .field
         .input-title
           = f.label :company_login_id, "・アカウントID"
@@ -27,19 +29,25 @@
         = f.password_field :password, placeholder: "6文字以上で入力ください", class: 'password-input'
         %i.fas.fa-eye.password-eye
       .submit-recaptcha-wrap
-        = f.button 'ログイン', class: "create-company-account",type: 'button', onclick: 'submit();'
+        = f.button 'ログイン', class: "create-account",type: 'button', onclick: 'submit();'
 
   .button-back-ground.animate__animated.animate__fadeInRight
     = link_to new_company_registration_path, class: "move-button"do
       %span.material-icons.exit-or-in
         library_add
       .exit-or-in-comment
-        アカウント登録
+        アカウント作成
   .button-back-ground-2.animate__animated.animate__fadeInRight
     = link_to root_path, class: "move-button" do
       %span.material-icons.exit-or-in
         home
       .exit-or-in-comment
         TOPに戻る
+  .mini-width-menu.animate__animated.animate__fadeInRight
+    %i.fas.fa-list-ul
+      メニュー
+    .menu
+      = link_to "アカウント作成", new_company_registration_path
+      = link_to "TOPに戻る", root_path
         
 .company-border.animate__animated.animate__rotateOut

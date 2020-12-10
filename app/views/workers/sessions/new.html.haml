@@ -9,12 +9,16 @@
       %i.fas.fa-info-circle.make_account_information_mark
       ログインする際に必要な情報は、会社ごとに徹底した管理をお願い致します。
     = form_with model: @worker, url: worker_session_path, local: true do |f|
-      - if flash[:notice] || flash[:alert]
+      - if flash[:notice] == ("会社でログインしました！") || flash[:notice] == ("ログアウトしました。") 
+        #flash-login
+          %i.fas.fa-check-circle.error-icon-big
+            %span
+              = flash[:notice]
+      -elsif flash[:notice]
         #error_flash
           %i.fas.fa-info-circle.error-icon-big
           %h2
             = flash[:notice]
-            = flash[:alert]
       .field
         .input-title
           = f.label :worker_login_id, "①社員アカウントID"
@@ -32,7 +36,7 @@
       -#     = f.check_box :remember_me
       -#     = f.label :remember_me
       .submit-recaptcha-wrap
-        = f.submit "ログイン", class: "create-company-account"
+        = f.button 'ログイン', class: "create-account",type: 'button', onclick: 'submit();'
       -# = render "companies/shared/links"
 
   .button-back-ground.animate__animated.animate__fadeInRight

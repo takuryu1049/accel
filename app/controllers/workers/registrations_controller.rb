@@ -14,6 +14,7 @@ class Workers::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
+    flash[:notice] = 'アカウント登録が完了しました！'
   end
 
   # GET /resource/edit

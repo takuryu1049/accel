@@ -11,7 +11,7 @@ class Worker < ApplicationRecord
          :recoverable, :rememberable, :validatable, authentication_keys: [:worker_login_id]
 
   with_options presence: true do
-    validates :worker_login_id, format: { with: /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\d])\w{6,12}\z/, message: 'は半角6~12文字かつ英大文字・小文字・数字それぞれ１文字以上を含むように入力して下さい' }, uniqueness: true
+    validates :worker_login_id, format: { with: /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\d])\w{6,12}\z/, message: 'は半角6~12文字かつ英大文字・小文字・数字それぞれ１文字以上を含むように入力してください' }, uniqueness: true
     validates :image
     validates :last_name, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: 'は全角ひらがな、全角カタカナ、漢字のいずれかで入力してください' }
     validates :first_name, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: 'は全角ひらがな、全角カタカナ、漢字でのいずれかで入力してください' }
@@ -23,7 +23,7 @@ class Worker < ApplicationRecord
     validates :email, uniqueness: true
   end
 
-  validates :gender, inclusion: { in: [true, false] }
+  validates :gender, inclusion: { in: [true, false], message: 'を選択してください'}
 
   def email_required?
     false

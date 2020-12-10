@@ -258,7 +258,7 @@ $list-position: 20%;
     }
     h3{
       color: #656873;
-      padding-top: 10px;
+      padding-top: 20px;
       font-size: 13px;
       padding-bottom: 10px;
       .make_account_information_mark{
@@ -276,23 +276,55 @@ $list-position: 20%;
       padding-bottom: 20px;
       font-size: 22px;
       font-family: "メイリオ";
-      border-left: dashed 3px #656873; 
+      // border-left: dashed 3px #656873; 
       width: 80%;
-      height: 80px;
-      margin: 20px auto;
-      border-radius: 10px 0 10px 0;
+      margin: 5px auto 30px auto;
       display: flex;
       justify-content: center;
-      font-weight: bold;
+      border: 2px dotted rgba(200, 200, 200, .7);
+      border-radius: 6px;
       .company-image-header{
         margin-left: 10px;
-        height: 60px;
-        width: 60px;
+        height: 100px;
+        width: 100px;
         border: solid 1px #656873; 
         border-radius: 10px;
       }
       .description-company-make{
+        width: 100%;
         margin-left: 20px;
+        margin-right: 20px;
+        .fas.fa-key{
+          color: rgba(255, 171, 4, 0.86);
+        }
+        table{
+          width: 100%;
+          max-width: 100%;
+        }
+        th{
+          max-width: 135px;
+          width: 135px;
+          img{
+            display: block;
+            margin: auto;
+          }
+        }
+        table, th, td {
+          text-align: left;
+          border-collapse: collapse;
+          border: 1px solid rgba(86, 86, 86, 0.47);
+          line-height: 1.5;
+          color: rgba(0, 0, 0, 0.826);
+        }
+        td.date{
+          text-align: center;
+          font-size: 18px;
+        }
+        td.title{
+          text-align: center;
+          background: rgba(212, 212, 212, 0.237);
+          font-size: 20px;
+        }
       }
     }
     .field{
@@ -345,15 +377,17 @@ $list-position: 20%;
           justify-content: center;
         }
         p{
-          font-size: 20px;
+          font-size: 16px;
           margin-top: 10px;
+          margin-right: 6px;
+          margin-left: 6px;
         }
         #worker_born_1i{
           border-color: #d8d8d8;
           border: 2px solid #ced4da;
           border-radius: 3px;
           padding: 6px;
-          width:100px;
+          width:135px;
           height:40px;
           font-size:16px;
           background-image: radial-gradient(at top, #b5e6cf, #9dddad);
@@ -378,7 +412,7 @@ $list-position: 20%;
           border: 2px solid #ced4da;
           border-radius: 3px;
           padding: 6px;
-          width: 80px;
+          width: 105px;
           height:40px;
           font-size:16px;
           background-image: radial-gradient(at top, #b5e6cf, #9dddad);
@@ -403,7 +437,7 @@ $list-position: 20%;
           border: 2px solid #ced4da;
           border-radius: 3px;
           padding: 6px;
-          width: 80px;
+          width: 105px;
           height:40px;
           font-size:16px;
           background-image: radial-gradient(at top, #b5e6cf, #9dddad);
@@ -511,6 +545,7 @@ $list-position: 20%;
       display: flex;
       justify-content: center;
       width: 720px;
+      padding-left: 30px;
     }
     .submit-recaptcha-wrap{
       // display: flex;
@@ -524,7 +559,7 @@ $list-position: 20%;
         margin-bottom:30px;
         margin: 20px auto;
       }
-      .create-company-account{
+      .create-account{
         margin: 25px auto;
         border: 3px double rgba(255, 255, 255, 0.9);
         width: 200px;
@@ -629,7 +664,51 @@ $list-position: 20%;
     color: red;
   }
 }
-
+#flash-login{
+  display: inline-block;
+  background-color: rgba(255,255,255, .9);
+  position: fixed;
+  z-index: 999;
+  top: -100px;
+  left: calc(50% - 125px);
+  padding:  10px;
+  padding-top: 10px;
+  border-radius: 6px;
+  border: 1px solid $accel_black;
+  border-bottom: 3px solid $accel_black;
+  animation: flash-bar 3s ease .3s 1 normal;
+    // キーフレームの定義
+  // フラッシュを美しく演出するためのアニメーション
+  @keyframes flash-bar{
+    0%{
+      top: -20px;
+    }
+    10%{
+      top: -3px;
+    }
+    30%{
+      top: -6px;
+    }
+    50%{
+      top: -3px;
+    }
+    80%{
+      top: -3px;
+    }
+    100%{
+      top: -60px;
+    }
+  }
+  i.fas.fa-check-circle.error-icon-big{
+    color: rgb(122, 255, 101);
+    font-size: 20px;
+    padding: 10px;
+    // animation: fadeIn .5s ease 3s 1 normal;
+    span{
+      color: $accel_black;
+    }
+  }
+}
 #error_flash{
   border: solid 1px $accel_pink;
   box-shadow: 0 2px 2px 0 $accel_pink;

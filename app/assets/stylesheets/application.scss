@@ -31,8 +31,10 @@ body{
   background-color: $back-color;
   font-size: 13px; 
   font-family: noto-sans-cjk-jp, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", 游ゴシック, "Yu Gothic", sans-serif;
-
+  // ※アンチエイリアス設定
+  // ↓webkit系
   -webkit-font-smoothing: antialiased;
+  // ↓firefox
   -moz-osx-font-smoothing: grayscale;
   overflow: hidden;
 }

@@ -35,7 +35,7 @@ RSpec.describe "新規会社アカウント登録 -結合テスト", type: :syst
 
       # アカウント作成ボタンを押すと会社モデルのカウント(レコード数)が1上がることを確認する。つまり、アカウントが作成されたことを確認する。
       expect{
-        find(".create-company-account").click
+        find(".create-account").click
       }.to change { Company.count }.by(1)
 
       # 登録された最新のアカウントを取得する
@@ -49,8 +49,8 @@ RSpec.describe "新規会社アカウント登録 -結合テスト", type: :syst
       expect(current_path).to eq new_worker_registration_path(latest_company[0].id)
 
       # ログインに成功した場合のみ表示されるFlash要素が表示されていることを確認
-      expect(page).to have_content("登録ID #{latest_company[0].company_login_id}")
-      expect(page).to have_content("#{latest_company[0].name}の社員登録をします")
+      expect(page).to have_content("#{latest_company[0].name}")
+      expect(page).to have_content("#{latest_company[0].company_login_id}")
 
     end
   end
@@ -80,7 +80,7 @@ RSpec.describe "新規会社アカウント登録 -結合テスト", type: :syst
 
       # アカウント作成ボタンを押すと会社モデルのカウント(レコード数)が上がらないことを確認する。つまり、アカウントが作成されなかったことを確認する。
       expect{
-        find(".create-company-account").click
+        find(".create-account").click
       }.to change { Company.count }.by(0)
 
       # 再度、会社アカウント登録画面に移動する(renderの再現になる)
@@ -112,11 +112,11 @@ RSpec.describe "会社アカウントログイン -結合テスト", type: :syst
       fill_in "company_company_login_id", with: @company.company_login_id
       fill_in "company_password", with: @company.password
       # ログインボタンをクリックする
-      find('input[name="commit"]').click
+      find('.create-account').click
       # 社員ログインページに遷移していることを確認する
       expect(current_path).to eq new_worker_session_path
       # 会社ログイン成功時のメッセージが表示されていることを確認する
-      expect(page).to have_content('会社ログイン済。社員ログインが必要')
+      expect(page).to have_content('会社でログインしました！')
     end
   end
   context 'ログインに失敗する場合' do
@@ -131,7 +131,7 @@ RSpec.describe "会社アカウントログイン -結合テスト", type: :syst
       fill_in "company_company_login_id", with:"hoge"
       fill_in "company_password", with:"hoge"
       # ログインボタンをクリックする
-      find('input[name="commit"]').click
+      find('.create-account').click
       # 会社ログインページに戻ってきていることを確認する
       expect(current_path).to eq new_company_session_path
       # 会社ログイン失敗時のメッセージが表示されていることを確認する

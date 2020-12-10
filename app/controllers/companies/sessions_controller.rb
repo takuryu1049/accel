@@ -46,7 +46,6 @@ class Companies::SessionsController < Devise::SessionsController
       # すでに会社のみログイン済であれば、社員登録画面へ行く。
     elsif company_signed_in?
       @worker = Worker.new
-
       flash[:notice] = '会社ログイン済。社員ログインが必要'
       redirect_to new_worker_session_path and return
     end
@@ -61,7 +60,7 @@ class Companies::SessionsController < Devise::SessionsController
       end
     elsif company_signed_in?
       @worker = Worker.new
-      flash[:notice] = 'すでに会社ログイン済。'
+      flash[:notice] = '会社でログインしました！'
       redirect_to new_worker_session_path and return
     end
   end

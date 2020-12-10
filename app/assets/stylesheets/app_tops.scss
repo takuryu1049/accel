@@ -252,6 +252,51 @@ $accel_black: #13202F;
       margin-top: 10px;
       margin-left: 10%;
       margin-right: 10%;
+      #flash-login{
+        display: inline-block;
+        background-color: rgba(255,255,255, .9);
+        position: fixed;
+        z-index: 999;
+        top: -100px;
+        left: calc(50% - 125px);
+        padding:  10px;
+        padding-top: 10px;
+        border-radius: 6px;
+        border: 1px solid $accel_black;
+        border-bottom: 3px solid $accel_black;
+        animation: flash-bar 3s ease .3s 1 normal;
+          // キーフレームの定義
+        // フラッシュを美しく演出するためのアニメーション
+        @keyframes flash-bar{
+          0%{
+            top: -20px;
+          }
+          10%{
+            top: -3px;
+          }
+          30%{
+            top: -6px;
+          }
+          50%{
+            top: -3px;
+          }
+          80%{
+            top: -3px;
+          }
+          100%{
+            top: -60px;
+          }
+        }
+        i.fas.fa-check-circle.error-icon-big{
+          color: rgb(122, 255, 101);
+          font-size: 20px;
+          padding: 10px;
+          // animation: fadeIn .5s ease 3s 1 normal;
+          span{
+            color: $accel_black;
+          }
+        }
+      }
       .countion{
         margin-bottom: 10px;
         padding: 10px 12.5px 10px 12.5px;

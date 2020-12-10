@@ -216,6 +216,135 @@ $list-position: 20%;
   }
 }
 
+.support-message{
+  background-color: #FFFFFF;
+  perspective: 20px;
+  position: fixed;
+  right: -570px;
+  top: 55%;
+  color: #656873;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  font-size: 22px;
+  font-family: "メイリオ";
+  box-shadow: 1px 1px 1px rgba(0,0,0, .6);
+  // border-left: dashed 3px #656873; 
+  width: 600px;
+  margin: 5px auto 10px auto;
+  display: flex;
+  justify-content: center;
+  border: 2px solid rgba(151, 150, 150, .6);
+  border-radius: 6px;
+  animation: pokopoko 2s ease 0s infinite forwards;
+  &::before{
+    content: "▶ 会社情報を確認する";
+    position: absolute;
+    left: -40px;
+    writing-mode: vertical-rl;
+    font-size: 16px;
+    font-weight: bold;
+    animation: minipoko .5s ease 0s infinite forwards;
+  }
+  &:hover{
+    right: -10px;
+    animation: hov 1s ease 0s;
+    &::before{
+      display: none;
+    }
+  }
+  @keyframes pokopoko {
+    0%{
+      right: -570px;
+    }
+    50%{
+      right: -550px;
+    }
+    75%{
+      right: -580px;
+    }
+    100%{
+      right: -570px;
+    }
+  }
+  @keyframes hov{
+    0%{
+      right:-500px;
+    }
+    100%{
+      right: -10px;
+    }
+  }
+  @keyframes minipoko {
+    0%{
+      left: -40px;
+    }
+    50%{
+      left: -50px;
+    }
+    100%{
+      left: -40px;
+    }
+  }
+  .company-image-header{
+    margin-left: 10px;
+    height: 100px;
+    width: 100px;
+    border: solid 1px #abacb4; 
+    border-radius: 10px;
+  }
+  .description-company-make{
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    margin-left: 20px;
+    margin-right: 20px;
+    p{
+      font-size: 20px;
+      text-align: left;
+      margin-bottom: 10px;
+      margin-left: 20px;
+    }
+    .fas.fa-key{
+      color: rgba(255, 171, 4, 0.86);
+    }
+    table{
+      width: 100%;
+      max-width: 100%;
+      z-index: 1;
+      position: relative;
+    }
+    th{
+      max-width: 135px;
+      width: 135px;
+      img{
+        display: block;
+        margin: auto;
+      }
+    }
+    table, th, td {
+      text-align: left;
+      border-collapse: collapse;
+      border: 1px solid rgba(139, 128, 128, 0.47);
+      line-height: 1.5;
+      color: rgba(0, 0, 0, 0.826);
+    }
+    td.date{
+      text-align: center;
+      font-size: 18px;
+    }
+    td.title{
+      text-align: center;
+      background: rgba(212, 212, 212, 0.237);
+      font-size: 20px;
+    }
+  }
+  i.fas.fa-address-card{
+    position: absolute;
+    top: -1px;
+    left: -2px;
+    color: rgb(151, 150, 150);
+  }
+}
+
 .flex-style{
   display: flex;
   align-items: center !important;
@@ -243,17 +372,17 @@ $list-position: 20%;
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
       color: #656873;
       padding: 30px 10px 10px 10px;
       font-size: 30px;
-      border-bottom: solid 10px;
-      border-top: solid 3px;
+      border-top: solid 3px  rgba(0,0,0,0.1) ;
       border-top-color: rgba(0,0,0,0.1) ;
-      border-bottom: dotted 3px;
-      border-bottom-color:rgba(0,0,0,0.1) ;
+      border-bottom: dotted 3px rgba(0,0,0,0.1);
       h2{
         font-size: 40px;
         font-weight:normal;
+        position: relative;
       }
     }
     h3{
@@ -270,63 +399,6 @@ $list-position: 20%;
       border-left: 2px dotted #656873;
       margin-left: 78px;
     } 
-    .support-message{
-      color: #656873;
-      padding-top: 10px;
-      padding-bottom: 20px;
-      font-size: 22px;
-      font-family: "メイリオ";
-      // border-left: dashed 3px #656873; 
-      width: 80%;
-      margin: 5px auto 30px auto;
-      display: flex;
-      justify-content: center;
-      border: 2px dotted rgba(200, 200, 200, .7);
-      border-radius: 6px;
-      .company-image-header{
-        margin-left: 10px;
-        height: 100px;
-        width: 100px;
-        border: solid 1px #656873; 
-        border-radius: 10px;
-      }
-      .description-company-make{
-        width: 100%;
-        margin-left: 20px;
-        margin-right: 20px;
-        .fas.fa-key{
-          color: rgba(255, 171, 4, 0.86);
-        }
-        table{
-          width: 100%;
-          max-width: 100%;
-        }
-        th{
-          max-width: 135px;
-          width: 135px;
-          img{
-            display: block;
-            margin: auto;
-          }
-        }
-        table, th, td {
-          text-align: left;
-          border-collapse: collapse;
-          border: 1px solid rgba(86, 86, 86, 0.47);
-          line-height: 1.5;
-          color: rgba(0, 0, 0, 0.826);
-        }
-        td.date{
-          text-align: center;
-          font-size: 18px;
-        }
-        td.title{
-          text-align: center;
-          background: rgba(212, 212, 212, 0.237);
-          font-size: 20px;
-        }
-      }
-    }
     .field{
       position:relative;
       z-index: 1;

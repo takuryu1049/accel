@@ -116,7 +116,7 @@ RSpec.describe "会社アカウントログイン -結合テスト", type: :syst
       # 社員ログインページに遷移していることを確認する
       expect(current_path).to eq new_worker_session_path
       # 会社ログイン成功時のメッセージが表示されていることを確認する
-      expect(page).to have_content('会社ログイン済。社員ログインが必要')
+      expect(page).to have_content('会社でログインしました！')
     end
   end
   context 'ログインに失敗する場合' do

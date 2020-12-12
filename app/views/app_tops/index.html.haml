@@ -18,8 +18,7 @@
           をご確認ください
       .box
         .box-title
-          .text
-            売上データ
+          .text 売上関連データ
         .box-content
           %ul
             %li
@@ -28,15 +27,36 @@
               目標売上高 20,000,000
             %li.goal
               目標まで 13,790,000
-      .box-2
-        .box-title
-          .text
-            売上データ
-        .box-content
+      .box-line
+        .box
+          .box-title
+            .text 
+              行動状況
+        .box
+          .box-title
+            .text 今月の登録した物件
+        .box-3
+          .box-title
+            .text 今月登録済の物件
+            %span= "　　-#{Time.now.month}月に登録した物件-"
           %ul
-            %li
-              総売上高 18,621,000
-            %li
-              目標売上高 20,000,000
-            %li.goal
-              目標まで 13,790,000
+            -if @month_of_properties
+              -@month_of_properties.each do |property|
+                %li
+                  =link_to  property_path(property.id) do
+                    =image_tag property.image
+                    %p= "　#{property.name}"
+            -else
+              %p 今月登録された物件情報はありません。
+          = "合計#{@month_of_properties.count}件"
+      .box-line
+        .box
+          .box-title
+            .text 
+              行動状況
+        .box
+          .box-title
+            .text 今月の登録した物件
+        .box
+          .box-title
+            .text 今月の登録した物件

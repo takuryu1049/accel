@@ -29,9 +29,6 @@
               目標まで 13,790,000
       .box-line
         .box
-          .box-title
-            .text 
-              行動状況
         .box
           .box-title
             .text 今月の登録した物件
@@ -50,10 +47,26 @@
               %p 今月登録された物件情報はありません。
           = "合計#{@month_of_properties.count}件"
       .box-line
-        .box
+        .box-4
           .box-title
-            .text 
-              行動状況
+            .text
+              在籍リスト
+          %ul
+            -if @workers
+              -@workers.each do |worker|
+                -if worker.gender == false
+                  %li
+                    =link_to "#" do
+                      =image_tag worker.image, class: "men"
+                      %p= "　#{worker.last_name}#{worker.first_name}"
+                -else worker.gender == true
+                  %li
+                    =link_to "#" do
+                      =image_tag worker.image, class: "women"
+                      %p= "　#{worker.last_name}#{worker.first_name}"
+            -else
+              %p 社員が登録されていません。
+          = "合計#{@workers.count}名"
         .box
           .box-title
             .text 今月の登録した物件

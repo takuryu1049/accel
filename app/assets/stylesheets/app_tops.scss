@@ -26,6 +26,35 @@ $accel_black: #13202F;
   }
 }
 
+@keyframes box-hover-orange{
+  0%{
+    border-color: rgba(255, 149, 74, .9);
+    outline-color: rgba(255, 149, 74, .9);
+  }
+  50%{
+    border-color: rgba(255, 149, 74, .8);
+    outline-color: rgba(255, 149, 74, .1);
+  }100%{
+    border-color: rgba(255, 149, 74, .9);
+    outline-color: rgba(255, 149, 74, .9);
+  }
+}
+
+@keyframes box-hover-green{
+  0%{
+    border-color: rgba(60,200,60, .9);
+    outline-color: rgba(60,200,60, .9);
+  }
+  50%{
+    border-color: rgba(60,200,60, .8);
+    outline-color: rgba(60,200,60, .1);
+  }
+  100%{
+    border-color: rgba(60,200,60, .9);
+    outline-color: rgba(60,200,60, .9);
+  }
+}
+
 .header-app{
   font-family: century-gothic,Avenir Next,Century Gothic,sans-serif;
   background-color: white;
@@ -408,9 +437,12 @@ $accel_black: #13202F;
           margin: 0 10px;
           margin-bottom: 24px;
           background-size: cover;
-          border: 3px solid rgba(255, 149, 74, .1);
+          border: 3px solid rgba(255, 149, 74, .3);
           outline: 2px dashed #dce4e9;
           position: relative;
+        &:hover{
+          animation: box-hover-orange 1s infinite;
+        }
           .box-title{
             display: flex;
             align-items: baseline;
@@ -430,6 +462,7 @@ $accel_black: #13202F;
             display: flex;
             flex-wrap:wrap;
             position:relative;
+            overflow: hidden;
             li{
               list-style: none;
               margin: 0 3px;
@@ -491,13 +524,17 @@ $accel_black: #13202F;
         .box-3{
           color: rgba(80,80,80, 1);
           width: calc(100%/3);
+          height: 100%;
           padding: 24px;
           margin: 0 10px;
           margin-bottom: 24px;
           background-size: cover;
-          border: 3px solid rgba(255, 149, 74, .1);
+          border: 3px solid rgba(255, 149, 74, .3);
           outline: 2px dashed #dce4e9;
           position:relative;
+          &:hover{
+            animation: box-hover-orange 1s infinite;
+          }
           .box-title{
             display: flex;
             align-items: baseline;
@@ -517,6 +554,7 @@ $accel_black: #13202F;
             display: flex;
             flex-wrap:wrap;
             position:relative;
+            overflow: hidden;
             li{
               list-style: none;
               margin: 0 3px;
@@ -584,6 +622,9 @@ $accel_black: #13202F;
           background-size: cover;
           border: 3px solid rgba(60,200,60, .3);
           outline: 2px dashed #dce4e9;
+          &:hover{
+          animation: box-hover-green 1s infinite;
+          }
           .box-title{
             display: flex;
             align-items: baseline;

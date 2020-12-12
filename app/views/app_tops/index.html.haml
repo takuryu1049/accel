@@ -29,9 +29,24 @@
               目標まで 13,790,000
       .box-line
         .box
-        .box
           .box-title
-            .text 今月の登録した物件
+            .text 本日の増加収益リソース
+        .box-2
+          .box-title
+            .text 本日登録した物件
+            %span= "　　-#{Time.now.month}月#{Time.now.day}日に登録した物件-"
+          %ul
+            -if @day_of_properties
+              -@day_of_properties.each do |property|
+                %li
+                  =link_to  property_path(property.id) do
+                    =image_tag property.image
+                    %p= "　#{property.name}"
+            -else
+              %p 本日登録された物件情報はありません。
+          = "合計#{@day_of_properties.count}件"
+          -if @day_of_properties
+            =image_tag "new.png", class: "new"
         .box-3
           .box-title
             .text 今月登録済の物件
@@ -46,11 +61,13 @@
             -else
               %p 今月登録された物件情報はありません。
           = "合計#{@month_of_properties.count}件"
+          -if @month_of_properties
+            =image_tag "new.png", class: "new"
       .box-line
         .box-4
           .box-title
             .text
-              在籍リスト
+              社員リスト
           %ul
             -if @workers
               -@workers.each do |worker|

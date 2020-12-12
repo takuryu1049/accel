@@ -18,8 +18,7 @@
           をご確認ください
       .box
         .box-title
-          .text
-            売上データ
+          .text ・売上関連データ
         .box-content
           %ul
             %li
@@ -27,16 +26,62 @@
             %li
               目標売上高 20,000,000
             %li.goal
-              目標まで 13,790,000
-      .box-2
-        .box-title
-          .text
-            売上データ
-        .box-content
+              目標まで 1,379,000
+        .wrap
+          =pie_chart [["総売上高","18621000"],["達成までに必要な売上高","1379000"]]
+          = column_chart({"前々月売上高" => 1000000, "前月売上高" => 2000000, "当月売上高" => 3000000})
+          -# = line_chart({"前々月売上高" => 1000000, "前月売上高" => 2000000, "当月売上高" => 3000000})
+          = area_chart({"前々月戸数" => 100, "前月戸数" => 96, "当月戸数" => 123})
+      .box-line
+        .box-1
+          .box-title
+            .text ・本日登録した物件
+            %span= "　　-#{Time.now.month}月#{Time.now.day}日に登録した物件-"
           %ul
-            %li
-              総売上高 18,621,000
-            %li
-              目標売上高 20,000,000
-            %li.goal
-              目標まで 13,790,000
+            -if @day_of_properties
+              -@day_of_properties.each do |property|
+                %li
+                  =link_to  property_path(property.id) do
+                    =image_tag property.image
+                    %p= "　#{property.name}"
+            -else
+              %p 本日登録された物件情報はありません。
+          = "合計#{@day_of_properties.count}件"
+          -if @day_of_properties
+            =image_tag "new.png", class: "new"
+        .box-2
+          .box-title
+            .text ・今月登録した物件
+            %span= "　　-#{Time.now.month}月に登録した物件-"
+          %ul
+            -if @month_of_properties
+              -@month_of_properties.each do |property|
+                %li
+                  =link_to  property_path(property.id) do
+                    =image_tag property.image
+                    %p= "　#{property.name}"
+            -else
+              %p 今月登録された物件情報はありません。
+          = "合計#{@month_of_properties.count}件"
+          -if @month_of_properties
+            =image_tag "new.png", class: "new"
+        .box-3
+          .box-title
+            .text
+              ・社員リスト
+          %ul
+            -if @workers
+              -@workers.each do |worker|
+                -if worker.gender == false
+                  %li
+                    =link_to "#" do
+                      =image_tag worker.image, class: "men"
+                      %p= "　#{worker.last_name}#{worker.first_name}"
+                -else worker.gender == true
+                  %li
+                    =link_to "#" do
+                      =image_tag worker.image, class: "women"
+                      %p= "　#{worker.last_name}#{worker.first_name}"
+            -else
+              %p 社員が登録されていません。
+          = "合計#{@workers.count}名"

@@ -79,3 +79,5 @@ gem 'material_icons'
 gem 'rails-i18n'
 
 gem "gretel"
+
+gem "chartkick"

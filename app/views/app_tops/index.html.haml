@@ -18,7 +18,7 @@
           をご確認ください
       .box
         .box-title
-          .text 売上関連データ
+          .text ・売上関連データ
         .box-content
           %ul
             %li
@@ -26,14 +26,16 @@
             %li
               目標売上高 20,000,000
             %li.goal
-              目標まで 13,790,000
+              目標まで 1,379,000
+        .wrap
+          =pie_chart [["総売上高","18621000"],["達成までに必要な売上高","1379000"]]
+          = column_chart({"前々月売上高" => 1000000, "前月売上高" => 2000000, "当月売上高" => 3000000})
+          -# = line_chart({"前々月売上高" => 1000000, "前月売上高" => 2000000, "当月売上高" => 3000000})
+          = area_chart({"前々月戸数" => 100, "前月戸数" => 96, "当月戸数" => 123})
       .box-line
-        .box
+        .box-1
           .box-title
-            .text 本日の増加収益リソース
-        .box-2
-          .box-title
-            .text 本日登録した物件
+            .text ・本日登録した物件
             %span= "　　-#{Time.now.month}月#{Time.now.day}日に登録した物件-"
           %ul
             -if @day_of_properties
@@ -47,9 +49,9 @@
           = "合計#{@day_of_properties.count}件"
           -if @day_of_properties
             =image_tag "new.png", class: "new"
-        .box-3
+        .box-2
           .box-title
-            .text 今月登録した物件
+            .text ・今月登録した物件
             %span= "　　-#{Time.now.month}月に登録した物件-"
           %ul
             -if @month_of_properties
@@ -63,11 +65,10 @@
           = "合計#{@month_of_properties.count}件"
           -if @month_of_properties
             =image_tag "new.png", class: "new"
-      .box-line
-        .box-4
+        .box-3
           .box-title
             .text
-              社員リスト
+              ・社員リスト
           %ul
             -if @workers
               -@workers.each do |worker|
@@ -84,9 +85,3 @@
             -else
               %p 社員が登録されていません。
           = "合計#{@workers.count}名"
-        .box
-          .box-title
-            .text 今月の登録した物件
-        .box
-          .box-title
-            .text 今月の登録した物件

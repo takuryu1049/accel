@@ -81,3 +81,8 @@ gem 'rails-i18n'
 gem "gretel"
 
 gem "chartkick"
+
+
+group :production do
+  gem 'rails_12factor'
+end

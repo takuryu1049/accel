@@ -52,5 +52,6 @@ test:
 production:
   <<: *default
   database: accel_production
-  username: accel
-  password: <%= ENV['ACCEL_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock

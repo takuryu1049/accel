@@ -85,6 +85,25 @@ $registration_theme: rgb(255, 149, 74);
   height:40px;
   font-size:16px;
   margin-bottom: 10px;
+  &:focus{
+    border-color: $registration_theme;
+    border-style: dashed;
+    animation: input-flash 1s infinite;
+    box-shadow: 1px 1px 1px $registration_theme;
+    @keyframes input-flash{
+      0%{
+        
+      }
+      50%{
+        border-color: #d8d8d8;
+        border-style: solid;
+        box-shadow: 1px 1px 1px transparent;
+      }
+      100%{
+
+      }
+    }
+  }
 }
 @mixin text-area{
   border-color: #d8d8d8;
@@ -96,6 +115,12 @@ $registration_theme: rgb(255, 149, 74);
   font-size:16px;
   margin-bottom: 20px;
   resize: none;
+  &:focus{
+    border-color: $registration_theme;
+    border-style: dashed;
+    animation: input-flash 1s infinite;
+    box-shadow: 1px 1px 1px $registration_theme;
+  }
 }
 @mixin select-box{
   border-color: #d8d8d8;

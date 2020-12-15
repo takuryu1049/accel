@@ -116,7 +116,7 @@ $accel_black: #13202F;
     overflow: hidden;
     .content{
       .main-back{
-        background-image: url("main-back.jpg");
+        background-image: image-url("main-back.jpg");
         background-size: cover;
         height: calc(100vh - 118px);
         position: relative;

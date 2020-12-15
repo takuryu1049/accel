@@ -209,6 +209,20 @@ $registration_theme: rgb(255, 149, 74);
               font-size:17px;
               border-radius: 3px;
               border-bottom: ridge 2px $accel_pink; 
+              animation: flash-bar-bottom .6s infinite;
+              position:relative;
+              left: -10px;
+              @keyframes flash-bar-bottom{
+                0%{
+                  border: ridge 2px $accel_pink; 
+                }
+                50%{
+                  border: dashed 2px $accel_pink;; 
+                }
+                100%{
+                  border: ridge 2px $accel_pink; 
+                }
+              }
             }
           }
         }
@@ -234,6 +248,9 @@ $registration_theme: rgb(255, 149, 74);
               font-size:16px;
               border-radius: 3px;
               border-bottom: ridge 2px $accel_pink; 
+              animation: flash-bar-bottom .6s infinite;
+              position:relative;
+              left: -10px;
             }
           }
           .support-through{

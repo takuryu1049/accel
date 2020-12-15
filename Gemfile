@@ -35,6 +35,10 @@ group :development, :test do
   gem 'faker'
   gem 'gimei'
   gem 'rspec-rails', '~> 4.0.0'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano3-unicorn'
 end
 
 group :development do

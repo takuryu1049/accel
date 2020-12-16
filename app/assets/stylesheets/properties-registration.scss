@@ -1331,6 +1331,12 @@ $registration_theme: rgb(255, 149, 74);
                       word-wrap: break-word;
                       width: 200px;
                     }
+                    .gender-none{
+                      display:none !important;
+                    }
+                    .character-none{
+                      display: none !important;
+                    }
                   }
                 }
               }

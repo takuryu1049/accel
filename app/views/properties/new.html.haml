@@ -392,24 +392,24 @@
                           大家様について、社内全体に共有するべき情報を入力してください。※電話等の連絡に関する情報は「4.連絡先等」に入力してください。
                     .field-space
                       .field-wrap-conpact
-                        .field.field-1
+                        .field.field-1#gender
                           .input-title.short
                             %span.must.optional
                               任意
                             = f.label :gender, "性別"
                           .gender-flex
-                            = f.radio_button :gender, FALSE, class: 'input_radio'
+                            = f.radio_button :gender, FALSE, class: 'input_radio',id: "gender-input-mars"
                             %i.fas.fa-mars
                             男
-                            = f.radio_button :gender, TRUE, class: 'input_radio'
+                            = f.radio_button :gender, TRUE, class: 'input_radio',id: "gender-input-venus"
                             %i.fas.fa-venus
                             女
-                        .field.field-3
+                        .field.field-3#character
                           .input-title
                             %span.must.optional
                               任意
                             = f.label :character_id, "性格" 
-                          = f.collection_select(:character_id, Character.all, :id, :name, {}, {class:"select-box"}) 
+                          = f.collection_select(:character_id, Character.all, :id, :name, {}, {class:"select-box",id: "character-input"}) 
                       .field.field-4
                         .input-title
                           %span.must.optional

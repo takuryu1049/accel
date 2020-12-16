@@ -48,7 +48,7 @@
                           %span.must
                             必須
                           = f.label :name, "物件名称"
-                        = f.text_field :name, autofocus: true,class: 'fa',placeholder: "例) 佐藤アパート", autocomplete: "off"
+                        = f.text_field :name, autofocus: true, placeholder: "例) 佐藤アパート", autocomplete: "off"
                       - if @property_owner_utility_equipment_facility.errors.include?(:name)
                         .error
                           %i.fas.fa-exclamation-circle.error-icon
@@ -58,7 +58,7 @@
                           %span.must
                             必須
                           = f.label :name_kana, "物件名称 (カナ)"
-                        = f.text_field :name_kana, autofocus: true,class: 'fa',placeholder: "例) サトウアパート", autocomplete: "off"
+                        = f.text_field :name_kana, placeholder: "例) サトウアパート", autocomplete: "off"
                       - if @property_owner_utility_equipment_facility.errors.include?(:name_kana)
                         .error
                           %i.fas.fa-exclamation-circle.error-icon
@@ -74,7 +74,7 @@
                           %span.must
                             必須
                           = f.label :post_code, "郵便番号" 
-                        = f.text_field :post_code, autofocus: true,class: 'fa in_logo', placeholder: "\uf7d7 例) 123-1234 (ハイフン含む)", autocomplete: "off"
+                        = f.text_field :post_code,placeholder: "例) 123-1234 (ハイフン含む)", autocomplete: "off"
                       - if @property_owner_utility_equipment_facility.errors.include?(:post_code)
                         .error
                           %i.fas.fa-exclamation-circle.error-icon
@@ -84,7 +84,7 @@
                           %span.must
                             必須
                           = f.label :prefecture_id, "都道府県" 
-                        = f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box fa"})
+                        = f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box"})
                       - if @property_owner_utility_equipment_facility.errors.include?(:prefecture_id)
                         .error
                           %i.fas.fa-exclamation-circle.error-icon
@@ -94,7 +94,7 @@
                           %span.must
                             必須
                           = f.label :city, "市区町村" 
-                        = f.text_field :city, autofocus: true, autocomplete: "address-level2" ,placeholder: "※町名まで入力をしてください",class: "fa" , autocomplete: "off"
+                        = f.text_field :city, placeholder: "※町名まで入力をしてください", autocomplete: "off"
                       - if @property_owner_utility_equipment_facility.errors.include?(:city)
                         .error
                           %i.fas.fa-exclamation-circle.error-icon
@@ -104,7 +104,7 @@
                           %span.must
                             必須
                           = f.label :street, "番地" 
-                        = f.text_field :street, autofocus: true, class: "fa", autocomplete: "off"
+                        = f.text_field :street, autocomplete: "off"
                       - if @property_owner_utility_equipment_facility.errors.include?(:street)
                         .error
                           %i.fas.fa-exclamation-circle.error-icon
@@ -123,7 +123,7 @@
                           %span.must
                             必須
                           = f.label :type_id, "物件種別" 
-                        = f.collection_select(:type_id, Type.all, :id, :name, {}, {class:"select-box fa"}) 
+                        = f.collection_select(:type_id, Type.all, :id, :name, {}, {class:"select-box"}) 
                       - if @property_owner_utility_equipment_facility.errors.include?(:type_id)
                         .error
                           %i.fas.fa-exclamation-circle.error-icon
@@ -144,7 +144,7 @@
                           %span.must
                             必須
                           = f.label :units, "総戸数" 
-                        = f.number_field :units, autofocus: true, class: 'fa', min: 1, max: 3000
+                        = f.number_field :units, min: 1, max: 3000
                         .units
                           戸
                       - if @property_owner_utility_equipment_facility.errors.include?(:units)
@@ -158,14 +158,14 @@
                         = "#{i+1}.#{list_box[i]}" 
                         %i.far.fa-question-circle.info-icon
                         .description
-                          管理形態が「物件内混合」の場合には、情報が複雑な場合がある為、物件の注意事項にその内容を詳細に入力してください。
+                          管理形態が「物件内混合」の場合には、情報が複雑な場合がある為、物件注意事項にその内容を詳細に入力してください。
                     .field-space
                       .field
                         .input-title
                           %span.must
                             必須
                           = f.label :management_form_id, "管理形態"
-                        = f.collection_select(:management_form_id, ManagementForm.all, :id, :name, {}, {class:"select-box fa"}) 
+                        = f.collection_select(:management_form_id, ManagementForm.all, :id, :name, {}, {class:"select-box"}) 
                       - if @property_owner_utility_equipment_facility.errors.include?(:management_form_id)
                         .error
                           %i.fas.fa-exclamation-circle.error-icon
@@ -181,7 +181,7 @@
                           %span.must
                             必須
                           = f.label :sewer_id, "上水道" 
-                        = f.collection_select(:sewer_id, Sewer.all, :id, :name, {}, {class:"select-box fa"})
+                        = f.collection_select(:sewer_id, Sewer.all, :id, :name, {}, {class:"select-box"})
                         - if @property_owner_utility_equipment_facility.errors.include?(:sewer_id)
                           .error
                             %i.fas.fa-exclamation-circle.error-icon
@@ -191,7 +191,7 @@
                           %span.must
                             必須
                           = f.label :water_supply_id, "下水道" 
-                        = f.collection_select(:water_supply_id, WaterSupply.all, :id, :name, {}, {class:"select-box fa"})
+                        = f.collection_select(:water_supply_id, WaterSupply.all, :id, :name, {}, {class:"select-box"})
                         - if @property_owner_utility_equipment_facility.errors.include?(:water_supply_id)
                           .error
                             %i.fas.fa-exclamation-circle.error-icon
@@ -201,7 +201,7 @@
                           %span.must
                             必須
                           = f.label :electrical_id, "電気" 
-                        = f.collection_select(:electrical_id, Electrical.all, :id, :name, {}, {class:"select-box fa"})
+                        = f.collection_select(:electrical_id, Electrical.all, :id, :name, {}, {class:"select-box"})
                         - if @property_owner_utility_equipment_facility.errors.include?(:electrical_id)
                           .error
                             %i.fas.fa-exclamation-circle.error-icon
@@ -211,7 +211,7 @@
                           %span.must
                             必須
                           = f.label :ga_id, "ガス" 
-                        = f.collection_select(:ga_id, Ga.all, :id, :name, {}, {class:"select-box fa"})
+                        = f.collection_select(:ga_id, Ga.all, :id, :name, {}, {class:"select-box"})
                         - if @property_owner_utility_equipment_facility.errors.include?(:ga_id)
                           .error
                             %i.fas.fa-exclamation-circle.error-icon
@@ -249,10 +249,10 @@
                     .field-space
                       .field
                         .input-title
-                          %span.must.animate__animated.animate__fadeInUp
+                          %span.must
                             必須
                           = f.label :image, "物件写真"
-                        = f.file_field :image, id:"item-image", autofocus: true, class: "fa" 
+                        = f.file_field :image, id:"item-image"
                         - if @property_owner_utility_equipment_facility.errors.include?(:image)
                           .error
                             %i.fas.fa-exclamation-circle.error-icon
@@ -270,7 +270,7 @@
                           %span.must
                             必須
                           = f.label :rank_id, "物件ランク"
-                        = f.collection_select(:rank_id, Rank.all, :id, :name, {}, {class:"select-box fa"}) 
+                        = f.collection_select(:rank_id, Rank.all, :id, :name, {}, {class:"select-box"}) 
                       - if @property_owner_utility_equipment_facility.errors.include?(:rank_id)
                         .error
                           %i.fas.fa-exclamation-circle.error-icon
@@ -295,7 +295,7 @@
                           %span.must.optional
                             任意
                           = f.label :caution, "物件注意事項"
-                        = f.text_area :caution, class: 'fa', autofocus: true
+                        = f.text_area :caution
           .properties-registration-form-wrap-2
             - for i in 0..4 do
               = content_tag(:div, "", id: "switch2-#{i+1}", class: "properties-registration-form-wrap-2-line-#{i+1}") do
@@ -314,10 +314,10 @@
                           %span.must
                             必須
                           = f.label :swicth_owner_form, "所有形態"
-                        = f.radio_button :swicth_owner_form, FALSE, class: 'fa in_logo input_radio', id: "human-switch",checked: true
+                        = f.radio_button :swicth_owner_form, FALSE, class: 'input_radio', id: "human-switch",checked: true
                         .switch-name
                           個人
-                        = f.radio_button :swicth_owner_form, TRUE, class: 'fa in_logo input_radio', id: "company-switch"
+                        = f.radio_button :swicth_owner_form, TRUE, class: 'input_radio', id: "company-switch"
                         .switch-name
                           法人
                       .company-wrap
@@ -326,7 +326,7 @@
                             %span.must
                               必須
                             = f.label :owner_company_name, "会社名"
-                          = f.text_field :owner_company_name, autofocus: true, class: 'fa', id: 'owner-company-name-input', autocomplete: "off"
+                          = f.text_field :owner_company_name, id: 'owner-company-name-input', autocomplete: "off"
                           - if @property_owner_utility_equipment_facility.errors.include?(:owner_company_name)
                             .error
                               %i.fas.fa-exclamation-circle.error-icon
@@ -336,7 +336,7 @@
                             %span.must
                               必須
                             = f.label :owner_company_name_kana, "会社名(カナ)"
-                          = f.text_field :owner_company_name_kana, autofocus: true, class: 'fa', id: 'owner-company-name-kana-input', autocomplete: "off"
+                          = f.text_field :owner_company_name_kana, id: 'owner-company-name-kana-input', autocomplete: "off"
                           - if @property_owner_utility_equipment_facility.errors.include?(:owner_company_name_kana)
                             .error
                               %i.fas.fa-exclamation-circle.error-icon
@@ -347,7 +347,7 @@
                             %span.must
                               必須
                             = f.label :last_name, "姓"
-                          = f.text_field :last_name, autofocus: true, class: 'fa name-input', id: 'owner-last-name-input', autocomplete: "off"
+                          = f.text_field :last_name, class: 'name-input', id: 'owner-last-name-input', autocomplete: "off"
                           - if @property_owner_utility_equipment_facility.errors.include?(:last_name)
                             .error
                               %i.fas.fa-exclamation-circle.error-icon
@@ -357,7 +357,7 @@
                             %span.must
                               必須
                             = f.label :first_name, "名"
-                          = f.text_field :first_name, autofocus: true, class: 'fa name-input', id: 'owner-first-name-input', autocomplete: "off"
+                          = f.text_field :first_name, class: 'name-input', id: 'owner-first-name-input', autocomplete: "off"
                           - if @property_owner_utility_equipment_facility.errors.include?(:first_name)
                             .error
                               %i.fas.fa-exclamation-circle.error-icon
@@ -367,7 +367,7 @@
                             %span.must
                               必須
                             = f.label :last_name_kana, "姓(カナ)"
-                          = f.text_field :last_name_kana, autofocus: true, class: 'fa name-input', id: 'owner-last-name-kana-input', autocomplete: "off"
+                          = f.text_field :last_name_kana, class: 'name-input', id: 'owner-last-name-kana-input', autocomplete: "off"
                           - if @property_owner_utility_equipment_facility.errors.include?(:last_name_kana)
                             .error
                               %i.fas.fa-exclamation-circle.error-icon
@@ -377,7 +377,7 @@
                             %span.must
                               必須
                             = f.label :first_name_kana, "名(メイ)"
-                          = f.text_field :first_name_kana, autofocus: true, class: 'fa name-input', id: 'owner-first-name-kana-input', autocomplete: "off"
+                          = f.text_field :first_name_kana, class: 'name-input', id: 'owner-first-name-kana-input', autocomplete: "off"
                           - if @property_owner_utility_equipment_facility.errors.include?(:first_name_kana)
                             .error
                               %i.fas.fa-exclamation-circle.error-icon
@@ -398,10 +398,10 @@
                               必須
                             = f.label :gender, "性別"
                           .gender-flex
-                            = f.radio_button :gender, FALSE, class: 'fa input_radio',checked: true
+                            = f.radio_button :gender, FALSE, class: 'input_radio',checked: true
                             %i.fas.fa-mars
                             男
-                            = f.radio_button :gender, TRUE, class: 'fa input_radio'
+                            = f.radio_button :gender, TRUE, class: 'input_radio'
                             %i.fas.fa-venus
                             女
                         .field.field-3
@@ -409,13 +409,13 @@
                             %span.must.optional
                               任意(推奨)
                             = f.label :character_id, "性格" 
-                          = f.collection_select(:character_id, Character.all, :id, :name, {}, {class:"select-box fa"}) 
+                          = f.collection_select(:character_id, Character.all, :id, :name, {}, {class:"select-box"}) 
                       .field.field-4
                         .input-title
                           %span.must.optional
                             任意
                           = f.label :character_about, "所有者についての共有事項" 
-                        = f.text_area :character_about, class: 'fa', autofocus: true
+                        = f.text_area :character_about, autocomplete: "off"
                   - case i+1
                   - when 3 then
                     .properties-registration-form-title
@@ -427,7 +427,7 @@
                           %span.must
                             必須
                           = f.label :owner_post_code, "郵便番号" 
-                        = f.text_field :owner_post_code, autofocus: true,class: 'fa in_logo', autocomplete: "off"
+                        = f.text_field :owner_post_code,class: 'in_logo', autocomplete: "off"
                       - if @property_owner_utility_equipment_facility.errors.include?(:owner_post_code)
                         .error
                           %i.fas.fa-exclamation-circle.error-icon
@@ -437,7 +437,7 @@
                           %span.must
                             必須
                           = f.label :owner_prefecture_id, "都道府県" 
-                        = f.collection_select(:owner_prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box fa"}) 
+                        = f.collection_select(:owner_prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box"}) 
                       - if @property_owner_utility_equipment_facility.errors.include?(:owner_prefecture_id)
                         .error
                           %i.fas.fa-exclamation-circle.error-icon
@@ -447,7 +447,7 @@
                           %span.must
                             必須
                           = f.label :owner_city, "市区町村" 
-                        = f.text_field :owner_city, autofocus: true, class: 'fa', autocomplete: "off"
+                        = f.text_field :owner_city, autocomplete: "off"
                       - if @property_owner_utility_equipment_facility.errors.include?(:owner_city)
                         .error
                           %i.fas.fa-exclamation-circle.error-icon
@@ -457,7 +457,7 @@
                           %span.must
                             必須
                           = f.label :owner_street, "番地" 
-                        = f.text_field :owner_street, autofocus: true, class: 'fa', autocomplete: "off"
+                        = f.text_field :owner_street, autocomplete: "off"
                       - if @property_owner_utility_equipment_facility.errors.include?(:owner_street)
                         .error
                           %i.fas.fa-exclamation-circle.error-icon
@@ -467,7 +467,7 @@
                           %span.must.optional
                             任意
                           = f.label :owner_building_name, "建物名(号室まで)" 
-                        = f.text_field :owner_building_name, autofocus: true, class: 'fa', autocomplete: "off"
+                        = f.text_field :owner_building_name, autocomplete: "off"
                   - case i+1
                   - when 4 then
                     .properties-registration-form-title
@@ -483,7 +483,7 @@
                           %span.must
                             必須
                           = f.label :main_communication, "主要やり取り人物"
-                        = f.text_field :main_communication, autofocus: true,class: 'fa in_logo',placeholder: "例) 本人・娘・父・知人の●●さんなど", autocomplete: "off"
+                        = f.text_field :main_communication, class: 'in_logo',placeholder: "例) 本人・娘・父・知人の●●さんなど", autocomplete: "off"
                       - if @property_owner_utility_equipment_facility.errors.include?(:main_communication)
                         .error
                           %i.fas.fa-exclamation-circle.error-icon
@@ -493,7 +493,7 @@
                           %span.must
                             必須
                           = f.label :communication_about, "やり取り方法について" 
-                        = f.text_area :communication_about, class: 'fa', autofocus: true, autocomplete: "off"
+                        = f.text_area :communication_about, autocomplete: "off"
                       - if @property_owner_utility_equipment_facility.errors.include?(:communication_about)
                         .error
                           %i.fas.fa-exclamation-circle.error-icon
@@ -504,31 +504,31 @@
                             %span.must.optional
                               任意
                             = f.label :home_phone_num, "固定電話番号" 
-                          = f.text_field :home_phone_num, autofocus: true, class: 'fa', autocomplete: "off"
+                          = f.text_field :home_phone_num, autocomplete: "off"
                         .field
                           .input-title
                             %span.must.optional
                               任意
                             = f.label :phone_num, "携帯電話番号"
-                          = f.text_field :phone_num, autofocus: true, class: 'fa', autocomplete: "off"
+                          = f.text_field :phone_num, autocomplete: "off"
                         .field
                           .input-title
                             %span.must.optional
                               任意
                             = f.label :other_phone_num, "その他電話番号" 
-                          = f.text_field :other_phone_num, autofocus: true, class: 'fa', autocomplete: "off"
+                          = f.text_field :other_phone_num, autocomplete: "off"
                         .field
                           .input-title
                             %span.must.optional
                               任意
                             = f.label :fax_num, "FAX番号" 
-                          = f.text_field :fax_num, autofocus: true, class: 'fa', autocomplete: "off"
+                          = f.text_field :fax_num, autocomplete: "off"
                         .field
                           .input-title
                             %span.must.optional
                               任意
                             = f.label :email, "メールアドレス" 
-                          = f.text_field :email, autofocus: true, class: 'fa', autocomplete: "off"
+                          = f.text_field :email, autocomplete: "off"
                   - case i+1
                   - when 5 then
                     .properties-registration-form-title
@@ -541,53 +541,53 @@
                           %span.must.optional
                             任意
                           = f.label :w_company_name, "会社名"
-                        = f.text_field :w_company_name, autofocus: true, class: 'fa', id: 'owner-company-name-input', id: "remove-company-name", autocomplete: "off"
+                        = f.text_field :w_company_name, id: 'owner-company-name-input', id: "remove-company-name", autocomplete: "off"
                       .field
                         .input-title
                           %span.must.optional
                             任意
                           = f.label :w_company_name_kana, "会社名(カナ)"
-                        = f.text_field :w_company_name_kana, autofocus: true, class: 'fa', id: 'owner-company-name-kana-input', id: "remove-company-kana-name", autocomplete: "off"
+                        = f.text_field :w_company_name_kana, id: 'owner-company-name-kana-input', id: "remove-company-kana-name", autocomplete: "off"
                       .field
                         .input-title
                           %span.must.optional
                             任意
                           = f.label :w_post_code, "郵便番号" 
-                        = f.text_field :w_post_code, autofocus: true,class: 'fa in_logo', autocomplete: "postal-code", id: "remove-post-code" , autocomplete: "off"
+                        = f.text_field :w_post_code, class: 'in_logo', id: "remove-post-code", autocomplete: "off"
                       .field
                         .input-title
                           %span.must.optional
                             任意
                           = f.label :w_prefecture_id, "都道府県" 
-                        = f.collection_select(:w_prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box remove-input fa", id: "remove-prefecture"})
+                        = f.collection_select(:w_prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box remove-input", id: "remove-prefecture"})
                       .field
                         .input-title
                           %span.must.optional
                             任意
                           = f.label :w_city, "市区町村" 
-                        = f.text_field :w_city, autofocus: true, autocomplete: "address-level2", class: "remove-input fa", id: "remove-city", autocomplete: "off"
+                        = f.text_field :w_city, class: "remove-input", id: "remove-city", autocomplete: "off"
                       .field
                         .input-title
                           %span.must.optional
                             任意
                           = f.label :w_street, "番地" 
-                        = f.text_field :w_street, autofocus: true, autocomplete: "address-line1" , class: "remove-input fa", id: "remove-street", autocomplete: "off"
+                        = f.text_field :w_street, class: "remove-input", id: "remove-street", autocomplete: "off"
                       .field
                         .input-title
                           %span.must.optional
                             任意
                           = f.label :w_building_name, "建物名(号室まで)" 
-                        = f.text_field :w_building_name, autofocus: true, class: "fa remove-input", id: "remove-building_name", autocomplete: "off"
+                        = f.text_field :w_building_name, class: "remove-input", id: "remove-building_name", autocomplete: "off"
                       .field
                         .input-title
                           %span.must.optional
                             任意
                           = f.label :w_company_phone_num, "勤務先電話番号"
-                        = f.text_field :w_company_phone_num, autofocus: true, class: "fa remove-input", id: "remove-company_phone_num", autocomplete: "off"
+                        = f.text_field :w_company_phone_num, class: "remove-input", id: "remove-company_phone_num", autocomplete: "off"
                       .field
                         .input-title
                           %span.must.optional
                             任意
                           = f.label :w_job_description, "仕事内容"
-                        = f.text_field :w_job_description, autofocus: true, class: "fa remove-input", id: "remove-job_description", autocomplete: "off"
+                        = f.text_field :w_job_description, class: "remove-input", id: "remove-job_description", autocomplete: "off"
           = f.button '登録する', class: "submit-btn",type: 'button', onclick: 'submit();'

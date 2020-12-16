@@ -8,7 +8,7 @@ class CreateOwners < ActiveRecord::Migration[6.0]
       t.string :first_name
       t.string :last_name_kana
       t.string :first_name_kana
-      t.boolean :gender, null: false, default: false
+      t.boolean :gender, default: false
       t.integer :character_id
       t.text :character_about
       t.string :post_code, null: false

@@ -394,11 +394,11 @@
                       .field-wrap-conpact
                         .field.field-1
                           .input-title.short
-                            %span.must
-                              必須
+                            %span.must.optional
+                              任意
                             = f.label :gender, "性別"
                           .gender-flex
-                            = f.radio_button :gender, FALSE, class: 'input_radio',checked: true
+                            = f.radio_button :gender, FALSE, class: 'input_radio'
                             %i.fas.fa-mars
                             男
                             = f.radio_button :gender, TRUE, class: 'input_radio'
@@ -407,7 +407,7 @@
                         .field.field-3
                           .input-title
                             %span.must.optional
-                              任意(推奨)
+                              任意
                             = f.label :character_id, "性格" 
                           = f.collection_select(:character_id, Character.all, :id, :name, {}, {class:"select-box"}) 
                       .field.field-4

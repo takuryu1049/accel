@@ -50,7 +50,7 @@ $registration_theme: rgb(255, 149, 74);
   font-size:16px;
   display:inline-block;
   text-align: center;
-  background-color: rgba(255, 149, 74, .8);
+  background-color: rgba(255, 149, 74, 1);
   border-radius: 2px;
   color:white;
   font-weight: bold;
@@ -63,9 +63,9 @@ $registration_theme: rgb(255, 149, 74);
 @mixin field-space{
   padding: 20px;
   border: solid 2px rgba(0,0,0,0.3);
-  border-radius: 20px 20px 20px 0;
+  // border-radius: 20px 20px 20px 0;
   height: 100%;
-  box-shadow:3px 3px rgba(0,0,0,0.2); 
+  // box-shadow:3px 3px rgba(0,0,0,0.2); 
   .error{
                                                         // ❌エラーメッセージ
     margin:0 !important;
@@ -74,7 +74,6 @@ $registration_theme: rgb(255, 149, 74);
 @mixin label{
   color: #656873;
   font-size: 20px;
-  text-shadow: 1px 1px 0 rgba(0,0,0,0.2);
 }
 @mixin input{
   border-color: #d8d8d8;
@@ -147,6 +146,10 @@ $registration_theme: rgb(255, 149, 74);
     2.5em 2.5em;
   background-repeat: no-repeat;
   margin-bottom: 10px;
+  outline: none;
+  &:focus{
+    outline: 1px solid $registration_theme;
+  }
 }
 
 
@@ -1114,6 +1117,10 @@ $registration_theme: rgb(255, 149, 74);
                         top: 0px;
                         margin-left: 10px;
                         margin-bottom: 8px;
+                        &:focus{
+                          animation:none;
+                          box-shadow: none;
+                        }
                       }
                       .name-input{
                         width:165px;
@@ -1147,6 +1154,10 @@ $registration_theme: rgb(255, 149, 74);
                       input{
                         @include input;
                         margin: 0;
+                        &:focus{
+                          animation:none;
+                          box-shadow: none;
+                        }
                       }
                       .input_radio{
                         width: 20px; 
@@ -1278,6 +1289,10 @@ $registration_theme: rgb(255, 149, 74);
                         @include input;
                         height: 50px;
                         width: 100%;
+                        &:focus{
+                          animation:none;
+                          box-shadow: none;
+                        }
                       }
                       .select-box{
                         @include select-box;

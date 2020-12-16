@@ -1593,17 +1593,37 @@ $registration_theme: rgb(255, 149, 74);
           display: block;
           margin: 60px auto;
           margin-bottom: 100px;
-          border: 3px double rgba(0, 0, 0, .9);
           width: 200px;
+          border-radius: 5px;
+          border: 1px solid rgba(0,0,0,.3);
           height:60px;
           padding: 3px;
           font-size: 18px;
           background-color:rgba(255, 149, 74, 1);;
           color: #FFFFFF;
           font-weight: bold;
+          box-shadow: 0 3px 3px $accel_black;
           &:hover{
             color: white;
-            opacity: 0.8;
+            opacity: 0.9;
+            animation: button-anime .3s forwards;
+            @keyframes button-anime{
+              0%{
+                width: 230px;
+              }
+              50%{
+                border: 3px dashed $accel_black;
+              }
+              100%{
+                color: $accel_black;
+                border: 3px solid $accel_black;
+              }
+            }
+          }
+          &:active{
+            position: relative;
+            top: 3px;
+            box-shadow: none;
           }
         }
       }

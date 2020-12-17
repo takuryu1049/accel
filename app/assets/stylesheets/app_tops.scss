@@ -324,12 +324,14 @@ $accel_black: #13202F;
       margin-left: 10%;
       margin-right: 10%;
       #flash-login{
+        text-align: center;
         display: inline-block;
         background-color: rgba(255,255,255, .9);
         position: fixed;
         z-index: 999;
         top: -100px;
-        left: calc(50% - 125px);
+        left: calc(50% - 200px);
+        width: 400px;
         padding:  10px;
         padding-top: 10px;
         border-radius: 6px;
@@ -454,7 +456,7 @@ $accel_black: #13202F;
             li{
               list-style: none;
               img{
-                border: 1px dashed hsla(0,100%,50%,.2);
+                border: 1px dashed hsla(0,100%,50%,0.2);
                 width: 30%;
                 height: 100px;
                 object-fit: cover;
@@ -470,7 +472,7 @@ $accel_black: #13202F;
           margin: 0 10px;
           margin-bottom: 24px;
           background-size: cover;
-          border: 3px solid rgba(255, 149, 74, .3);
+          border: 3px solid rgba(255, 149, 74, 0.3);
           outline: 2px dashed #dce4e9;
           position: relative;
         &:hover{
@@ -518,18 +520,6 @@ $accel_black: #13202F;
                     animation: pika .5s infinite;
                     & + p{
                       display: block;
-                    }
-                    @keyframes {
-                      0%{
-                        border: 3px dashed rgba(255, 149, 74, 1);
-                      }
-                      50%{
-                        border: 3px dashed rgba(255, 149, 74, .1);
-                        transform:rotate(-10deg);
-                      }
-                      100%{
-                        border: 3px dashed rgba(255, 149, 74, 1);
-                      }
                     }
                   }
                 }

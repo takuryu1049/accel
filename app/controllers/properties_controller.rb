@@ -35,6 +35,7 @@ class PropertiesController < ApplicationController
     @property_owner_utility_equipment_facility = PropertyOwnerUtilityEquipmentFacility.new(property_owner_utility_equipment_facility_params)
     if @property_owner_utility_equipment_facility.valid?
       @property_owner_utility_equipment_facility.save
+      flash[:notice] = '物件登録が完了しました！'
         redirect_to sort_property_path(1)
     else
       render action: :new

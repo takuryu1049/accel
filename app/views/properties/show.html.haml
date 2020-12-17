@@ -160,13 +160,13 @@
                 -unless @property.owner.swicth_owner_form
                   %td="#{@property.owner.last_name_kana} #{@property.owner.first_name_kana}"
                 -else
-                  %td 法人
+                  %td="#{@property.owner.company_name_kana}"
               %tr
                 %th.top-cell 所有者名称
                 -unless @property.owner.swicth_owner_form
                   %td="#{@property.owner.last_name} #{@property.owner.first_name}"
                 -else
-                  %td 法人
+                  %td="#{@property.owner.company_name}"
             %table.third
               %tr
                 %th.top-cell 主要なやり取り人物

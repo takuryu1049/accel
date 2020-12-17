@@ -17,10 +17,10 @@
         .sort-navi.slash
           .sort-title 並び替え:
           = select_tag 'sort-num', options_for_select([["登録が新しい順","1",], ["登録が古い順","2"], ["ランクが高い順","3"], ["ランクが低い順","4"], ["総戸数が多い順","5"], ["総戸数が少ない順","6"]],:selected=>@sort_num)
-        - unless flash[:notice] == "物件登録が完了しました！"
-          #flash
-            %i.fas.fa-check-circle.error-icon-big
-            %span 物件登録が完了しました！
+      - if flash[:notice] == "物件登録が完了しました！"
+        #flash
+          %i.fas.fa-check-circle.error-icon-big
+          %span 物件登録が完了しました！
       %ul.property-block-list
         - if @not_find_switch
           .title-wrap

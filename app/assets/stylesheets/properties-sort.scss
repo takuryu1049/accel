@@ -15,26 +15,32 @@ $registration_theme: rgb(255, 149, 74);
     z-index: 1;
   }
   #flash{
+    text-align:  center;
     display:none;
-    margin: auto 0;
-    height: 30px;
-    padding: 6px;
+    justify-content: center;
+    height: 40px;
+    padding: 10px;
     background-color: rgba(255,255,255, 1);
-    border-radius: 6px;
-    border: 1px solid rgba(11,19,54, .3);
+    border-top: 1px solid rgba(11,19,54, .3);
+    border-bottom: 1px solid rgba(11,19,54, .3);
     display: flex;
     align-items: center;
     // border-bottom: 3px solid $accel_black;
-    animation: flash-regi 2s ease .3s 1 normal forwards;
+    animation: flash-regi 1s ease 0s 1 normal forwards;
       // キーフレームの定義
     // フラッシュを美しく演出するためのアニメーション
     @keyframes flash-regi{
       0%{
-        display: inline-block;
-        opacity:0
+        display: flex;
+        justify-content: center;
+        opacity:0;
+        border-top: 3px solid rgba(11,19,54, .3);
+        border-bottom: 3px solid rgba(11,19,54, .3);
+        box-shadow: 3px 3px 10px rgba(11,19,54, .1);
       }
       100%{
-        display: inline-block;
+        display: flex;
+        justify-content: center;
         opacity:1;
       }
     }

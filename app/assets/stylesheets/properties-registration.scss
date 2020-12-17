@@ -221,7 +221,7 @@ $registration_theme: rgb(255, 149, 74);
           color: #FFFFFF;
           padding:3px 0 3px 10px;
         }
-        @for $i from 1 through 11 {
+        @for $i from 1 through 9 {
           &-line#{$i}{
             display: block;
             text-decoration: none;
@@ -724,138 +724,138 @@ $registration_theme: rgb(255, 149, 74);
                   }
                 }
               }
+              // @if $i == 7{
+              //   &-line#{$i}{
+              //     @include line;
+              //     width: 100%;
+              //     .form-border{
+              //       width: 100%;
+              //       .properties-registration-form-title{
+              //         h1.box-title{
+              //           @include box-title;
+              //           .info-icon{
+              //             @include info-icon;
+              //           }
+              //         }
+              //       }
+              //       .field-space{
+              //         @include field-space;
+              //         padding-left: 20px;
+              //         .field{
+              //           width: 100%;
+              //           display: flex;
+              //           flex-wrap: wrap;
+              //           .input-title{
+              //             @include input-title;
+              //             margin-bottom: 10px;
+              //             span.must{
+              //               @include must;
+              //             }
+              //             label{
+              //               @include label;
+              //               line-height: 22px;
+              //               width:100%;
+              //               margin: 0; 
+              //             }
+              //           }
+              //           .wrap{
+              //             width: 20%;
+              //             height: 40px;
+              //             vertical-align: middle;
+              //             display:flex;
+              //             justify-content: start;
+              //             text-align: left;
+              //             input{
+              //               @include input;
+              //               width: 20px;
+              //               height: 20px;
+              //               margin-bottom: 0px;
+              //               margin-top: 0px;
+              //             }
+              //             .select-box{
+              //               @include select-box;
+              //               width: 22px;
+              //             }
+              //             label{
+              //               @include label;
+              //               font-size: 14px;
+              //               margin-bottom: 10px;
+              //               margin-left: 10px; 
+              //             }
+              //           }
+              //         }
+              //       }
+              //     }
+              //   }
+              // }
+              // @if $i == 8{
+              //   &-line#{$i}{
+              //     @include line;
+              //     width: 100%;
+              //     .form-border{
+              //       width: 100%;
+              //       .properties-registration-form-title{
+              //         h1.box-title{
+              //           @include box-title;
+              //           .info-icon{
+              //             @include info-icon;
+              //           }
+              //         }
+              //       }
+              //       .field-space{
+              //         @include field-space;
+              //         padding-left: 20px;
+              //         .field{
+              //           display: flex;
+              //           flex-wrap: wrap;
+              //           .input-title{
+              //             @include input-title;
+              //             margin-bottom: 10px;
+              //             span.must{
+              //               @include must;
+              //             }
+              //             label{
+              //               @include label;
+              //             }
+              //           }
+              //           .wrap{
+              //             width: 20%;
+              //             height: 40px;
+              //             vertical-align: middle;
+              //             display:flex;
+              //             justify-content: start;
+              //             text-align: left;
+              //             input{
+              //               @include input;
+              //               width: 20px;
+              //               height: 20px;
+              //               margin-bottom: 0px;
+              //               margin-top: 0px;
+              //             }
+              //             .select-box{
+              //               @include select-box;
+              //               width: 22px;
+              //             }
+              //             label{
+              //               @include label;
+              //               font-size: 14px;
+              //               margin-bottom: 10px;
+              //               margin-left: 10px; 
+              //             }
+              //           }
+              //           input{
+              //             @include input;
+              //           }
+              //           .select-box{
+              //             @include select-box;
+              //             width: 100%;
+              //           }
+              //         }
+              //       }
+              //     }
+              //   }
+              // }
               @if $i == 7{
-                &-line#{$i}{
-                  @include line;
-                  width: 100%;
-                  .form-border{
-                    width: 100%;
-                    .properties-registration-form-title{
-                      h1.box-title{
-                        @include box-title;
-                        .info-icon{
-                          @include info-icon;
-                        }
-                      }
-                    }
-                    .field-space{
-                      @include field-space;
-                      padding-left: 20px;
-                      .field{
-                        width: 100%;
-                        display: flex;
-                        flex-wrap: wrap;
-                        .input-title{
-                          @include input-title;
-                          margin-bottom: 10px;
-                          span.must{
-                            @include must;
-                          }
-                          label{
-                            @include label;
-                            line-height: 22px;
-                            width:100%;
-                            margin: 0; 
-                          }
-                        }
-                        .wrap{
-                          width: 20%;
-                          height: 40px;
-                          vertical-align: middle;
-                          display:flex;
-                          justify-content: start;
-                          text-align: left;
-                          input{
-                            @include input;
-                            width: 20px;
-                            height: 20px;
-                            margin-bottom: 0px;
-                            margin-top: 0px;
-                          }
-                          .select-box{
-                            @include select-box;
-                            width: 22px;
-                          }
-                          label{
-                            @include label;
-                            font-size: 14px;
-                            margin-bottom: 10px;
-                            margin-left: 10px; 
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-              @if $i == 8{
-                &-line#{$i}{
-                  @include line;
-                  width: 100%;
-                  .form-border{
-                    width: 100%;
-                    .properties-registration-form-title{
-                      h1.box-title{
-                        @include box-title;
-                        .info-icon{
-                          @include info-icon;
-                        }
-                      }
-                    }
-                    .field-space{
-                      @include field-space;
-                      padding-left: 20px;
-                      .field{
-                        display: flex;
-                        flex-wrap: wrap;
-                        .input-title{
-                          @include input-title;
-                          margin-bottom: 10px;
-                          span.must{
-                            @include must;
-                          }
-                          label{
-                            @include label;
-                          }
-                        }
-                        .wrap{
-                          width: 20%;
-                          height: 40px;
-                          vertical-align: middle;
-                          display:flex;
-                          justify-content: start;
-                          text-align: left;
-                          input{
-                            @include input;
-                            width: 20px;
-                            height: 20px;
-                            margin-bottom: 0px;
-                            margin-top: 0px;
-                          }
-                          .select-box{
-                            @include select-box;
-                            width: 22px;
-                          }
-                          label{
-                            @include label;
-                            font-size: 14px;
-                            margin-bottom: 10px;
-                            margin-left: 10px; 
-                          }
-                        }
-                        input{
-                          @include input;
-                        }
-                        .select-box{
-                          @include select-box;
-                          width: 100%;
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-              @if $i == 9{
                 &-line#{$i}{
                   @include line;
                   width: 40%;
@@ -927,7 +927,7 @@ $registration_theme: rgb(255, 149, 74);
                   }
                 }
               }
-              @if $i == 10{
+              @if $i == 8{
                 &-line#{$i}{
                   @include line;
                   width: 30%;
@@ -988,7 +988,7 @@ $registration_theme: rgb(255, 149, 74);
                   }
                 }
               }
-              @if $i == 11{
+              @if $i == 9{
                 &-line#{$i}{
                   @include line;
                   width: 30%;

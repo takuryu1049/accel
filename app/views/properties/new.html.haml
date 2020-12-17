@@ -1,4 +1,4 @@
-- list_box = ["物件名称","物件所在地","物件種別","総戸数","管理形態","ライフライン","建物設備","周辺施設情報","物件写真登録","物件ランク","物件注意事項"]
+- list_box = ["物件名称","物件所在地","物件種別","総戸数","管理形態","ライフライン","物件写真登録","物件ランク","物件注意事項"]
 - list_box_2 = ["所有者名称","所有者について","所有者住所","連絡先等","勤務先情報"]
 .properties-registration-page-wrapper
   .sub-header
@@ -9,7 +9,7 @@
       .support-bar
         .registration_list-title
           = "物件情報 (#{list_box.length})"
-        - for i in 0..10 do
+        - for i in 0..8 do
           = link_to "#{i+1}.#{list_box[i]}", "#switch#{i+1}" , class: "support-bar-line#{i+1}"
         .registration_list-title-2
           = "所有者情報 (#{list_box_2.length})"
@@ -31,7 +31,7 @@
           .properties-registration-form-wrap
             = f.hidden_field :company_id, :value => current_company.id
             = f.hidden_field :worker_id, :value => current_worker.id
-            - for i in 0..10 do
+            - for i in 0..8 do
               = content_tag(:div, "", id: "switch#{i+1}", class: "properties-registration-form-wrap-line#{i+1}") do
                 .form-border
                   - case i+1
@@ -216,30 +216,30 @@
                           .error
                             %i.fas.fa-exclamation-circle.error-icon
                             = @property_owner_utility_equipment_facility.errors.full_messages_for(:ga_id).first
+                  -# - case i+1
+                  -# - when 7 then
+                  -#   .properties-registration-form-title
+                  -#     %h1.box-title
+                  -#       = "#{i+1}.#{list_box[i]}  (該当項目すべてを選択)" 
+                  -#   .field-space
+                  -#     .field
+                  -#       = f.collection_check_boxes(:equipment_id, Equipment.all, :id, :name, {}, {class:"check-box"})do |f|
+                  -#         .wrap 
+                  -#           = f.check_box
+                  -#           = f.label
+                  -# - case i+1
+                  -# - when 8 then
+                  -#   .properties-registration-form-title
+                  -#     %h1.box-title
+                  -#       = "#{i+1}.#{list_box[i]}  (該当項目すべてを選択)" 
+                  -#   .field-space
+                  -#     .field
+                  -#       = f.collection_check_boxes(:facility_id,  Facility.all, :id, :name, {}, {class:"check-box"})do |f|
+                  -#         .wrap 
+                  -#           = f.check_box
+                  -#           = f.label
                   - case i+1
                   - when 7 then
-                    .properties-registration-form-title
-                      %h1.box-title
-                        = "#{i+1}.#{list_box[i]}  (該当項目すべてを選択)" 
-                    .field-space
-                      .field
-                        = f.collection_check_boxes(:equipment_id, Equipment.all, :id, :name, {}, {class:"check-box"})do |f|
-                          .wrap 
-                            = f.check_box
-                            = f.label
-                  - case i+1
-                  - when 8 then
-                    .properties-registration-form-title
-                      %h1.box-title
-                        = "#{i+1}.#{list_box[i]}  (該当項目すべてを選択)" 
-                    .field-space
-                      .field
-                        = f.collection_check_boxes(:facility_id,  Facility.all, :id, :name, {}, {class:"check-box"})do |f|
-                          .wrap 
-                            = f.check_box
-                            = f.label
-                  - case i+1
-                  - when 9 then
                     .properties-registration-form-title
                       %h1.box-title
                         = "#{i+1}.#{list_box[i]}" 
@@ -260,7 +260,7 @@
                       #image-list
                         = image_tag "No-image.png", id: "no-image"
                   - case i+1
-                  - when 10 then
+                  - when 8 then
                     .properties-registration-form-title
                       %h1.box-title
                         = "#{i+1}.#{list_box[i]}" 
@@ -285,7 +285,7 @@
                         %br/
                         D: 2つ以上の提案をしても、Bランクになる可能性が低い物件
                   - case i+1
-                  - when 11 then
+                  - when 9 then
                     .properties-registration-form-title
                       %h1.box-title
                         = "#{i+1}.#{list_box[i]}" 

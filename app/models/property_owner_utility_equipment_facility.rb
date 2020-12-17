@@ -11,7 +11,7 @@ class PropertyOwnerUtilityEquipmentFacility
     validates :city
     validates :street
     validates :type_id, numericality: { other_than: 0, message: "を選択してください" }
-    validates :units
+    validates :units, numericality: { greater_than: 1, less_than: 300,message: 'は1~3000の範囲内で入力が必要です'}, format: { with: /\A[0-9]+\z/ }
     validates :management_form_id, numericality: { other_than: 0, message: "を選択してください" }
     validates :image
     validates :rank_id, numericality: { other_than: 0, message: "を選択してください" }

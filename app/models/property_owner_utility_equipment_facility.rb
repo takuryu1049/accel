@@ -11,7 +11,7 @@ class PropertyOwnerUtilityEquipmentFacility
     validates :city
     validates :street
     validates :type_id, numericality: { other_than: 0, message: "を選択してください" }
-    validates :units, numericality: { greater_than: 1, less_than: 300,message: 'は1~3000の範囲内で入力が必要です'}, format: { with: /\A[0-9]+\z/ }
+    validates :units, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 3000,message: 'は1~3000の範囲内で入力が必要です'}, format: { with: /\A[0-9]+\z/ }
     validates :management_form_id, numericality: { other_than: 0, message: "を選択してください" }
     validates :image
     validates :rank_id, numericality: { other_than: 0, message: "を選択してください" }
@@ -30,6 +30,7 @@ class PropertyOwnerUtilityEquipmentFacility
   end
 
   # owner
+  validates :swicth_owner_form, presence: { message: "を選択が必要" }
   validates :owner_company_name, presence: true, if: :swicth_owner_form_is_company?
   validates :owner_company_name_kana,presence: true, format: { with: /\A[ァ-ヶー－]+\z/, message: 'は全角カタカナで入力してください' }, if: :swicth_owner_form_is_company?
   validates :last_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: 'は全角ひらがな、全角カタカナ、漢字のいずれかで入力してください' }, if: :swicth_owner_form_is_human?

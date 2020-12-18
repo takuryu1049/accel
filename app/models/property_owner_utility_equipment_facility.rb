@@ -13,7 +13,6 @@ class PropertyOwnerUtilityEquipmentFacility
     validates :type_id, numericality: { other_than: 0, message: "を選択してください" }
     validates :units, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 3000,message: 'は1~3000の範囲内かつ、半角英数字で入力をしてください'}, format: { with: /\A[0-9]+\z/ }
     validates :management_form_id, numericality: { other_than: 0, message: "を選択してください" }
-    validates :image
     validates :rank_id, numericality: { other_than: 0, message: "を選択してください" }
     # Owners(所有者情報のバリデーション)
     validates :owner_post_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'にハイフンを含め、000-0000の形式で入力してください' }
@@ -28,6 +27,9 @@ class PropertyOwnerUtilityEquipmentFacility
     validates :electrical_id, numericality: { other_than: 0, message: "の選択が必要です" }
     validates :ga_id, numericality: { other_than: 0, message: "の選択が必要です" }
   end
+
+  # property
+  validates :image, presence: { message: "を選択してください" }
 
   # owner
   validates :swicth_owner_form, presence: { message: "を選択が必要" }

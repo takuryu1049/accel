@@ -320,6 +320,10 @@
                         = f.radio_button :swicth_owner_form, TRUE, class: 'input_radio', id: "company-switch"
                         .switch-name
                           法人
+                      - if @property_owner_utility_equipment_facility.errors.include?(:swicth_owner_form)
+                        .error
+                          %i.fas.fa-exclamation-circle.error-icon
+                          = @property_owner_utility_equipment_facility.errors.full_messages_for(:swicth_owner_form).first
                       .company-wrap
                         .field#owner-company-name.owner-company-name-none
                           .input-title

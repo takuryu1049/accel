@@ -43,7 +43,7 @@ class PropertyOwnerUtilityEquipmentFacility
     OwnerWorkCompany.create(company_name: w_company_name, company_name_kana: w_company_name_kana, post_code: w_post_code, prefecture_id: w_prefecture_id, city: w_city, street: w_street, building_name: w_building_name, company_phone_num: w_company_phone_num, job_description: w_job_description, owner_id: owner.id)
     Utility.create(water_supply_id: water_supply_id, sewer_id: sewer_id, electrical_id: electrical_id, ga_id: ga_id, property_id: property.id)
   end
-0
+
   def swicth_owner_form_is_company?
     swicth_owner_form == "true"
   end

@@ -1,6 +1,6 @@
 class PropertyOwnerUtilityEquipmentFacility
   include ActiveModel::Model
-  attr_accessor :name, :name_kana, :post_code, :prefecture_id, :city, :street, :type_id, :units, :management_form_id, :rank_id, :caution, :image, :company_id, :worker_id, :swicth_owner_form, :owner_company_name, :owner_company_name_kana, :last_name, :first_name, :last_name_kana, :first_name_kana, :gender, :character_id, :character_about, :owner_post_code, :owner_prefecture_id, :owner_city, :owner_street, :owner_building_name, :main_communication, :communication_about, :home_phone_num, :phone_num, :other_phone_num, :fax_num, :email, :w_company_name, :w_company_name_kana, :w_post_code, :w_prefecture_id, :w_city, :w_street, :w_building_name, :w_company_phone_num, :w_job_description, :water_supply_id, :sewer_id, :electrical_id, :ga_id,
+  attr_accessor :name, :name_kana, :post_code, :prefecture_id, :city, :street, :type_id, :units, :management_form_id, :rank_id, :caution, :image, :company_id, :worker_id, :swicth_owner_form, :owner_company_name, :owner_company_name_kana, :last_name, :first_name, :last_name_kana, :first_name_kana, :gender, :character_id, :character_about, :owner_post_code, :owner_prefecture_id, :owner_city, :owner_street, :owner_building_name, :main_communication, :communication_about, :home_phone_num, :phone_num, :other_phone_num, :fax_num, :email, :w_company_name, :w_company_name_kana, :w_post_code, :w_prefecture_id, :w_city, :w_street, :w_building_name, :w_company_phone_num, :w_job_description, :water_supply_id, :sewer_id, :electrical_id, :ga_id, :equipment_id, :facility_id
 
   with_options presence: true do
     # Properties(物件情報のバリデーション)
@@ -11,7 +11,7 @@ class PropertyOwnerUtilityEquipmentFacility
     validates :city
     validates :street
     validates :type_id, numericality: { other_than: 0, message: "を選択してください" }
-    validates :units, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 3000,message: 'は1~3000の範囲内で入力が必要です'}, format: { with: /\A[0-9]+\z/ }
+    validates :units, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 3000,message: 'は1~3000の範囲内かつ、半角英数字で入力をしてください'}, format: { with: /\A[0-9]+\z/ }
     validates :management_form_id, numericality: { other_than: 0, message: "を選択してください" }
     validates :image
     validates :rank_id, numericality: { other_than: 0, message: "を選択してください" }

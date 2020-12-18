@@ -48,6 +48,7 @@ ja:
           rank_id: 物件ランク
           owner_company_name: 会社名
           owner_company_name_kana: 会社名カナ
+          swicth_owner_form: 所有形態
           last_name: 姓
           first_name: 名
           last_name_kana: 姓(カナ)

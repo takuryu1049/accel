@@ -6,7 +6,7 @@ class PropertyOwnerUtilityEquipmentFacility
     # Properties(物件情報のバリデーション)
     validates :name
     validates :name_kana, format: { with: /\A[ァ-ヶー－]+\z/, message: 'は全角カタカナで入力してください' }
-    validates :post_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'にハイフンが含まれていません' }
+    validates :post_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'にハイフンを含め、000-0000の形式で入力してください' }
     validates :prefecture_id, numericality: { other_than: 0, message: "を選択してください" }
     validates :city
     validates :street
@@ -16,7 +16,7 @@ class PropertyOwnerUtilityEquipmentFacility
     validates :image
     validates :rank_id, numericality: { other_than: 0, message: "を選択してください" }
     # Owners(所有者情報のバリデーション)
-    validates :owner_post_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'にハイフンが含まれていません' }
+    validates :owner_post_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'にハイフンを含め、000-0000の形式で入力してください' }
     validates :owner_prefecture_id, numericality: { other_than: 0, message: "を選択してください" }
     validates :owner_city
     validates :owner_street

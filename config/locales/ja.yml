@@ -40,8 +40,8 @@ ja:
           type_id: 物件種別
           units: 総戸数
           management_form_id: 管理形態
-          sewer_id: 上水道
-          water_supply_id: 下水道
+          water_supply_id: 上水道
+          sewer_id: 下水道
           electrical_id: 電気
           ga_id: ガス
           image: 物件画像

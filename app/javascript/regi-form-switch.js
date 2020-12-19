@@ -39,8 +39,10 @@ function RegiFormSwitch() {
   // 個人ラジオボタンに変更された時の挙動
   HumanSwitch.addEventListener("change", () => {
     OwnerCompanyNameInput.value = "";
+    // OwnerCompanyNameInput.setAttribute("disabled", true);
     OwnerCompanyName.classList.add('animate__animated',"animate__zoomOut");
     OwnerCompanyNameKanaInput.value = "";
+    // OwnerCompanyNameKanaInput.setAttribute("disabled", true);
     OwnerCompanyNameKana.classList.add('animate__animated',"animate__zoomOut");
     OwnerLastName.classList.remove('animate__animated',"animate__zoomOut","owner-last-name-none");
     OwnerFirstName.classList.remove('animate__animated',"animate__zoomOut","owner-first-name-none");
@@ -58,12 +60,16 @@ function RegiFormSwitch() {
   // 法人ラジオボタンに変更された時の挙動
   CompanySwitch.addEventListener("change", () => {
     OwnerLastNameInput.value = "";
+    // OwnerLastNameInput.setAttribute("disabled", true);
     OwnerLastName.classList.add('animate__animated',"animate__zoomOut");
     OwnerFirstNameInput.value = "";
+    // OwnerFirstNameInput.setAttribute("disabled", true);
     OwnerFirstName.classList.add('animate__animated',"animate__zoomOut");
     OwnerLastNameKanaInput.value = "";
+    // OwnerLastNameKanaInput.setAttribute("disabled", true);
     OwnerLastNameKana.classList.add('animate__animated',"animate__zoomOut");
     OwnerFirstNameKanaInput.value = "";
+    // OwnerFirstNameKanaInput.setAttribute("disabled", true);
     OwnerFirstNameKana.classList.add('animate__animated',"animate__zoomOut");
     OwnerCompanyName.classList.remove('animate__animated',"animate__zoomOut","owner-company-name-none");
     OwnerCompanyNameKana.classList.remove('animate__animated',"animate__zoomOut","owner-company-name-kana-none");

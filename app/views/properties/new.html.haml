@@ -314,10 +314,10 @@
                           %span.must
                             必須
                           = f.label :swicth_owner_form, "所有形態"
-                        = f.radio_button :swicth_owner_form, FALSE, class: 'input_radio', id: "human-switch",checked: true
+                        = f.radio_button :swicth_owner_form, :H, class: 'input_radio', id: "human-switch",checked: true
                         .switch-name
                           個人
-                        = f.radio_button :swicth_owner_form, TRUE, class: 'input_radio', id: "company-switch"
+                        = f.radio_button :swicth_owner_form, :C, class: 'input_radio', id: "company-switch"
                         .switch-name
                           法人
                       - if @property_owner_utility_equipment_facility.errors.include?(:swicth_owner_form)

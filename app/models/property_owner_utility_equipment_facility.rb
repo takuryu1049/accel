@@ -30,9 +30,11 @@ class PropertyOwnerUtilityEquipmentFacility
 
   # property
   validates :image, presence: { message: "を選択してください" }
-
+  validates :swicth_owner_form, presence: { message: "の選択が必要" }
+  validates :swicth_owner_form, inclusion: { in: %w(H C),
+    message: "が異常な値です" }
   # owner
-  validates :swicth_owner_form, presence: { message: "を選択が必要" }
+  validates :image, presence: { message: "を選択してください" }
   validates :owner_company_name, presence: true, if: :swicth_owner_form_is_company?
   validates :owner_company_name_kana,presence: true, format: { with: /\A[ァ-ヶー－]+\z/, message: 'は全角カタカナで入力してください' }, if: :swicth_owner_form_is_company?
   validates :last_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: 'は全角ひらがな、全角カタカナ、漢字のいずれかで入力してください' }, if: :swicth_owner_form_is_human?

@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 2020_12_04_013809) do
     t.string "first_name"
     t.string "last_name_kana"
     t.string "first_name_kana"
-    t.boolean "gender", default: false
+    t.string "gender", default: "M"
     t.integer "character_id"
     t.text "character_about"
     t.string "post_code", null: false

@@ -28,6 +28,10 @@
                 入力不備のため登録ができません。
               %h3
                 お手数ですが、入力項目をご確認のうえ、再度ご入力ください。
+          - if @property_owner_utility_equipment_facility.errors.full_messages.any? { |w| ["会社名は入力しないでください", "会社名(カナ)は入力しないでください", "郵便番号は入力しないでください", "都道府県の選択は不要です", "市区町村は入力しないでください", "番地は入力しないでください", "建物名は入力しないでください", "勤務先電話番号は入力しないでください", "仕事内容は入力しないでください" ].include? w}
+            .error
+              %i.fas.fa-exclamation-circle.error-icon
+              %span 法人を選択された場合、勤務先情報の入力は不要です
           .properties-registration-form-wrap
             = f.hidden_field :company_id, :value => current_company.id
             = f.hidden_field :worker_id, :value => current_worker.id
@@ -386,6 +390,10 @@
                             .error
                               %i.fas.fa-exclamation-circle.error-icon
                               = @property_owner_utility_equipment_facility.errors.full_messages_for(:first_name_kana).first
+                        - if @property_owner_utility_equipment_facility.errors.full_messages.any? { |w| ["会社名は入力しないでください","会社名カナは入力しないでください","姓は入力しないでください","名は入力しないでください","姓(カナ)は入力しないでください","名(カナ)は入力しないでください" ].include? w}
+                          .error.long
+                            %i.fas.fa-exclamation-circle.error-icon
+                            %p 個人・法人のいずれかの情報のみを入力してください
                   - case i+1
                   - when 2 then
                     .properties-registration-form-title
@@ -402,12 +410,16 @@
                               任意
                             = f.label :gender, "性別"
                           .gender-flex
-                            = f.radio_button :gender, FALSE, class: 'input_radio',id: "gender-input-mars"
+                            = f.radio_button :gender, :M, class: 'input_radio',id: "gender-input-mars"
                             %i.fas.fa-mars
                             男
-                            = f.radio_button :gender, TRUE, class: 'input_radio',id: "gender-input-venus"
+                            = f.radio_button :gender, :W, class: 'input_radio',id: "gender-input-venus"
                             %i.fas.fa-venus
                             女
+                          - if @property_owner_utility_equipment_facility.errors.include?(:gender)
+                            .error
+                              %i.fas.fa-exclamation-circle.error-icon
+                              = @property_owner_utility_equipment_facility.errors.full_messages_for(:gender).first
                         .field.field-3#character
                           .input-title
                             %span.must.optional
@@ -420,6 +432,10 @@
                             任意
                           = f.label :character_about, "所有者についての共有事項" 
                         = f.text_area :character_about, autocomplete: "off"
+                      - if @property_owner_utility_equipment_facility.errors.full_messages.any? { |w| ["性別は入力しないでください", "性格の選択は不要です" ].include? w}
+                        .error.long
+                          %i.fas.fa-exclamation-circle.error-icon
+                          %p 法人を選択された場合、性別・性格の選択は不要です
                   - case i+1
                   - when 3 then
                     .properties-registration-form-title

@@ -184,22 +184,22 @@
                         .input-title
                           %span.must
                             必須
-                          = f.label :sewer_id, "上水道" 
-                        = f.collection_select(:sewer_id, Sewer.all, :id, :name, {}, {class:"select-box"})
-                        - if @property_owner_utility_equipment_facility.errors.include?(:sewer_id)
-                          .error
-                            %i.fas.fa-exclamation-circle.error-icon
-                            = @property_owner_utility_equipment_facility.errors.full_messages_for(:sewer_id).first
-                      .field
-                        .input-title
-                          %span.must
-                            必須
-                          = f.label :water_supply_id, "下水道" 
+                          = f.label :water_supply_id, "上水道" 
                         = f.collection_select(:water_supply_id, WaterSupply.all, :id, :name, {}, {class:"select-box"})
                         - if @property_owner_utility_equipment_facility.errors.include?(:water_supply_id)
                           .error
                             %i.fas.fa-exclamation-circle.error-icon
                             = @property_owner_utility_equipment_facility.errors.full_messages_for(:water_supply_id).first
+                      .field
+                        .input-title
+                          %span.must
+                            必須
+                          = f.label :sewer_id, "下水道" 
+                        = f.collection_select(:sewer_id, Sewer.all, :id, :name, {}, {class:"select-box"})
+                        - if @property_owner_utility_equipment_facility.errors.include?(:sewer_id)
+                          .error
+                            %i.fas.fa-exclamation-circle.error-icon
+                            = @property_owner_utility_equipment_facility.errors.full_messages_for(:sewer_id).first
                       .field
                         .input-title
                           %span.must

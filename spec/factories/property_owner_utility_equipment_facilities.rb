@@ -45,6 +45,7 @@ FactoryBot.define do
       # セレクトボックスはnilとして認識される為、初期値として0を置く。
       # ※法人をした場合に、0以外の値を受け付けない為。
       character_id{0}
+      w_prefecture_id{0}
     end
     owner_post_code{"#{Faker::Number.number(digits: 3)}-#{Faker::Number.number(digits: 4)}"}
     owner_prefecture_id{Faker::Number.between(from: 1, to: 47)}

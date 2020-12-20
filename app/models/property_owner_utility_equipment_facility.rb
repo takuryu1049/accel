@@ -114,7 +114,7 @@ class PropertyOwnerUtilityEquipmentFacility
     validates :w_company_name, absence: true
     validates :w_company_name_kana, absence: true
     validates :w_post_code, absence: true
-    validates :w_prefecture_id, absence: true
+    validates :w_prefecture_id, numericality: { equal_to: 0, message: "の選択は不要です"}
     validates :w_city, absence: true
     validates :w_street, absence: true
     validates :w_building_name, absence: true

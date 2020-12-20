@@ -90,7 +90,7 @@ RSpec.describe PropertyOwnerUtilityEquipmentFacility, type: :model do
           end
         end
         context "総戸数について" do
-          it 'units1より少ない場合には登録できない' do
+          it 'unitsが1より少ない場合には登録できない' do
             @property_owner_utility_equipment_facility.units = 0
             @property_owner_utility_equipment_facility.valid?
             expect(@property_owner_utility_equipment_facility.errors.full_messages).to include("総戸数は1~3000の範囲内かつ、半角英数字で入力をしてください")

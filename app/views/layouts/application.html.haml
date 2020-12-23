@@ -74,14 +74,8 @@
               .profile-company
                 = link_to "#" do
                   = current_company.name
-        - if company_signed_in? && worker_signed_in?
-          = link_to app_tops_path, class: "current-logo-registration" do
-            %span.material-icons.home-logo
-              home
-        %i.fas.fa-bars#humburger
         #menu
           %ul
-            %i.fas.fa-times-circle#close
             %li
               = link_to sort_property_path(1) do
                 物件一覧
@@ -91,6 +85,14 @@
             %li
               = link_to destroy_worker_session_path, method: :delete, data: { confirm: '本当にログアウトしますか?' } do
                 ログアウト
+        - if company_signed_in? && worker_signed_in?
+          = link_to app_tops_path, class: "current-logo-registration" do
+            %span.material-icons.home-logo
+              home
+        #humburger
+          %span
+          %span
+          %span
   = yield
   %footer
     .copyright

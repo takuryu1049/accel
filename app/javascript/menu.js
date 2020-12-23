@@ -1,18 +1,16 @@
 function Menu() {
   const Humburger = document.getElementById('humburger');
   const Menu = document.getElementById('menu');
-  const Close = document.getElementById('close');
 
   Humburger.addEventListener("click", () => {
     if (Menu.classList.contains("display-block")){
+      Menu.classList.remove("menu-anime");
       Menu.classList.remove("display-block");
+      Humburger.classList.remove("active");
     }else{
-      Menu.classList.add("display-block", "animate__animated","animate__bounceIn");
+      Menu.classList.add("display-block", "menu-anime");
+      Humburger.classList.add("active");
     }
-  });
-
-  Close.addEventListener("click", () => {
-    Menu.classList.remove("display-block");
   });
 
 }

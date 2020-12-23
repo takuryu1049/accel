@@ -14,6 +14,47 @@ $registration_theme: rgb(255, 149, 74);
     position:relative;
     z-index: 1;
   }
+  #flash{
+    text-align:  center;
+    display:none;
+    justify-content: center;
+    height: 40px;
+    padding: 10px;
+    background-color: rgba(255,255,255, 1);
+    border-top: 1px solid rgba(11,19,54, .3);
+    border-bottom: 1px solid rgba(11,19,54, .3);
+    display: flex;
+    align-items: center;
+    // border-bottom: 3px solid $accel_black;
+    animation: flash-regi 1s ease 0s 1 normal forwards;
+      // キーフレームの定義
+    // フラッシュを美しく演出するためのアニメーション
+    @keyframes flash-regi{
+      0%{
+        display: flex;
+        justify-content: center;
+        opacity:0;
+        border-top: 3px solid rgba(11,19,54, .3);
+        border-bottom: 3px solid rgba(11,19,54, .3);
+        box-shadow: 3px 3px 10px rgba(11,19,54, .1);
+      }
+      100%{
+        display: flex;
+        justify-content: center;
+        opacity:1;
+      }
+    }
+    i.fas.fa-check-circle.error-icon-big{
+      color: rgb(122, 255, 101);
+      font-size: 20px;
+      border-radius: 0 3px 0 10px;
+      margin-right: 6px;
+    }
+    span{
+      display: inline-block;
+      font-size: 16px;
+    }
+  }
   main{
     section{
       margin: 20px auto 60px auto;

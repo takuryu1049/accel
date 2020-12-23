@@ -235,12 +235,12 @@
           = f.label :qualification_id, "資格" 
         = f.collection_select(:qualification_id, Qualification.all, :id, :name, {}, {class:"select-box"}) 
       .submit-recaptcha-wrap
+        - if @worker.errors.include?(:base)
+          .error-recaptcha
+            %i.fas.fa-exclamation-circle.error-icon
+            = @worker.errors.full_messages_for(:base).first
         = recaptcha_tags 
         = f.button 'アカウント作成', class: "create-account",type: 'button', onclick: 'submit();'
-      - if @worker.errors.include?(:base)
-        .error-recaptcha
-          %i.fas.fa-exclamation-circle.error-icon
-          = @worker.errors.full_messages_for(:base).first
     -# = render "companies/shared/links"
 
   .button-back-ground.animate__animated.animate__fadeInRight

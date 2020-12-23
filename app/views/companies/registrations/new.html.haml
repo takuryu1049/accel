@@ -147,12 +147,12 @@
           = f.label :building_name, "建物名(号室まで)" 
         = f.text_field :building_name, autofocus: true,placeholder: "例) 東京都庁"
       .submit-recaptcha-wrap
+        - if @company.errors.include?(:base)
+          .error-recaptcha
+            %i.fas.fa-exclamation-circle.error-icon
+            = @company.errors.full_messages_for(:base).first
         = recaptcha_tags 
         = f.button 'アカウント作成', class: "create-account",type: 'button', onclick: 'submit();'
-      - if @company.errors.include?(:base)
-        .error-recaptcha
-          %i.fas.fa-exclamation-circle.error-icon
-          = @company.errors.full_messages_for(:base).first
     -# = render "companies/shared/links"
 
   .button-back-ground.animate__animated.animate__fadeInRight

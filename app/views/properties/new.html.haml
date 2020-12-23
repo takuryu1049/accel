@@ -427,7 +427,7 @@
                             = f.label :character_id, "性格" 
                           = f.collection_select(:character_id, Character.all, :id, :name, {}, {class:"select-box",id: "character-input"}) 
                       .field.field-4
-                        .input-title
+                        .input-title.about-owner
                           %span.must.optional
                             任意
                           = f.label :character_about, "所有者についての共有事項" 

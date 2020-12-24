@@ -24,6 +24,7 @@
 #  index_companies_on_email                 (email) UNIQUE
 #  index_companies_on_reset_password_token  (reset_password_token) UNIQUE
 #
+
 class Company < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   has_many :workers

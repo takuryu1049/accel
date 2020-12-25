@@ -79,3 +79,5 @@
                 = link_to "物件詳細", property_path(property.id)
                 = link_to "部屋一覧", "#"
                 = link_to "レポート一覧", "#"
+      -unless @not_find_switch
+        =paginate @properties

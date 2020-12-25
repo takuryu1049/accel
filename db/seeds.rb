@@ -110,24 +110,44 @@
           first_name: first_name,
           last_name_kana: last_name_kana,
           first_name_kana: first_name_kana,
+          company_name: "",
+          company_name_kana: "",
+          gender: "",
+          character_id: 0,
+          character_about: "",
           post_code: owner_post_code,
           prefecture_id: owner_prefecture_id,
           city: owner_city,
           street: owner_street,
           main_communication: main_communication,
-          communication_about: communication_about
+          communication_about: communication_about,
+          home_phone_num: "",
+          phone_num: "",
+          other_phone_num: "",
+          fax_num: "",
+          email: ""
         )
       else
         owner = Owner.create(
           swicth_owner_form: swicth_owner_form,
+          last_name: "",
+          first_name: "",
+          last_name_kana: "",
+          first_name_kana: "",
           company_name: owner_company_name,
           company_name_kana: owner_company_name_kana,
+          character_about: "",
           post_code: owner_post_code,
           prefecture_id: owner_prefecture_id,
           city: owner_city,
           street: owner_street,
           main_communication: main_communication,
-          communication_about: communication_about
+          communication_about: communication_about,
+          home_phone_num: "",
+          phone_num: "",
+          other_phone_num: "",
+          fax_num: "",
+          email: ""
         )
       end
       property = Property.new(

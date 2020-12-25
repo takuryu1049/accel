@@ -33,7 +33,7 @@
   )
   company.image.attach(io: File.open('public/images/test_image.png'), filename: 'test_image.png')
   company.save
-  20.times do |w|
+  30.times do |w|
   # ランダムなデータの生成 (worker)
     worker_login_id = "A#{Faker::Lorem.characters(number: 11, min_alpha: 1, min_numeric: 1)}"
     password = "test1111"

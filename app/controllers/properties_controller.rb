@@ -6,23 +6,23 @@ class PropertiesController < ApplicationController
     @not_find_switch = false
     if @properties_count == 0
       @not_find_switch = true
-      # 取得データの仮置
+      # 取得データの仮置(なんで置いたか忘れたけど、多分、@が見つからないって言われるからだと思う。)
       @properties = current_company.properties.order(created_at: "DESC")
     else
       if @sort_num == "1"
-        @properties = current_company.properties.order(created_at: "DESC")
+        @properties = current_company.properties.page(params[:page]).per(20).order(created_at: "DESC")
       elsif @sort_num == "2"
-        @properties = current_company.properties.order(created_at: "ASC")
+        @properties = current_company.properties.page(params[:page]).per(20).order(created_at: "ASC")
       elsif @sort_num == "3"
-        @properties = current_company.properties.order(rank_id: "ASC")
+        @properties = current_company.properties.page(params[:page]).per(20).order(rank_id: "ASC")
       elsif @sort_num == "4"
-        @properties = current_company.properties.order(rank_id: "DESC")
+        @properties = current_company.properties.page(params[:page]).per(20).order(rank_id: "DESC")
       elsif @sort_num == "5"
-        @properties = current_company.properties.order(units: "DESC")
+        @properties = current_company.properties.page(params[:page]).per(20).order(units: "DESC")
       elsif @sort_num == "6"
-        @properties = current_company.properties.order(units: "ASC")
+        @properties = current_company.properties.page(params[:page]).per(20).order(units: "ASC")
       else
-        @properties = current_company.properties.order(created_at: "DESC")
+        @properties = current_company.properties.page(params[:page]).per(20).order(created_at: "DESC")
       end
     end
   end

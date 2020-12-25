@@ -13,7 +13,7 @@
         .count-result-navi.slash
           %span 総物件数
           %span.count= @properties_count
-          %span 件
+          %span
         .sort-navi.slash
           .sort-title 並び替え:
           = select_tag 'sort-num', options_for_select([["登録が新しい順","1",], ["登録が古い順","2"], ["ランクが高い順","3"], ["ランクが低い順","4"], ["総戸数が多い順","5"], ["総戸数が少ない順","6"]],:selected=>@sort_num)
@@ -79,3 +79,5 @@
                 = link_to "物件詳細", property_path(property.id)
                 = link_to "部屋一覧", "#"
                 = link_to "レポート一覧", "#"
+      -unless @not_find_switch
+        =paginate @properties

@@ -49,6 +49,7 @@ group :development do
   gem 'rubocop', require: false
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'annotate'
 end
 
 group :test do
@@ -87,6 +88,8 @@ gem "gretel"
 gem "chartkick"
 
 gem "aws-sdk-s3", require: false
+
+gem 'kaminari'
 
 group :production do
   # gem 'rails_12factor'

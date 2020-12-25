@@ -1,0 +1,193 @@
+$accel_pink: rgb(228, 58, 210);
+$accel_black: #13202F;
+
+nav.pagination{
+  position: relative;
+  border-top: dashed 1px rgba(33, 33, 33, .1);
+  border-bottom: dashed 1px rgba(33, 33, 33, .1);
+  padding: 10px 0; 
+  margin-top: 30px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  background-color: rgba(217, 217, 217, 0.1);
+  // 現在のページ番号
+  span.page.current{
+    position:relative;
+    font-size: 0;
+    background-image: image-url("pagenation_logo");
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    margin: 0 2px;
+    border: solid 1px  $accel_black;
+    border-radius: 50%;
+    line-height: 30px;
+    text-decoration: none;
+    color: black;
+    &:hover{
+      &::after{
+        // display:block;
+        opacity: 1;
+      }
+    }
+    &::after{
+      opacity:0;
+      // display: none;
+      font-size: 12px;
+      content: "現在のページ";
+      color:rgba(33, 33, 33, .9);
+      border-radius: 2px;
+      line-height: 20px;
+      position: absolute;
+      top: -26px;
+      right: -28px;
+      border: solid 1px rgba(33, 33, 33, .6);
+      height: 20px;
+      width: 80px;
+      background-color: #FFFFFF;
+      transition: .2s;
+    }
+  }
+  // ページ番号
+  span.page{
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    margin: 0 2px;
+    a{
+      display: inline-block;
+      border: solid 1px rgba(33, 33, 33, .2);
+      border-radius: 3px;
+      height: 30px;
+      width: 30px;
+      line-height: 30px;
+      text-decoration: none;
+      color: #FFFFFF;
+      background-color: #1f2a34;
+      transition: .3s;
+      &:hover{
+        opacity: .9s;
+        background-color: rgba(228, 58, 210, 1);
+      }
+    }
+  }
+  // ページが多い場合
+  span.page.gap{
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    margin: 0 2px;
+    border: solid 1px rgba(33, 33, 33, .2);
+    border-radius: 3px;
+    line-height: 30px;
+    text-decoration: none;
+    color: #FFFFFF;
+    background-color: #1f2a34;
+  }
+  // 最初へ
+  span.first{
+    display: inline-block;
+    height: 30px;
+    width: 60px;
+    margin: 0 2px;
+    a{
+      display: inline-block;
+      font-weight: bold;
+      border: solid 1px rgba(33, 33, 33, .2);
+      border-left: solid 3px rgb(228, 58, 210);
+      border-radius: 3px 0 0 3px;
+      height: 30px;
+      width: 100%;
+      line-height: 30px;
+      text-decoration: none;
+      color: #FFFFFF;
+      background-color: #1f2a34;
+      transition: .3s;
+      &:hover{
+        opacity: .9s;
+        background-color: rgba(228, 58, 210, 1);
+        border-left: dotted 1px #1f2a34;
+      }
+    }
+  }
+  // 前へ
+  span.prev{
+    display: inline-block;
+    height: 30px;
+    width: 60px;
+    margin: 0 2px;
+    a{
+      display: inline-block;
+      font-weight: bold;
+      border: solid 1px rgba(33, 33, 33, .2);
+      border-left: ridge 2px rgb(228, 58, 210);
+      border-radius: 3px 0 0 3px;
+      height: 30px;
+      width: 100%;
+      line-height: 30px;
+      text-decoration: none;
+      color: #FFFFFF;
+      background-color:#1f2a34;
+      transition: .3s;
+      &:hover{
+        opacity: .9s;
+        background-color: rgba(228, 58, 210, 1);
+        border-left: dotted 1px #1f2a34;
+      }
+    }
+  }
+  // 次へ
+  span.next{
+    display: inline-block;
+    height: 30px;
+    width: 60px;
+    margin: 0 2px;
+    a{
+      display: inline-block;
+      font-weight: bold;
+      border: solid 1px rgba(33, 33, 33, .2);
+      border-right: ridge 2px rgb(228, 58, 210);
+      border-radius: 0 3px 3px 0;
+      height: 30px;
+      width: 100%;
+      line-height: 30px;
+      text-decoration: none;
+      color: #FFFFFF;
+      background-color: #1f2a34;
+      transition: .3s;
+      &:hover{
+        opacity: .9s;
+        background-color: rgba(228, 58, 210, 1);
+        border-right: dotted 1px #1f2a34;
+      }
+    }
+  }
+  // 最後へ
+  span.last{
+    display: inline-block;
+    height: 30px;
+    width: 60px;
+    margin: 0 2px;
+    a{
+      display: inline-block;
+      font-weight: bold;
+      border: solid 1px rgba(33, 33, 33, .2);
+      border-right: solid 3px rgb(228, 58, 210);
+      border-radius: 0 3px 3px 0;
+      height: 30px;
+      width: 100%;
+      line-height: 30px;
+      text-decoration: none;
+      color: #FFFFFF;
+      background-color: #1f2a34;
+      transition: .3s;
+      &:hover{
+        opacity: .9s;
+        background-color: rgba(228, 58, 210, 1);
+        border-right: dotted 1px #1f2a34;
+      }
+    }
+  }
+}

@@ -89,6 +89,8 @@ gem "chartkick"
 
 gem "aws-sdk-s3", require: false
 
+gem 'kaminari'
+
 group :production do
   # gem 'rails_12factor'
   gem 'unicorn', '5.4.1'

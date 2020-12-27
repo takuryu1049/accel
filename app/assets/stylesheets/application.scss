@@ -37,8 +37,10 @@ body{
   // ↓firefox
   -moz-osx-font-smoothing: grayscale;
   overflow: hidden;
-}
-
+  // 文字列折返し、異なるブラウザ間でも対応できるように対応
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}s
 #cursor{
   pointer-events: none;
   position: fixed;

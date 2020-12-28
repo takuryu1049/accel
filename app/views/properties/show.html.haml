@@ -73,10 +73,12 @@
           .property-image
             %h1
               ImagePhoto
+            %span=image_tag "photocon.png", class: "good";
             = image_tag @property.image, class: "property-img" if @property.image.attached?
           .about-address
             %h1
-              Address
+              PropertyAddress
+            %span=image_tag "google-maps.png", class: "good"
             %table.type-black
               %tr
                 %th.fix-width-left
@@ -92,6 +94,7 @@
             .title-wrap
               %h1 About
               %h1.ja 物件概要
+              %span=image_tag "collapse-building.png", class: "good";
             %table
               %tr
                 %th 物件種別
@@ -105,37 +108,38 @@
               %tr
                 %th.coution ※ 注意事項 ※
               %tr
-                %td.coution-text= "#{@property.caution}"
+                -unless @property.caution.empty?
+                  %td.coution-text= "#{@property.caution}"
+                -else
+                  %td -
           .property-lifeline-line
             .title-wrap
               %h1 LifeLine
               %h1.ja ライフライン
+              %span=image_tag "lifeline.svg", class: "good-svg"
             %table
               %tr
-                %th 上水道
-                %th 下水道
-                %th 電気
-                %th ガス
+                %th.water_supply 上水道
+                %th.sewer 下水道
+                %th.electrical 電気
+                %th.gas ガス
               %tr
                 %td
                   ="#{@property.utility.water_supply.name}"
-                  %i.fas.fa-check
                 %td
                   = "#{@property.utility.sewer.name}"
-                  %i.fas.fa-check
                 %td
                   = "#{@property.utility.electrical.name}"
-                  %i.fas.fa-check
                 %td
                   = "#{@property.utility.ga.name}"
-                  %i.fas.fa-check
-            =link_to "▶機関情報を追加する", "#", class: "organization_add"
+            =link_to "▶　機関情報を追加する", "#", class: "organization_add"
         .property-owner-line
           .left-block
             .title-wrap
               %h1 Owner
               %h1.ja 所有者情報
-              =link_to "▶所有者詳細に進む", "#", class: "owner-show"
+              %span=image_tag "owner-icon.png", class: "good"
+              =link_to "▶　所有者詳細に進む", "#", class: "owner-show"
             %table.first
               %tr
                 %th.top-cell 所有形態
@@ -172,14 +176,16 @@
                 %th.top-cell 主要なやり取り人物
                 %td="#{@property.owner.main_communication}"
             .relation-person-make
-              = link_to "▶関係人物を作成する", "#",class: "new-relation-person"
-              = link_to "▶リレーションを構築する", "#", class: "relation-build"
+              = link_to "▶　関係人物を作成する", "#",class: "new-relation-person"
+              = link_to "▶　リレーションを構築する", "#", class: "relation-build"
             %table.fourth
               %tr
                 %th やり取り方法について
               %tr
                 %td="#{@property.owner.communication_about}"
-            %table.fifth
+            =link_to "　☎　連絡先を表示する", "javascript:void(0)", class: "toggle", id: "toggle-switch"
+            =link_to "連絡先を非表示にする", "javascript:void(0)", id: "hide" 
+            %table.fifth#privacy-list
               %tr
                 %th.top-cell 固定電話番号
                 -unless @property.owner.home_phone_num.empty?
@@ -212,7 +218,8 @@
                   %td -
           .about-address
             %h1
-              Address
+              OwnerPropertyAddress
+            %span=image_tag "google-maps.png", class: "good"
             %table
               %tr
                 %th.fix-width-left

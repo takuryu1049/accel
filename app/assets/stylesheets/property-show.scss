@@ -900,6 +900,12 @@ $registration_theme: rgb(255, 149, 74);
               @media (max-width: 1300px){
                 width: 25%;
               }
+              @media (max-width: 1000px){
+                min-width: 110px;
+              }
+              @media (max-width: 310px){
+                display: none;
+              }
               .fa-tenge{
                 color: red;
               }

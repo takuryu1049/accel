@@ -462,12 +462,12 @@ $registration_theme: rgb(255, 149, 74);
             margin-bottom: 10px;
             border-bottom: dashed 3px rgba(33, 33, 33, 0.2);
             width: 50%;
+            min-width: 200px;
             @media (max-width: 1000px){
               width: 100%;
               margin: 20px 0;
               padding: 10px 0;
               border-bottom: 1px solid rgba(0,0,0,.1);
-              min-width: 300px;
             }
             .title-wrap{
               position:relative;

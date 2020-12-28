@@ -392,6 +392,7 @@ $registration_theme: rgb(255, 149, 74);
         .double-wrap{
           width: 100%;
           display: flex;
+          min-width: 200px;
           @media (max-width: 1000px){
             display: block;
           }
@@ -406,7 +407,6 @@ $registration_theme: rgb(255, 149, 74);
               margin: 20px 0;
               padding: 10px 0;
               border-bottom: 1px solid rgba(0,0,0,.1);
-              min-width: 300px;
             }
             .title-wrap{
               h1{
@@ -447,7 +447,7 @@ $registration_theme: rgb(255, 149, 74);
             td{
               max-width: 464px;
               @media (max-width: 1000px){
-                max-width: 300px;
+                max-width: 100px;
               }
             }
             .coution{

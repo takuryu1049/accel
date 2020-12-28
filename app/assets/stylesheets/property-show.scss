@@ -558,6 +558,7 @@ $registration_theme: rgb(255, 149, 74);
           position: relative;
           padding-bottom: 10px;
           border-bottom: dashed 3px rgba(33, 33, 33, 0.2);
+          min-width: 200px;
           @media (max-width: 1000px){
             padding-top: 30px;
             border-top: 3px dashed rgba(0,0,0,.3);
@@ -600,6 +601,10 @@ $registration_theme: rgb(255, 149, 74);
                 color: #FFFFFF;
                 margin-left: 20px;
                 transition: .2s;
+                @media (max-width: 350px){
+                  position: static;
+                  margin: 3px auto 3px auto;
+                }
                 &:hover{
                   padding-right: 20px solid rgba(0,0,0,.1);
                   border-right: 10px solid rgba(0,0,0,.1);
@@ -615,7 +620,6 @@ $registration_theme: rgb(255, 149, 74);
               width: 95%;
               @media (max-width: 1000px){
                 width: 100%;
-                min-width: 300px;
               }
               tr{
                 th.top-cell{
@@ -637,24 +641,16 @@ $registration_theme: rgb(255, 149, 74);
               width: 95%;
               @media (max-width: 1000px){
                 width: 100%;
-                min-width: 300px;
-              }
-              tr{
-                th.top-cell{
-                  width: 100px;
-                  @media (max-width: 1000px){
-                    min-width: 100px;
-                  }
-                }
-                td{
-                  max-width: 324px;
-                }
               }
               tr{
                 th.top-cell{
                   width: 150px;
                   @media (max-width: 1000px){
                     min-width: 100px;
+                  }
+                  @media (max-width: 350px){
+                    min-width: 80px;
+                    width: 80px;
                   }
                 }
                 td{
@@ -666,14 +662,18 @@ $registration_theme: rgb(255, 149, 74);
               width: 95%;
               @media (max-width: 1000px){
                 width: 100%;
-                min-width: 300px;
+                min-width: 200px;
               }
               tr{
                 th.top-cell{
                   width: 150px;
+                  @media (max-width: 350px){
+                    min-width: 80px;
+                    width: 80px;
+                  }
                 }
                 td{
-                  max-width: 324px;
+                  max-width: 100px;
                 }
               }
             }
@@ -734,12 +734,17 @@ $registration_theme: rgb(255, 149, 74);
             }
             table.fourth{
               width: 95%;
+              min-width: 200px;
+              margin-bottom: 30px;
               @media (max-width: 1000px){
                 width: 100%;
               }
               
               tr{
                 th.top-cell{
+                }
+                td{
+                  max-width: 100px;;
                 }
               }
             }
@@ -820,7 +825,7 @@ $registration_theme: rgb(255, 149, 74);
                 }
                 td{
                   width: 324px;
-                  max-width: 324px;
+                  max-width: 100px;
                 }
               }
             }
@@ -902,7 +907,7 @@ $registration_theme: rgb(255, 149, 74);
             table th.fix-width-right {
               width: 75%;
               opacity: .6;
-              max-width: 200px;
+              max-width: 100px;
               @media (max-width: 1300px){
                 width: 80%;
               }

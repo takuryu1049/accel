@@ -13,6 +13,5 @@ function Privacy() {
     Hide.style.display="none";
     ToggleSwitch.style.display="block";
   });
-  
 }
 window.addEventListener('load',Privacy);

@@ -242,10 +242,10 @@ $registration_theme: rgb(255, 149, 74);
           display: flex;
           margin-bottom: 10px;
           border-bottom: dashed 1px rgba(33, 33, 33, 0.2);
+          min-width: 200px;
           @media (max-width: 1000px){
             display: block;
             border-bottom: none;
-            min-width: 300px;
           }
           .property-image{
             position: relative;
@@ -330,9 +330,7 @@ $registration_theme: rgb(255, 149, 74);
               width: 100%;
               font-size: 18px;
               margin-bottom: 3px;
-              @media (max-width: 1000px){
-                min-width: 300px;
-              }
+              min-width: 200px;
               tbody{
                 width: 100%;
                 tr{
@@ -364,6 +362,9 @@ $registration_theme: rgb(255, 149, 74);
               @media (max-width: 1000px){
                 min-width: 110px;
               }
+              @media (max-width: 310px){
+                display: none;
+              }
               .fa-tenge{
                 color: red;
               }
@@ -371,14 +372,10 @@ $registration_theme: rgb(255, 149, 74);
             table th.fix-width-right {
               width: 70%;
               opacity: .6;
-              min-width: 510px;
-              max-width: 600px;
+              max-width: 100px;
               @media (max-width: 1300px){
                 width: 75%;
-                min-width: 300px;
-              }
-              @media (max-width: 1000px){
-                min-width: 190px;
+                min-width: 100px;
               }
             }
             #map{
@@ -839,6 +836,7 @@ $registration_theme: rgb(255, 149, 74);
             }
           }
           .about-address{
+            min-width: 200px;
             position: relative;
             padding-left: 6px;
             border-left: 1px dashed rgba(33, 33, 33, 0.2);
@@ -904,11 +902,9 @@ $registration_theme: rgb(255, 149, 74);
             table th.fix-width-right {
               width: 75%;
               opacity: .6;
-              min-width: 510px;
-              max-width: 600px;
+              max-width: 200px;
               @media (max-width: 1300px){
                 width: 80%;
-                min-width: 300px;
               }
             }
             #map-owner{

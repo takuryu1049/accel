@@ -1170,12 +1170,6 @@ $registration_theme: rgb(255, 149, 74);
                 // height: 54px;
                 display: inline-block;
                 line-height: 54px;
-                img{
-                  line-height: 60px;
-                  vertical-align: middle;
-                  margin-bottom: 6px;
-                  margin-right: 3px;
-                }
               }
             }
             span.room-box{
@@ -1200,9 +1194,11 @@ $registration_theme: rgb(255, 149, 74);
               }
             }
             .message{
+              color: rgba(255, 35, 35, 0.711);
+              margin-top: 3px;
+              padding: 3px 0;
               font-size: 13px;
               border-top: 1px solid rgba(0,0,0,.1);
-              border-bottom: 1px ridge rgba(0,0,0,.1);
             }
             table, th, td {
               border-collapse: collapse;

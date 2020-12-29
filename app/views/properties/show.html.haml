@@ -247,7 +247,7 @@
                 %span 部屋数が上限に達しています！
             -unless@property.rooms.count == @property.units
               .coution-no-create
-                %span=image_tag "Attention.png"
+                %i.fas.fa-exclamation-circle
                 %span
                   = "#{@property.units-Property.find(@property.id).rooms.count}室の登録ができていない部屋が存在します！"
                 %span.room-box

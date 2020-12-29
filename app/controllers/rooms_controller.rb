@@ -8,7 +8,8 @@ class RoomsController < ApplicationController
     @room = Room.new(room_params)
     if @room.valid?
       @room.save
-        redirect_to app_tops_path(params[:id])
+      flash[:notice] = '部屋登録が完了しました！'
+      redirect_to property_path(params[:id], anchor: 'rooom-create-anchor')
     else
       render action: :new
     end

@@ -274,7 +274,7 @@
                   %table
                     -floor_room.count.times do |room|
                       %tr
-                        %th{collspan: 1}=floor_room[room].room_num
+                        %th{collspan: 1, class: "room-num"}=floor_room[room].room_num
                         %th{collspan: 1}
                           -if floor_room[room].room_status
                             .room-status-in 入居中

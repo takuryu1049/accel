@@ -6,12 +6,21 @@ class RoomsController < ApplicationController
 
   def create
     @room = Room.new(room_params)
-    if @room.valid?
-      @room.save
-      flash[:notice] = '部屋登録が完了しました！'
+    # 登録制限の為に現在の物件数を取得
+    property_rooms = Property.find(params[:id]).rooms.count
+    # 登録制限の為に、物件の情報を取得
+    property_units = Property.find(params[:id]).units
+    if property_rooms >= property_units
+      flash[:notice] = '部屋数が上限に達しています！'
       redirect_to property_path(params[:id], anchor: 'rooom-create-anchor')
     else
-      render action: :new
+      if @room.valid?
+        @room.save
+        flash[:notice] = '部屋登録が完了しました！'
+        redirect_to property_path(params[:id], anchor: 'rooom-create-anchor')
+      else
+        render action: :new
+      end
     end
   end
 

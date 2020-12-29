@@ -1142,10 +1142,21 @@ $registration_theme: rgb(255, 149, 74);
                 border-radius: 0 3px 0 10px;
                 margin-right: 6px;
               }
+              i.fas.fa-exclamation-circle{
+                color: rgb(183, 49, 49);
+                font-size: 20px;
+                border-radius: 0 3px 0 10px;
+                margin-right: 6px;
+              }
               span{
                 display: inline-block;
                 font-size: 16px;
               }
+            }
+            #flash.red-coution{
+              background-color: #f8d7da;
+              border-color: #f5c6cb;
+              color: #721c24;
             }
             .coution-no-create{
               text-align: center;
@@ -1189,6 +1200,8 @@ $registration_theme: rgb(255, 149, 74);
             }
             .message{
               font-size: 13px;
+              border-top: 1px solid rgba(0,0,0,.1);
+              border-bottom: 1px ridge rgba(0,0,0,.1);
             }
             table, th, td {
               border-collapse: collapse;

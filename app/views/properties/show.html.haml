@@ -241,7 +241,11 @@
               #flash
                 %i.fas.fa-check-circle.error-icon-big
                 %span 部屋登録が完了しました！
-            -unless @property.rooms.count == @property.units
+            - if flash[:notice] == "部屋数が上限に達しています！"
+              #flash.red-coution
+                %i.fas.fa-exclamation-circle
+                %span 部屋数が上限に達しています！
+            -unless@property.rooms.count == @property.units
               .coution-no-create
                 %span=image_tag "Attention.png"
                 %span

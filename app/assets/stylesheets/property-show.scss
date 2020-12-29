@@ -1092,6 +1092,7 @@ $registration_theme: rgb(255, 149, 74);
         .property-room-line{
           margin-top: 10px;
           min-width: 200px;
+          position: relative;
           .title-wrap{
             h1{
               color: #8e8e8e;
@@ -1102,6 +1103,12 @@ $registration_theme: rgb(255, 149, 74);
             h1.ja{
               color: $accel_black;
               font-weight: normal;
+            }
+            span .good{
+              width: 20px;
+              position: absolute;
+              top:0;
+              left: 120px;
             }
           }
           .room-wrap{

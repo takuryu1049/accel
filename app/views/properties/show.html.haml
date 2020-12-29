@@ -73,10 +73,12 @@
           .property-image
             %h1
               ImagePhoto
+            %span=image_tag "photocon.png", class: "good";
             = image_tag @property.image, class: "property-img" if @property.image.attached?
           .about-address
             %h1
-              Address
+              PropertyAddress
+            %span=image_tag "google-maps.png", class: "good"
             %table.type-black
               %tr
                 %th.fix-width-left
@@ -92,6 +94,7 @@
             .title-wrap
               %h1 About
               %h1.ja 物件概要
+              %span=image_tag "collapse-building.png", class: "good";
             %table
               %tr
                 %th 物件種別
@@ -105,37 +108,38 @@
               %tr
                 %th.coution ※ 注意事項 ※
               %tr
-                %td.coution-text= "#{@property.caution}"
+                -unless @property.caution.empty?
+                  %td.coution-text= "#{@property.caution}"
+                -else
+                  %td -
           .property-lifeline-line
             .title-wrap
               %h1 LifeLine
               %h1.ja ライフライン
+              %span=image_tag "lifeline.svg", class: "good-svg"
             %table
               %tr
-                %th 上水道
-                %th 下水道
-                %th 電気
-                %th ガス
+                %th.water_supply 上水道
+                %th.sewer 下水道
+                %th.electrical 電気
+                %th.gas ガス
               %tr
                 %td
                   ="#{@property.utility.water_supply.name}"
-                  %i.fas.fa-check
                 %td
                   = "#{@property.utility.sewer.name}"
-                  %i.fas.fa-check
                 %td
                   = "#{@property.utility.electrical.name}"
-                  %i.fas.fa-check
                 %td
                   = "#{@property.utility.ga.name}"
-                  %i.fas.fa-check
-            =link_to "▶機関情報を追加する", "#", class: "organization_add"
+            =link_to "▶　機関情報を追加する", "#", class: "organization_add"
         .property-owner-line
           .left-block
             .title-wrap
               %h1 Owner
               %h1.ja 所有者情報
-              =link_to "▶所有者詳細に進む", "#", class: "owner-show"
+              %span=image_tag "owner-icon.png", class: "good"
+              =link_to "▶　所有者詳細に進む", "#", class: "owner-show"
             %table.first
               %tr
                 %th.top-cell 所有形態
@@ -172,14 +176,16 @@
                 %th.top-cell 主要なやり取り人物
                 %td="#{@property.owner.main_communication}"
             .relation-person-make
-              = link_to "▶関係人物を作成する", "#",class: "new-relation-person"
-              = link_to "▶リレーションを構築する", "#", class: "relation-build"
+              = link_to "▶　関係人物を作成する", "#",class: "new-relation-person"
+              = link_to "▶　リレーションを構築する", "#", class: "relation-build"
             %table.fourth
               %tr
                 %th やり取り方法について
               %tr
                 %td="#{@property.owner.communication_about}"
-            %table.fifth
+            =link_to "　☎　連絡先を表示する", "javascript:void(0)", class: "toggle", id: "toggle-switch"
+            =link_to "連絡先を非表示にする", "javascript:void(0)", id: "hide" 
+            %table.fifth#privacy-list
               %tr
                 %th.top-cell 固定電話番号
                 -unless @property.owner.home_phone_num.empty?
@@ -212,7 +218,8 @@
                   %td -
           .about-address
             %h1
-              Address
+              OwnerPropertyAddress
+            %span=image_tag "google-maps.png", class: "good"
             %table
               %tr
                 %th.fix-width-left
@@ -223,29 +230,44 @@
                 %th.fix-width-right#owner-map-dom
                   = "#{@property.owner.prefecture.name}#{@property.owner.city}#{@property.owner.street}#{@property.owner.building_name}"
             #map-owner
-        .property-room-line
+        .property-room-line#rooom-create-anchor
           .title-wrap
             %h1
               RoomStore
             %h1.ja
               部屋情報
-          .coution-no-create
-            = "#{@property.units-Property.find(@property.id).rooms.count}室登録ができていない物件があります。登録されていない物件がある場合には、正しいデータを提供できない場合がございますので、ご注意ください。😼作成されていない物件が一つでもあれば、表示する！"
+            %span=image_tag "room.png", class: "good"
           .room-wrap
-            -if @property.rooms.empty?
-              - @property.units.times do |unit|
-                .room-box
-                  .room-upper
-                    未登録
-                  = content_tag(:div, id: "room-content#{unit+1}", class: "room-rower") do
-                    = link_to "部屋登録", room_path(@property.id)
+            - if flash[:notice] == "部屋登録が完了しました！"
+              #flash
+                %i.fas.fa-check-circle.error-icon-big
+                %span 部屋登録が完了しました！
+            - if flash[:notice] == "部屋数が上限に達しています！"
+              #flash.red-coution
+                %i.fas.fa-exclamation-circle
+                %span 部屋数が上限に達しています！
+            -unless@property.rooms.count == @property.units
+              .coution-no-create
+                %i.fas.fa-exclamation-circle
+                %span
+                  = "#{@property.units-Property.find(@property.id).rooms.count}室の登録ができていない部屋が存在します！"
+                %span.room-box
+                  .one-room-build
+                    =link_to "部屋登録をする", room_path(@property.id)
+                .message 登録が完了していない場合には収益リソースを登録することができません。
             -unless @property.rooms.empty?
+              -# 部屋が存在していた場合に、物件の部屋を全て取得する。
               - rooms = Property.find(@property.id).rooms.order(room_num: "asc")
+              -# 物件に登録されている部屋の数を取得する。
               - room_count = Property.find(@property.id).rooms.count
+              -# 物件の階数だけのカラムを重複しないように取得してカウントだけ取得する、つまり登録された物件の全ての階数を取得する。
               - floor_count = Property.find(@property.id).rooms.select(:floor).distinct.count
+              -# 各フロアのカラムを取得して数の少ない順に並べる。
               - floor_num = Property.find(@property.id).rooms.select(:floor).distinct.order(floor: "asc")
+              -# 登録されている階数分だけ処理を繰り返す。
               -floor_count.times do |i|
-              -floor_room = @property.rooms.where(floor: i+1).order(room_num: "asc")
+              -# 該当する階の部屋を全て取得する
+              -floor_room = @property.rooms.where(floor: floor_num[i].floor).order(room_num: "asc")
                 .floor
                   .floor-number-area
                     ="#{floor_num[i].floor}F"
@@ -253,19 +275,17 @@
                   %table
                     -floor_room.count.times do |room|
                       %tr
-                        %th{collspan: 1}=floor_room[room].room_num
+                        %th{collspan: 1, class: "room-num"}=floor_room[room].room_num
                         %th{collspan: 1}
                           -if floor_room[room].room_status
-                            .room-status-in
-                              入居中
+                            .room-status-in 入居中
                           -else 
-                            .room-status-out
-                              空室
+                            .room-status-out 空室
                         %td
                           =link_to "物件詳細", "#"
                           %br
                           =link_to "収益リソース登録", 
-                          resource_room_path(@property.id), class: "red"
+                          resource_room_path(@property.id), class: "regi-reso"
                           %br
               -# %table
               -#   %tr

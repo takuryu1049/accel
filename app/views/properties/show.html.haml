@@ -230,13 +230,17 @@
                 %th.fix-width-right#owner-map-dom
                   = "#{@property.owner.prefecture.name}#{@property.owner.city}#{@property.owner.street}#{@property.owner.building_name}"
             #map-owner
-        .property-room-line
+        .property-room-line#rooom-create-anchor
           .title-wrap
             %h1
               RoomStore
             %h1.ja
               部屋情報
           .room-wrap
+            - if flash[:notice] == "部屋登録が完了しました！"
+              #flash
+                %i.fas.fa-check-circle.error-icon-big
+                %span 部屋登録が完了しました！
             -unless @property.rooms.count == @property.units
               .coution-no-create
                 %span=image_tag "Attention.png"
@@ -247,12 +251,18 @@
                     =link_to "部屋登録をする", room_path(@property.id)
                 .message 登録が完了していない場合には収益リソースを登録することができません。
             -unless @property.rooms.empty?
+              -# 部屋が存在していた場合に、物件の部屋を全て取得する。
               - rooms = Property.find(@property.id).rooms.order(room_num: "asc")
+              -# 物件に登録されている部屋の数を取得する。
               - room_count = Property.find(@property.id).rooms.count
+              -# 物件の階数だけのカラムを重複しないように取得してカウントだけ取得する、つまり登録された物件の全ての階数を取得する。
               - floor_count = Property.find(@property.id).rooms.select(:floor).distinct.count
+              -# 各フロアのカラムを取得して数の少ない順に並べる。
               - floor_num = Property.find(@property.id).rooms.select(:floor).distinct.order(floor: "asc")
+              -# 登録されている階数分だけ処理を繰り返す。
               -floor_count.times do |i|
-              -floor_room = @property.rooms.where(floor: i+1).order(room_num: "asc")
+              -# 該当する階の部屋を全て取得する
+              -floor_room = @property.rooms.where(floor: floor_num[i].floor).order(room_num: "asc")
                 .floor
                   .floor-number-area
                     ="#{floor_num[i].floor}F"
@@ -263,11 +273,9 @@
                         %th{collspan: 1}=floor_room[room].room_num
                         %th{collspan: 1}
                           -if floor_room[room].room_status
-                            .room-status-in
-                              入居中
+                            .room-status-in 入居中
                           -else 
-                            .room-status-out
-                              空室
+                            .room-status-out 空室
                         %td
                           =link_to "物件詳細", "#"
                           %br

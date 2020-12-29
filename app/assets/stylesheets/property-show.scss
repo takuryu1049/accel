@@ -1254,7 +1254,7 @@ $registration_theme: rgb(255, 149, 74);
                     a{
                       display: inline-block;
                       margin: 6px 0 6px 3px;
-                      padding: 1px;
+                      padding: 1px 6px 1px 6px; 
                       text-decoration: none;
                       color: #140f0f;
                       background-color: rgba(255, 177, 22, .6);
@@ -1263,15 +1263,25 @@ $registration_theme: rgb(255, 149, 74);
                         position: relative;
                         top:1px;
                       }
+                      &:hover{
+                        opacity: .8;
+                        box-shadow: 0 3px 1px $accel_black, 2px 0 1px $accel_black, -2px 0 1px $accel_black, 0 -1px 1px $accel_black;
+                      }
                     }
-                    a.red{
+                    a.regi-reso{
                       display: inline-block;
                       margin: 6px 0 6px 3px;
-                      padding: 1px;
+                      padding: 1px 6px 1px 6px; 
                       text-decoration: none;
-                      color: #140f0f;
-                      background-color: rgba(117, 255, 98, 0.938);
-                      box-shadow: 0 2px 1px $accel_black, 1px 0 1px $accel_black, -1px 0 1px $accel_black, 0 -1px 1px $accel_black
+                      color: #FFFFFF;
+                      background-color: #140f0fa2;
+                      box-shadow: 0 2px 1px $accel_black, 1px 0 1px $accel_black, -1px 0 1px $accel_black, 0 -1px 1px $accel_black;
+                      &:hover{
+                        color:  $accel_black;
+                        background-color: rgba(255, 230, 0, 0.992);
+                        opacity: .8;
+                        box-shadow: 0 3px 1px $accel_black, 2px 0 1px $accel_black, -2px 0 1px $accel_black, 0 -1px 1px $accel_black;
+                      }
                     }
                   }
                 }

@@ -1100,13 +1100,54 @@ $registration_theme: rgb(255, 149, 74);
               font-weight: normal;
             }
           }
-          .coution-no-create{
-          }
           .room-wrap{
             width: 100%;
             justify-content: flex-start;
-            width: 100%;
-            border: dotted 1px rgba(233, 233, 233, 1);
+            padding: 10px;
+            border: dotted 3px rgba(233, 233, 233, 1);
+            .coution-no-create{
+              text-align: center;
+              background-color: #fff3cd;
+              border: 3px solid #ffeeba;
+              color: #856404;
+              font-weight: 600;
+              font-size: 20px;
+              span{
+                // height: 54px;
+                display: inline-block;
+                line-height: 54px;
+                img{
+                  line-height: 60px;
+                  vertical-align: middle;
+                  margin-bottom: 6px;
+                  margin-right: 3px;
+                }
+              }
+            }
+            span.room-box{
+              margin: 3px 0;
+              .one-room-build a{
+                display: block;
+                width: 180px;
+                font-weight: bold;
+                text-decoration: none;
+                color: #FFFFFF;
+                margin-left: 20px;
+                border: 3px groove rgba(0, 0, 0, 0.3);
+                background-color: #ff954a;
+                transition: .2s;
+                text-decoration: none;
+                &:hover{
+                  padding-right: 20px solid rgba(0,0,0,.1);
+                  border-right: 10px solid rgba(0,0,0,.1);
+                  border-left: 6px solid rgba(0,0,0,.1);
+                  opacity: .8;
+                }
+              }
+            }
+            .message{
+              font-size: 13px;
+            }
             table, th, td {
               border-collapse: collapse;
               border: 1px solid rgba(0, 0, 0, 0.3);

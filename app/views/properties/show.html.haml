@@ -236,16 +236,16 @@
               RoomStore
             %h1.ja
               部屋情報
-          .coution-no-create
-            = "#{@property.units-Property.find(@property.id).rooms.count}室登録ができていない物件があります。登録されていない物件がある場合には、正しいデータを提供できない場合がございますので、ご注意ください。😼作成されていない物件が一つでもあれば、表示する！"
           .room-wrap
-            -if @property.rooms.empty?
-              - @property.units.times do |unit|
-                .room-box
-                  .room-upper
-                    未登録
-                  = content_tag(:div, id: "room-content#{unit+1}", class: "room-rower") do
-                    = link_to "部屋登録", room_path(@property.id)
+            -unless @property.rooms.count == @property.units
+              .coution-no-create
+                %span=image_tag "Attention.png"
+                %span
+                  = "#{@property.units-Property.find(@property.id).rooms.count}室の登録ができていない部屋が存在します！"
+                %span.room-box
+                  .one-room-build
+                    =link_to "部屋登録をする", room_path(@property.id)
+                .message 登録が完了していない場合には収益リソースを登録することができません。
             -unless @property.rooms.empty?
               - rooms = Property.find(@property.id).rooms.order(room_num: "asc")
               - room_count = Property.find(@property.id).rooms.count

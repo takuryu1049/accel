@@ -24,11 +24,11 @@
         .data-line-3
           .data-box
             %label#select1
-              =f.radio_button :room_status, FALSE, autofocus: true, autocomplete: "off"
+              =f.radio_button :room_status, :V, autofocus: true, autocomplete: "off", checked: true 
               %span 空室
           .data-box
             %label#select2
-              =f.radio_button :room_status, TRUE,autofocus: true, autocomplete: "off"
+              =f.radio_button :room_status, :M,autofocus: true, autocomplete: "off"
               %span 入居中
         = f.button '登録する', id: "create-room",type: 'button', onclick: 'submit()'
         -# %table.first

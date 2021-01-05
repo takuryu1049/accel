@@ -18,7 +18,7 @@
           .data-box-20
             = f.label :floor, "階数"
             %span 必須
-            =f.text_field :floor, autofocus: true, autocomplete: "off"
+            = f.number_field :floor, min: 0, max: 99, autocomplete: "off"
         %h1 入居状況
         %span.i 必須
         .data-line-3

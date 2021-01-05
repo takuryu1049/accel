@@ -19,9 +19,21 @@
             = f.label :floor, "階数"
             %span 必須
             = f.number_field :floor, min: 0, max: 99, autocomplete: "off"
-        %h1 入居状況
-        %span.i 必須
+        %h1 階層の位置
+        %span.i.optional 必須
         .data-line-3
+          .data-box
+            %label#select1
+              =f.radio_button :room_status, :A, autofocus: true, autocomplete: "off", checked: true 
+              %span 地上階
+          .data-box
+            %label#select2
+              =f.radio_button :room_status, :U,autofocus: true, autocomplete: "off"
+              %span 地下階
+        .t-wrap
+          %h1 入居状況
+          %span.i 必須
+        .data-line-4
           .data-box
             %label#select1
               =f.radio_button :room_status, :V, autofocus: true, autocomplete: "off", checked: true 

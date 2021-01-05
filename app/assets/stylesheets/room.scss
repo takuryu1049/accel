@@ -7,6 +7,9 @@ $registration_theme: rgb(255, 149, 74);
   font-family: arial, sans-serif;
   color: $accel_black;
   height: calc(100vh - 190px);
+  @media (max-width: 700px){
+    height: 100%;
+  }
   .sub-header{
     background-color: rgba(42, 35, 35, 0.572);
     height: 30px;
@@ -23,6 +26,16 @@ $registration_theme: rgb(255, 149, 74);
       padding: 20px;
       border-radius: 3px;
       border: 1px solid rgba(0,0,0,.2);
+      @media (max-width: 700px){
+        width: 500px;
+      }
+      @media (max-width: 550px){
+        width: 400px;
+      }
+      @media (max-width: 420px){
+        width: 300px;
+        padding: 0 0 10px 0;
+      }
       .section-title{
         position: relative;
         font-size: 20px;
@@ -52,6 +65,9 @@ $registration_theme: rgb(255, 149, 74);
         position: fixed;
         top: 130px;
         margin-left: 10px;
+        @media (max-width: 550px){
+          display: none;
+        }
       }
       form{
         .data-line-1{
@@ -315,32 +331,45 @@ $registration_theme: rgb(255, 149, 74);
             width: 100%;
           }
         }
-        h1{
-          display: inline-block;
-          margin-left: 30px;
-          margin-bottom: 10px;
-          font-size: 1.1rem;
-          font-weight: normal;
-        }
-        span.i{
-          background-color:  rgba(255, 177, 22, 1);
-          border-radius: 3px;
-          color: #FFFFFF;
-          font-size:12px;
-          display:inline-block;
-          text-align: center;
-          border-radius: 2px;
-          color:white;
-          font-weight: bold;
-          line-height: 1.5;
-          padding: 0 2px;
-          // float: left;
+        .t-wrap{
+          @media (max-width: 700px){
+            width: 300px;
+            margin: 0 auto;
+            text-align: center;
+          }
+          h1{
+            display: inline-block;
+            margin-left: 30px;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            font-weight: normal;
+            @media (max-width: 700px){
+              margin-left: 0;
+              margin-bottom: 0;
+            }
+          }
+          span.i{
+            background-color:  rgba(255, 177, 22, 1);
+            border-radius: 3px;
+            color: #FFFFFF;
+            font-size:12px;
+            display:inline-block;
+            text-align: center;
+            border-radius: 2px;
+            color:white;
+            font-weight: bold;
+            line-height: 1.5;
+            padding: 0 2px;
+          }
         }
         span.i.optional{
           background-color:  rgb(217, 217, 217);
         }
         .data-line-4{
           display: flex;
+          @media (max-width: 700px){
+            display: block;
+          }
           .data-box{
             width: 50%;
             margin: 0 auto 10px auto;

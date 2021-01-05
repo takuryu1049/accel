@@ -16,4 +16,7 @@
 #
 class Room < ApplicationRecord
   belongs_to :property
+  with_options presence: true do
+    validates :room_num
+  end
 end

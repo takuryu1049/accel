@@ -1,6 +1,6 @@
 .rooms-new-page-wrapper
   .sub-header
-    - breadcrumb :new_resource
+    - breadcrumb :new_room
     = breadcrumbs pretext: "", separator: " &rsaquo; ", class: "breadcrumbs-list"
   %main
     %section
@@ -8,28 +8,62 @@
         %span - ROOM CREATE -
         %h3
           = "部屋登録" 
+      =image_tag "room.png"
       = form_with model: @room, url: "/rooms/#{params[:id]}/create", local: true do |f|
         .data-line-1
           .data-box-20
             = f.label :room_num, "部屋番号"
             %span 必須
             =f.text_field :room_num, autofocus: true, autocomplete: "off"
+          - if @room.errors.include?(:room_num)
+            .error
+              %i.fas.fa-exclamation-circle.error-icon
+              = @room.errors.full_messages_for(:room_num).first
+        .data-line-1_2
+          .data-box-20
+            = f.label :management_form, "管理形態"
+            %span 必須
+            =f.select :management_form, [ ["オープン","O"], ["管理","M"], ["集金管理","S"], ["他社管理","N"] ], autocomplete: "off"
+          - if @room.errors.include?(:management_form)
+            .error
+              %i.fas.fa-exclamation-circle.error-icon
+              = @room.errors.full_messages_for(:management_form).first
         .data-line-2
           .data-box-20
             = f.label :floor, "階数"
             %span 必須
-            =f.text_field :floor, autofocus: true, autocomplete: "off"
-        %h1 入居状況
-        %span.i 必須
-        .data-line-3
+            = f.number_field :floor, min: 0, max: 99, autocomplete: "off"
+          - if @room.errors.include?(:floor)
+            .error
+              %i.fas.fa-exclamation-circle.error-icon
+              = @room.errors.full_messages_for(:floor).first
+        .t-wrap
+          %h1 入居状況
+          %span.i 必須
+        .data-line-4
           .data-box
             %label#select1
-              =f.radio_button :room_status, FALSE, autofocus: true, autocomplete: "off"
+              =f.radio_button :room_status, :V, autofocus: true, autocomplete: "off", checked: true 
               %span 空室
           .data-box
             %label#select2
-              =f.radio_button :room_status, TRUE,autofocus: true, autocomplete: "off"
+              =f.radio_button :room_status, :M,autofocus: true, autocomplete: "off"
               %span 入居中
+        - if @room.errors.include?(:room_status)
+          .error
+            %i.fas.fa-exclamation-circle.error-icon
+            = @room.errors.full_messages_for(:room_status).first
+        .data-line-5
+          .data-box-20
+            = f.label :key_place, "カギの場所"
+            %span 任意
+            =f.text_field :key_place, placeholder: "\uf084", class: 'fa', autocomplete: "off"
+        .data-line-5
+          .data-box-20
+            = f.label :mail_num, "郵便受け番号"
+            %span 任意
+            =f.text_field :mail_num, placeholder: "\uf0e0", class: 'fa', autocomplete: "off"
+        %p ご確認の上、ボタンを押してください。
         = f.button '登録する', id: "create-room",type: 'button', onclick: 'submit()'
         -# %table.first
         -#   %tr

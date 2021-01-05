@@ -28,6 +28,11 @@ ja:
         position_id: 役職
         born: 誕生月
         qualification_id: 資格
+      room:
+        room_num: 部屋番号
+        management_form: 管理形態
+        floor: 階数
+        room_status: 入居状況
   activemodel:
     attributes:
         property_owner_utility_equipment_facility:

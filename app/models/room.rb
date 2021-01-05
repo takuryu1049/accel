@@ -26,5 +26,5 @@ class Room < ApplicationRecord
   end
 
   validates :management_form, inclusion: { in: %w(O M S N), message: "が異常な値です" }, if: :management_form
-  validates :room_status, inclusion: { in: %w(V M), message: "が異常な値です" }, if: :room_status
+  validates :room_status, inclusion: { in: %w(V M), message: "が異常な値です、画面を再度更新してください。" }, if: :room_status
 end

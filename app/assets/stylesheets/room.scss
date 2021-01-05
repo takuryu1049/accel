@@ -397,6 +397,13 @@ $registration_theme: rgb(255, 149, 74);
               margin:0;
             }
           }
+          .error{
+            display: block;
+            text-align: center;
+            margin-right: 0 !important;
+            margin-top:6px;
+            margin-bottom:6px;
+          }
           .data-box.fourty{
             width: 100%;
           }

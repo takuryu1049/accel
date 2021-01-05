@@ -78,6 +78,7 @@
       units = Faker::Number.between(from: 1, to: 3000)
       management_form_id = Faker::Number.between(from: 1, to: 7)
       rank_id = Faker::Number.between(from: 1, to: 4)
+      caution = "こちらが注意事項になります。"
       # ランダムなデータの生成 (物件についてのライフラインを30件作成します)
       water_supply_id = Faker::Number.between(from: 1, to: 2)
       sewer_id = Faker::Number.between(from: 1, to: 2)
@@ -161,6 +162,7 @@
         units: units,
         management_form_id: management_form_id,
         rank_id: rank_id ,
+        caution: caution,
         company_id: company.id,
         worker_id: worker.id,
         owner_id: owner.id

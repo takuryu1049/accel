@@ -70,6 +70,9 @@ $registration_theme: rgb(255, 149, 74);
               line-height: 1.5;
               padding: 0 2px;
             }
+            .field_with_errors + span{
+              background-color:  rgb(233, 44, 7);
+            }
             input{
               text-align: center;
               display: block;
@@ -114,6 +117,9 @@ $registration_theme: rgb(255, 149, 74);
               font-weight: bold;
               line-height: 1.5;
               padding: 0 2px;
+            }
+            .field_with_errors + span{
+              background-color:  rgb(233, 44, 7);
             }
             input{
               text-align: center;

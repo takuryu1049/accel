@@ -127,8 +127,11 @@ ActiveRecord::Schema.define(version: 2020_12_04_013809) do
 
   create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "room_num"
+    t.string "management_form", default: "O", null: false
+    t.integer "floor", null: false
     t.string "room_status", default: "V", null: false
-    t.integer "floor"
+    t.string "key_place"
+    t.string "mail_num"
     t.bigint "property_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

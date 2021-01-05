@@ -22,7 +22,7 @@ class Room < ApplicationRecord
 
   with_options presence: true do
     validates :room_num
-    validates :floor, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 99,message: 'は1~99の範囲内かつ、半角英数字で入力をしてください'}, format: { with: /\A[0-9]+\z/ }
+    validates :floor, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 99,message: 'は1~99の範囲内かつ、半角数字で入力をしてください'}, format: { with: /\A[0-9]+\z/ }
   end
 
   validates :management_form, inclusion: { in: %w(O M S N), message: "が異常な値です" }, if: :management_form

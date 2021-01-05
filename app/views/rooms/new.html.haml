@@ -15,16 +15,28 @@
             = f.label :room_num, "部屋番号"
             %span 必須
             =f.text_field :room_num, autofocus: true, autocomplete: "off"
+          - if @room.errors.include?(:room_num)
+            .error
+              %i.fas.fa-exclamation-circle.error-icon
+              = @room.errors.full_messages_for(:room_num).first
         .data-line-1_2
           .data-box-20
             = f.label :management_form, "管理形態"
             %span 必須
             =f.select :management_form, [ ["オープン","O"], ["管理","M"], ["集金管理","S"], ["他社管理","N"] ], autocomplete: "off"
+          - if @room.errors.include?(:management_form)
+            .error
+              %i.fas.fa-exclamation-circle.error-icon
+              = @room.errors.full_messages_for(:management_form).first
         .data-line-2
           .data-box-20
             = f.label :floor, "階数"
             %span 必須
             = f.number_field :floor, min: 0, max: 99, autocomplete: "off"
+          - if @room.errors.include?(:floor)
+            .error
+              %i.fas.fa-exclamation-circle.error-icon
+              = @room.errors.full_messages_for(:floor).first
         .t-wrap
           %h1 入居状況
           %span.i 必須
@@ -37,6 +49,10 @@
             %label#select2
               =f.radio_button :room_status, :M,autofocus: true, autocomplete: "off"
               %span 入居中
+        - if @room.errors.include?(:room_status)
+          .error
+            %i.fas.fa-exclamation-circle.error-icon
+            = @room.errors.full_messages_for(:room_status).first
         .data-line-5
           .data-box-20
             = f.label :key_place, "カギの場所"

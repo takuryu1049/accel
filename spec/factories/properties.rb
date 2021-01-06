@@ -34,6 +34,21 @@
 #
 FactoryBot.define do
   factory :property do
-    
+
+    name{"#{Gimei.last.kanji}ビル"}
+    name_kana{"#{Gimei.last.katakana}ビル"}
+    post_code{"#{Faker::Number.number(digits: 3)}-#{Faker::Number.number(digits: 4)}"}
+    prefecture_id{Faker::Number.between(from: 1, to: 47)}
+    city{"#{Gimei.address.city.kanji}#{Gimei.address.town.kanji}"}
+    street{"#{Faker::Number.between(from: 1, to: 10)}-#{Faker::Number.between(from: 1, to: 10)}"}
+    type_id{Faker::Number.between(from: 1, to: 3)}
+    units{Faker::Number.between(from: 1, to: 3000)}
+    management_form_id{Faker::Number.between(from: 1, to: 7)}
+    rank_id{Faker::Number.between(from: 1, to: 4)}
+    caution{"物件の注意事項になります。"}
+
+    after(:build) do |property|
+      property.image.attach(io: File.open('public/images/test_image.png'), filename: 'test_image.png')
+    end
   end
 end

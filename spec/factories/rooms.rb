@@ -19,6 +19,9 @@
 #
 FactoryBot.define do
   factory :room do
-    
+    room_num{Faker::Number.between(from: 1, to: 999)}
+    management_form{["0","M","S","N"].sample}
+    floor{Faker::Number.between(from: 1, to: 99)}
+    room_status{["V","M"].sample}
   end
 end

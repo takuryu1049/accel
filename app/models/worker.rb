@@ -36,6 +36,7 @@
 class Worker < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :company
+  has_many :properties
   has_one_attached :image
   belongs_to_active_hash :character
   belongs_to_active_hash :position

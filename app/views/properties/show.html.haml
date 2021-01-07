@@ -253,7 +253,7 @@
                   = "#{@property.units-Property.find(@property.id).rooms.count}室の登録ができていない部屋が存在します！"
                 %span.room-box
                   .one-room-build
-                    =link_to "部屋登録をする", room_path(@property.id)
+                    =link_to "部屋登録をする", room_path(@property.id), id: "room-create"
                 .message 登録が完了していない場合には収益リソースを登録することができません。
             -unless @property.rooms.empty?
               -# 部屋が存在していた場合に、物件の部屋を全て取得する。
